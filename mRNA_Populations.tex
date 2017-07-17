@@ -52,6 +52,24 @@
 
 
 
+%%%%% BEGIN MIKE'S COMMANDS %%%%%
+\usepackage[normalem]{ulem}  %provides strikeout \sout{}
+\usepackage{xspace} %%needed for mike's commands
+
+\newcommand\mymarginpar[1]{\marginpar{\begin{spacing}{0.7}\singlespacing \tiny #1 \end{spacing}}}  %for notes in margin
+
+%%custom commands for sanity
+\newcommand{\imax}{\ensuremath{i_{\max}}\xspace}
+\newcommand{\mvec}{\ensuremath{\vec{m}}\xspace}
+\newcommand{\mstarvec}{\ensuremath{\vec{m}}\xspace}
+\newcommand{\GCD}{\ensuremath{\text{GCD}}\xspace}
+\doublespacing
+
+%%%%% END MIKE'S COMMANDS %%%%%
+
+
+
+
 %----------------------------------------------------------
 \biboptions{round,authoryear}
 \AtBeginDocument{\renewcommand{\bibname}{References}}
@@ -166,20 +184,19 @@ A system of ordinary differential equations is derived to describe the number of
 The number of ribosomes bound at a given time is referred to as ribosome count, or occupany number, and using this value a population of mRNA are classified.  
 Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
 The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
-The length of the mRNA plays the role of controlling the number of states variables in the system.  
-This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as $i_{max}$.
-A goal of this work is to see how the equilibrium distribution between classes as changes as $i_{max}$ changes.
-A closed form solution to the density in the $i^{th}$ ribosomal class in a system with $i_{max}$ states is sought.
-A closed form solution is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes.
+The length of the mRNA's coding region plays the role of controlling the number of ribosome counts which, in turn, determines the number of ODEs in the system.  
+%This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as \imax.
+A goal of this work is to see how the equilibrium distribution between classes as changes with coding region length.
+A closed form solution to the density in the $i^{th}$ ribosomal class in a system with \imax states is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes.
 The equilibrium solutions in the unmarked classes are shown to be related to the full determinant of the tri-diagonal matrix used to describe the system, as well as all the determinants of the minors associated to it.
 In general, there is no closed form for the determinant of a tri-diagonal matrix, only a recurrence relation that can be used to find determinants.
-However, in this model a closed form exists for the full determinant as it changes with changing values of $i_{max}$ and its formula is presented .
+However, in this model a closed form exists for the full determinant as it changes with changing values of \imax and its formula is presented .
 This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.
 Additionally, a continuous approximation using PDE is derived and also used to find equilibrium solutions to the system.
 Both of these methods for determining equilibrium solutions are utilized in an effort to find the set of parameters that maximizes the likelihood of a given data set.
-A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function. 
-\textbf{alternate abstract}
-Modeling Ribosomal Loading of mRNA\\
+A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function.
+ 
+\textbf{alternate abstract: Modeling Ribosomal Loading of mRNA}\\
 A model is presented to describe the dynamics of protein translation related to the ribosomal occupancy of mRNA.
 The number of ribosomes bound at a given time is referred to as ribosome count, or occupancy number, and using this value a population of mRNA are classiﬁed.
 A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA.
@@ -272,12 +289,13 @@ This section addresses such topics as why modeling this process important, what 
 \section{Model Description and Notation}\label{sec:description}
 The mechanistic view that is taken for building this model is as follows.
 Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.
-If an mRNA has 0 (zero) bound ribosomes and is not marked for degradation it is considered to be in class $m_0$ and contributes to that classes abundance.
-Ribosomal binding to mRNA in class $m_i$ is assumed to proceed at a rate $\kappa(i)$.
-The translation completion rate is assumed to take place according to the function $\tau(i)$.  mRNA in the unmarked classes can then move freely between the $m_0$ and $m_{imax}$ according to initiation and completion rates until they are marked.
-To begin the process of mRNA degradation, marking of bound or unbound mRNA takes place at a rate of $\mu(i)$ for mRNA in ribosomal class $i$.
+If an unmarked mRNA has 0 (zero) bound ribosomes it is defined as being in class $m_0$ and contributes to that class's abundance.
+Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$.
+Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  
+mRNAs in the unmarked classes can then move freely between the $m_0$ and $m_{\imax}$ according to initiation and completion rates until they are marked, which ultimately leads to the degradation of the mRNA.
+To begin the process of mRNA degradation, marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
 A marked mRNA with $i$ ribosomes bound is denoted as being in class $m_i^*$.
-Once an mRNA has been marked, it is assumed that no more initiation can take place, and only translation completion occurs; this completion occurs until the mRNA has no more ribosomes bound at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
+Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA has no more ribosomes bound at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
 Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
 Table~\ref{tab:params} provides a summary of state variable and parameter notation.
 
@@ -288,15 +306,15 @@ Table~\ref{tab:params} provides a summary of state variable and parameter notati
 		\node[cloud, fill=green!30](m0) {\large $m_0$};
 		\node[cloud, fill=green!30, right of = m0, node distance = 13em](m1){\large $m_1$};
 		\node[cloud, fill=green!30, right of = m1, node distance = 13em](cdots1){\large $\cdots$};
-		\node[cloud, fill=green!30, right of = cdots1, node distance = 14em](mimaxn){\large $m_{i_{max}-1}$};
-		\node[cloud, fill=green!30, right of = mimaxn, node distance = 14em](mimax){\large $m_{i_{max}}$};
+		\node[cloud, fill=green!30, right of = cdots1, node distance = 14em](mimaxn){\large $m_{\imax-1}$};
+		\node[cloud, fill=green!30, right of = mimaxn, node distance = 14em](mimax){\large $m_{\imax}$};
 		
 		% Row 2
 		\node[cloud, fill=red!30, below of = m0, node distance = 10em](m*0) {\large $m^*_0$};
 		\node[cloud, fill=red!30, below of = m1, node distance = 10em](m*1){\large $m^*_1$};
 		\node[cloud, fill=red!30, below of = cdots1, node distance = 10em](cdots2){\large $\cdots$};
-		\node[cloud, fill=red!30, below of = mimaxn, node distance = 10em](m*imaxn){\large $m^*_{i_{max}-1}$};
-		\node[cloud, fill=red!30, below of = mimax, node distance = 10em](m*imax){\large $m^*_{i_{max}}$};
+		\node[cloud, fill=red!30, below of = mimaxn, node distance = 10em](m*imaxn){\large $m^*_{\imax-1}$};
+		\node[cloud, fill=red!30, below of = mimax, node distance = 10em](m*imax){\large $m^*_{\imax}$};
 		
 		% empty nodes for input and output flow arrows		
 		\coordinate[above of=m0, node distance=7em] (lambda);
@@ -306,23 +324,23 @@ Table~\ref{tab:params} provides a summary of state variable and parameter notati
 		\path [line] (lambda) -- node[]{\large $\lambda$} (m0);
 		\path [line] (m0) to [bend left=10] node{\large $\kappa(0)$} (m1);
 		\path [line] (m1) to [bend left=10] node{\large $\kappa(1)$} (cdots1);
-		\path [line] (cdots1) to [bend left=10] node{\normalsize $\kappa(i_{max}-2)$} (mimaxn);
-		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\kappa(i_{max}-1)$} (mimax);
+		\path [line] (cdots1) to [bend left=10] node{\normalsize $\kappa(\imax-2)$} (mimaxn);
+		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\kappa(\imax-1)$} (mimax);
 		\path [line] (m1) to [bend left=10] node{\large $\tau(1)$} (m0);
 		\path [line] (cdots1) to [bend left=10] node{\large $\tau(2)$} (m1);
-		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\tau(i_{max}-1)$} (cdots1);
-		\path [line] (mimax) to [bend left=10] node{\large $\tau(i_{max})$} (mimaxn);
+		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\tau(\imax-1)$} (cdots1);
+		\path [line] (mimax) to [bend left=10] node{\large $\tau(\imax)$} (mimaxn);
 		\path [line] (m0) -- node[]{\large $\mu(0)$} (m*0);
 		\path [line] (m1) -- node[]{\large $\mu(1)$} (m*1);
 		%Options for middle path between (...)
 		\path [line] (cdots1) -- (cdots2);
 		%\path [line] (cdots1) -- node[]{\large $\mu(\cdots)$} (cdots2);
-		\path [line] (mimaxn) -- node[]{\large $\mu(i_{max}-1)$} (m*imaxn);
-		\path [line] (mimax) -- node[]{\large $\mu(i_{max})$} (m*imax);
+		\path [line] (mimaxn) -- node[]{\large $\mu(\imax-1)$} (m*imaxn);
+		\path [line] (mimax) -- node[]{\large $\mu(\imax)$} (m*imax);
 		\path [line] (m*1) -- node[]{\large $\tau(1)$} (m*0);
 		\path [line] (cdots2) -- node[]{\large $\tau(2)$} (m*1);
-		\path [line] (m*imaxn) -- node[]{\normalsize $\tau(i_{max}-1)$} (cdots2);
-		\path [line] (m*imax) -- node[]{\large $\tau(i_{max})$} (m*imaxn);
+		\path [line] (m*imaxn) -- node[]{\normalsize $\tau(\imax-1)$} (cdots2);
+		\path [line] (m*imax) -- node[]{\large $\tau(\imax)$} (m*imaxn);
 		\path [line] (m*0) -- node[]{\large $\delta$} (delta);
 		
 	\end{tikzpicture}
@@ -335,21 +353,22 @@ Model description and notation are described in Section~\ref{sec:description}.}
 
 \begin{table}
 \centering
-\begin{tabular}{|p{100pt} p{250pt} p{100pt}|}\hline
-\textbf{Symbol}&\textbf{Description}&\textbf{Domain}\\ \hline\hline
-State Variables & &\\ \hline
-$m_i$ & Abundance of mRNA in $i^{th}$ polysomal class & $m_i\in\mathbb{R}^+$\\
-$m_i^*$ & Abundance of mRNA in $i^{th}$ polysomal class & $m_i^*\in\mathbb{R}^+$\\ \hline
-Parameter Definitions & &\\ \hline
-$i_{max}$ & Maximum number of ribosomes able to bind to mRNA; defines number of state variables and is a function of gene length & $i_{max}\in\mathbb{Z}^{(+)}$\\
-$\kappa(i)$ & Translation initiation rate for $i^{th}$ polysomal class &$\kappa(i)\in\mathbb{R}^+$\\
-$\tau(i)$ & Translation completion rate for $i^{th}$ polysomal class &$\tau(i)\in\mathbb{R}^+$\\
-$\mu(i)$ & Marking rate for $i^{th}$ polysomal class&$\mu(i)\in\mathbb{R}^+$\\
-$\lambda$ & Production rate of unbound, unmarked mRNA into $m_0$ class&$\lambda\in\mathbb{R}^+$\\
-$\delta$ & Removal rate of unbound, marked mRNA from $m_0^*$ class&$\delta\in\mathbb{R}^+$\\ \hline \hline
-\multicolumn{3}{|p{450pt}|}{\footnotesize Note: $\mathbb{R}^+$ represents the non-negative real numbers and $\mathbb{Z}^{(+)}$ represents the strictly positive integers.} \\ \hline
+\begin{tabular}{|p{75pt} p|}\hline
+\textbf{Symbol}&\textbf{Description}\\ \hline\hline
+State Variables & \\ \hline
+$m_i$ & Abundance of mRNA in $i^{th}$ polysomal class \\
+$m_i^*$ & Abundance of mRNA in $i^{th}$ polysomal class \\ \hline
+Model Parameters & \\ \hline
+\imax & Maximum number of ribosomes able to bind to mRNA; defines number of state variables and is a function of gene length \\
+$\kappa(i)$ & Translation initiation rate for $i^{th}$ polysomal class \\
+$\tau(i)$ & Translation completion rate for $i^{th}$ polysomal class \\
+$\mu(i)$ & Marking rate for $i^{th}$ polysomal class\\
+$\lambda$ & Production rate of unbound, unmarked mRNA into $m_0$ class\\
+$\delta$ & Removal rate of unbound, marked mRNA from $m_0^*$ class\\ \hline \hline
+%\multicolumn{3}{|p{450pt}|}{\footnotesize Note: $\mathbb{R}^+$ represents the non-negative real numbers and $\mathbb{Z}^{(+)}$ represents the strictly positive integers.} \\ \hline
 \end{tabular}
-\caption{System state variables and model parameters for ODE model of mRNA populations}
+\caption{System state variables and model parameters for ODE model of mRNA populations.
+Variable \imax is in the domain of non-negative integers; all other variables are non-negative real numbers.
 \label{tab:params}
 \end{table}
 
@@ -361,7 +380,7 @@ Note that from here forward the unmarked and marked subsystems are presented sep
 Flow through the unmarked classes happens under four different mechanisms,
 \begin{itemize}
 \item Input of new unbound mRNA to the $0^{th}$ unmarked class at a rate $\lambda$
-\item Ribosomal binding at a rate $\kappa(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the $i+1^{st}$ unmarked class (with the exception of the $i_{max}$ unmarked class, which cannot have any additional ribosomes bound)
+\item Ribosomal binding at a rate $\kappa(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the $i+1^{st}$ unmarked class (with the exception of the \imax unmarked class, which cannot have any additional ribosomes bound)
 \item Translation completion at a rate $\tau(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the $i-1^{st}$ unmarked class (with the exception of the $0^{th}$ unmarked class, since no ribosomes are bound for translation completion to occur)
 \item Marking of mRNA at a rate of $\mu(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the corresponding $i^{th}$ marked class
 \end{itemize}
@@ -374,7 +393,7 @@ The functional form of the unmarked subsystem is:
 & \vdots & \\
 \frac{dm_{i}}{dt} & = & \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\tau(i)m_{i}-\kappa(i)m_{i}-\mu(i)m_{i} \\
 & \vdots & \\
-\frac{dm_{i_{max}}}{dt} & = & \kappa(i_{max}-1)m_{i_{max}-1}-\tau(i_{max})m_{i_{max}}-\mu(i_{max})m_{i_{max}} \\
+\frac{dm_{\imax}}{dt} & = & \kappa(\imax-1)m_{\imax-1}-\tau(\imax)m_{\imax}-\mu(\imax)m_{\imax} \\
 \end{eqnarray*}
 
 \subsection{The Marked subsystem}
@@ -393,28 +412,42 @@ The functional form of the marked subsystem is:
 & \vdots & \\
 \frac{dm_{i}^{*}}{dt} & = & \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{i_{max}}^{*}}{dt} & = & \mu(i_{max})m_{i_{max}}^{*}-\tau(i_{max})m_{i_{max}} \\
+\frac{dm_{\imax}^{*}}{dt} & = & \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
 \end{eqnarray*}
 
 \subsection{Assumptions on Functional Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:assumed_forms}
-
 As a first consideration, it is assumed that ribosomes bind to an mRNA with equal probability that is proportional the number of unbound sites.
-This statement translates mathematically to \begin{equation}\label{eq:kappa}\kappa(i)=\kappa_0\left(1-\frac{i}{i_{max}}\right),\end{equation} where $k_0$ is the system-wide parameter that controls initiation.
+This statement translates mathematically to 
+\begin{equation}\label{eq:kappa}
+\kappa(i)=\kappa_0\left(1-\frac{i}{\imax}\right),
+\end{equation} 
+where \kappao is the system-wide parameter that controls initiation.
 Translation completion is assumed to take place at a rate proportional the number of ribosomes bound on a given mRNA.
-Therefore we have the following formulation \begin{equation}\label{eq:tau}\tau(i)=i\tau_0,\end{equation} where $\tau_0$ is the system-wide parameter that controls translation completion.
+Therefore we have the following formulation 
+\begin{equation}\label{eq:tau}
+\tau(i)=i\tau_0,
+\mymarginpar{Should this be $i/(\tau \imax)$?
+  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
+  However, I seem to recall deriving this result that indicate otherwise.
+  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
+  TODO for mike: Check notes.
+}
+\end{equation}
+where $\tau_0$ is the system-wide parameter that descrobes the average elongation rate of a ribosome.
 Translation is completed at the same rate whether an mRNA has been marked for deletion or not.
 The forms of both the $\kappa(i)$ and $\tau(i)$ functions also imply that bound ribosomes are equally likely to be anywhere on the mRNA; as such this model does not incorporate a mechanism for explicit movement tracking of ribosomes along the mRNA.
 It is also assumed that marking takes place equally among the ribosomal classes i.e. mRNA that are more densely populated with ribosomes are not more or less likely to be marked for deletion; this leads to the functional form of $\mu(i)$, $$\mu(i)=\mu_0,$$ where $\mu_0$ is a system-wide marking rate.
-These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.
+
+\sout{These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.
 
 \subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
 \begin{eqnarray*}
 \frac{dm_{0}}{dt} & = & \lambda+\tau_0 m_{1}-\kappa_0 m_{0}-\mu_0 m_{0} \\
-\frac{dm_{1}}{dt} & = & \kappa_0 m_{0}+2\tau_0 m_{2}-\tau_0 m_{1}-\kappa_0\left(1-\frac{1}{i_{max}}\right) m_{1}-\mu_0 m_{1}\\
+\frac{dm_{1}}{dt} & = & \kappa_0 m_{0}+2\tau_0 m_{2}-\tau_0 m_{1}-\kappa_0\left(1-\frac{1}{\imax}\right) m_{1}-\mu_0 m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} & = & \kappa_0\left(1-\frac{i-1}{i_{max}}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-i\tau_0 m_{i}-\kappa_0\left(1-\frac{i}{i_{max}}\right) m_{i}-\mu_0 m_{i} \\
+\frac{dm_{i}}{dt} & = & \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-i\tau_0 m_{i}-\kappa_0\left(1-\frac{i}{\imax}\right) m_{i}-\mu_0 m_{i} \\
 & \vdots & \\
-\frac{dm_{i_{max}}}{dt} & = & \kappa_0\left(1-\frac{i_{max}-1}{i_{max}}\right) m_{i_{max}-1}-i_{max}\tau_0 m_{i_{max}}-\mu_0 m_{i_{max}} \\
+\frac{dm_{\imax}}{dt} & = & \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\imax\tau_0 m_{\imax}-\mu_0 m_{\imax} \\
 \end{eqnarray*}
 
 \subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
@@ -424,21 +457,27 @@ These assumptions provide us with the practical formulation for the unmarked and
 & \vdots & \\
 \frac{dm_{i}^{*}}{dt} & = & \mu_0 m_{i}+(i+1)\tau_0 m_{i+1}^{*}-i\tau_0m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{i_{max}}^{*}}{dt} & = & \mu_0 m_{i_{max}}^{*}-i_{max}\tau_0 m_{i_{max}} \\
+\frac{dm_{\imax}^{*}}{dt} & = & \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax} \\
 \end{eqnarray*}
-
+}\mymarginpar{These equations are redundant.}
 \subsection{Matrix-vector Formulation of ODE System}
 It is frequently useful to work with the matrix-vector formulation for a system of ODE.
-In this model, the full (Unmarked and Marked) system can be represented by the following equation, \begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},\end{equation} where $\vec{M}\in\mathbb{R}^{2(i_{max}+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{i_{max}}$, $m^*_0$, $m^*_1$, ..., $m^*_{i_{max}}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(i_{max}+1)\times 2(i_{max}+1)}$ is the matrix representing the full system (Figure~\ref{fig:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(i_{max}+1)}$ is the vector of $\lambda$ as the first component and 0s else.
-Using the functional forms presented in Section~\ref{sec:unmarked_simp} and \ref{sec:marked_simp} matrix formulations are provided next.
+In this model, the dynamics marked and unmarked mRNAs can be represented as,
+\begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
+\end{equation} 
+where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Figure~\ref{fig:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
+Using the functional forms presented above, matrix formulations are provided next.
+\mymarginpar{mike: I've never seen equations presented in 'figures' this way. 
+  Please simply make them equations and move any information in the caption that is not in the text to the text.
+}
 
-\subsubsection{Matrix-vector Representation of the Full (Unmarked and Marked) System}\label{sec:full_matrix}
 As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
 The matrix $\bs{F}$ is block lower-diagonal (see Figure~\ref{fig:full_matrix}).
 The upper-left block, $\bs{U}$, corresponds to the unmarked state variables.
 Its general form is provided in Figure~\ref{fig:unmarked_matrix}.
-The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{i_{max}+1\times i_{max}+1}$.
-The lower-left block is $\bs{\mu}=\mu_0\bs{I}_{(i_{max}+1)}$\footnote{$\bs{I}_{(i_{max}+1)}$ is the $i_{max}+1\times i_{max}+1$ identity matrix}, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
+\mymarginpar{mike: ditto previous note.}
+The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
+The lower-left block is $\bs{\mu}=\mu_0\bs{I}_{(\imax+1)}$\footnote{$\bs{I}_{(\imax+1)}$ is the $\imax+1\times \imax+1$ identity matrix}, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
 The lower-right block, $\bs{R}$, corresponds to the marked state variables and its form is provided in Figure~\ref{fig:marked_matrix},
 
 \begin{figure}[ht]
@@ -454,18 +493,18 @@ Definitions for the constituent blocks is provided in Figures~\ref{fig:unmarked_
 \end{figure}
 
 \begin{figure}[ht]
-\caption{The matrix $\bs{U}$ is $(i_{max}+1\times i_{max}+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals.
-In the representation below, all blank entries are 0.}  %All \footnotesize\emph{Note: The ($i_{max}-1^{st}$) row has been suppressed in this representation but can be seen in Figure~\ref{fig:unmarked_matrix}}}
+\caption{The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals.
+In the representation below, all blank entries are 0.}  %All \footnotesize\emph{Note: The ($\imax-1^{st}$) row has been suppressed in this representation but can be seen in Figure~\ref{fig:unmarked_matrix}}}
 \label{fig:unmarked_matrix}
 \[
 \bs{U}=\left(\begin{array}{cccccc}
 -(\kappa_0+\mu_0) & \tau_0 &  &  &  & \\
-\kappa_0 & -\left(\frac{i_{max}-1}{i_{max}} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  & \\
+\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  & \\
    &\ddots        & \ddots        & \ddots & &  \\
-   & &    \frac{i_{max}-(i-1)}{i_{max}}\kappa_0 & -\left(\frac{i_{max}-i}{i_{max}}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 & \\
+   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 & \\
                   &         &        & \ddots  & \ddots & \ddots \\
      
-                          &        &  &  & \frac{1}{i_{max}}\kappa_0 & -\left(\mu_0+i_{max}\tau_0\right) \\
+                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\imax\tau_0\right) \\
 \end{array}\right)
 \]
 \end{figure}
@@ -481,8 +520,8 @@ In the representation below, all blank entries are 0.}  %All \footnotesize\emph{
  & & \ddots & \ddots & & & \\
  & & & -(i-1)\tau_0 & (i+1)\tau_0 & & \\
  & & & & \ddots & \ddots & \\
- & & & & & -(i_{max}-2)\tau_0 & i_{max}\tau_0 \\
- & & & & & & -i_{max}\tau_0 \\
+ & & & & & -(\imax-2)\tau_0 & \imax\tau_0 \\
+ & & & & & & -\imax\tau_0 \\
 \end{array}
 \right)\]
 \end{figure}
@@ -490,8 +529,7 @@ In the representation below, all blank entries are 0.}  %All \footnotesize\emph{
 
 \subsubsection{Unmarked Subsystem Matrix-vector Representation}
 As a group the unmarked subsystem decouples from the marked subsystem, as such the unmarked subsystem can be solved independently of the marked subsystem.  %Additionally, the description of the the full system, represented by Equation~\ref{eq:matrix_full}, utilizes the unmarked matrix $\bs{U}$ defined below.  
-The matrix-vector formula representing the unmarked subsystem is \begin{equation}\label{eq:matrix_unmarked}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{i_{max}+1}$ is the vector of unmarked state variables ordered $m_0$, ..., $m_{i_{max}}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{i_{max}+1\times i_{max}+1}$ is the matrix representing the unmarked subsystem (Figure~\ref{fig:unmarked_matrix}), and $\vec{b}\in\mathbb{R}^{i_{max}+1}$ is the vector of $\lambda$ as the first component and 0s else.
-
+The matrix-vector formula representing the unmarked subsystem is \begin{equation}\label{eq:matrix_unmarked}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of unmarked state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the unmarked subsystem (Figure~\ref{fig:unmarked_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
 With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
 
 
@@ -508,24 +546,24 @@ With all equations defined for the full ODE system, include matrix-vector repres
 %\vdots\\
 %m_{i}'\\
 %\vdots\\
-%m_{i_{max}-1}'\\
-%m_{i_{max}}'
+%m_{\imax-1}'\\
+%m_{\imax}'
 %\end{array}\right)=\left(\begin{array}{cccccccc}
 %-(\kappa_0+\mu_0) & \tau_0 &  &  &  &  &  &   \\
-%\kappa_0 & -\left(\frac{i_{max}-1}{i_{max}} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  &  &  &   \\
+%\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  &  &  &   \\
 %   &\ddots        & \ddots        & \ddots & &  &  &  \\
-%   & &    \frac{i_{max}-(i-1)}{i_{max}}\kappa_0 & -\left(\frac{i_{max}-i}{i_{max}}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 &  &  & \\
+%   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 &  &  & \\
 %                  &         &        & \ddots  & \ddots & \ddots &  &   \\
-%                  &         &        &  & \frac{2}{i_{max}}\kappa_0 & -\left(\frac{1}{i_{max}}\kappa_0+\mu_0+(i_{max}-1)\tau_0\right) & (i_{max})\tau_0 &   \\
-%                          &        &  &  &  &  & \frac{1}{i_{max}}\kappa_0 & -\left(\mu_0+i_{max}\tau_0\right) \\
+%                  &         &        &  & \frac{2}{\imax}\kappa_0 & -\left(\frac{1}{\imax}\kappa_0+\mu_0+(\imax-1)\tau_0\right) & (\imax)\tau_0 &   \\
+%                          &        &  &  &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\imax\tau_0\right) \\
 %\end{array}\right)\left(\begin{array}{c}
 %m_{0}\\
 %m_{1}\\
 %\vdots\\
 %m_{i}\\
 %\vdots\\
-%m_{i_{max}-1}\\
-%m_{i_{max}}\end{array}\right)+\left(\begin{array}{c}
+%m_{\imax-1}\\
+%m_{\imax}\end{array}\right)+\left(\begin{array}{c}
 %\lambda\\
 %0\\
 %\vdots\\
@@ -540,15 +578,15 @@ With all equations defined for the full ODE system, include matrix-vector repres
 
 %Include???
 
-%From the matrix representation above, one can see that this system has a format, that when viewed in blocks, has desirable properties. Specifically the large square matrix $A\in\mathbb{M}_{2i_{max}+1,2i_{max}+1}$, is in the form where the upper-left block is tri-diagonal, and corresponds to the unmarked system. The lower left is diagonal, and corresponds to the input from the unmarked class to the marked class, and the lower right is matrix is upper-triangular corresponding to the marked system. There is an inhomogeneous term represented by the $\vec{B}$which functions as an input to the first unmarked class. These properties make it desirable to begin work by considering the unmarked and marked classes separately.
+%From the matrix representation above, one can see that this system has a format, that when viewed in blocks, has desirable properties. Specifically the large square matrix $A\in\mathbb{M}_{2\imax+1,2\imax+1}$, is in the form where the upper-left block is tri-diagonal, and corresponds to the unmarked system. The lower left is diagonal, and corresponds to the input from the unmarked class to the marked class, and the lower right is matrix is upper-triangular corresponding to the marked system. There is an inhomogeneous term represented by the $\vec{B}$which functions as an input to the first unmarked class. These properties make it desirable to begin work by considering the unmarked and marked classes separately.
 
-\section{Methods for determining steady-state solutions: Analytical solutions to ODE and numerical solutions to PDE approximation}
+\section{Determining steady-state solutions}
 %SET OUT GOALS EARLIER IN THE PAPER----------
 A goal of this research is to confront the mechanistic model proposed with empirical gene expression data.
 This comparison takes place using the equilibrium distribution of polysomal classes.
 As such, analytical solutions to equilibrium distributions are seen as desirable for the parameter inference step.
-Although this model formulation has characteristics that make the derivation of analytical solutions seem attainable, a unique challenge arises from the flexibility to define the maximum number of polysomal classes through the parameter $i_{max}$.
-It is likely clear to the reader at this point, but is worth explicit mention that the number of state variables in the model is controlled by parameter $i_{max}$.
+Although this model formulation has characteristics that make the derivation of analytical solutions seem attainable, a unique challenge arises from the flexibility to define the maximum number of polysomal classes through the parameter \imax.
+It is likely clear to the reader at this point, but is worth explicit mention that the number of state variables in the model is controlled by parameter \imax.
 Therefore whatever scheme is developed to solve for steady-state distributions among polysomal classes must be flexible enough to handle a varying number of states.
 Although challenging, the parameterizable number of states necessitates the use and development of a set of equilibrium solution methods that differ slightly from the standard ODE equilibrium solution fare.
 
@@ -560,16 +598,16 @@ These methods include (1) an iterative scheme that leverages the tri-diagonal fo
 Our discussion of equilibrium solution methods begins using the original formulation of the ODEs.
 This scheme for the matrix-vector formulation of the original system was pursued to find analytical solutions, while the continuous approximation through the PDE was derived as an alternate approach to be solved numerically.  %In either case, due to the unmarked-marked class decoupling, equilibrium solution methods focus on solving for unmarked class distributions and then utilizing these solutions to find marked class distributions.
 
-\subsection{Steady-state solutions of ODE system}
+\subsection{ODE system}
 Steady-state analytical solutions for equilibrium distributions of the ODE system enables efficient parameter inference.
 Decoupling of the unmarked subsystems allows one to focus on it and use the determined values for solving the marked subsystem.  
-\subsubsection{Steady-state in ODE marked subsystem}
+\subsubsection{Marked subsystem: \mstarvec}
 The analytical form of the equilibrium distribution in the marked subsystem is quite concise.
 Solved for as a function of the unmarked distribution, the marked distribution at equilibrium is as follows:
-Let $m_{i}^{eq}$ be the solution the $i^{th}$ state in the unmarked subsystem at equilibrium.
+Let $\hat{m}_{i}$ be the steady state or equilibrium solution the $i^{th}$ state in the unmarked subsystem.
 Then the solution to the $i^{th}$ state in the marked subsystem at equilibrium, denoted $m_{i}^{* eq}$, is given by:
 \begin{equation}\label{eq:anyl_marked_eq}
-m_{i}^{* eq} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{i_{max}}m_{j}^{eq}}{\gamma (i)} \text{, where\quad}
+\hat{m}_{i}^{* eq} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{\imax}\hat{m}_{j}}{\gamma (i)} \text{, where\quad}
 \gamma (i) = \left\{
         \begin{array}{ll}
             \frac{\delta}{\tau_0} & \quad i = 0 \\
@@ -579,33 +617,52 @@ m_{i}^{* eq} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{i_{max}}m_{j}^{eq}}{\gamma 
 \end{equation} 
 In contrast to the solutions for the components of the marked subsystem, the unmarked subsystem components do not have such a straight-forward analytical representation.
 
-\subsubsection{Steady-state in ODE unmarked subsystem}
-Analytical steady-state solutions to the unmarked subsystem were generated for low levels of $i_{max}$ $(i_{max}=1,2,...,9)$ using the symbolic computation capabilities of \emph{Mathematica}.
+\subsubsection{Unmarked subsystem: \mvec}
+Analytical steady-state solutions to the unmarked subsystem were generated for low levels of \imax $(\imax=1,2,...,9)$ using the symbolic computation capabilities of \emph{Mathematica}.
 Visual inspection and hand-calculation was used to determine patterns in these solutions.
-Upon investigation it was found that the uppermost, $i_{max}$, polysomal class has the closed-form equilibrium solution of:
+Upon investigation it was found that the uppermost, \imax, polysomal class has the closed-form equilibrium solution of:
 \begin{equation}\label{eq:anyl_unmarked_imax}
-m_{i_{max}}^{eq}=\dfrac{\prod_{i=1}^{i_{max}}\left(\frac{i}{GCD[i_{max},i]}\kappa_0\right)}{\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0)+\frac{i}{GCD[i_{max},i]}\kappa_0\right)},
+\hat{m}_{\imax}=\dfrac{\prod_{i=1}^{\imax}\left(\kappa_0 \frac{i}{\GCD[\imax,i]}\right)}{\prod_{i=1}^{\imax}\left(\frac{\imax}{\GCD[\imax,i]}(\mu_0+i \tau_0)+\kappa_0 \frac{i}{\GCD[\imax,i]}\right)},
 \end{equation}
-for any level of $i_{max}$ and where $GCD$ is the greatest common divisor function.
-As a general observation, for all $i_{max}$ levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes.
+for any level of \imax and where \GCD is the greatest common divisor function.
+As a general observation, for all \imax levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes.
 In fact, beyond the uppermost polysomal class (Eq~\ref{eq:anyl_unmarked_imax}), no other classes were able to be determined completely in closed-form.
 Notably, as a side-benefit having a closed-form solution for the upper-most class is beneficial when considering other solution methods, such as PDE approximation, where such a solution can provide a boundary condition.
 
+\noindent BEGIN CRITICAL NOTE BY MIKE
+
+If equation (\ref{eq:anyl_unmarked_imax}) is correct, then it seems we've missed a very simplification that would simplify our calculations \emph{immensely}.
+Let's imagine three generic functions of $i$, $a_i$, $b_i$, and $c_i$ such that
+\begin{align}
+  F &= \frac{ \prod_i \left(a_i b_i\right)}{\prod_i \left(a_i c_i + a_i b_i\right)}\\
+\intertext{Based on my understanding of mathematics,}
+  F &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i \left(a_i \left(c_i + b_i\right)\right)}\\
+  &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i a_i \prod_i \left(c_i + b_i\right)\right)}\\
+  &= \frac{\prod_i b_i }{\prod_i \left(c_i + b_i\right)\right)}\\
+\end{align}
+If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and $c_i (\mu_0 + i \tau_0)$, then equation (\ref{eq:anyl_unmarked_imax}) can be rewritten as,
+\begin{equation}
+  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} \kappa_0 i}{prod_{i=1}^{\imax} \left(\mu_0 + i \left(\tau_0 + \kappa_0\right)\right)} 
+\end{equation}
+If this is the case, then I'm both elated and embarrassed as hell we didn't see it earlier.
+
+\noindent END CRITICAL NOTE
+
 Although no other closed-form solutions for individual unmarked classes could be determined, another interesting pattern was determined.
-The expression below gives the closed-form for the denominator of any unmarked class, $m_i^{eq}$, and value of $i_{max}$,
+The expression below gives the closed-form for the denominator of any unmarked class, $m_i^{eq}$, and value of \imax,
 \begin{equation*}\label{eq:anyl_unmarked_denom}
-\mu\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0)+\frac{i}{GCD[i_{max},i]}\kappa_0\right).
+\mu\prod_{i=1}^{\imax}\left(\frac{\imax}{\GCD[\imax,i]}(\mu_0+i\tau_0)+\frac{i}{\GCD[\imax,i]}\kappa_0\right).
 \end{equation*}
 
-Although a closed-form for the denominator of the unmarked classes at equilibrium has limited usefulness on its own, it did however lead to the discovery of a couple useful relations; the most useful being a closed-form solution for the determinant of the matrix $\bs{U}$ for an level of $i_{max}$.
+Although a closed-form for the denominator of the unmarked classes at equilibrium has limited usefulness on its own, it did however lead to the discovery of a couple useful relations; the most useful being a closed-form solution for the determinant of the matrix $\bs{U}$ for an level of \imax.
 The formula for the determinant of $\bs{U}$ is
 
 %\begin{equation*}
-%Det[\bs{U}]=(-1)^{i_{max}+1}\mu_0\prod_{i=1}^{i_{max}}(\frac{i}{GCD[i_{max},i]}\kappa_0+\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0))\frac{1}{\frac{i_{max}}{GCD[i_{max},i]}}
+%Det[\bs{U}]=(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa_0+\frac{\imax}{\GCD[\imax,i]}(\mu_0+i\tau_0))\frac{1}{\frac{\imax}{\GCD[\imax,i]}}
 %\end{equation*}
 %Which simplifies to:
 \begin{equation}\label{eq:U_det}
-Det[\bs{U}]=(-1)^{i_{max}+1}\mu_0\prod_{i=1}^{i_{max}}{\left(\frac{i}{i_{max}}(\kappa_0)+(\mu_0+i\tau_0)\right)}.
+Det[\bs{U}]=(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+i\tau_0)\right)}.
 \end{equation}
 In fact, it can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial.
 The formula above is not necessarily a simple expression, but, considering that in general there is no closed form for the determinant of a tri-diagonal matrix, the fact that this formula exists is a unique and desirable property of this system in particular.
@@ -630,20 +687,20 @@ Namely, the method considered here is the determinant-adjoint approach given by,
 Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.
 Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
 \begin{equation}\label{eq:U_det_adj}
-\vec{m}=-\frac{1}{Det[\bs{U}]}\lambda\begin{vmatrix}Det[\bs{U}_{i_{max}-1}]\\
--s_{1}Det[\bs{U}_{i_{max}-2}]\\
-s_{1}s_{2}Det[\bs{U}_{i_{max}-3}]\\
+\vec{m}=-\frac{1}{Det[\bs{U}]}\lambda\begin{vmatrix}Det[\bs{U}_{\imax-1}]\\
+-s_{1}Det[\bs{U}_{\imax-2}]\\
+s_{1}s_{2}Det[\bs{U}_{\imax-3}]\\
 \vdots\\
-(-1)^{i}(\prod_{j=1}^{i}s_{j})Det[\bs{U}_{i_{max}-(i+1)}]\\
+(-1)^{i}(\prod_{j=1}^{i}s_{j})Det[\bs{U}_{\imax-(i+1)}]\\
 \vdots\\
-(-1)^{i_{max}-2}(\prod_{j=1}^{i_{max}-2}s_{j})Det[\bs{U}_1]\\
-(-1)^{i_{max}-1}(\prod_{j=1}^{i_{max}-1}s_{j})Det[\bs{U}_0]
+(-1)^{\imax-2}(\prod_{j=1}^{\imax-2}s_{j})Det[\bs{U}_1]\\
+(-1)^{\imax-1}(\prod_{j=1}^{\imax-1}s_{j})Det[\bs{U}_0]
 \end{vmatrix}
 \end{equation}
 Along with the convention that $Det[\bs{U}_0]=1$, the following definitions are used:
 \begin{description}
 \item[{ $\bs{U}_{i}$:}] The $i\times i$ lower right sub-matrix, or minor, of $\bs{U}$.  
-\item[{ $s_{i}$:}] The sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$ such that, \begin{equation*} s_{i}=\kappa_0\left(1-\frac{i-1}{i_{max}}\right). \end{equation*}
+\item[{ $s_{i}$:}] The sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$ such that, \begin{equation*} s_{i}=\kappa_0\left(1-\frac{i-1}{\imax}\right). \end{equation*}
 \end{description}
 Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$.
 This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.
@@ -654,28 +711,28 @@ However, at this point a closed-form for the sub-matrix determinants has yet to 
 %The \emph{Solve{[}{]}} command in \emph{Mathematica }was used to generate
 %solutions to the unmarked system at equilibrium. Through various manipulations
 %it was shown that the equilibrium level in each class for a system
-%with $i_{max}+1$ classes, is always divided by the following product
-%(indexed by $i_{max}$):
+%with $\imax+1$ classes, is always divided by the following product
+%(indexed by \imax):
 %
 %\begin{equation}
-%\mu\prod_{i=1}^{i_{max}}(\frac{i}{GCD[i_{max},i]}\kappa r+\frac{i_{max}}{GCD[i_{max},i]}(\mu+i\tau))
+%\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))
 %\end{equation}
 %
 %This discovery by itself was not enough to describe equilibrium distributions
 %in each class since it only gives a closed form for the denominator
-%of each class in a system for unmarked classes up to $i_{max}$. Additionally,
+%of each class in a system for unmarked classes up to \imax. Additionally,
 %the product given in (5) gives an explicit formula for the total number
-%of mRNA in the system at equilibrium as a function of $i_{max}$.
+%of mRNA in the system at equilibrium as a function of \imax.
 %However, it turns out that this quantity is highly related to the
 %determinant of the matrix $A$ defined for the unmarked system. This
 %gives way to the following relationship,
 %
 %\begin{equation*}
-%Det[A]=(-1)^{i_{max}+1}\mu\prod_{i=1}^{i_{max}}(\frac{i}{GCD[i_{max},i]}\kappa r+\frac{i_{max}}{GCD[i_{max},i]}(\mu+i\tau))\frac{1}{\frac{i_{max}}{GCD[i_{max},i]}}
+%Det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))\frac{1}{\frac{\imax}{\GCD[\imax,i]}}
 %\end{equation*}
 %Which simplifies to:
 %\begin{equation}
-%Det[A]=(-1)^{i_{max}+1}\mu\prod_{i=1}^{i_{max}}{\left(\frac{i}{i_{max}}(\kappa r)+(\mu+i\tau)\right)}
+%Det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa r)+(\mu+i\tau)\right)}
 %\end{equation}
 %
 %In fact, it can also be shown that this formula may be rewritten in
@@ -720,20 +777,20 @@ where $\bs{A}\in\mathbb{R}^{n\times n}$ and $a(n,i)=Det[\bs{A}_i]$
 In the case of the matrix $\bs{U}$, the Equations~\ref{eq:recurrence_general} along with the initial conditions in \ref{eq:recurrence_general_ic} can be specified with the following equations,
 \[
 \begin{array}{l}
-%d_{n-i}=-((i_{max}-(n-i))/i_{max})\kappa r+\mu+(n-i)\tau\\
-%s_{n-i+1}=\kappa r((i_{max}-((n-i+1)-1))/i_{max})\\
+%d_{n-i}=-((\imax-(n-i))/\imax)\kappa r+\mu+(n-i)\tau\\
+%s_{n-i+1}=\kappa r((\imax-((n-i+1)-1))/\imax)\\
 %p_{n-i}=(n-i+1)\tau\\
-%d_{n-1}=-((i_{max}-(n-1))/i_{max})\kappa r+\mu+(n-1)\tau\\
-%s_{n-1}=\kappa r((i_{max}-((n-1)-1))/i_{max})\\
-%d_{n-2}=-((i_{max}-(n-2))/i_{max})\kappa r+\mu+(n-2)\tau\\
+%d_{n-1}=-((\imax-(n-1))/\imax)\kappa r+\mu+(n-1)\tau\\
+%s_{n-1}=\kappa r((\imax-((n-1)-1))/\imax)\\
+%d_{n-2}=-((\imax-(n-2))/\imax)\kappa r+\mu+(n-2)\tau\\
 %p_{n-2}=((n-2)+1)\tau\\
 %and\\
-d_{i}=-\left(\frac{i_{max}-i}{i_{max}}\kappa_0+\mu_0+i\text{\ensuremath{\tau_0}}\right)\\
+d_{i}=-\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+i\text{\ensuremath{\tau_0}}\right)\\
 p_{i}=(i+1)\tau_0\\
-s_{i}=\left(\frac{i_{max}-(i-1)}{i_{max}}\right)\kappa_0
+s_{i}=\left(\frac{\imax-(i-1)}{\imax}\right)\kappa_0
 \end{array}
 \]
-This iterative scheme provides one approach to finding the sub-matrix determinants, $Det[A_{i_{max}-1}]$, $Det[A_{i_{max}-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
+This iterative scheme provides one approach to finding the sub-matrix determinants, $Det[A_{\imax-1}]$, $Det[A_{\imax-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
 
 %The solution given by \emph{Mathematica} is in the form of a ``function-like''
 %object that can be evaluated in \emph{Mathematica} , it is
@@ -752,12 +809,12 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
  
 
 %This is then used in the formula given in (4) to generate the quantities
-%$Det[A_{i}]$, and the function, named \emph{UMEQSoln($i_{max},i$),
-%}will give the solution to the to $m_{i}$ at equilibrium with $i_{max}+1$
+%$Det[A_{i}]$, and the function, named \emph{UMEQSoln($\imax,i$),
+%}will give the solution to the to $m_{i}$ at equilibrium with $\imax+1$
 %classes.
 
 %\begin{equation}
-%UMEQSoln(i_{max},i)\text{:=}\frac{1}{TriDET[i_{max}+1,i_{max}+1]}(\lambda)\text{\ensuremath{TriDET}}[i_{max}+1,(i_{max}+1)-(i+1)]\left(\prod_{j=1}^{i}\left(\frac{i_{max}-(j-1)}{i_{max}}\right)\kappa r\right)
+%UMEQSoln(\imax,i)\text{:=}\frac{1}{TriDET[\imax+1,\imax+1]}(\lambda)\text{\ensuremath{TriDET}}[\imax+1,(\imax+1)-(i+1)]\left(\prod_{j=1}^{i}\left(\frac{\imax-(j-1)}{\imax}\right)\kappa r\right)
 %\end{equation}
 
 %%%% Move this to opportunities for future research %%%%%
@@ -767,7 +824,7 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
 %A simplification of the system can be made in the case where initiation rate $\kappa$ is assumed to be independent of the current number of ribosomes bound for a given mRNA.  With this simplifying assumption, $\kappa(i)=\hat{\kappa}$ and the following result holds for the denominator of each of the unmarked classes at equilibrium:
 %
 %\begin{align}
-%\sum _{q=0}^{imax} \frac{imax!}{q!(imax-q)!} (\hat{\kappa})^{imax-q} \prod _{j=0}^{q} (j \tau +\mu )
+%\sum _{q=0}^{\imax} \frac{imax!}{q!(imax-q)!} (\hat{\kappa})^{imax-q} \prod _{j=0}^{q} (j \tau +\mu )
 %\end{align}
 %
 %****Want to investigate this form to see if can be linked to a known probability distribution**** 
@@ -779,14 +836,14 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
 %%----This is related to the tridet solution that has no been pursued any longer.------
 %%With this solution now in hand, anyone with access to \emph{Mathematica}
 %%can generate solutions to the equilibrium levels of Unmarked mRNA
-%%in the system as a functions of $i_{max},i,\lambda,\kappa,r,\tau$.
+%%in the system as a functions of $\imax,i,\lambda,\kappa,r,\tau$.
 %%After running some simulations with the function above, some of the
-%%expected behavior of the system is exhibited. We see that as $i_{max}$increases
+%%expected behavior of the system is exhibited. We see that as \imaxincreases
 %%(from $1$ to $10$ for example), the distribution in the unmarked
 %%system changes from being heavily weighted towards the higher classes,
 %%to being more weighted in the middle classes. Of note is that \emph{Mathematica}
-%%can easily generate solutions with (8) for a lower $i_{max}$values,
-%%but when values of $i_{max}>20$ were used, there was no quick return
+%%can easily generate solutions with (8) for a lower \imaxvalues,
+%%but when values of $\imax>20$ were used, there was no quick return
 %%% THIS MIGHT BE WORTH MENTIONING %%%%%%%  of solutions. One reason for this, is that it can be shown that the
 %%number of terms in $Det[A_{n}]$ grows exponentially, and more specifically,
 %%the number of terms grows according to the Fibonacci sequence. This
@@ -795,7 +852,7 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
 %%Additionally, in order to make use of the above results, they still
 %%need to be applied to generating simultaneous solutions to the marked
 %%class. For the end-user, something must be done in order to deal with
-%%values of $i_{max}$that are more biologically relevant. These areas
+%%values of \imaxthat are more biologically relevant. These areas
 %%for expansion and future research are addressed in the following section.
 
 %%%% THIS SECTION WAS MOVED ABOVE %%%%
@@ -826,7 +883,7 @@ Recall that $\bs{F}$ has a block matrix form given in Figure~\ref{fig:full_matri
 Utilizing the formula found for the determinant of $\bs{U}$, a closed form for the determinant of $\bs{F}$ was determined.
 This formula is given by,
 \begin{equation}\label{eq:full_matrix_det}
-Det[\bs{F}]=(-1)^{i_{max}+1}\mu_0 \delta \lambda \left(\prod_{l=1}^{i_{max}}{-l\tau_0}\right)\left(\prod_{i=1}^{i_{max}}{\mu_0 +i \tau_0 + \frac{i}{i_{max}}\kappa_0}\right).
+Det[\bs{F}]=(-1)^{\imax+1}\mu_0 \delta \lambda \left(\prod_{l=1}^{\imax}{-l\tau_0}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +i \tau_0 + \frac{i}{\imax}\kappa_0}\right).
 \end{equation}
 At equilibrium, the equations for the full system become,
 \begin{equation}
@@ -844,7 +901,7 @@ We now turn our attention to describing a method where the discrete unmarked and
 \section{Partial differential equation approximation using continuous polysomal classes}
 The derivation of the system of partial differential equations utilizes the observation that the unmarked system can be viewed as a \emph{non-linear birth and death process}. \emph{Births} in this case are initiation events and \emph{deaths} are translation completion events.
 The benefit of this observation about the unmarked class is that non-linear birth and death processes are a well-studied type of system and previous research can be leveraged here.
-In addition to simply providing another view of the system, the continuous polysomal classes assumed in the PDE derivation allow one to more easily handle high levels of $i_{max}$.
+In addition to simply providing another view of the system, the continuous polysomal classes assumed in the PDE derivation allow one to more easily handle high levels of \imax.
 
 \subsection{The unmarked class PDE approximation}
 The rate of initiation and translation completion in our model is controlled by two functions, $\kappa(i)$ and $\tau(i)$, respectively.
@@ -859,7 +916,7 @@ To distinguish between the discrete ODE system and the continuous PDE system, we
 
 Assuming the functional forms for $\kappa(i)$ and $\tau(i)$ as provided in Equations~\ref{eq:kappa} and \ref{eq:tau} and assuming equilibrium, $\p{m(i,t)}{t}=0$, Equation~\ref{eq:unmarked_pde} becomes,
 \begin{equation}
-0=\left(\frac{\kappa_0}{i_{max}}-\mu_0+\tau_0\right)m(i)+\left(\frac{(i-1)\kappa_0}{i_{max}}-\kappa_0+(i+1)\tau_0\right)m'(i)+\frac{1}{2}\left(\kappa_0+i\tau_0-\frac{i\kappa_0}{i_{max}}\right)m''(i).
+0=\left(\frac{\kappa_0}{\imax}-\mu_0+\tau_0\right)m(i)+\left(\frac{(i-1)\kappa_0}{\imax}-\kappa_0+(i+1)\tau_0\right)m'(i)+\frac{1}{2}\left(\kappa_0+i\tau_0-\frac{i\kappa_0}{\imax}\right)m''(i).
 \end{equation}
 \subsubsection{The Marked Class PDE approximation}
 The dynamics for the marked class can be modeled by the following nonlinear inhomogenous first-order PDE,
@@ -873,10 +930,10 @@ As such, Equation~\ref{eq:marked_pde} is presented only to provide a complete fu
 \subsubsection{Unmarked PDE Boundary Conditions}
 At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring two boundary conditions for a specific solution.
 Two approaches were investigated for the upper boundary condition.
-The first is an approximation that $m(i_{max})=0$ meaning  that the $(i_{max})^{th}$ unmarked class has no members at equilibrium.
+The first is an approximation that $m(\imax)=0$ meaning  that the $(\imax)^{th}$ unmarked class has no members at equilibrium.
 This boundary condition is based on the assumption that the likelihood of any mRNA being completed saturated with ribosomes is nearly zero.
 The second approach for the upper boundary condition utilizes a result from the ODE system.
-Namely, in the unmarked ODE system a closed form for $m(i_{max})$ was determined, so Equation~\ref{eq:anyl_unmarked_imax} can be used to provide an exact upper boundary for the unmarked PDE.
+Namely, in the unmarked ODE system a closed form for $m(\imax)$ was determined, so Equation~\ref{eq:anyl_unmarked_imax} can be used to provide an exact upper boundary for the unmarked PDE.
 %In practice,
 %it makes very little difference whether this condition is used for
 %the upper boundary condition or if $m(n)=0$ or even $m'(n)=0$ as
@@ -884,20 +941,20 @@ Namely, in the unmarked ODE system a closed form for $m(i_{max})$ was determined
 %may be stated more precisely, perhaps ``negligible based on simulation
 %results'' would be more appropriate{*}{*}) 
 
-For the lower boundary condition, setting it exactly means knowing the value of the $0^{th}$ unmarked class; unlike the $m_{i_{max}}$ class, no simple closed form solution was able to be determined.
+For the lower boundary condition, setting it exactly means knowing the value of the $0^{th}$ unmarked class; unlike the $m_{\imax}$ class, no simple closed form solution was able to be determined.
 In the absence of the closed form for $m_0$ an alternate approach needed to be determined.
 Utilizing the analytical solvers in \emph{Mathematica}, an arbitrary initial value, $m(0)=m0$ was used and solutions were studied.
 From this, it was determined that $m(0)$ served only to scale the solutions in the PDE.
 Using this and borrowing the following observation from the discrete system,
 \begin{equation}\label{eq:eq_unmarked_sum}
-\frac{\lambda}{\mu}=\sum_{i=1}^{imax}m_{i},
+\frac{\lambda}{\mu}=\sum_{i=1}^{\imax}m_{i},
 \end{equation}
 an efficient method for supplying the appropriate scaling through the boundary condition was deduced.
 We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions, call this equilibrium solution $m_{pre}(i)$.
 We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$, and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition.
-At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(i_{max})=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
+At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(\imax)=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
 
-Another option to write the boundary condition for the lower boundary that is slightly more straight-forward is to write $m(0)$ explicitly in terms of the sum, $m(0)=\left(\frac{\lambda}{\mu}\right)\frac{1}{\sum{}_{i=0}^{i_{max}}m(i)}$.
+Another option to write the boundary condition for the lower boundary that is slightly more straight-forward is to write $m(0)$ explicitly in terms of the sum, $m(0)=\left(\frac{\lambda}{\mu}\right)\frac{1}{\sum{}_{i=0}^{\imax}m(i)}$.
 Use of this form for the boundary condition was not pursued since the results of the previously outlined method were found to be sufficient.
 
 %Due to the relationship between the discrete and continuous approximations, specifically $m_{i}\approx m(i)$, Equation~\ref{eq:eq_unmarked_sum} translates to,
@@ -1039,12 +1096,12 @@ to the loss of marked mRNA from class $\bar{m}^*(0)$ out of the system\\ \hline
 %to the loss of marked mRNA from class $m_{0}^{*}$ out of the system
 %\end{description}
 \textbf{Nondimensionalized Unmarked PDE:}
-
 Similar to the original PDE, at equilibrium we solve the following nondimensionalized, 2nd order,
 non-linear ODE to describe the distribution within the Unmarked classes:
 \begin{equation*}
 0=\frac{1}{2n} (2(\bar{\kappa}_0+n -\bar{\mu}_0 n)\cdot \bar{m}(i)+2(\bar{\kappa}_0(-1+i-n)+(1+i)n)\bar{m}'(i)+(in+\bar{\kappa}_0 (-i+n))\bar{m}''(i))
 \end{equation*}
+
 \textbf{Nondimensionalized Marked PDE:}
 Once again, the marked PDE was not used in application, however it is once again presented for completeness.
 At equilibrium we have the following nondimensionalized, 1st order, ODE to describe the distribution within marked classes:
@@ -1067,13 +1124,13 @@ Although both are based on the same mechanistic underpinning
 \includegraphics[width=\textwidth]{ex_cont_eq}
 \caption{Continuous approximation model solutions}
 \end{subfigure}
-\caption{Model results for parameters: $i_{max}=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
+\caption{Model results for parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{ex_both_eq}
-\caption{Comparison of discrete and continuous approximation model Solutions for Parameters: $i_{max}=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
+\caption{Comparison of discrete and continuous approximation model Solutions for Parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
 %\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
 \end{figure}
 
@@ -1115,7 +1172,7 @@ Possessing two different methods to generate equilibrium distributions for the p
 %in the final fractions. Theoretically, the maximum number of ribosomes
 %that can be bound is related to the length of the mRNA. This means
 %there can be upwards of forty different mRNA classes (this number
-%is related to $i_{max}$ in the discrete model and $n$ in the continuous
+%is related to \imax in the discrete model and $n$ in the continuous
 %model). So with 12 fractions and 40 mRNA classes, there is necessarily
 %an overlap of classes in each fraction.
 %
@@ -1261,14 +1318,14 @@ Possessing two different methods to generate equilibrium distributions for the p
 %\section*{A1: Example solutions to unmarked system for ODE formulation at equilibrium}
 %\begin{description}
 %\item This set of solutions is generated from solving the system of unmarked ODE at equilibrium directly using \emph{Solve[]} in \emph{Mathematica}
-%\item For $i_{max}=1$
+%\item For $\imax=1$
 %\item \hspace{5pt} $\left\{M(0)\to \frac{\lambda  (\mu +\tau )}{\mu  (\kappa +\mu +\tau )},M(1)\to \frac{\kappa  \lambda }{\mu  (\kappa +\mu +\tau )}\right\}$
-%\item For $i_{max}=2$ 
+%\item For $\imax=2$ 
 %\item \hspace{5pt} $\left\{M(0)\to \frac{\lambda  (\kappa  \mu +(\mu +\tau ) (\mu +2 \tau ))}{\mu  \left(\kappa ^2+2 \kappa  (\mu +\tau )+(\mu +\tau ) (\mu +2 \tau )\right)},M(1)\to \frac{\kappa  \lambda  (\mu +2 \tau )}{\mu  \left(\kappa ^2+2 \kappa  (\mu +\tau )+(\mu +\tau ) (\mu +2 \tau )\right)},M(2)\to \frac{\kappa ^2 \lambda }{\mu  \left(\kappa ^2+2 \kappa  (\mu +\tau )+(\mu +\tau ) (\mu +2 \tau )\right)}\right\}$ 
-%\item For $i_{max}=3$
+%\item For $\imax=3$
 %\item \hspace{5pt} $\Big\{ M(0)\to \frac{\lambda  \left(\kappa ^2 \mu +2 \kappa  \mu  (\mu +2 \tau )+(\mu +\tau ) (\mu +2 \tau ) (\mu +3 \tau )\right)}{\mu  \left(\tau ^2 (6 \kappa +11 \mu )+3 \tau  (\kappa +2 \mu ) (\kappa +\mu )+(\kappa +\mu )^3+6 \tau ^3\right)},M(1)\to \frac{\kappa  \lambda  (\kappa  \mu +(\mu +2 \tau ) (\mu +3 \tau ))}{\mu  \left(\tau ^2 (6 \kappa +11 \mu )+3 \tau  (\kappa +2 \mu ) (\kappa +\mu )+(\kappa +\mu )^3+6 \tau ^3\right)},$
 %\item \hspace{9pt} $ M(2)\to \frac{\kappa ^2 \lambda  (\mu +3 \tau )}{\mu  \left(\tau ^2 (6 \kappa +11 \mu )+3 \tau  (\kappa +2 \mu ) (\kappa +\mu )+(\kappa +\mu )^3+6 \tau ^3\right)},M(3)\to \frac{\kappa ^3 \lambda }{\mu  \left(\tau ^2 (6 \kappa +11 \mu )+3 \tau  (\kappa +2 \mu ) (\kappa +\mu )+(\kappa +\mu )^3+6 \tau ^3\right)} \Big\} $
-%\item For $i_{max}=4$
+%\item For $\imax=4$
 %\item \hspace{5pt} $\Big\{M(0)\to \frac{\lambda  \left(\mu  \tau ^2 (18 \kappa +35 \mu )+5 \mu  \tau  (\kappa +\mu ) (\kappa +2 \mu )+\mu  (\kappa +\mu )^3+50 \mu  \tau ^3+24 \tau ^4\right)}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$
 %\item \hspace{9pt} $M(1)\to \frac{\kappa  \lambda  \left(\kappa ^2 \mu +2 \kappa  \mu  (\mu +3 \tau )+(\mu +2 \tau ) (\mu +3 \tau ) (\mu +4 \tau )\right)}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$
 %\item \hspace{9pt} $M(2)\to \frac{\kappa ^2 \lambda  (\kappa  \mu +(\mu +3 \tau ) (\mu +4 \tau ))}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$\item \hspace{9pt} $M(3)\to \frac{\kappa ^3 \lambda  (\mu +4 \tau )}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$
