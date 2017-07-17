@@ -163,24 +163,41 @@
 This paper presents a model to describe the dynamics of protein translation.  
 A system of ordinary differential equations is derived
 to describe the number of ribosomes bound to a strand of mRNA at a
-given time. The number of ribosomes bound at a given time is referred to as ribosome number, or occupany number, and using this value a population of mRNA are classified.  
-Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.  The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
+given time.
+The number of ribosomes bound at a given time is referred to as ribosome number, or occupany number, and using this value a population of mRNA are classified.  
+Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
+The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
 The length of the mRNA plays the role of controlling the number of states variables in the system.  
 This maximum number of ribosomes that can be bound at any given time as a function of gene length
-is denoted as $i_{max}$. A goal of this work is to see how the equilibrium
-distribution between classes as changes as $i_{max}$ changes. A closed
+is denoted as $i_{max}$.
+A goal of this work is to see how the equilibrium
+distribution between classes as changes as $i_{max}$ changes.
+A closed
 form solution to the density in the $i^{th}$ ribosomal class in a system with
-$i_{max}$ states is sought. A closed form solution is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes. The equilibrium solutions in the unmarked classes
+$i_{max}$ states is sought.
+A closed form solution is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes.
+The equilibrium solutions in the unmarked classes
 are shown to be related to the full determinant of the tri-diagonal
 matrix used to describe the system, as well as all the determinants of the minors associated to
-it. In general, there is no closed form for the determinant of a tri-diagonal
+it.
+In general, there is no closed form for the determinant of a tri-diagonal
 matrix, only a recurrence relation that can be used to find determinants.
 However, in this model a closed form exists for the full determinant as it changes with changing values of $i_{max}$
-and its formula is presented .  This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.  Additionally, a continuous approximation using PDE is derived and also used to find equilibrium solutions to the system.  Both of these methods for determining equilibrium solutions are utilized in an effort to find the set of parameters that maximizes the likelihood of a given data set.  A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function. 
+and its formula is presented .
+This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.
+Additionally, a continuous approximation using PDE is derived and also used to find equilibrium solutions to the system.
+Both of these methods for determining equilibrium solutions are utilized in an effort to find the set of parameters that maximizes the likelihood of a given data set.
+A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function. 
 
 \textbf{alternate abstract}
 Modeling Ribosomal Loading of mRNA\\
-A model is presented to describe the dynamics of protein translation related to the ribosomal occupancy of mRNA. The number of ribosomes bound at a given time is referred to as ribosome number, or occupancy number, and using this value a population of mRNA are classiﬁed.  A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA. Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degradation marking rate, and length of the mRNA. Methods are developed to find analytical equilibrium solutions to the system of ODEs and a system of partial differential equations (PDEs) are derived to find numerical approximations to the ODE system at equilibrium as well.  Both the PDE continuous approximation and the analytical solutions to the ODE system agree offering two different methods for finding solutions at equilibrium within optimization routines.  Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome occupancy.  
+A model is presented to describe the dynamics of protein translation related to the ribosomal occupancy of mRNA.
+The number of ribosomes bound at a given time is referred to as ribosome number, or occupancy number, and using this value a population of mRNA are classiﬁed.
+A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA.
+Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degradation marking rate, and length of the mRNA.
+Methods are developed to find analytical equilibrium solutions to the system of ODEs and a system of partial differential equations (PDEs) are derived to find numerical approximations to the ODE system at equilibrium as well.
+Both the PDE continuous approximation and the analytical solutions to the ODE system agree offering two different methods for finding solutions at equilibrium within optimization routines.
+Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome occupancy.  
 \end{abstract}
 \begin{keyword}
 bioinformatics \sep microarray analysis \sep mRNA population modeling \sep protein translation modeling \sep ribosome loading \sep ribosome number \sep differential equations modeling
@@ -202,7 +219,8 @@ bioinformatics \sep microarray analysis \sep mRNA population modeling \sep prote
 \begin{enumerate}
 \item Physical processes captured (Ideally, have a quick discussion of process and inline definitions of variables used to represent process, followed by a total recap in a table)  - \textbf{(Nate)}
 \begin{enumerate}
-\item System described as population model: Dichotomy of marked and unmarked mRNA. State variables based on number of ribosomes bound to a given mRNA. 
+\item System described as population model: Dichotomy of marked and unmarked mRNA.
+State variables based on number of ribosomes bound to a given mRNA. 
 \item Process of mRNA production
 \item Process of Marking mRNA for degradation supposed
 \item Three processes of : Initiation, translation, and completion
@@ -251,7 +269,8 @@ bioinformatics \sep microarray analysis \sep mRNA population modeling \sep prote
 \end{enumerate}
 \item Opportunities for Future Research  - \textbf{(Nate and Mike)}
 \begin{enumerate}
-\item Application of model to real data.  Can highlight sources of data.
+\item Application of model to real data.
+Can highlight sources of data.
 \item Alternate functional forms and relaxed assumptions
 \item Further establish connection (in simplified system) to potential probability distributions
 \item How to move forward with analytical solutions, specifically connection to solving 2nd order partial difference equation arising from tri-diagonal form of matrix, note here that boundary conditions exist that may be utilized which are not normally present.
@@ -262,7 +281,16 @@ bioinformatics \sep microarray analysis \sep mRNA population modeling \sep prote
 This section addresses such topics as why modeling this process important, what this model will enable researchers to do, and what other modeling efforts exist that seek to achieve the same goals.
 
 \section{Model Description and Notation}\label{sec:description}
-The mechanistic view that is taken for building this model is as follows.  Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.  If an mRNA has 0 (zero) bound ribosomes and is not marked for degradation it is considered to be in class $m_0$ and contributes to that classes abundance.  Ribosomal binding to mRNA in class $m_i$ is assumed to proceed at a rate $\kappa(i)$.  The translation completion rate is assumed to take place according to the function $\tau(i)$.  mRNA in the unmarked classes can then move freely between the $m_0$ and $m_{imax}$ according to initiation and completion rates until they are marked.  To begin the process of mRNA degradation, marking of bound or unbound mRNA takes place at a rate of $\mu(i)$ for mRNA in ribosomal class $i$.  A marked mRNA with $i$ ribosomes bound is denoted as being in class $m_i^*$.  Once an mRNA has been marked, it is assumed that no more initiation can take place, and only translation completion occurs; this completion occurs until the mRNA has no more ribosomes bound at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.  Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.  Table~\ref{tab:params} provides a summary of state variable and parameter notation.
+The mechanistic view that is taken for building this model is as follows.
+Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.
+If an mRNA has 0 (zero) bound ribosomes and is not marked for degradation it is considered to be in class $m_0$ and contributes to that classes abundance.
+Ribosomal binding to mRNA in class $m_i$ is assumed to proceed at a rate $\kappa(i)$.
+The translation completion rate is assumed to take place according to the function $\tau(i)$.  mRNA in the unmarked classes can then move freely between the $m_0$ and $m_{imax}$ according to initiation and completion rates until they are marked.
+To begin the process of mRNA degradation, marking of bound or unbound mRNA takes place at a rate of $\mu(i)$ for mRNA in ribosomal class $i$.
+A marked mRNA with $i$ ribosomes bound is denoted as being in class $m_i^*$.
+Once an mRNA has been marked, it is assumed that no more initiation can take place, and only translation completion occurs; this completion occurs until the mRNA has no more ribosomes bound at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
+Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
+Table~\ref{tab:params} provides a summary of state variable and parameter notation.
 
 % begin flow diagram for ODE
 \begin{figure} [htbp] \centering
@@ -309,7 +337,9 @@ The mechanistic view that is taken for building this model is as follows.  Unbou
 		\path [line] (m*0) -- node[]{\large $\delta$} (delta);
 		
 	\end{tikzpicture}
-	\caption{Flow diagram for ODE system describing movement throughout the mRNA population model. State variables and parameters are defined in Table~\ref{tab:params}.  Model description and notation are described in Section~\ref{sec:description}.}
+	\caption{Flow diagram for ODE system describing movement throughout the mRNA population model.
+State variables and parameters are defined in Table~\ref{tab:params}.
+Model description and notation are described in Section~\ref{sec:description}.}
 	\label{fig:flow_diagram}
 	\end{framed}
 \end{figure}
@@ -335,7 +365,8 @@ $\delta$ & Removal rate of unbound, marked mRNA from $m_0^*$ class&$\delta\in\ma
 \end{table}
 
 \section{Model Equations}
-Given the mechanisms included in the model, notation used, and assumptions provided in Section~\ref{sec:description}, we have the following set of ordinary differential equations. Note that from here forward the unmarked and marked subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
+Given the mechanisms included in the model, notation used, and assumptions provided in Section~\ref{sec:description}, we have the following set of ordinary differential equations.
+Note that from here forward the unmarked and marked subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
 
 \subsection{The Unmarked subsystem}
 Flow through the unmarked classes happens under four different mechanisms,
@@ -378,7 +409,14 @@ The functional form of the marked subsystem is:
 
 \subsection{Assumptions on Functional Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:assumed_forms}
 
-As a first consideration, it is assumed that ribosomes bind to an mRNA with equal probability that is proportional the number of unbound sites.  This statement translates mathematically to \begin{equation}\label{eq:kappa}\kappa(i)=\kappa_0\left(1-\frac{i}{i_{max}}\right),\end{equation} where $k_0$ is the system-wide parameter that controls initiation.  Translation completion is assumed to take place at a rate proportional the number of ribosomes bound on a given mRNA.  Therefore we have the following formulation \begin{equation}\label{eq:tau}\tau(i)=i\tau_0,\end{equation} where $\tau_0$ is the system-wide parameter that controls translation completion.  Translation is completed at the same rate whether an mRNA has been marked for deletion or not.  The forms of both the $\kappa(i)$ and $\tau(i)$ functions also imply that bound ribosomes are equally likely to be anywhere on the mRNA; as such this model does not incorporate a mechanism for explicit movement tracking of ribosomes along the mRNA.  It is also assumed that marking takes place equally among the ribosomal classes i.e. mRNA that are more densely populated with ribosomes are not more or less likely to be marked for deletion; this leads to the functional form of $\mu(i)$, $$\mu(i)=\mu_0,$$ where $\mu_0$ is a system-wide marking rate.  These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.
+As a first consideration, it is assumed that ribosomes bind to an mRNA with equal probability that is proportional the number of unbound sites.
+This statement translates mathematically to \begin{equation}\label{eq:kappa}\kappa(i)=\kappa_0\left(1-\frac{i}{i_{max}}\right),\end{equation} where $k_0$ is the system-wide parameter that controls initiation.
+Translation completion is assumed to take place at a rate proportional the number of ribosomes bound on a given mRNA.
+Therefore we have the following formulation \begin{equation}\label{eq:tau}\tau(i)=i\tau_0,\end{equation} where $\tau_0$ is the system-wide parameter that controls translation completion.
+Translation is completed at the same rate whether an mRNA has been marked for deletion or not.
+The forms of both the $\kappa(i)$ and $\tau(i)$ functions also imply that bound ribosomes are equally likely to be anywhere on the mRNA; as such this model does not incorporate a mechanism for explicit movement tracking of ribosomes along the mRNA.
+It is also assumed that marking takes place equally among the ribosomal classes i.e. mRNA that are more densely populated with ribosomes are not more or less likely to be marked for deletion; this leads to the functional form of $\mu(i)$, $$\mu(i)=\mu_0,$$ where $\mu_0$ is a system-wide marking rate.
+These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.
 
 \subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
 \begin{eqnarray*}
@@ -401,13 +439,22 @@ As a first consideration, it is assumed that ribosomes bind to an mRNA with equa
 \end{eqnarray*}
 
 \subsection{Matrix-vector Formulation of ODE System}
-It is frequently useful to work with the matrix-vector formulation for a system of ODE.  In this model, the full (Unmarked and Marked) system can be represented by the following equation, \begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},\end{equation} where $\vec{M}\in\mathbb{R}^{2(i_{max}+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{i_{max}}$, $m^*_0$, $m^*_1$, ..., $m^*_{i_{max}}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(i_{max}+1)\times 2(i_{max}+1)}$ is the matrix representing the full system (Figure~\ref{fig:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(i_{max}+1)}$ is the vector of $\lambda$ as the first component and 0s else. Using the functional forms presented in Section~\ref{sec:unmarked_simp} and \ref{sec:marked_simp} matrix formulations are provided next.
+It is frequently useful to work with the matrix-vector formulation for a system of ODE.
+In this model, the full (Unmarked and Marked) system can be represented by the following equation, \begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},\end{equation} where $\vec{M}\in\mathbb{R}^{2(i_{max}+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{i_{max}}$, $m^*_0$, $m^*_1$, ..., $m^*_{i_{max}}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(i_{max}+1)\times 2(i_{max}+1)}$ is the matrix representing the full system (Figure~\ref{fig:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(i_{max}+1)}$ is the vector of $\lambda$ as the first component and 0s else.
+Using the functional forms presented in Section~\ref{sec:unmarked_simp} and \ref{sec:marked_simp} matrix formulations are provided next.
 
 \subsubsection{Matrix-vector Representation of the Full (Unmarked and Marked) System}\label{sec:full_matrix}
-As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.  The matrix $\bs{F}$ is block lower-diagonal (see Figure~\ref{fig:full_matrix}).  The upper-left block, $\bs{U}$, corresponds to the unmarked state variables.  Its general form is provided in Figure~\ref{fig:unmarked_matrix}. The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{i_{max}+1\times i_{max}+1}$.  The lower-left block is $\bs{\mu}=\mu_0\bs{I}_{(i_{max}+1)}$\footnote{$\bs{I}_{(i_{max}+1)}$ is the $i_{max}+1\times i_{max}+1$ identity matrix}, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.  The lower-right block, $\bs{R}$, corresponds to the marked state variables and its form is provided in Figure~\ref{fig:marked_matrix},
+As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
+The matrix $\bs{F}$ is block lower-diagonal (see Figure~\ref{fig:full_matrix}).
+The upper-left block, $\bs{U}$, corresponds to the unmarked state variables.
+Its general form is provided in Figure~\ref{fig:unmarked_matrix}.
+The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{i_{max}+1\times i_{max}+1}$.
+The lower-left block is $\bs{\mu}=\mu_0\bs{I}_{(i_{max}+1)}$\footnote{$\bs{I}_{(i_{max}+1)}$ is the $i_{max}+1\times i_{max}+1$ identity matrix}, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
+The lower-right block, $\bs{R}$, corresponds to the marked state variables and its form is provided in Figure~\ref{fig:marked_matrix},
 
 \begin{figure}[ht]
-\caption{The matrix $\bs{F}$ from Equation~\ref{eq:matrix_full} is block lower-diagonal.  Definitions for the constituent blocks is provided in Figures~\ref{fig:unmarked_matrix} and \ref{fig:marked_matrix} and in Section~\ref{sec:full_matrix}}
+\caption{The matrix $\bs{F}$ from Equation~\ref{eq:matrix_full} is block lower-diagonal.
+Definitions for the constituent blocks is provided in Figures~\ref{fig:unmarked_matrix} and \ref{fig:marked_matrix} and in Section~\ref{sec:full_matrix}}
 \label{fig:full_matrix}
 \[
 \bs{F}=\left(\begin{array}{cc}
@@ -418,7 +465,8 @@ As opposed to explicitly listing elements of the full system matrix-vector repre
 \end{figure}
 
 \begin{figure}[ht]
-\caption{The matrix $\bs{U}$ is $(i_{max}+1\times i_{max}+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals. In the representation below, all blank entries are 0.}  %All \footnotesize\emph{Note: The ($i_{max}-1^{st}$) row has been suppressed in this representation but can be seen in Figure~\ref{fig:unmarked_matrix}}}
+\caption{The matrix $\bs{U}$ is $(i_{max}+1\times i_{max}+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals.
+In the representation below, all blank entries are 0.}  %All \footnotesize\emph{Note: The ($i_{max}-1^{st}$) row has been suppressed in this representation but can be seen in Figure~\ref{fig:unmarked_matrix}}}
 \label{fig:unmarked_matrix}
 \[
 \bs{U}=\left(\begin{array}{cccccc}
@@ -507,19 +555,30 @@ With all equations defined for the full ODE system, include matrix-vector repres
 
 \section{Methods for determining steady-state solutions: Analytical solutions to ODE and numerical solutions to PDE approximation}
 %SET OUT GOALS EARLIER IN THE PAPER----------
-A goal of this research is to confront the mechanistic model proposed with empirical gene expression data.  This comparison takes place using the equilibrium distribution of polysomal classes.  As such, analytical solutions to equilibrium distributions are seen as desirable for the parameter inference step.  Although this model formulation has characteristics that make the derivation of analytical solutions seem attainable, a unique challenge arises from the flexibility to define the maximum number of polysomal classes through the parameter $i_{max}$.  It is likely clear to the reader at this point, but is worth explicit mention that the number of state variables in the model is controlled by parameter $i_{max}$.  Therefore whatever scheme is developed to solve for steady-state distributions among polysomal classes must be flexible enough to handle a varying number of states.  Although challenging, the parameterizable number of states necessitates the use and development of a set of equilibrium solution methods that differ slightly from the standard ODE equilibrium solution fare.
+A goal of this research is to confront the mechanistic model proposed with empirical gene expression data.
+This comparison takes place using the equilibrium distribution of polysomal classes.
+As such, analytical solutions to equilibrium distributions are seen as desirable for the parameter inference step.
+Although this model formulation has characteristics that make the derivation of analytical solutions seem attainable, a unique challenge arises from the flexibility to define the maximum number of polysomal classes through the parameter $i_{max}$.
+It is likely clear to the reader at this point, but is worth explicit mention that the number of state variables in the model is controlled by parameter $i_{max}$.
+Therefore whatever scheme is developed to solve for steady-state distributions among polysomal classes must be flexible enough to handle a varying number of states.
+Although challenging, the parameterizable number of states necessitates the use and development of a set of equilibrium solution methods that differ slightly from the standard ODE equilibrium solution fare.
 
 %NOTE: There is really only TWO methods, with a second variation on the matrix-inversion method (is the second-order non-linear difference equation a method? I think so, but perhaps should be left for future research?  Discussion of determined boundary conditions and formulation owing to tri-diagonal form should suffice.)
 
-For this study two different methods for finding steady-state solutions for the polysomal classes were developed.  These methods include (1) an iterative scheme that leverages the tri-diagonal form of the unmarked classes in the matrix-vector representation (2) a partial differential equation approximation where the polysomal class is assumed to be continuous.  
+For this study two different methods for finding steady-state solutions for the polysomal classes were developed.
+These methods include (1) an iterative scheme that leverages the tri-diagonal form of the unmarked classes in the matrix-vector representation (2) a partial differential equation approximation where the polysomal class is assumed to be continuous.  
 
-Our discussion of equilibrium solution methods begins using the original formulation of the ODEs.  This scheme for the matrix-vector formulation of the original system was pursued to find analytical solutions, while the continuous approximation through the PDE was derived as an alternate approach to be solved numerically.  %In either case, due to the unmarked-marked class decoupling, equilibrium solution methods focus on solving for unmarked class distributions and then utilizing these solutions to find marked class distributions.
+Our discussion of equilibrium solution methods begins using the original formulation of the ODEs.
+This scheme for the matrix-vector formulation of the original system was pursued to find analytical solutions, while the continuous approximation through the PDE was derived as an alternate approach to be solved numerically.  %In either case, due to the unmarked-marked class decoupling, equilibrium solution methods focus on solving for unmarked class distributions and then utilizing these solutions to find marked class distributions.
 
 \subsection{Steady-state solutions of ODE system}
-Steady-state analytical solutions for equilibrium distributions of the ODE system enables efficient parameter inference.  Decoupling of the unmarked subsystems allows one to focus on it and use the determined values for solving the marked subsystem.  
+Steady-state analytical solutions for equilibrium distributions of the ODE system enables efficient parameter inference.
+Decoupling of the unmarked subsystems allows one to focus on it and use the determined values for solving the marked subsystem.  
 \subsubsection{Steady-state in ODE marked subsystem}
-The analytical form of the equilibrium distribution in the marked subsystem is quite concise.  Solved for as a function of the unmarked distribution, the marked distribution at equilibrium is as follows:
-Let $m_{i}^{eq}$ be the solution the $i^{th}$ state in the unmarked subsystem at equilibrium.  Then the solution to the $i^{th}$ state in the marked subsystem at equilibrium, denoted $m_{i}^{* eq}$, is given by:
+The analytical form of the equilibrium distribution in the marked subsystem is quite concise.
+Solved for as a function of the unmarked distribution, the marked distribution at equilibrium is as follows:
+Let $m_{i}^{eq}$ be the solution the $i^{th}$ state in the unmarked subsystem at equilibrium.
+Then the solution to the $i^{th}$ state in the marked subsystem at equilibrium, denoted $m_{i}^{* eq}$, is given by:
 \begin{equation}\label{eq:anyl_marked_eq}
 m_{i}^{* eq} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{i_{max}}m_{j}^{eq}}{\gamma (i)} \text{, where\quad}
 \gamma (i) = \left\{
@@ -532,18 +591,25 @@ m_{i}^{* eq} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{i_{max}}m_{j}^{eq}}{\gamma 
 In contrast to the solutions for the components of the marked subsystem, the unmarked subsystem components do not have such a straight-forward analytical representation.
 
 \subsubsection{Steady-state in ODE unmarked subsystem}
-Analytical steady-state solutions to the unmarked subsystem were generated for low levels of $i_{max}$ $(i_{max}=1,2,...,9)$ using the symbolic computation capabilities of \emph{Mathematica}.  Visual inspection and hand-calculation was used to determine patterns in these solutions.  Upon investigation it was found that the uppermost, $i_{max}$, polysomal class has the closed-form equilibrium solution of:
+Analytical steady-state solutions to the unmarked subsystem were generated for low levels of $i_{max}$ $(i_{max}=1,2,...,9)$ using the symbolic computation capabilities of \emph{Mathematica}.
+Visual inspection and hand-calculation was used to determine patterns in these solutions.
+Upon investigation it was found that the uppermost, $i_{max}$, polysomal class has the closed-form equilibrium solution of:
 \begin{equation}\label{eq:anyl_unmarked_imax}
 m_{i_{max}}^{eq}=\dfrac{\prod_{i=1}^{i_{max}}\left(\frac{i}{GCD[i_{max},i]}\kappa_0\right)}{\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0)+\frac{i}{GCD[i_{max},i]}\kappa_0\right)},
 \end{equation}
-for any level of $i_{max}$ and where $GCD$ is the greatest common divisor function.  As a general observation, for all $i_{max}$ levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes. In fact, beyond the uppermost polysomal class (Eq~\ref{eq:anyl_unmarked_imax}), no other classes were able to be determined completely in closed-form.  Notably, as a side-benefit having a closed-form solution for the upper-most class is beneficial when considering other solution methods, such as PDE approximation, where such a solution can provide a boundary condition.
+for any level of $i_{max}$ and where $GCD$ is the greatest common divisor function.
+As a general observation, for all $i_{max}$ levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes.
+In fact, beyond the uppermost polysomal class (Eq~\ref{eq:anyl_unmarked_imax}), no other classes were able to be determined completely in closed-form.
+Notably, as a side-benefit having a closed-form solution for the upper-most class is beneficial when considering other solution methods, such as PDE approximation, where such a solution can provide a boundary condition.
 
-Although no other closed-form solutions for individual unmarked classes could be determined, another interesting pattern was determined.  The expression below gives the closed-form for the denominator of any unmarked class, $m_i^{eq}$, and value of $i_{max}$,
+Although no other closed-form solutions for individual unmarked classes could be determined, another interesting pattern was determined.
+The expression below gives the closed-form for the denominator of any unmarked class, $m_i^{eq}$, and value of $i_{max}$,
 \begin{equation*}\label{eq:anyl_unmarked_denom}
 \mu\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0)+\frac{i}{GCD[i_{max},i]}\kappa_0\right).
 \end{equation*}
 
-Although a closed-form for the denominator of the unmarked classes at equilibrium has limited usefulness on its own, it did however lead to the discovery of a couple useful relations; the most useful being a closed-form solution for the determinant of the matrix $\bs{U}$ for an level of $i_{max}$.  The formula for the determinant of $\bs{U}$ is
+Although a closed-form for the denominator of the unmarked classes at equilibrium has limited usefulness on its own, it did however lead to the discovery of a couple useful relations; the most useful being a closed-form solution for the determinant of the matrix $\bs{U}$ for an level of $i_{max}$.
+The formula for the determinant of $\bs{U}$ is
 
 %\begin{equation*}
 %Det[\bs{U}]=(-1)^{i_{max}+1}\mu_0\prod_{i=1}^{i_{max}}(\frac{i}{GCD[i_{max},i]}\kappa_0+\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0))\frac{1}{\frac{i_{max}}{GCD[i_{max},i]}}
@@ -552,23 +618,30 @@ Although a closed-form for the denominator of the unmarked classes at equilibriu
 \begin{equation}\label{eq:U_det}
 Det[\bs{U}]=(-1)^{i_{max}+1}\mu_0\prod_{i=1}^{i_{max}}{\left(\frac{i}{i_{max}}(\kappa_0)+(\mu_0+i\tau_0)\right)}.
 \end{equation}
-In fact, it can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial. The formula above is not necessarily a simple expression, but, considering that in general there is no closed form for the determinant of a tri-diagonal matrix, the fact that this formula exists is a unique and desirable property of this system in particular.
+In fact, it can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial.
+The formula above is not necessarily a simple expression, but, considering that in general there is no closed form for the determinant of a tri-diagonal matrix, the fact that this formula exists is a unique and desirable property of this system in particular.
 
-With a closed-form expression for the determinant of $\bs{U}$ we are now able to formulate another method to determine equilibrium solutions in the unmarked class by utilizing the matrix-vector formulation of the unmarked subsystem.  At equilibrium $\vec{m}'=0$, and so the matrix-vector equation (Eq. \ref{eq:matrix_unmarked}), when solved for the vector of state variables, $\vec{m}$, becomes,
+With a closed-form expression for the determinant of $\bs{U}$ we are now able to formulate another method to determine equilibrium solutions in the unmarked class by utilizing the matrix-vector formulation of the unmarked subsystem.
+At equilibrium $\vec{m}'=0$, and so the matrix-vector equation (Eq. \ref{eq:matrix_unmarked}), when solved for the vector of state variables, $\vec{m}$, becomes,
 \begin{equation}
 \vec{m}=-\bs{U}^{-1}\vec{b}.
 \end{equation}
 and making determination of equilibrium solutions come down to deriving an efficient technique for inverting $\bs{U}$.  
 
-The closed-form of the determinant enables the identification of parameters in which $\bs{U}$ is invertible.  Using the fact that $\bs{U}$ is invertible iff $Det[\bs{U}]\neq0$.  Equation \ref{eq:U_det} shows that the only possible scenario where $\bs{U}$ is non-invertible is when $\mu_0=0$.  Given that $\mu_0$ controls the rate at which unmarked mRNA become marked for deletion, the physical interpretation of $\mu_0=0$ is no degradation of unmarked mRNA and thus no loss in the system, leading to unbounded growth in unmarked mRNA populations.
+The closed-form of the determinant enables the identification of parameters in which $\bs{U}$ is invertible.
+Using the fact that $\bs{U}$ is invertible iff $Det[\bs{U}]\neq0$.
+Equation \ref{eq:U_det} shows that the only possible scenario where $\bs{U}$ is non-invertible is when $\mu_0=0$.
+Given that $\mu_0$ controls the rate at which unmarked mRNA become marked for deletion, the physical interpretation of $\mu_0=0$ is no degradation of unmarked mRNA and thus no loss in the system, leading to unbounded growth in unmarked mRNA populations.
 
-With a classification of when $\bs{U}$ is invertible we now consider a particular method for matrix inversion that can make use of the closed-form of the determinant. Namely, the method considered here is the determinant-adjoint approach given by,
+With a classification of when $\bs{U}$ is invertible we now consider a particular method for matrix inversion that can make use of the closed-form of the determinant.
+Namely, the method considered here is the determinant-adjoint approach given by,
 
 \begin{equation*}
 \vec{m}=-\frac{1}{Det[\bs{U}]}Adj[\bs{U}]\vec{b}.
 \end{equation*}
 
-Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.  Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
+Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.
+Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
 
 \begin{equation}\label{eq:U_det_adj}
 \vec{m}=-\frac{1}{Det[\bs{U}]}\lambda\begin{vmatrix}Det[\bs{U}_{i_{max}-1}]\\
@@ -588,7 +661,9 @@ Along with the convention that $Det[\bs{U}_0]=1$, the following definitions are 
 \item[{ $s_{i}$:}] The sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$ such that, \begin{equation*} s_{i}=\kappa_0\left(1-\frac{i-1}{i_{max}}\right). \end{equation*}
 \end{description}
 
-Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$. This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.  However, at this point a closed-form for the sub-matrix determinants has yet to be found, encouraging further research into efficient methods to determine equilibrium distributions.
+Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$.
+This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.
+However, at this point a closed-form for the sub-matrix determinants has yet to be found, encouraging further research into efficient methods to determine equilibrium distributions.
 
 %\subsubsection{Equilibrium Solutions and Other Results}
 %
@@ -628,7 +703,10 @@ Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions
 %a closed form for the sub-determinants, which are needed to calculate
 %the state variables at equilibrium. 
 
-In order to move forward solving the system using Equation~\ref{eq:U_det_adj} above, all the sub-determinants are needed. Another property of tri-diagonal matrices is that their determinants can be calculated by solving a $2^{nd}$ degree partial recurrence equation. This means two things, the first is that if a closed form solution existed for that recurrence relation, it could be used to calculate all the determinants and sub-determinants of the system. Additionally, it specifies that one can work forward iteratively from $Det[\bs{U}_{1}]$ in order to generate all $Det[\bs{U}_{i}]$. %Since this system has a formula
+In order to move forward solving the system using Equation~\ref{eq:U_det_adj} above, all the sub-determinants are needed.
+Another property of tri-diagonal matrices is that their determinants can be calculated by solving a $2^{nd}$ degree partial recurrence equation.
+This means two things, the first is that if a closed form solution existed for that recurrence relation, it could be used to calculate all the determinants and sub-determinants of the system.
+Additionally, it specifies that one can work forward iteratively from $Det[\bs{U}_{1}]$ in order to generate all $Det[\bs{U}_{i}]$. %Since this system has a formula
 %for the full determinant of $A$, one might be able to devise a scheme %that identifies the $Det[A_{n-1}],Det[A_{n-2}],\,...$ and so on. %The approach taken here was to attempt to solve the recurrence relation %using \emph{RSolve{[}{]}.}
 Specifically, taking a tri-diagonal matrix written in the general form,
 
@@ -764,7 +842,10 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
 %With the methods given above to find equilibrium solutions to Unmarked and Marked classes separately, the next section will describe the method used solve for the solutions for the full system at equilibrium simultaneously. 
 
 \subsection{Steady-state in ODE full system}
-The Full ODE system was described in matrix-vector form in Equation~\ref{eq:matrix_full}.  Recall that $\bs{F}$ has a block matrix form given in Figure~\ref{fig:full_matrix}, where the upper-left matrix is tri-diagonal, the upper-right block is the zero matrix, the lower-left matrix is diagonal, and the lower-right block is upper-triangular. Utilizing the formula found for the determinant of $\bs{U}$, a closed form for the determinant of $\bs{F}$ was determined.  This formula is given by,
+The Full ODE system was described in matrix-vector form in Equation~\ref{eq:matrix_full}.
+Recall that $\bs{F}$ has a block matrix form given in Figure~\ref{fig:full_matrix}, where the upper-left matrix is tri-diagonal, the upper-right block is the zero matrix, the lower-left matrix is diagonal, and the lower-right block is upper-triangular.
+Utilizing the formula found for the determinant of $\bs{U}$, a closed form for the determinant of $\bs{F}$ was determined.
+This formula is given by,
 \begin{equation}\label{eq:full_matrix_det}
 Det[\bs{F}]=(-1)^{i_{max}+1}\mu_0 \delta \lambda \left(\prod_{l=1}^{i_{max}}{-l\tau_0}\right)\left(\prod_{i=1}^{i_{max}}{\mu_0 +i \tau_0 + \frac{i}{i_{max}}\kappa_0}\right).
 \end{equation}
@@ -773,20 +854,30 @@ At equilibrium, the equations for the full system become,
 \begin{equation}
 \vec{M}=-\vec{B}\bs{F}^{-1}.
 \end{equation}
-If one uses the determinant-adjoint method to invert $\bs{F}$ then the form of $\vec{B}$, being $\lambda$ in the first component and 0's else, entails that only the cofactors for the first row of $\bs{F}$ need to be determined.  This eases the computation of the adjoint matrix for $\bs{F}$, and once again points to the determinant-adjoint inversion as a method for determining equilibrium solutions.  Unlike the previous solution methods, this method solves the for unmarked and marked classes simultaneously.
+If one uses the determinant-adjoint method to invert $\bs{F}$ then the form of $\vec{B}$, being $\lambda$ in the first component and 0's else, entails that only the cofactors for the first row of $\bs{F}$ need to be determined.
+This eases the computation of the adjoint matrix for $\bs{F}$, and once again points to the determinant-adjoint inversion as a method for determining equilibrium solutions.
+Unlike the previous solution methods, this method solves the for unmarked and marked classes simultaneously.
 
-We have now presented multiple methods for solving the ODE system at equilibrium.  Advantages and drawbacks for each of the methods are addressed in the discussion section later in this paper.  We now turn our attention to describing a method where the discrete unmarked and marked polysomal classes are approximated as continuous and a system of PDE are used to solve for equilibrium solutions.
+We have now presented multiple methods for solving the ODE system at equilibrium.
+Advantages and drawbacks for each of the methods are addressed in the discussion section later in this paper.
+We now turn our attention to describing a method where the discrete unmarked and marked polysomal classes are approximated as continuous and a system of PDE are used to solve for equilibrium solutions.
 %%%% COMMENT ON ABILITY FIND ADJOINT OF F MATRIX IN DISCUSSION%%%%
 
 \section{Partial differential equation approximation using continuous polysomal classes}
-The derivation of the system of partial differential equations utilizes the observation that the unmarked system can be viewed as a \emph{non-linear birth and death process}. \emph{Births} in this case are initiation events and \emph{deaths} are translation completion events. The benefit of this observation about the unmarked class is that non-linear birth and death processes are a well-studied type of system and previous research can be leveraged here.  In addition to simply providing another view of the system, the continuous polysomal classes assumed in the PDE derivation allow one to more easily handle high levels of $i_{max}$.
+The derivation of the system of partial differential equations utilizes the observation that the unmarked system can be viewed as a \emph{non-linear birth and death process}. \emph{Births} in this case are initiation events and \emph{deaths} are translation completion events.
+The benefit of this observation about the unmarked class is that non-linear birth and death processes are a well-studied type of system and previous research can be leveraged here.
+In addition to simply providing another view of the system, the continuous polysomal classes assumed in the PDE derivation allow one to more easily handle high levels of $i_{max}$.
 
 \subsection{The unmarked class PDE approximation}
-The rate of initiation and translation completion in our model is controlled by two functions, $\kappa(i)$ and $\tau(i)$, respectively.  From a non-linear birth and death process perspective, these two functions control births and deaths in our system, with exception of births into the $m_0$ unmarked non-polysomal class which is controlled by the parameter $\lambda$.  Each birth represents a move in the population of an mRNA in a given polysomal state to the next highest state and each death moves a given mRNA from its current state to the next lower state.  Following the derivation from Karev et al., (CITE) a continuous approximation for the unmarked class can be given as follows:
+The rate of initiation and translation completion in our model is controlled by two functions, $\kappa(i)$ and $\tau(i)$, respectively.
+From a non-linear birth and death process perspective, these two functions control births and deaths in our system, with exception of births into the $m_0$ unmarked non-polysomal class which is controlled by the parameter $\lambda$.
+Each birth represents a move in the population of an mRNA in a given polysomal state to the next highest state and each death moves a given mRNA from its current state to the next lower state.
+Following the derivation from Karev et al., (CITE) a continuous approximation for the unmarked class can be given as follows:
 
 \begin{equation}\label{eq:unmarked_pde}
 \p{m(i,t)}{t}=-m(i,t)\mu(i)-\p{}{i}\left(m(i,t)(\kappa(i)-\tau(i)\right)+\frac{1}{2}\ptwo{}{i}\left(m(i,t)(\kappa(i)+\tau(i))\right),
-\end{equation} where the quantity $\kappa(i)-\tau(i)$ is considered the \emph{drift coefficient} and $\kappa(i)+\tau(i)$ the \emph{diffusion coefficient}. To distinguish between the discrete ODE system and the continuous PDE system, we use continue to use the subscript notation of $m_i$ and $m_i^*$ for the unmarked and marked ODE classes and now use $m(i,t)$ and $m^*(i,t)$ for the unmarked and marked classes in the PDE system.
+\end{equation} where the quantity $\kappa(i)-\tau(i)$ is considered the \emph{drift coefficient} and $\kappa(i)+\tau(i)$ the \emph{diffusion coefficient}.
+To distinguish between the discrete ODE system and the continuous PDE system, we use continue to use the subscript notation of $m_i$ and $m_i^*$ for the unmarked and marked ODE classes and now use $m(i,t)$ and $m^*(i,t)$ for the unmarked and marked classes in the PDE system.
 
 Assuming the functional forms for $\kappa(i)$ and $\tau(i)$ as provided in Equations~\ref{eq:kappa} and \ref{eq:tau} and assuming equilibrium, $\p{m(i,t)}{t}=0$, Equation~\ref{eq:unmarked_pde} becomes,
 \begin{equation}
@@ -800,11 +891,17 @@ The dynamics for the marked class can be modeled by the following nonlinear inho
 \frac{\partial m^*(i)}{\partial t}+\frac{\partial}{\partial i}\left(-\tau(i)m^*(i)\right)=\mu(i)m(i,t)
 \end{equation}
 
-In practice, just as in the ODE system, we utilize the exact quantities in the marked classes as a function of the unmarked class abundances given by Equation~\ref{eq:anyl_marked_eq}.  As such, Equation~\ref{eq:marked_pde} is presented only to provide a complete full-system PDE approximation to the system of ODE and is not discussed further.
+In practice, just as in the ODE system, we utilize the exact quantities in the marked classes as a function of the unmarked class abundances given by Equation~\ref{eq:anyl_marked_eq}.
+As such, Equation~\ref{eq:marked_pde} is presented only to provide a complete full-system PDE approximation to the system of ODE and is not discussed further.
 
 \subsubsection{Unmarked PDE Boundary Conditions}
 
-At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring two boundary conditions for a specific solution. Two approaches were investigated for the upper boundary condition.  The first is an approximation that $m(i_{max})=0$ meaning  that the $(i_{max})^{th}$ unmarked class has no members at equilibrium. This boundary condition is based on the assumption that the likelihood of any mRNA being completed saturated with ribosomes is nearly zero. The second approach for the upper boundary condition utilizes a result from the ODE system.  Namely, in the unmarked ODE system a closed form for $m(i_{max})$ was determined, so Equation~\ref{eq:anyl_unmarked_imax} can be used to provide an exact upper boundary for the unmarked PDE.
+At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring two boundary conditions for a specific solution.
+Two approaches were investigated for the upper boundary condition.
+The first is an approximation that $m(i_{max})=0$ meaning  that the $(i_{max})^{th}$ unmarked class has no members at equilibrium.
+This boundary condition is based on the assumption that the likelihood of any mRNA being completed saturated with ribosomes is nearly zero.
+The second approach for the upper boundary condition utilizes a result from the ODE system.
+Namely, in the unmarked ODE system a closed form for $m(i_{max})$ was determined, so Equation~\ref{eq:anyl_unmarked_imax} can be used to provide an exact upper boundary for the unmarked PDE.
 %In practice,
 %it makes very little difference whether this condition is used for
 %the upper boundary condition or if $m(n)=0$ or even $m'(n)=0$ as
@@ -812,13 +909,20 @@ At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring 
 %may be stated more precisely, perhaps ``negligible based on simulation
 %results'' would be more appropriate{*}{*}) 
 
-For the lower boundary condition, setting it exactly means knowing the value of the $0^{th}$ unmarked class; unlike the $m_{i_{max}}$ class, no simple closed form solution was able to be determined.  In the absence of the closed form for $m_0$ an alternate approach needed to be determined.  Utilizing the analytical solvers in \emph{Mathematica}, an arbitrary initial value, $m(0)=m0$ was used and solutions were studied.  From this, it was determined that $m(0)$ served only to scale the solutions in the PDE.  Using this and borrowing the following observation from the discrete system,
+For the lower boundary condition, setting it exactly means knowing the value of the $0^{th}$ unmarked class; unlike the $m_{i_{max}}$ class, no simple closed form solution was able to be determined.
+In the absence of the closed form for $m_0$ an alternate approach needed to be determined.
+Utilizing the analytical solvers in \emph{Mathematica}, an arbitrary initial value, $m(0)=m0$ was used and solutions were studied.
+From this, it was determined that $m(0)$ served only to scale the solutions in the PDE.
+Using this and borrowing the following observation from the discrete system,
 \begin{equation}\label{eq:eq_unmarked_sum}
 \frac{\lambda}{\mu}=\sum_{i=1}^{imax}m_{i},
 \end{equation}
-an efficient method for supplying the appropriate scaling through the boundary condition was deduced.  We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions,
-call this equilibrium solution $m_{pre}(i)$. We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$,
-and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition. At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(i_{max})=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
+an efficient method for supplying the appropriate scaling through the boundary condition was deduced.
+We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions,
+call this equilibrium solution $m_{pre}(i)$.
+We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$,
+and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition.
+At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(i_{max})=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
 
 Another option to write the boundary condition for the lower boundary that is slightly more straight-forward is to write $m(0)$ explicitly in terms of the sum, $m(0)=\left(\frac{\lambda}{\mu}\right)\frac{1}{\sum{}_{i=0}^{i_{max}}m(i)}$.
 Use of this form for the boundary condition was not pursued since the results of the previously outlined method were found to be sufficient.
@@ -916,7 +1020,9 @@ Use of this form for the boundary condition was not pursued since the results of
 
 \subsection{Nondimensionalization}
 
-In order to aid in parameter estimation and computation, a nondimensionalization was conducted for the PDE system.  Investigation of a variety of parameters and parameter combinations to nondimensionalize the system with was undertaken. Although multiple options were present, the parameter $\tau_0$ was chosen as the value to scale time, owing in part to its physical identifiability.  The resulting parameters and notation for the nondimensionalized system are provided in Table~\ref{tab:nond_params}.
+In order to aid in parameter estimation and computation, a nondimensionalization was conducted for the PDE system.  Investigation of a variety of parameters and parameter combinations to nondimensionalize the system with was undertaken.
+Although multiple options were present, the parameter $\tau_0$ was chosen as the value to scale time, owing in part to its physical identifiability.
+The resulting parameters and notation for the nondimensionalized system are provided in Table~\ref{tab:nond_params}.
 
 %%%% CREATE A TABLE TO CONTAIN THESE JUST LIKE THE FIRST TABLE IN THE PAPER %%%%
 
@@ -969,7 +1075,8 @@ non-linear ODE to describe the distribution within the Unmarked classes:
 \end{equation*}
 \textbf{Nondimensionalized Marked PDE:}
 
-Once again, the marked PDE was not used in application, however it is once again presented for completeness.  At equilibrium we have the following nondimensionalized, 1st order, ODE to describe the distribution within marked classes:
+Once again, the marked PDE was not used in application, however it is once again presented for completeness.
+At equilibrium we have the following nondimensionalized, 1st order, ODE to describe the distribution within marked classes:
 \begin{equation*}
 0=-\bar{\mu}_0 \bar{m}(i)-\bar{m}^{*}(i)-i\bar{m}^{*\prime}(i)
 \end{equation*}
@@ -978,7 +1085,8 @@ With the standard and nondimensionalized PDE system defined we now present resul
 
 \section{Comparison of Solution Methods}
 
-This section compares the exact ODE solutions at equilibrium to the approximate PDE solutions at equilibrium.  Although both are based on the same mechanistic underpinning 
+This section compares the exact ODE solutions at equilibrium to the approximate PDE solutions at equilibrium.
+Although both are based on the same mechanistic underpinning 
 
 \begin{figure}[h]
 \centering
@@ -1000,7 +1108,9 @@ This section compares the exact ODE solutions at equilibrium to the approximate 
 %\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
 \end{figure}
 
-Although solutions for only one set of parameter values is shown, the same behavior has been observed for all sets of parameters simulated.  Additionally, since the two solution were derived using different methods, they serve to validate each other.  Possessing two different methods to generate equilibrium distributions for the polysomal classes is advantageous in that it provides flexibility to researchers for model fitting and parameter estimation when investigating empirically derived data.
+Although solutions for only one set of parameter values is shown, the same behavior has been observed for all sets of parameters simulated.
+Additionally, since the two solution were derived using different methods, they serve to validate each other.
+Possessing two different methods to generate equilibrium distributions for the polysomal classes is advantageous in that it provides flexibility to researchers for model fitting and parameter estimation when investigating empirically derived data.
 %
 %\newpage
 %
