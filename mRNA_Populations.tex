@@ -150,57 +150,46 @@
 
 \begin{document}
 \title{Modeling mRNA Populations}
-\author[utkm,glab]{N.~Pollesch\corref{cor1}}
+\author[utkm,curradd]{N.~Pollesch\corref{cor1}}
 \ead{pollesch@math.utk.edu}
-\author[utkeeb,glab]{M.A.~Gilchrist}
+\author[utkeeb,nimbios]{M.A.~Gilchrist}
 \ead{mikeg@utk.edu}
 \cortext[cor1]{Corresponding author}
-\address[utkm]{Department of Mathematics, University of Tennessee, 1403 Circle Drive, Knoxville, TN 37996-1320}
-\address[utkeeb]{Department of Ecology and Evolutionary Biology, University of Tennessee, 569 Dabney Hall, Knoxville, TN 37996-1610}
-\address[glab]{Gilchrist Lab, 439 Hesler Biology Building, University of Tennessee, Knoxville, TN 37996-1610}
+\address[utkm]{Department of Mathematics, University of Tennessee,  Knoxville, TN 37996-1320}
+\address[curradd]{Department of ??, Environmental Protection Agency, Duluth MN XXXXX}
+\address[utkeeb]{Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, TN 37996-1610}
+\address[nimbios]{National Institute for Mathematical and Biological Synthesis, University of Tennessee, Knoxville, TN 37996-3410}
 
 \begin{abstract}
 This paper presents a model to describe the dynamics of protein translation.  
-A system of ordinary differential equations is derived
-to describe the number of ribosomes bound to a strand of mRNA at a
-given time.
-The number of ribosomes bound at a given time is referred to as ribosome number, or occupany number, and using this value a population of mRNA are classified.  
-Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
+A system of ordinary differential equations is derived to describe the number of ribosomes bound to a strand of mRNA at a given time.
+The number of ribosomes bound at a given time is referred to as ribosome count, or occupany number, and using this value a population of mRNA are classified.  
+Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
 The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
 The length of the mRNA plays the role of controlling the number of states variables in the system.  
-This maximum number of ribosomes that can be bound at any given time as a function of gene length
-is denoted as $i_{max}$.
-A goal of this work is to see how the equilibrium
-distribution between classes as changes as $i_{max}$ changes.
-A closed
-form solution to the density in the $i^{th}$ ribosomal class in a system with
-$i_{max}$ states is sought.
+This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as $i_{max}$.
+A goal of this work is to see how the equilibrium distribution between classes as changes as $i_{max}$ changes.
+A closed form solution to the density in the $i^{th}$ ribosomal class in a system with $i_{max}$ states is sought.
 A closed form solution is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes.
-The equilibrium solutions in the unmarked classes
-are shown to be related to the full determinant of the tri-diagonal
-matrix used to describe the system, as well as all the determinants of the minors associated to
-it.
-In general, there is no closed form for the determinant of a tri-diagonal
-matrix, only a recurrence relation that can be used to find determinants.
-However, in this model a closed form exists for the full determinant as it changes with changing values of $i_{max}$
-and its formula is presented .
+The equilibrium solutions in the unmarked classes are shown to be related to the full determinant of the tri-diagonal matrix used to describe the system, as well as all the determinants of the minors associated to it.
+In general, there is no closed form for the determinant of a tri-diagonal matrix, only a recurrence relation that can be used to find determinants.
+However, in this model a closed form exists for the full determinant as it changes with changing values of $i_{max}$ and its formula is presented .
 This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.
 Additionally, a continuous approximation using PDE is derived and also used to find equilibrium solutions to the system.
 Both of these methods for determining equilibrium solutions are utilized in an effort to find the set of parameters that maximizes the likelihood of a given data set.
 A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function. 
-
 \textbf{alternate abstract}
 Modeling Ribosomal Loading of mRNA\\
 A model is presented to describe the dynamics of protein translation related to the ribosomal occupancy of mRNA.
-The number of ribosomes bound at a given time is referred to as ribosome number, or occupancy number, and using this value a population of mRNA are classiﬁed.
+The number of ribosomes bound at a given time is referred to as ribosome count, or occupancy number, and using this value a population of mRNA are classiﬁed.
 A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA.
-Distribution of ribosome numbers is assumed to be related to the translation initiation rate, translation completion rate, degradation marking rate, and length of the mRNA.
+Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degradation marking rate, and length of the mRNA.
 Methods are developed to find analytical equilibrium solutions to the system of ODEs and a system of partial differential equations (PDEs) are derived to find numerical approximations to the ODE system at equilibrium as well.
 Both the PDE continuous approximation and the analytical solutions to the ODE system agree offering two different methods for finding solutions at equilibrium within optimization routines.
 Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome occupancy.  
 \end{abstract}
 \begin{keyword}
-bioinformatics \sep microarray analysis \sep mRNA population modeling \sep protein translation modeling \sep ribosome loading \sep ribosome number \sep differential equations modeling
+bioinformatics \sep mRNA population \sep protein translation \sep ribosome loading \sep ribosome count \sep polysome \sep mathematical model
 \end{keyword}
 \maketitle
 %\newpage
@@ -635,14 +624,11 @@ Given that $\mu_0$ controls the rate at which unmarked mRNA become marked for de
 
 With a classification of when $\bs{U}$ is invertible we now consider a particular method for matrix inversion that can make use of the closed-form of the determinant.
 Namely, the method considered here is the determinant-adjoint approach given by,
-
 \begin{equation*}
 \vec{m}=-\frac{1}{Det[\bs{U}]}Adj[\bs{U}]\vec{b}.
 \end{equation*}
-
 Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.
 Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
-
 \begin{equation}\label{eq:U_det_adj}
 \vec{m}=-\frac{1}{Det[\bs{U}]}\lambda\begin{vmatrix}Det[\bs{U}_{i_{max}-1}]\\
 -s_{1}Det[\bs{U}_{i_{max}-2}]\\
@@ -654,13 +640,11 @@ s_{1}s_{2}Det[\bs{U}_{i_{max}-3}]\\
 (-1)^{i_{max}-1}(\prod_{j=1}^{i_{max}-1}s_{j})Det[\bs{U}_0]
 \end{vmatrix}
 \end{equation}
-
 Along with the convention that $Det[\bs{U}_0]=1$, the following definitions are used:
 \begin{description}
 \item[{ $\bs{U}_{i}$:}] The $i\times i$ lower right sub-matrix, or minor, of $\bs{U}$.  
 \item[{ $s_{i}$:}] The sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$ such that, \begin{equation*} s_{i}=\kappa_0\left(1-\frac{i-1}{i_{max}}\right). \end{equation*}
 \end{description}
-
 Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$.
 This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.
 However, at this point a closed-form for the sub-matrix determinants has yet to be found, encouraging further research into efficient methods to determine equilibrium distributions.
@@ -709,7 +693,6 @@ This means two things, the first is that if a closed form solution existed for t
 Additionally, it specifies that one can work forward iteratively from $Det[\bs{U}_{1}]$ in order to generate all $Det[\bs{U}_{i}]$. %Since this system has a formula
 %for the full determinant of $A$, one might be able to devise a scheme %that identifies the $Det[A_{n-1}],Det[A_{n-2}],\,...$ and so on. %The approach taken here was to attempt to solve the recurrence relation %using \emph{RSolve{[}{]}.}
 Specifically, taking a tri-diagonal matrix written in the general form,
-
 \[\bs{A}=
 \left(\begin{array}{ccccc}
 d_{0} & p_{0} & 0 & 0 & 0\\
@@ -720,10 +703,7 @@ s_{1} & d_{1} & p_{1} & 0 & 0\\
 0 & 0 & 0 & s_{n} & d_{n}
 \end{array}\right).
 \]
-
-The determinants of the $\bs{A}_{1},...,\bs{A}_{n-1}$ sub-matrices can
-be solved by the following recurrence relation, 
-
+The determinants of the $\bs{A}_{1},...,\bs{A}_{n-1}$ sub-matrices can be solved by the following recurrence relation, 
 \begin{equation}\label{eq:recurrence_general}
 a(n,i)=d_{n-i}\cdot a(n,i-1)-p_{n-i}\cdot s_{n-i+1}\cdot a(n,i-2),
 \end{equation}
@@ -753,7 +733,6 @@ p_{i}=(i+1)\tau_0\\
 s_{i}=\left(\frac{i_{max}-(i-1)}{i_{max}}\right)\kappa_0
 \end{array}
 \]
-
 This iterative scheme provides one approach to finding the sub-matrix determinants, $Det[A_{i_{max}-1}]$, $Det[A_{i_{max}-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
 
 %The solution given by \emph{Mathematica} is in the form of a ``function-like''
@@ -849,7 +828,6 @@ This formula is given by,
 \begin{equation}\label{eq:full_matrix_det}
 Det[\bs{F}]=(-1)^{i_{max}+1}\mu_0 \delta \lambda \left(\prod_{l=1}^{i_{max}}{-l\tau_0}\right)\left(\prod_{i=1}^{i_{max}}{\mu_0 +i \tau_0 + \frac{i}{i_{max}}\kappa_0}\right).
 \end{equation}
-
 At equilibrium, the equations for the full system become,
 \begin{equation}
 \vec{M}=-\vec{B}\bs{F}^{-1}.
@@ -884,18 +862,15 @@ Assuming the functional forms for $\kappa(i)$ and $\tau(i)$ as provided in Equat
 0=\left(\frac{\kappa_0}{i_{max}}-\mu_0+\tau_0\right)m(i)+\left(\frac{(i-1)\kappa_0}{i_{max}}-\kappa_0+(i+1)\tau_0\right)m'(i)+\frac{1}{2}\left(\kappa_0+i\tau_0-\frac{i\kappa_0}{i_{max}}\right)m''(i).
 \end{equation}
 \subsubsection{The Marked Class PDE approximation}
-
 The dynamics for the marked class can be modeled by the following nonlinear inhomogenous first-order PDE,
 
 \begin{equation}\label{eq:marked_pde}
 \frac{\partial m^*(i)}{\partial t}+\frac{\partial}{\partial i}\left(-\tau(i)m^*(i)\right)=\mu(i)m(i,t)
 \end{equation}
-
 In practice, just as in the ODE system, we utilize the exact quantities in the marked classes as a function of the unmarked class abundances given by Equation~\ref{eq:anyl_marked_eq}.
 As such, Equation~\ref{eq:marked_pde} is presented only to provide a complete full-system PDE approximation to the system of ODE and is not discussed further.
 
 \subsubsection{Unmarked PDE Boundary Conditions}
-
 At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring two boundary conditions for a specific solution.
 Two approaches were investigated for the upper boundary condition.
 The first is an approximation that $m(i_{max})=0$ meaning  that the $(i_{max})^{th}$ unmarked class has no members at equilibrium.
@@ -918,10 +893,8 @@ Using this and borrowing the following observation from the discrete system,
 \frac{\lambda}{\mu}=\sum_{i=1}^{imax}m_{i},
 \end{equation}
 an efficient method for supplying the appropriate scaling through the boundary condition was deduced.
-We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions,
-call this equilibrium solution $m_{pre}(i)$.
-We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$,
-and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition.
+We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions, call this equilibrium solution $m_{pre}(i)$.
+We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$, and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition.
 At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(i_{max})=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
 
 Another option to write the boundary condition for the lower boundary that is slightly more straight-forward is to write $m(0)$ explicitly in terms of the sum, $m(0)=\left(\frac{\lambda}{\mu}\right)\frac{1}{\sum{}_{i=0}^{i_{max}}m(i)}$.
@@ -1019,7 +992,6 @@ Use of this form for the boundary condition was not pursued since the results of
 
 
 \subsection{Nondimensionalization}
-
 In order to aid in parameter estimation and computation, a nondimensionalization was conducted for the PDE system.  Investigation of a variety of parameters and parameter combinations to nondimensionalize the system with was undertaken.
 Although multiple options were present, the parameter $\tau_0$ was chosen as the value to scale time, owing in part to its physical identifiability.
 The resulting parameters and notation for the nondimensionalized system are provided in Table~\ref{tab:nond_params}.
@@ -1074,17 +1046,14 @@ non-linear ODE to describe the distribution within the Unmarked classes:
 0=\frac{1}{2n} (2(\bar{\kappa}_0+n -\bar{\mu}_0 n)\cdot \bar{m}(i)+2(\bar{\kappa}_0(-1+i-n)+(1+i)n)\bar{m}'(i)+(in+\bar{\kappa}_0 (-i+n))\bar{m}''(i))
 \end{equation*}
 \textbf{Nondimensionalized Marked PDE:}
-
 Once again, the marked PDE was not used in application, however it is once again presented for completeness.
 At equilibrium we have the following nondimensionalized, 1st order, ODE to describe the distribution within marked classes:
 \begin{equation*}
 0=-\bar{\mu}_0 \bar{m}(i)-\bar{m}^{*}(i)-i\bar{m}^{*\prime}(i)
 \end{equation*}
-
 With the standard and nondimensionalized PDE system defined we now present results that compare solution methods and show concordance among the varying approaches for determining equilibrium solutions.
 
 \section{Comparison of Solution Methods}
-
 This section compares the exact ODE solutions at equilibrium to the approximate PDE solutions at equilibrium.
 Although both are based on the same mechanistic underpinning 
 
