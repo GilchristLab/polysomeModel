@@ -463,7 +463,7 @@ It is also assumed that marking takes place equally among the ribosomal classes 
 %These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
 \subsection{Matrix-vector Formulation of ODE System}
 It is frequently useful to work with the matrix-vector formulation for a system of ODE.
-In this model, the dynamics marked and unmarked mRNAs can be represented as,
+In this model, the dynamics of the marked and unmarked mRNAs can be represented as,
 \begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
 \end{equation} 
 where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
