@@ -1,4 +1,4 @@
-# Mike's Notes: July 17 2018
+# 17 July 2018
 - Finally getting back to paper.
 - Paper goal: present a simple coupled ODE model of ribosome loading and a novel iterative solution for its equilibrium state.
 - This new goal would make the PDE version seem unnecessary, but that may be due to not thinking about this much.
@@ -12,3 +12,5 @@
     - If the answer above is, "No," would any linear function work?
     - Seems like the $s_i$ function is equal to $\kappa(i-1)$, if so we should just use $k$ instead of introducing another function.
     - Similarly, $p_i$ seems equivalent to $\tau(i)$
+# 15 Oct 2019
+- Need to get this out!

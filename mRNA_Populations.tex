@@ -181,9 +181,10 @@
 \begin{abstract}
 This paper presents a model to describe the dynamics of protein translation.  
 A system of ordinary differential equations is derived to describe the number of ribosomes bound to a strand of mRNA at a given time.
-The number of ribosomes bound at a given time is referred to as ribosome count, or occupany number, and using this value a population of mRNA are classified.  
+The number of ribosomes bound to an mRNA at a given time is referred to its ribosome load.
+The mRNA is classified based on its ribosome load and whether or not it's marked for future degradation.  
 Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
-The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
+%The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
 The length of the mRNA's coding region plays the role of controlling the number of ribosome counts which, in turn, determines the number of ODEs in the system.  
 %This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as \imax.
 A goal of this work is to see how the equilibrium distribution between classes as changes with coding region length.
@@ -197,13 +198,13 @@ Both of these methods for determining equilibrium solutions are utilized in an e
 A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function.
  
 \textbf{alternate abstract: Modeling Ribosomal Loading of mRNA}\\
-A model is presented to describe the dynamics of protein translation related to the ribosomal occupancy of mRNA.
-The number of ribosomes bound at a given time is referred to as ribosome count, or occupancy number, and using this value a population of mRNA are classiﬁed.
+A model is presented to describe the dynamics of protein translation related to the ribosomal load of an mRNA.
+The number of ribosomes bound at a given time is referred to as ribosome load, and using this value a population of mRNA are classiﬁed.
 A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA.
 Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degradation marking rate, and length of the mRNA.
 Methods are developed to find analytical equilibrium solutions to the system of ODEs and a system of partial differential equations (PDEs) are derived to find numerical approximations to the ODE system at equilibrium as well.
 Both the PDE continuous approximation and the analytical solutions to the ODE system agree offering two different methods for finding solutions at equilibrium within optimization routines.
-Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome occupancy.  
+Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome load.  
 \end{abstract}
 \begin{keyword}
 bioinformatics \sep mRNA population \sep protein translation \sep ribosome loading \sep ribosome count \sep polysome \sep mathematical model
@@ -226,7 +227,7 @@ bioinformatics \sep mRNA population \sep protein translation \sep ribosome loadi
 \item Physical processes captured (Ideally, have a quick discussion of process and inline definitions of variables used to represent process, followed by a total recap in a table)  - \textbf{(Nate)}
 \begin{enumerate}
 \item System described as population model: Dichotomy of marked and unmarked mRNA.
-State variables based on number of ribosomes bound to a given mRNA. 
+State variables based on an mRNA's ribosome load.
 \item Process of mRNA production
 \item Process of Marking mRNA for degradation supposed
 \item Three processes of : Initiation, translation, and completion
@@ -283,19 +284,19 @@ Can highlight sources of data.
 \end{enumerate}
 \end{enumerate}
 \newpage
-\section{Motivation and Background}
+\section{Introduction}
 This section addresses such topics as why modeling this process important, what this model will enable researchers to do, and what other modeling efforts exist that seek to achieve the same goals.
 
 \section{Model Description and Notation}\label{sec:description}
 The mechanistic view that is taken for building this model is as follows.
 Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.
-If an unmarked mRNA has 0 (zero) bound ribosomes it is defined as being in class $m_0$ and contributes to that class's abundance.
+If an unmarked mRNA has a ribosome load of 0, it is defined as being in class $m_0$ and contributes to that class's abundance.
 Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$.
 Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  
-mRNAs in the unmarked classes can then move freely between the $m_0$ and $m_{\imax}$ according to initiation and completion rates until they are marked, which ultimately leads to the degradation of the mRNA.
+mRNAs in the unmarked classes can then transition freely between the $m_0$ and $m_{\imax}$ according to initiation and completion rates until they are marked, which ultimately leads to the degradation of the mRNA.
 To begin the process of mRNA degradation, marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
-A marked mRNA with $i$ ribosomes bound is denoted as being in class $m_i^*$.
-Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA has no more ribosomes bound at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
+A marked mRNA with a ribosome load of $i$ is denoted as being in class $m_i^*$.
+Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA's ribosome load drops to 0, at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
 Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
 Table~\ref{tab:params} provides a summary of state variable and parameter notation.
 
@@ -344,7 +345,7 @@ Table~\ref{tab:params} provides a summary of state variable and parameter notati
 		\path [line] (m*0) -- node[]{\large $\delta$} (delta);
 		
 	\end{tikzpicture}
-	\caption{Flow diagram for ODE system describing movement throughout the mRNA population model.
+	\caption{Flow diagram for ODE system describing transitions within the mRNA population model.
 State variables and parameters are defined in Table~\ref{tab:params}.
 Model description and notation are described in Section~\ref{sec:description}.}
 	\label{fig:flow_diagram}
@@ -353,113 +354,123 @@ Model description and notation are described in Section~\ref{sec:description}.}
 
 \begin{table}
 \centering
-\begin{tabular}{|p{75pt} l|}\hline
+\begin{tabular}{|pl|}\hline
 \textbf{Symbol}&\textbf{Description}\\ \hline\hline
 State Variables & \\ \hline
-$m_i$ & Abundance of mRNA in $i^{th}$ polysomal class \\
-$m_i^*$ & Abundance of mRNA in $i^{th}$ polysomal class \\ \hline
-Model Parameters & \\ \hline
-\imax & Maximum number of ribosomes able to bind to mRNA; defines number of state variables and is a function of gene length \\
-$\kappa(i)$ & Translation initiation rate for $i^{th}$ polysomal class \\
-$\tau(i)$ & Translation completion rate for $i^{th}$ polysomal class \\
-$\mu(i)$ & Marking rate for $i^{th}$ polysomal class\\
-$\lambda$ & Production rate of unbound, unmarked mRNA into $m_0$ class\\
-$\delta$ & Removal rate of unbound, marked mRNA from $m_0^*$ class\\ \hline \hline
+$m_i$ & Abundance of mRNAs with a ribosome load of $i$ not marked for degradation. \\
+$m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ marked for degradation. \\ \hline
+\multicolumn{Model Parameters} & \\ \hline
+  \imax & \shortstack{Maximum number of ribosomes able to bind to mRNA;\\
+           defines number of state variables and is a function of gene length.} \\
+$\kappa(i)$ & Translation initiation rate for unmarked mRNAs with a ribosome load of $i$.\\
+$\tau(i)$ & Translation completion rate for the marked and unmarked mRNAs with a ribosome load of $i$. \\
+$\mu(i)$ & Marking rate for unmarked mRNAs with a ribosome load of $i$.\\
+$\lambda$ & Production rate of newly produced, ribosome free, and unmarked mRNA to the $m_0$ class.\\
+$\delta$ & Removal rate of marked mRNA with a ribosome load of 0 from the $m_0^*$ class.\\ \hline \hline
 %\multicolumn{3}{|p{450pt}|}{\footnotesize Note: $\mathbb{R}^+$ represents the non-negative real numbers and $\mathbb{Z}^{(+)}$ represents the strictly positive integers.} \\ \hline
 \end{tabular}
-\caption{System state variables and model parameters for ODE model of mRNA populations.
+\caption{State variables and model parameters for ODE model of mRNA populations.
 Variable \imax is in the domain of non-negative integers; all other variables are non-negative real numbers.}
 \label{tab:params}
 \end{table}
 
-\section{Model Equations}
-Given the mechanisms included in the model, notation used, and assumptions provided in Section~\ref{sec:description}, we have the following set of ordinary differential equations.
-Note that from here forward the unmarked and marked subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
+\section{Model Definition and Analysis}
+For simplicity, we begin by defining our model equations using generic functions to describe the transition of mRNAs between different classes or states.
+We then constrain the model by assuming specific functions to describe the transition of mRNAs between classes.
+%Note that from here forward the unmarked and marked subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
 
-\subsection{The Unmarked subsystem}
-Flow through the unmarked classes happens under four different mechanisms,
-\begin{itemize}
-\item Input of new unbound mRNA to the $0^{th}$ unmarked class at a rate $\lambda$
-\item Ribosomal binding at a rate $\kappa(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the $i+1^{st}$ unmarked class (with the exception of the \imax unmarked class, which cannot have any additional ribosomes bound)
-\item Translation completion at a rate $\tau(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the $i-1^{st}$ unmarked class (with the exception of the $0^{th}$ unmarked class, since no ribosomes are bound for translation completion to occur)
-\item Marking of mRNA at a rate of $\mu(i)$ for the $i^{th}$ unmarked class, moving the mRNA to the corresponding $i^{th}$ marked class
-\end{itemize}
+\subsection*{General Model Equations}
+%\subsection{The Unmarked subsystem}
+Our model consists of two sets of time dependent and coupled ODEs.
+Each set of ODEs describes the abundance of mRNAs that are either unmarked and marked for degradation.
+The ODEs within each sets equations are structured by the ribosome load of the mRNA.
+The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the marking of unmarked mRNAs or the degradation of marked mRNAs with a ribosome load of 0.
+
+Specifically, new mRNA enter the $0^{th}$ unmarked class $m_0(t)$ at a rate..
+Ribosomal bind mRNAs in the $i^{th}$ unmarked class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
+By definition, $\kappa(\imax)= 0$, i.e.~mRNAs with a ribosome load of \imax cannot accommodate any addtional mRNAs.
+Unmarked mRNAs with ribosome load $i$ are marked at a rate of $\mu(i)$.
+Accordingly, the ribosome load of marked mRNAs remains unchanged, but they are transitioned from the unmarked class $m_i(t)$ to the marked class $m_i^*(t)$ .
+Ribosome movement along an mRNA is assumed to occur independent of whether or not its unmarked or marked for degradation.
+Thus, ribosomes complete translation of both marked and unmarked mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
+Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
+Only mRNAs marked for degradation and with a ribosome load of 0 are removed from the system.
+Specifically, marked mRNAs are removed from the $0^{th}$ class at a rate of $\delta m^*_0(t)$.
 
 The functional form of the unmarked subsystem is:
-
-\begin{eqnarray*}
-\frac{dm_{0}}{dt} & = & \lambda+\tau(1)m_{1}-\kappa(0)m_{0}-\mu(0)m_{0} \\
-\frac{dm_{1}}{dt} & = & \kappa(0)m_{0}+\tau(2)m_{2}-\tau(1)m_{1}-\kappa(1)m_{1}-\mu(1)m_{1}\\
+\begin{align*}
+\frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\kappa(0)m_{0}-\mu(0)m_{0} \\
+\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\tau(1)m_{1}-\kappa(1)m_{1}-\mu(1)m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} & = & \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\tau(i)m_{i}-\kappa(i)m_{i}-\mu(i)m_{i} \\
+\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\tau(i)m_{i}-\kappa(i)m_{i}-\mu(i)m_{i} \\
 & \vdots & \\
-\frac{dm_{\imax}}{dt} & = & \kappa(\imax-1)m_{\imax-1}-\tau(\imax)m_{\imax}-\mu(\imax)m_{\imax} \\
-\end{eqnarray*}
+\frac{dm_{\imax}}{dt} &= \kappa(\imax-1)m_{\imax-1}-\tau(\imax)m_{\imax}-\mu(\imax)m_{\imax} \\
+\end{align*}
 
-\subsection{The Marked subsystem}
-Flow through the marked classes happens under three different mechanisms,
-\begin{itemize}
-\item Degradation of marked mRNA from the $0^{th}$ class at a rate of $\delta m^*_0$; degraded mRNA leave the system completely
-\item Input of marked mRNA to the $i^{th}$ class at a rate $\mu(i)$ from the corresponding $i^{th}$ unmarked class
-\item Translation completion at a rate $\tau(i)$ for the $i^{th}$ marked class, moving the mRNA to the $i-1^{st}$ marked class (with the exception of the $0^{th}$ marked class, since no ribosomes are bound for translation completion to occur)
-\end{itemize}
-
-The functional form of the marked subsystem is:
-
-\begin{eqnarray*}
-\frac{dm_{0}^{*}}{dt} & = & \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
-\frac{dm_{1}^{*}}{dt} & = & \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
+Similarly, the functional form of the marked subsystem is:
+\begin{align*}
+\frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
+\frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
 & \vdots & \\
-\frac{dm_{i}^{*}}{dt} & = & \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
+\frac{dm_{i}^{*}}{dt} &= \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} & = & \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
-\end{eqnarray*}
+\frac{dm_{\imax}^{*}}{dt} &= \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
+\end{align*}
 
-\subsection{Assumptions on Functional Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:assumed_forms}
-As a first consideration, it is assumed that ribosomes bind to an mRNA with equal probability that is proportional the number of unbound sites.
-This statement translates mathematically to 
+\subsection{Model Equations Assuming Specific Transition Functions}\label{sec:assumed_forms}
+As stated above, we assume mRNAs marked for degradation cannot initiate translation.
+Thus the initiation function for the marked set of mRNAS is $\kappa(i) = 0$.
+In contrast,  ribosomes can initiate translation on an mRNA marked for degradation.
+For simplicity, we assume ribosome binding of an mRNA is independent of their ribosome load, but that successful initiation of translation is affected by ribosome load.
+Specifically, we assume the start codon must be unoccupied by a ribosome in order for translation initiation to be successful.
+Because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
+As a consequence of this assumption, the probability of a ribosome occupying a given position on an mRNA with a ribosome load of $i$ is simply $i/\imax$.
+Thus, the probability the start codon is unoccupied is $1-i/\imax$ and, in turn, our translation initiation rate function can be defined as, 
 \begin{equation}\label{eq:kappa}
 \kappa(i)=\kappa_0\left(1-\frac{i}{\imax}\right),
 \end{equation} 
-where $\kappa_0$ is the system-wide parameter that controls initiation.
-Translation completion is assumed to take place at a rate proportional the number of ribosomes bound on a given mRNA.
-Therefore we have the following formulation 
-\begin{equation}\label{eq:tau}
-\tau(i)=i\tau_0,
-\end{equation}
-\mymarginpar{Should this be $i/(\tau \imax)$?
-  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
-  However, I seem to recall deriving this result that indicate otherwise.
-  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
-  TODO for mike: Check notes.}
-	%% Mike, the arguement for the derivation was as follows (if I remember correctly): For an mRNA with i ribosomes bound, it was assumed that each ribsome had an equal probability of being in any position, therefore, a ribosome was equally likely to be completing translation, therefore the probability of translation being completed was equal to the number of ribosomes bound, and thus the rate proportional to the number of ribosomes bound, leading to the form provided in eq:tau.  Does that stack up with what you were thinking?
+where $\kappa_0$ is a gene specific parameter that describes the rate at which unmarked mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
 
-where $\tau_0$ is the system-wide parameter that descrobes the average elongation rate of a ribosome.
-Translation is completed at the same rate whether an mRNA has been marked for deletion or not.
+
+Similarly, the probability a ribosome is at the penultimate codon (i.e.~the codon immediately upstream from the stop codon) is $i/\imax$.
+Assuming that the rate of translation termination is greater than the average elongation rate (i.e.~translation termination is not a rate limiting step), we can define our translation completion rate function as,
+\begin{equation}\label{eq:tau}
+\tau(i)=\tau_0 i/\imax,
+\end{equation}
+% \mymarginpar{Should this be $i/(\tau \imax)$?
+%  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
+%  However, I seem to recall deriving this result that indicate otherwise.
+%  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
+%  TODO for mike: Check notes.}
+	%% Mike, the arguement for the derivation was as follows (if I remember correctly): For an mRNA with i ribosomes bound, it was assumed that each ribsome had an equal probability of being in any position, therefore, a ribosome was equally likely to be completing translation, therefore the probability of translation being completed was equal to the number of ribosomes bound, and thus the rate proportional to the number of ribosomes bound, leading to the form provided in eq:tau.  Does that stack up with what you were thinking?
+where $\tau_0$ is potentially gene specific parameter that describes the average elongation rate of a ribosome along the protein coding sequence of that gene.
+
+ 
+In contrast, protein translation occurs independelty of whether or not an mRNA is unmarked or marked for deletion.
 The forms of both the $\kappa(i)$ and $\tau(i)$ functions also imply that bound ribosomes are equally likely to be anywhere on the mRNA; as such this model does not incorporate a mechanism for explicit movement tracking of ribosomes along the mRNA.
 It is also assumed that marking takes place equally among the ribosomal classes i.e. mRNA that are more densely populated with ribosomes are not more or less likely to be marked for deletion; this leads to the functional form of $\mu(i)$, $$\mu(i)=\mu_0,$$ where $\mu_0$ is a system-wide marking rate.
 
 \sout{These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.}
 
 \subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
-\begin{eqnarray*}
-\frac{dm_{0}}{dt} & = & \lambda+\tau_0 m_{1}-\kappa_0 m_{0}-\mu_0 m_{0} \\
-\frac{dm_{1}}{dt} & = & \kappa_0 m_{0}+2\tau_0 m_{2}-\tau_0 m_{1}-\kappa_0\left(1-\frac{1}{\imax}\right) m_{1}-\mu_0 m_{1}\\
+\begin{align*}
+\frac{dm_{0}}{dt} &= \lambda+\tau_0 m_{1}-\kappa_0 m_{0}-\mu_0 m_{0} \\
+\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+2\tau_0 m_{2}-\tau_0 m_{1}-\kappa_0\left(1-\frac{1}{\imax}\right) m_{1}-\mu_0 m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} & = & \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-i\tau_0 m_{i}-\kappa_0\left(1-\frac{i}{\imax}\right) m_{i}-\mu_0 m_{i} \\
+\frac{dm_{i}}{dt} &= \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-i\tau_0 m_{i}-\kappa_0\left(1-\frac{i}{\imax}\right) m_{i}-\mu_0 m_{i} \\
 & \vdots & \\
-\frac{dm_{\imax}}{dt} & = & \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\imax\tau_0 m_{\imax}-\mu_0 m_{\imax} \\
-\end{eqnarray*}
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\imax\tau_0 m_{\imax}-\mu_0 m_{\imax} \\
+\end{align*}
 
 \subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
-\begin{eqnarray*}
-\frac{dm_{0}^{*}}{dt} & = & \mu_0 m_{0}+\tau_0 m_{1}^{*}-\delta m_{0}^{*} \\
-\frac{dm_{1}^{*}}{dt} & = & \mu_0 m_{1}+2\tau_0 m_{2}^{*}- \tau_0 m_{1}^{*} \\
+\begin{align*}
+\frac{dm_{0}^{*}}{dt} &= \mu_0 m_{0}+\tau_0 m_{1}^{*}-\delta m_{0}^{*} \\
+\frac{dm_{1}^{*}}{dt} &= \mu_0 m_{1}+2\tau_0 m_{2}^{*}- \tau_0 m_{1}^{*} \\
 & \vdots & \\
-\frac{dm_{i}^{*}}{dt} & = & \mu_0 m_{i}+(i+1)\tau_0 m_{i+1}^{*}-i\tau_0m_{i}^{*} \\
+\frac{dm_{i}^{*}}{dt} &= \mu_0 m_{i}+(i+1)\tau_0 m_{i+1}^{*}-i\tau_0m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} & = & \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax} \\
-\end{eqnarray*}
+\frac{dm_{\imax}^{*}}{dt} &= \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax} \\
+\end{align*}
 %These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
 \subsection{Matrix-vector Formulation of ODE System}
 It is frequently useful to work with the matrix-vector formulation for a system of ODE.
@@ -497,7 +508,7 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
 \end{array}\right).
 \end{equation}
 In the representation given in Equation~\ref{eq:unmarked_matrix}, all blank entries are 0.
-The ($\imax-1^{st}$) row has been suppressed in Equation~\ref{eq:unmarked_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
+The ($\imax-1^{th}$) row has been suppressed in Equation~\ref{eq:unmarked_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
 
 The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix $\bs{F}$ (Equation~\ref{eq:full_matrix}),
 \begin{equation}
@@ -904,7 +915,7 @@ In addition to simply providing another view of the system, the continuous polys
 \subsection{The unmarked class PDE approximation}
 The rate of initiation and translation completion in our model is controlled by two functions, $\kappa(i)$ and $\tau(i)$, respectively.
 From a non-linear birth and death process perspective, these two functions control births and deaths in our system, with exception of births into the $m_0$ unmarked non-polysomal class which is controlled by the parameter $\lambda$.
-Each birth represents a move in the population of an mRNA in a given polysomal state to the next highest state and each death moves a given mRNA from its current state to the next lower state.
+Each birth represents a transition in the population of an mRNA in a given polysomal state to the next highest state and each death transitions a given mRNA from its current state to the next lower state.
 Following the derivation from Karev et al., (CITE) a continuous approximation for the unmarked class can be given as follows:
 
 \begin{equation}\label{eq:unmarked_pde}
@@ -1278,11 +1289,11 @@ Possessing two different methods to generate equilibrium distributions for the p
 %Related by the following, under the assumption that the noise in each
 %fraction has the same distribution:
 %
-%\begin{eqnarray*}
-%F_{j} & = & f_{j}\cdot\hat{\epsilon}\\
-%log_{2}(F_{j}) & = & log_{2}(f_{j})+log_{2}(\hat{\epsilon})\\
+%\begin{align*}
+%F_{j} &= f_{j}\cdot\hat{\epsilon}\\
+%log_{2}(F_{j}) &= log_{2}(f_{j})+log_{2}(\hat{\epsilon})\\
 %Where & \, & \hat{\epsilon}\sim N(0,\sigma_{\epsilon})
-%\end{eqnarray*}
+%\end{align*}
 %The data being considered is given in $log_{2}$of the absorbance
 %in a fraction, so for convenience the following will be used:
 %\begin{description}
@@ -1291,9 +1302,9 @@ Possessing two different methods to generate equilibrium distributions for the p
 %\item $\epsilon=Log_{2}(\hat{e})\sim LogNormal(0,\sigma_{\epsilon})$
 %\end{description}
 %Then, the likelihood of $G_{j}$, is given by the following:
-%\begin{eqnarray*}
-%Lik(G_{j}) & = & \dfrac{1}{\sqrt{2\pi\sigma_{\epsilon}}}Exp(-\dfrac{(G_{j}-(g_{j}|\Lambda))^{2}}{2\sigma_{\epsilon}^{2}})
-%\end{eqnarray*}
+%\begin{align*}
+%Lik(G_{j}) &= \dfrac{1}{\sqrt{2\pi\sigma_{\epsilon}}}Exp(-\dfrac{(G_{j}-(g_{j}|\Lambda))^{2}}{2\sigma_{\epsilon}^{2}})
+%\end{align*}
 %
 %
 %and the $negative\; loglikelihood$ is given by:
