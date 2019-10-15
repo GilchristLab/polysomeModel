@@ -437,20 +437,16 @@ Assuming that the rate of translation termination is greater than the average el
 \begin{equation}\label{eq:tau}
 \tau(i)=\tau_0 i/\imax,
 \end{equation}
+\mymarginpar{mikeg: 10/15/19: updated $\tau$ to include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.}
 % \mymarginpar{Should this be $i/(\tau \imax)$?
 %  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
 %  However, I seem to recall deriving this result that indicate otherwise.
 %  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
 %  TODO for mike: Check notes.}
 	%% Mike, the arguement for the derivation was as follows (if I remember correctly): For an mRNA with i ribosomes bound, it was assumed that each ribsome had an equal probability of being in any position, therefore, a ribosome was equally likely to be completing translation, therefore the probability of translation being completed was equal to the number of ribosomes bound, and thus the rate proportional to the number of ribosomes bound, leading to the form provided in eq:tau.  Does that stack up with what you were thinking?
-where $\tau_0$ is potentially gene specific parameter that describes the average elongation rate of a ribosome along the protein coding sequence of that gene.
-
- 
-In contrast, protein translation occurs independelty of whether or not an mRNA is unmarked or marked for deletion.
-The forms of both the $\kappa(i)$ and $\tau(i)$ functions also imply that bound ribosomes are equally likely to be anywhere on the mRNA; as such this model does not incorporate a mechanism for explicit movement tracking of ribosomes along the mRNA.
-It is also assumed that marking takes place equally among the ribosomal classes i.e. mRNA that are more densely populated with ribosomes are not more or less likely to be marked for deletion; this leads to the functional form of $\mu(i)$, $$\mu(i)=\mu_0,$$ where $\mu_0$ is a system-wide marking rate.
-
-\sout{These assumptions provide us with the practical formulation for the unmarked and marked subsystems presented next.}
+where $\tau_0$ describes the average elongation rate of a ribosome along the protein coding sequence of that gene and, thus, could vary between genes.
+Finally, we assume that unmarked mRNAs are marked for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
+As with $\tau_0$,  $\mu_0$ is assumed to fixed for a given gene, but may vary between genes.
 
 \subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
 \begin{align*}

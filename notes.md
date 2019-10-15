@@ -14,3 +14,4 @@
     - Similarly, $p_i$ seems equivalent to $\tau(i)$
 # 15 Oct 2019
 - Need to get this out!
+- Bringing Ricardo in on it to help things move along.
