@@ -63,7 +63,7 @@
 \newcommand{\mvec}{\ensuremath{\vec{m}}\xspace}
 \newcommand{\mstarvec}{\ensuremath{\vec{m}}\xspace}
 \newcommand{\GCD}{\ensuremath{\text{GCD}}\xspace}
-\newcommand{\DetA[1]}{\ensuremath{\ensuremath{\Det\left[\bs{A}_{#1}\right]}\xspace}
+\newcommand{\detA[1]}{\ensuremath{\ensuremath{\det\left[\bs{A}_{#1}\right]}\xspace}}
 
 \doublespacing
 
@@ -357,12 +357,12 @@ Model description and notation are described in Section~\ref{sec:description}.}
 
 \begin{table}
 \centering
-\begin{tabular}{|pl|}\hline
+\begin{tabular}{|rp{4in}|}\hline
 \textbf{Symbol}&\textbf{Description}\\ \hline\hline
 State Variables & \\ \hline
 $m_i$ & Abundance of mRNAs with a ribosome load of $i$ not marked for degradation. \\
 $m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ marked for degradation. \\ \hline
-\multicolumn{Model Parameters} & \\ \hline
+\multicolumn{2}{r}{Model Parameters} \\ \hline
   \imax & \shortstack{Maximum number of ribosomes able to bind to mRNA;\\
            defines number of state variables and is a function of gene length.} \\
 $\kappa(i)$ & Translation initiation rate for unmarked mRNAs with a ribosome load of $i$.\\
@@ -412,7 +412,7 @@ The functional form of the unmarked subsystem is:
 
 Similarly, the functional form of the marked subsystem is:
 \begin{align*}
-\frac{dm_{0}^{*}}{dt} &= \left(\mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
+\frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
 \frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
 & \vdots & \\
 \frac{dm_{i}^{*}}{dt} &= \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
@@ -630,12 +630,12 @@ Upon investigation it was found that the uppermost, \imax, polysomal class has t
 %\begin{equation}\label{eq:anyl_unmarked_imax_simp}
 %\hat{m}_{\imax}=\prod_{i=1}^{\imax}{\left(\frac{\imax}{i\kappa_0}\left(\mu_0+i\tau_0\right)+1\right)},
 %\end{equation} 
-
 \begin{align}
-\hat{m}_{\imax} &=\prod_{i=1}^{\imax}{\left(\frac{\imax}{i\kappa_0}\left(\mu_0+i\tau_0\right)+1\right)},\label{eq:anyl_unmarked_imax_simp}
+  \hat{m}_{\imax} &=\prod_{i=1}^{\imax}\frac{i \frac{\kappa_0}{\imax} }{\mu_0+i\left(\tau_0 + \frac{\kappa_0}{\imax}\right)},\label{eq:anyl_unmarked_imax_simp}\\
+  &= \frac{\left(\frac{\kappa_0}{\imax}\right)^\imax \imax!}{\prod_{i=1}^{\imax} \mu_0+i\left(\tau_0 + \frac{\kappa_0}{\imax}\right)}
 \end{align}
-for any level of \imax. \mymarginpar{mikeg: 10/22/19 Note we no longer have any GCD since they cancelled out.  See commented out text BEGIN CRITICAL NOTE BY MIKE below
-
+for any level of \imax. \mymarginpar{mikeg: 10/22/19 Note we no longer have any GCD since they cancelled out.  See text in Note section at end of document.
+Nate, can you verify the product term should be from $i=1$ and not $i=0$?}
 As a general observation, for all \imax levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes.
 In fact, beyond the uppermost polysomal class (Eq~\ref{eq:anyl_unmarked_imax}), no other classes were able to be determined completely in closed-form.
 Notably, as a side-benefit having a closed-form solution for the upper-most class is beneficial when considering other solution methods, such as PDE approximation, where such a solution can provide a boundary condition.
@@ -644,9 +644,10 @@ Notably, as a side-benefit having a closed-form solution for the upper-most clas
 
 It follows that the formula for the determinant of $\bs{U}$ is,
 \begin{align}
-  Det[\bs{U}] & =(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+i\tau_0)\right)}.\label{eq:U_det}
+  \det[\bs{U}] & =(-1)^{\imax+1}\prod_{i=0}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+i\tau_0)\right)}.\label{eq:U_det}
   %& =(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}(\kappa_0/imax + \tau_0)+ \mu_0\right)}.\label{eq:U_det}
 \end{align}
+\mymarginpar{mikeg: 10/22/19: note that by having product term begin at $i=0$ rather than $i=1$ as in previous equations we can incorporate the orphan $\mu_0$ into the product term}.
 It can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial [Show in appendix or cite a source.].
 Considering that in general there is no closed form for the determinant of a tri-diagonal matrix, the fact that this formula exists is a unique and desirable property of our system of ODEs.
 
@@ -658,29 +659,29 @@ At equilibrium $\vec{m}'=0$, and so the matrix-vector equation (Eq. \ref{eq:matr
 and making determination of equilibrium solutions come down to deriving an efficient technique for inverting $\bs{U}$.  
 
 The closed-form of the determinant enables the identification of parameters in which $\bs{U}$ is invertible.
-Using the fact that $\bs{U}$ is invertible iff $Det[\bs{U}]\neq0$.
+Using the fact that $\bs{U}$ is invertible iff $\det[\bs{U}]\neq0$.
 Equation \ref{eq:U_det} shows that the only possible scenario where $\bs{U}$ is non-invertible is when $\mu_0=0$.
 Given that $\mu_0$ controls the rate at which unmarked mRNA become marked for deletion, the physical interpretation of $\mu_0=0$ is no degradation of unmarked mRNA and thus no loss in the system, leading to linear, unbounded growth in unmarked mRNA populations equal to the mRNA transcription rate $\lambda$.
 
 With a classification of when $\bs{U}$ is invertible we now consider a particular method for matrix inversion that can make use of the closed-form of the determinant.
 Namely, the method considered here is the determinant-adjoint approach given by,
 \begin{equation*}
-\vec{m}=-\frac{1}{Det[\bs{U}]}Adj[\bs{U}]\vec{b}.
+\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
 \end{equation*}
 Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.
 Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
 \begin{equation}\label{eq:U_det_adj}
-\vec{m}=-\frac{1}{Det[\bs{U}]}\lambda\begin{vmatrix}Det[\bs{U}_{\imax-1}]\\
--s_{1}Det[\bs{U}_{\imax-2}]\\
-s_{1}s_{2}Det[\bs{U}_{\imax-3}]\\
+\vec{m}=-\frac{1}{\det[\bs{U}]}\lambda\begin{vmatrix}\det[\bs{U}_{\imax-1}]\\
+-s_{1}\det[\bs{U}_{\imax-2}]\\
+s_{1}s_{2}\det[\bs{U}_{\imax-3}]\\
 \vdots\\
-(-1)^{i}(\prod_{j=1}^{i}s_{j})Det[\bs{U}_{\imax-(i+1)}]\\
+(-1)^{i}(\prod_{j=1}^{i}s_{j})\det[\bs{U}_{\imax-(i+1)}]\\
 \vdots\\
-(-1)^{\imax-2}(\prod_{j=1}^{\imax-2}s_{j})Det[\bs{U}_1]\\
-(-1)^{\imax-1}(\prod_{j=1}^{\imax-1}s_{j})Det[\bs{U}_0]
+(-1)^{\imax-2}(\prod_{j=1}^{\imax-2}s_{j})\det[\bs{U}_1]\\
+(-1)^{\imax-1}(\prod_{j=1}^{\imax-1}s_{j})\det[\bs{U}_0]
 \end{vmatrix}
 \end{equation}
-Along with the convention that $Det[\bs{U}_0]=1$, we also define $\bs{U}_{i}$ as $i\times i$ lower right sub-matrix, or minor, of $\bs{U}$ and  $s_{i}$ as the sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$, where $s_{i}= \kappa(i-1) = \kappa_0\left(1-\frac{i-1}{\imax}\right)$.\mymarginpar{mikeg: 10/22/19: note $s_i = \kappa(i-1)$ so we should be able to simplify notation by replacing $s$ with $\kappa$}
+Along with the convention that $\det[\bs{U}_0]=1$, we also define $\bs{U}_{i}$ as $i\times i$ lower right sub-matrix, or minor, of $\bs{U}$ and  $s_{i}$ as the sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$, where $s_{i}= \kappa(i-1) = \kappa_0\left(1-\frac{i-1}{\imax}\right)$.\mymarginpar{mikeg: 10/22/19: note $s_i = \kappa(i-1)$ so we should be able to simplify notation by replacing $s$ with $\kappa$}
 Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$.
 This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.
 However, at this point a closed-form for the sub-matrix determinants has yet to be found, encouraging further research into efficient methods to determine equilibrium distributions.
@@ -707,11 +708,11 @@ However, at this point a closed-form for the sub-matrix determinants has yet to 
 %gives way to the following relationship,
 %
 %\begin{equation*}
-%Det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))\frac{1}{\frac{\imax}{\GCD[\imax,i]}}
+%\det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))\frac{1}{\frac{\imax}{\GCD[\imax,i]}}
 %\end{equation*}
 %Which simplifies to:
 %\begin{equation}
-%Det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa r)+(\mu+i\tau)\right)}
+%\det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa r)+(\mu+i\tau)\right)}
 %\end{equation}
 %
 %In fact, it can also be shown that this formula may be rewritten in
@@ -726,8 +727,8 @@ However, at this point a closed-form for the sub-matrix determinants has yet to 
 In order to move forward solving the system using Equation~\ref{eq:U_det_adj} above, all the sub-determinants are needed.
 Another property of tri-diagonal matrices is that their determinants can be calculated by solving a $2^{nd}$ degree partial recurrence equation.
 This means two things, the first is that if a closed form solution existed for that recurrence relation, it could be used to calculate all the determinants and sub-determinants of the system.
-Additionally, it specifies that one can work forward iteratively from $Det[\bs{U}_{1}]$ in order to generate all $Det[\bs{U}_{i}]$. %Since this system has a formula
-%for the full determinant of $A$, one might be able to devise a scheme %that identifies the $Det[A_{n-1}],Det[A_{n-2}],\,...$ and so on. %The approach taken here was to attempt to solve the recurrence relation %using \emph{RSolve{[}{]}.}
+Additionally, it specifies that one can work forward iteratively from $\det[\bs{U}_{1}]$ in order to generate all $\det[\bs{U}_{i}]$. %Since this system has a formula
+%for the full determinant of $A$, one might be able to devise a scheme %that identifies the $\det[A_{n-1}],\det[A_{n-2}],\,...$ and so on. %The approach taken here was to attempt to solve the recurrence relation %using \emph{RSolve{[}{]}.}
 Specifically, taking a tri-diagonal matrix written in the general form,
 \[
   \bs{A}=
@@ -743,11 +744,11 @@ s_{1} & d_{1} & p_{1} & 0 & 0\\
 
 The determinants of the $\bs{A}_{1},...,\bs{A}_{n-1}$ sub-matrices can be solved by the following recurrence relation, 
 \begin{equation}\label{eq:recurrence_general}
-\DetA{i} = d_{n-i}\cdot \DetA{i-1} - p_{n-i}\cdot s_{n-(i-1)}\cdot \DetA{i-2},
+\detA{i} = d_{n-i}\cdot \detA{i-1} - p_{n-i}\cdot s_{n-(i-1)}\cdot \detA{i-2},
 \end{equation}
 with the initial conditions,
 \begin{equation}\label{eq:recurrence_general_ic}
-\DetA{1}=d_{n}\; \text{and}\; \DetA{2}=d_{n-1}\cdot a(n,1)-p_{n-1}s_{n}.
+\detA{1}=d_{n}\; \text{and}\; \detA{2}=d_{n-1}\cdot a(n,1)-p_{n-1}s_{n}.
 \end{equation}
 
 %This was then used in \emph{Mathematica }with \emph{RSolve{[}{]} }by
@@ -770,7 +771,7 @@ p_{i}=(i+1)\tau_0\\
   s_{i}=\kappa_0\left(1-\frac{i-1}{\imax}\right)
 \end{array}
 \]
-This iterative scheme provides one approach to finding the sub-matrix determinants, $Det[A_{\imax-1}]$, $Det[A_{\imax-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
+This iterative scheme provides one approach to finding the sub-matrix determinants, $\det[A_{\imax-1}]$, $\det[A_{\imax-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
 
 %The solution given by \emph{Mathematica} is in the form of a ``function-like''
 %object that can be evaluated in \emph{Mathematica} , it is
@@ -789,7 +790,7 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
  
 
 %This is then used in the formula given in (4) to generate the quantities
-%$Det[A_{i}]$, and the function, named \emph{UMEQSoln($\imax,i$),
+%$\det[A_{i}]$, and the function, named \emph{UMEQSoln($\imax,i$),
 %}will give the solution to the to $m_{i}$ at equilibrium with $\imax+1$
 %classes.
 
@@ -825,7 +826,7 @@ This iterative scheme provides one approach to finding the sub-matrix determinan
 %%can easily generate solutions with (8) for a lower \imaxvalues,
 %%but when values of $\imax>20$ were used, there was no quick return
 %%% THIS MIGHT BE WORTH MENTIONING %%%%%%%  of solutions. One reason for this, is that it can be shown that the
-%%number of terms in $Det[A_{n}]$ grows exponentially, and more specifically,
+%%number of terms in $\det[A_{n}]$ grows exponentially, and more specifically,
 %%the number of terms grows according to the Fibonacci sequence. This
 %%is a consequence of the tri-diagonal form of $A$. 
 %
@@ -864,9 +865,9 @@ Utilizing the formula found for the determinant of $\bs{U}$, a closed form for t
 This formula is given by,
 \begin{align}
   \label{eq:full_matrix_det}
-  Det[\bs{F}] %&=(-1)^{\imax+1}\mu_0 \delta \lambda \tau_0^{\imax}\left(\prod_{l=1}^{\imax}{-l}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +i \tau_0 + \frac{i}{\imax}\kappa_0}\right)
+  \det[\bs{F}] %&=(-1)^{\imax+1}\mu_0 \delta \lambda \tau_0^{\imax}\left(\prod_{l=1}^{\imax}{-l}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +i \tau_0 + \frac{i}{\imax}\kappa_0}\right)
                  %-l term and -1 terms in above equation simplifies
-            &=-\mu_0 \delta \lambda \tau_0^{\imax}\imax!\right)\left(\prod_{i=1}^{\imax}{\mu_0 +i \left(\tau_0 + \frac{\kappa_0}{\imax}\right)}\right)..
+            &=-\delta \lambda \tau_0^{\imax}\imax!\left(\prod_{i=0}^{\imax}\mu_0 +i \left(\tau_0 + \frac{\kappa_0}{\imax}\right)\right).
 \end{align}
 At equilibrium, the equations for the full system become,
 \begin{equation}
@@ -1098,11 +1099,11 @@ Although both are based on the same mechanistic underpinning
 \begin{figure}[ht]
 \centering
 \begin{subfigure}[ht]{0.4\textwidth}
-\includegraphics[width=\textwidth]{ex_disc_eq}
+\includegraphics[width=\textwidth]{Images/ex_disc_eq}
 \caption{Discrete model solutions}
 \end{subfigure}
 \begin{subfigure}[ht]{0.4\textwidth}
-\includegraphics[width=\textwidth]{ex_cont_eq}
+\includegraphics[width=\textwidth]{Images/ex_cont_eq}
 \caption{Continuous approximation model solutions}
 \end{subfigure}
 \caption{Model results for parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
@@ -1110,7 +1111,7 @@ Although both are based on the same mechanistic underpinning
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{ex_both_eq}
+\includegraphics[width=\textwidth]{Images/ex_both_eq}
 \caption{Comparison of discrete and continuous approximation model Solutions for Parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
 %\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
 \end{figure}
@@ -1131,16 +1132,15 @@ Let's imagine three generic functions of $i$, $a_i$, $b_i$, and $c_i$ such that
   F &= \frac{ \prod_i \left(a_i b_i\right)}{\prod_i \left(a_i c_i + a_i b_i\right)}\\
 \intertext{Based on my understanding of mathematics,}
   F &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i \left(a_i \left(c_i + b_i\right)\right)}\\
-  &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i a_i \prod_i \left(c_i + b_i\right)\right)}\\
-  &= \frac{\prod_i b_i }{\prod_i \left(c_i + b_i\right)\right)}\\
+  &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i a_i \prod_i \left(c_i + b_i\right)}\\
+  &= \frac{\prod_i b_i }{\prod_i \left(c_i + b_i\right)}\\
 \end{align}
 If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and $c_i (\mu_0 + i \tau_0)$, then the equation \ref{eq:anyl_unmarked_imax} can be rewritten as,
 \begin{equation}
-  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} \kappa_0 i}{prod_{i=1}^{\imax} \left(\mu_0 + i \left(\tau_0 + \kappa_0\right)\right)} 
+  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} i \frac{\kappa_0}{\imax}}{prod_{i=1}^{\imax} \mu_0 + i \left(\tau_0 +\frac{\kappa_0}{\imax}\right)} 
 \end{equation}
 If this is the case, then I'm both elated and embarrassed as hell we didn't see it earlier.
 
-\noindent END CRITICAL NOTE
 
 %
 %\newpage
