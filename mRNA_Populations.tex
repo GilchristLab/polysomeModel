@@ -399,17 +399,17 @@ Specifically, marked mRNAs are removed from the $0^{th}$ class at a rate of $\de
 
 The functional form of the unmarked subsystem is:
 \begin{align*}
-\frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\kappa(0)m_{0}-\mu(0)m_{0} \\
-\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\tau(1)m_{1}-\kappa(1)m_{1}-\mu(1)m_{1}\\
+\frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\left(\kappa(0) + \mu(0)\right)m_{0} \\
+\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\left(\tau(1)+\kappa(1)+\mu(1)\right) m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\tau(i)m_{i}-\kappa(i)m_{i}-\mu(i)m_{i} \\
+\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\left(\tau(i)+\kappa(i)+\mu(i)\right) m_{i} \\
 & \vdots & \\
-\frac{dm_{\imax}}{dt} &= \kappa(\imax-1)m_{\imax-1}-\tau(\imax)m_{\imax}-\mu(\imax)m_{\imax} \\
+\frac{dm_{\imax}}{dt} &= \kappa(\imax-1)m_{\imax-1}-\left(\tau(\imax)+\mu(\imax)\right) m_{\imax}\\
 \end{align*}
 
 Similarly, the functional form of the marked subsystem is:
 \begin{align*}
-\frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
+\frac{dm_{0}^{*}}{dt} &= \left(\mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
 \frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
 & \vdots & \\
 \frac{dm_{i}^{*}}{dt} &= \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
@@ -435,9 +435,11 @@ where $\kappa_0$ is a gene specific parameter that describes the rate at which u
 Similarly, the probability a ribosome is at the penultimate codon (i.e.~the codon immediately upstream from the stop codon) is $i/\imax$.
 Assuming that the rate of translation termination is greater than the average elongation rate (i.e.~translation termination is not a rate limiting step), we can define our translation completion rate function as,
 \begin{equation}\label{eq:tau}
-\tau(i)=\tau_0 i/\imax,
+\tau(i)=\tau^\prime_0 i/\imax = \tau_0 i,
 \end{equation}
-\mymarginpar{mikeg: 10/15/19: updated $\tau$ to include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.}
+\mymarginpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
+  mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
+TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.}
 % \mymarginpar{Should this be $i/(\tau \imax)$?
 %  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
 %  However, I seem to recall deriving this result that indicate otherwise.
@@ -448,24 +450,24 @@ where $\tau_0$ describes the average elongation rate of a ribosome along the pro
 Finally, we assume that unmarked mRNAs are marked for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
 As with $\tau_0$,  $\mu_0$ is assumed to fixed for a given gene, but may vary between genes.
 
-\subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
+Incorporating these explicit functional forms leads to representation of unmarked subsystem as: %\subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
 \begin{align*}
-\frac{dm_{0}}{dt} &= \lambda+\tau_0 m_{1}-\kappa_0 m_{0}-\mu_0 m_{0} \\
-\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+2\tau_0 m_{2}-\tau_0 m_{1}-\kappa_0\left(1-\frac{1}{\imax}\right) m_{1}-\mu_0 m_{1}\\
+\frac{dm_{0}}{dt} &= \lambda+\tau_0 m_{1}-\left(\kappa_0 +\mu_0\right) m_{0} \\
+\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+2\tau_0 m_{2}-\left(\tau_0 +\kappa_0\left(1-\frac{1}{\imax}\right) +\mu_0\right) m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} &= \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-i\tau_0 m_{i}-\kappa_0\left(1-\frac{i}{\imax}\right) m_{i}-\mu_0 m_{i} \\
+\frac{dm_{i}}{dt} &= \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-\left(i\tau_0+\kappa_0\left(1-\frac{i}{\imax}\right) + \mu_0\right) m_{i} \\
 & \vdots & \\
-\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\imax\tau_0 m_{\imax}-\mu_0 m_{\imax} \\
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\left(\imax\tau_0 -\mu_0\right) m_{\imax} \\
 \end{align*}
-
-\subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
+and the marked subsystem as,
+%\subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
 \begin{align*}
 \frac{dm_{0}^{*}}{dt} &= \mu_0 m_{0}+\tau_0 m_{1}^{*}-\delta m_{0}^{*} \\
 \frac{dm_{1}^{*}}{dt} &= \mu_0 m_{1}+2\tau_0 m_{2}^{*}- \tau_0 m_{1}^{*} \\
 & \vdots & \\
 \frac{dm_{i}^{*}}{dt} &= \mu_0 m_{i}+(i+1)\tau_0 m_{i+1}^{*}-i\tau_0m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} &= \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax} \\
+\frac{dm_{\imax}^{*}}{dt} &= \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax}. \\
 \end{align*}
 %These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
 \subsection{Matrix-vector Formulation of ODE System}
@@ -487,7 +489,7 @@ The matrix $\bs{F}$ is block lower-diagonal and is given in Equation~\ref{eq:ful
 \end{equation}
 The upper-left block, $\bs{U}$, corresponds to the unmarked state variables, where $\bs{U}$'s general form is provided in Equation~\ref{eq:unmarked_matrix}.
 The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
-The lower-left block is $\bs{\mu}=\mu_0\bs{I}_{(\imax+1)}$\footnote{$\bs{I}_{(\imax+1)}$ is the $\imax+1\times \imax+1$ identity matrix}, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
+Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
 The lower-right block, $\bs{R}$, corresponds to the marked state variables and its form is provided in Equation~\ref{eq:marked_matrix}.
 
 The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
@@ -495,9 +497,9 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
 \label{eq:unmarked_matrix}
 \bs{U}=\left(\begin{array}{cccccc}
 -(\kappa_0+\mu_0) & \tau_0 &  &  &  & \\
-\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  & \\
+\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  & \\
    &\ddots        & \ddots        & \ddots & &  \\
-   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 & \\
+   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 & \\
                   &         &        & \ddots  & \ddots & \ddots \\
      
                           &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\imax\tau_0\right) \\
