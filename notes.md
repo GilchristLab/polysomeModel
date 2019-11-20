@@ -15,3 +15,7 @@
 # 15 Oct 2019
 - Need to get this out!
 - Bringing Ricardo in on it to help things move along.
+
+# 22 Oct 2019
+- Got some work done last week.
+- Need to redefine tau to include imax explicitly 
