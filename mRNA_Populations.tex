@@ -290,16 +290,68 @@ Can highlight sources of data.
 \section{Introduction}
 This section addresses such topics as why modeling this process important, what this model will enable researchers to do, and what other modeling efforts exist that seek to achieve the same goals.
 
+\subsection{mRNA and Translation}\label{sec:Bioligical underpinnings}
+%description of the biological underpinnings of the model.
+%T
+
+
+\begin{enumerate}%rough ideas / poteintially important concepts
+	\item Gene expression short overview
+	\begin{enumerate}
+		\item Gene expression is often stated as the central dogma in which genetic information encoded in the DNA is transcribed into mRNA which is subsequently translated into protein. 
+		\item Often, a greater amount of attention is focused on explaining gene expression at the transcriptional level and prevailing changes of mRNA transcript levels. 
+		\item However, multiple studies across all kingdoms of life have shown that transcript expression level is only moderately predictive of the final protein expression.
+		\item Gene expression at the post transcriptional level is controlled by mRNA transcript stability and degradation, translation and protein maturation/degradation.
+		\item The model presented in this paper encompasses gene expression regulation occuring at the translational and the mature mRNA population level.
+	\end{enumerate}
+	\item Biology controlling mRNA stability and translation
+	\begin{enumerate}
+		\item Mature mRNAs in the cytosol are called the free mRNA pool, and are in one of three states. 
+		\item They are actively being translated by ribosomes and will continue to initiate new rounds of translation until the transcript is degraded.
+		\item Transcripts are degraded directly from the free mRNA pool.
+		\item Transcripts are protected from degradation by RNA binding protein chaperones or are found in processesing bodies awaiting translation initiation or degradation.
+		\item Degradation of mature mRNAs is controlled by numerous processes depending on whether they are bound to ribosome, in processing bodies or in the free mRNA pool.
+		\item Free mRNAs can be decapped or deadenylated followed by exonuclease digestion.
+		\item Ribosomes can destine transcripts to degradation under multiple conditions. 
+		\item The first ribosome to bind to a freshly exported transcript performs the "pioneer round of translation", which is charged with assesing the mRNA's quality.
+		\item There are 3 processes which occur in the pioneer round of translation, all of which detect different mRNA defects. 
+		\item No Go Decay (NGD) detects a stalled ribosome, either due to mRNA structural features, slowly translating sequence or inteference of translation elongation. %sRNA interference has been suggested, need to read sources
+		\item No stop decay (NSD) detects a missing stop codon and nonsense mediated decay (NMD)  detects potential mis splicing or nonsense mutations.
+		\item All three decay  mechanisms, NMD, NSD and NGD lead to the eventual degradation of their bound transcripts. 
+		\item While NSD and NMD are a restricted to the pioneering round of translation, NGD can also uccur during the following rounds of translation.
+		\item As transcripts are cleared by the pioneering round of translations more ribosomes can attach to the transcript, once more than one ribosome is on a transcript this ribosome mRNA complex is called a polysome.
+		\item Transcripts associated to ribosomes are generally assumed to be protected from degradation and only degraded once ribosomes are off the transcript, however both NGD, (sRNA silencing) and 
+			a process called cotranslational decay can degrade actively translated transcripts.
+		\item Cotranslational decay involved the decapping of actively translating mRNA transcripts and subsequent 5' to 3' mRNA degradation which follows a 3 nucleotide periodic pattern in step with the Ribosome. 
+	\end{enumerate}
+	\item Current Models/Research and how our model fits in the current field
+
+\end{enumerate}
+
+
+
+
+
 \section{Model Description and Notation}\label{sec:description}
 The mechanistic view that is taken for building this model is as follows.
 Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.
+%Biologically this is representative of the addition of fully mature, translation competent mRNAs into the cytoplasmic mRNA pool.
 If an unmarked mRNA has a ribosome load of 0, it is defined as being in class $m_0$ and contributes to that class's abundance.
-Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$.
-Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  
+% This is the free mRNA pool and can be found in both the cytoplasm and processing bodies awaiting tranlation initiation or degradation
+Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$. %translation initiation
+Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  %Combination of  translation elongation and termination
 mRNAs in the unmarked classes can then transition freely between the $m_0$ and $m_{\imax}$ according to initiation and completion rates until they are marked, which ultimately leads to the degradation of the mRNA.
 To begin the process of mRNA degradation, marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
+%Biologically $\mu$  represents different processes according to the class upon which it is acting on. 
+%$\mu$ in class 0 represents deadenylationa and decapping directly.
+%$\mu_1$ in class 1 can represent a multitude of processes: 1) cotranslational decay where ribosomes complete translation as depicted in the model
+%2) NMD, NGD, NSD or miRNA interference where a class $m_1$ transcript falls directly to the $m_0^*$ category, goes directly to jail does not pass go and does not collect $200.
+%$\mu_i>1$ is somewhat similar to class one, but has fewer biological interpretations 1) cotranslational decay where ribosomes complete translation as depicted in the model
+%2) NGD or miRNA interference where a class $m_1$ transcript falls directly to the $m_0^*$ category
 A marked mRNA with a ribosome load of $i$ is denoted as being in class $m_i^*$.
 Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA's ribosome load drops to 0, at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
+%Delta is the final complete degradation of the complete decapped/deadenylated mRNA or mRNA fragments. 
+%The one exception to this is cotranslation decay, where the majority of the transcript is degraded cotranslationally and only the 3' UTR and poly A tail is left following the transcript entering $m_0^*$
 Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
 Table~\ref{tab:params} provides a summary of state variable and parameter notation.
 
