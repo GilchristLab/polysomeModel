@@ -173,13 +173,14 @@
 \title{Modeling mRNA Populations}
 \author[utkm,curradd]{N.~Pollesch\corref{cor1}}
 \ead{pollesch@math.utk.edu}
-\author[utkeeb,nimbios]{M.A.~Gilchrist}
+\author[utkgst]{Ricardo Urquidi}
+\author[utkeeb,nimbios,cor1]{M.A.~Gilchrist}
 \ead{mikeg@utk.edu}
 \cortext[cor1]{Corresponding author}
 \address[utkm]{Department of Mathematics, University of Tennessee,  Knoxville, TN 37996-1320}
-\address[curradd]{Department of ??, Environmental Protection Agency, Duluth MN XXXXX}
 \address[utkeeb]{Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, TN 37996-1610}
 \address[nimbios]{National Institute for Mathematical and Biological Synthesis, University of Tennessee, Knoxville, TN 37996-3410}
+\address[utkgst]{Genome Science and Technology Program, University of Tennessee, Knoxville, TN 37996-XXX}
 
 \begin{abstract}
 This paper presents a model to describe the dynamics of protein translation.  
@@ -334,23 +335,24 @@ This section addresses such topics as why modeling this process important, what 
 
 \section{Model Description and Notation}\label{sec:description}
 The mechanistic view that is taken for building this model is as follows.
-Unbound, unmarked mRNA are introduced to the system at a constant rate of $\lambda$.
+Mature, but unbound and unmarked, mRNA are introduced to the system into mRNA class $0$ at a constant rate of $\lambda$.
 %Biologically this is representative of the addition of fully mature, translation competent mRNAs into the cytoplasmic mRNA pool.
-If an unmarked mRNA has a ribosome load of 0, it is defined as being in class $m_0$ and contributes to that class's abundance.
+If an unmarked mRNA has a ribosome load of $i$, it is defined as being in class $m_i$ and contributes to that class' abundance.
 % This is the free mRNA pool and can be found in both the cytoplasm and processing bodies awaiting tranlation initiation or degradation
 Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$. %translation initiation
 Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  %Combination of  translation elongation and termination
-mRNAs in the unmarked classes can then transition freely between the $m_0$ and $m_{\imax}$ according to initiation and completion rates until they are marked, which ultimately leads to the degradation of the mRNA.
-To begin the process of mRNA degradation, marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
-%Biologically $\mu$  represents different processes according to the class upon which it is acting on. 
-%$\mu$ in class 0 represents deadenylationa and decapping directly.
-%$\mu_1$ in class 1 can represent a multitude of processes: 1) cotranslational decay where ribosomes complete translation as depicted in the model
-%2) NMD, NGD, NSD or miRNA interference where a class $m_1$ transcript falls directly to the $m_0^*$ category, goes directly to jail does not pass go and does not collect $200.
-%$\mu_i>1$ is somewhat similar to class one, but has fewer biological interpretations 1) cotranslational decay where ribosomes complete translation as depicted in the model
-%2) NGD or miRNA interference where a class $m_1$ transcript falls directly to the $m_0^*$ category
+mRNAs in the unmarked classes can then transition freely between the $m_0$ and $m_{\imax}$ according to ribosome initiation and completion rates.
+
+To begin the process of mRNA degradation, an mRNA must be tagged or marked.
 A marked mRNA with a ribosome load of $i$ is denoted as being in class $m_i^*$.
-Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA's ribosome load drops to 0, at which point it leaves the system from state $m_0^*$ at a constant rate of $\delta$.
-%Delta is the final complete degradation of the complete decapped/deadenylated mRNA or mRNA fragments. 
+Marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
+Biologically $\mu$  represents different processes according to the class upon which it is acting on. 
+Specifically, $\mu(0)$ represents deadenylation and decapping directly while $\mu(i)$ for $i > 0$ can represent a multitude of processes such as cotranslational decay, NMD, NGD, NSD or miRNA interference.
+\mymarginpar{Ricardo, are you okay with this description of mRNA marking? If not, please correct.
+  Also, would using 'tagged' be better than 'marked'?
+  }
+  Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA's ribosome load drops to 0 and, thus, enters the $m_0^*$ class.
+mRNA transcripts leave the system class $m_0^*$ at a constant rate of $\delta$.
 %The one exception to this is cotranslation decay, where the majority of the transcript is degraded cotranslationally and only the 3' UTR and poly A tail is left following the transcript entering $m_0^*$
 Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
 Table~\ref{tab:params} provides a summary of state variable and parameter notation.
@@ -450,7 +452,7 @@ Ribosome movement along an mRNA is assumed to occur independent of whether or no
 Thus, ribosomes complete translation of both marked and unmarked mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
 Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
 Only mRNAs marked for degradation and with a ribosome load of 0 are removed from the system.
-Specifically, marked mRNAs are removed from the $0^{th}$ class at a rate of $\delta m^*_0(t)$.
+Specifically, marked mRNAs are removed from the $0^{th}$ class at a rate of $\delta \, m^*_0(t)$.
 
 The functional form of the unmarked subsystem is:
 \begin{align*}
@@ -490,11 +492,12 @@ where $\kappa_0$ is a gene specific parameter that describes the rate at which u
 Similarly, the probability a ribosome is at the penultimate codon (i.e.~the codon immediately upstream from the stop codon) is $i/\imax$.
 Assuming that the rate of translation termination is greater than the average elongation rate (i.e.~translation termination is not a rate limiting step), we can define our translation completion rate function as,
 \begin{equation}\label{eq:tau}
-\tau(i)=\tau^\prime_0 i/\imax = \tau_0 i,
+\tau(i)=\tau_0 i/\imax
 \end{equation}
 \mymarginpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
   mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
-TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.}
+  TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
+  mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
 % \mymarginpar{Should this be $i/(\tau \imax)$?
 %  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
 %  However, I seem to recall deriving this result that indicate otherwise.
@@ -507,22 +510,22 @@ As with $\tau_0$,  $\mu_0$ is assumed to fixed for a given gene, but may vary be
 
 Incorporating these explicit functional forms leads to representation of unmarked subsystem as: %\subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
 \begin{align*}
-\frac{dm_{0}}{dt} &= \lambda+\tau_0 m_{1}-\left(\kappa_0 +\mu_0\right) m_{0} \\
-\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+2\tau_0 m_{2}-\left(\tau_0 +\kappa_0\left(1-\frac{1}{\imax}\right) +\mu_0\right) m_{1}\\
+\frac{dm_{0}}{dt} &= \lambda+\tau_0\frac{1}{\imax} m_{1}-\left(\kappa_0 +\mu_0\right) m_{0} \\
+\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+\tau_0\frac{2}{\imax} m_{2}-\left(\tau_0\frac{1}{\imax} +\kappa_0\left(1-\frac{1}{\imax}\right) +\mu_0\right) m_{1}\\
 & \vdots & \\
-\frac{dm_{i}}{dt} &= \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+(i+1)\tau_0 m_{i+1}-\left(i\tau_0+\kappa_0\left(1-\frac{i}{\imax}\right) + \mu_0\right) m_{i} \\
+\frac{dm_{i}}{dt} &= \kappa_0\left(1-\frac{i-1}{\imax}\right) m_{i-1}+\tau_0\frac{i+1}{\imax} m_{i+1}-\left(\tau_0\frac{i}{\imax}+\kappa_0\left(1-\frac{i}{\imax}\right) + \mu_0\right) m_{i} \\
 & \vdots & \\
-\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\left(\imax\tau_0 -\mu_0\right) m_{\imax} \\
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\left(\tau_0\frac{\imax}{\imax} -\mu_0\right) m_{\imax} \\
 \end{align*}
 and the marked subsystem as,
 %\subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
 \begin{align*}
-\frac{dm_{0}^{*}}{dt} &= \mu_0 m_{0}+\tau_0 m_{1}^{*}-\delta m_{0}^{*} \\
-\frac{dm_{1}^{*}}{dt} &= \mu_0 m_{1}+2\tau_0 m_{2}^{*}- \tau_0 m_{1}^{*} \\
+\frac{dm_{0}^{*}}{dt} &= \mu_0 m_{0}+\tau_0\frac{1}{\imax} m_{1}^{*}-\delta m_{0}^{*} \\
+\frac{dm_{1}^{*}}{dt} &= \mu_0 m_{1}+\tau_0\frac{2}{\imax} m_{2}^{*}- \tau_0\frac{1}{\imax} m_{1}^{*} \\
 & \vdots & \\
-\frac{dm_{i}^{*}}{dt} &= \mu_0 m_{i}+(i+1)\tau_0 m_{i+1}^{*}-i\tau_0m_{i}^{*} \\
+\frac{dm_{i}^{*}}{dt} &= \mu_0 m_{i}+\tau_0\frac{i+1}{\imax} m_{i+1}^{*}-\tau_0\frac{i}{\imax}m_{i}^{*} \\
 & \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} &= \mu_0 m_{\imax}^{*}-\imax\tau_0 m_{\imax}. \\
+\frac{dm_{\imax}^{*}}{dt} &= \mu_0 m_{\imax}^{*}-\tau_0\frac{\imax}{\imax} m_{\imax}. \\
 \end{align*}
 %These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
 \subsection{Matrix-vector Formulation of ODE System}
@@ -551,13 +554,13 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
 \begin{equation}
 \label{eq:unmarked_matrix}
 \bs{U}=\left(\begin{array}{cccccc}
--(\kappa_0+\mu_0) & \tau_0 &  &  &  & \\
-\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  & \\
+-(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
+\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
    &\ddots        & \ddots        & \ddots & &  \\
-   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 & \\
+   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} & \\
                   &         &        & \ddots  & \ddots & \ddots \\
      
-                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\imax\tau_0\right) \\
+                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
 \end{array}\right).
 \end{equation}
 In the representation given in Equation~\ref{eq:unmarked_matrix}, all blank entries are 0.
@@ -568,13 +571,13 @@ The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix 
 \label{eq:marked_matrix}
 \bs{R}=\left(
 \begin{array}{ccccccc}
--\delta & \tau_0 & & & & & \\
- & -\tau_0 & 2\tau_0 & & & &\\
+-\delta & \tau_0\frac{`}{\imax} & & & & & \\
+ & -\tau_0\frac{1}{\imax} & \tau_0\frac{2}{\imax} & & & &\\
  & & \ddots & \ddots & & & \\
- & & & -(i-1)\tau_0 & (i+1)\tau_0 & & \\
+ & & & -\tau_0\frac{i-1}{\imax} & \tau_0\frac{(i+1)}{\imax} & & \\
  & & & & \ddots & \ddots & \\
- & & & & & -(\imax-2)\tau_0 & \imax\tau_0 \\
- & & & & & & -\imax\tau_0 \\
+ & & & & & -\tau_0\frac{(\imax-2)}{\imax} & \tau_0\frac{\imax}{\imax} \\
+ & & & & & & -\tau_0\frac{\imax}{\imax} \\
 \end{array}
 \right),
 \end{equation}
@@ -602,13 +605,13 @@ With all equations defined for the full ODE system, include matrix-vector repres
 %m_{\imax-1}'\\
 %m_{\imax}'
 %\end{array}\right)=\left(\begin{array}{cccccccc}
-%-(\kappa_0+\mu_0) & \tau_0 &  &  &  &  &  &   \\
-%\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\right) & 2\tau_0 &  &  &  &  &   \\
+%-(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  &  &  &   \\
+%\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  &  &  &   \\
 %   &\ddots        & \ddots        & \ddots & &  &  &  \\
-%   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+i\tau_0\right) & (i+1)\tau_0 &  &  & \\
+%   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} &  &  & \\
 %                  &         &        & \ddots  & \ddots & \ddots &  &   \\
-%                  &         &        &  & \frac{2}{\imax}\kappa_0 & -\left(\frac{1}{\imax}\kappa_0+\mu_0+(\imax-1)\tau_0\right) & (\imax)\tau_0 &   \\
-%                          &        &  &  &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\imax\tau_0\right) \\
+%                  &         &        &  & \frac{2}{\imax}\kappa_0 & -\left(\frac{1}{\imax}\kappa_0+\mu_0+\tau_0\frac{\imax-1}{\imax}\right) & \tau_0\frac{\imax}{\imax} &   \\
+%                          &        &  &  &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
 %\end{array}\right)\left(\begin{array}{c}
 %m_{0}\\
 %m_{1}\\
@@ -660,10 +663,10 @@ Solved for as a function of the unmarked distribution, the marked distribution a
 Let $\hat{m}_{i}$ be the steady state or equilibrium solution the $i^{th}$ state in the unmarked subsystem.
 Then the solution to the $i^{th}$ state in the marked subsystem at equilibrium, denoted $\hat{m}_{i}^{*}$, is given by:
 \begin{equation}\label{eq:anyl_marked_eq}
-\hat{m}_{i}^{*} = \frac{\mu_0}{\tau_0}\frac{\sum_{j=i}^{\imax}\hat{m}_{j}}{\gamma (i)} \text{, where\quad}
+\hat{m}_{i}^{*} = \frac{\mu_0}{\tau_0\frac{1}{\imax}}\frac{\sum_{j=i}^{\imax}\hat{m}_{j}}{\gamma (i)} \text{, where\quad}
 \gamma (i) = \left\{
         \begin{array}{ll}
-            \frac{\delta}{\tau_0} & \quad i = 0 \\
+            \frac{\delta}{\tau_0\frac{1}{\imax}} & \quad i = 0 \\
             i & \quad i > 0
         \end{array}
     \right. .
@@ -675,16 +678,16 @@ Analytical steady-state solutions to the unmarked subsystem were generated for l
 Visual inspection and hand-calculation was used to determine patterns in these solutions.
 Upon investigation it was found that the uppermost, \imax, polysomal class has the closed-form equilibrium solution of:
 %\begin{equation}\label{eq:anyl_unmarked_imax}
-%\hat{m}_{\imax}=\dfrac{\prod_{i=1}^{\imax}\left(\kappa_0 \frac{i}{\GCD[\imax,i]}\right)}{\prod_{i=1}^{\imax}\left(\frac{\imax}{\GCD[\imax,i]}(\mu_0+i \tau_0)+\kappa_0 \frac{i}{\GCD[\imax,i]}\right)},
+%\hat{m}_{\imax}=\dfrac{\prod_{i=1}^{\imax}\left(\kappa_0 \frac{i}{\GCD[\imax,i]}\right)}{\prod_{i=1}^{\imax}\left(\frac{\imax}{\GCD[\imax,i]}(\mu_0+\tau_0\frac{i}{\imax})+\kappa_0 \frac{i}{\GCD[\imax,i]}\right)},
 %\end{equation}
 %for any level of \imax and where \GCD is the greatest common divisor function.
 %Which can be simplified further as,
 %\begin{equation}\label{eq:anyl_unmarked_imax_simp}
-%\hat{m}_{\imax}=\prod_{i=1}^{\imax}{\left(\frac{\imax}{i\kappa_0}\left(\mu_0+i\tau_0\right)+1\right)},
+%\hat{m}_{\imax}=\prod_{i=1}^{\imax}{\left(\frac{\imax}{i\kappa_0}\left(\mu_0+\tau_0\frac{i}{\imax}\right)+1\right)},
 %\end{equation} 
 \begin{align}
-  \hat{m}_{\imax} &=\prod_{i=1}^{\imax}\frac{i \frac{\kappa_0}{\imax} }{\mu_0+i\left(\tau_0 + \frac{\kappa_0}{\imax}\right)},\label{eq:anyl_unmarked_imax_simp}\\
-  &= \frac{\left(\frac{\kappa_0}{\imax}\right)^\imax \imax!}{\prod_{i=1}^{\imax} \mu_0+i\left(\tau_0 + \frac{\kappa_0}{\imax}\right)}
+  \hat{m}_{\imax} &=\prod_{i=1}^{\imax}\frac{i \frac{\kappa_0}{\imax} }{\mu_0+\frac{i}{\imax}\left(\tau_0 + \kappa_0\right)},\label{eq:anyl_unmarked_imax_simp}\\
+  &= \frac{\left(\frac{\kappa_0}{\imax}\right)^\imax \imax!}{\prod_{i=1}^{\imax} \mu_0+\frac{i}{\imax}\left(\tau_0 + \kappa_0\right)}
 \end{align}
 for any level of \imax. \mymarginpar{mikeg: 10/22/19 Note we no longer have any GCD since they cancelled out.  See text in Note section at end of document.
 Nate, can you verify the product term should be from $i=1$ and not $i=0$?}
@@ -696,8 +699,8 @@ Notably, as a side-benefit having a closed-form solution for the upper-most clas
 
 It follows that the formula for the determinant of $\bs{U}$ is,
 \begin{align}
-  \det[\bs{U}] & =(-1)^{\imax+1}\prod_{i=0}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+i\tau_0)\right)}.\label{eq:U_det}
-  %& =(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}(\kappa_0/imax + \tau_0)+ \mu_0\right)}.\label{eq:U_det}
+  \det[\bs{U}] & =(-1)^{\imax+1}\prod_{i=0}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+\tau_0\frac{i}{\imax})\right)}.\label{eq:U_det}
+  %& =(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}(\kappa_0/imax + \tau_0\frac{1}{\imax})+ \mu_0\right)}.\label{eq:U_det}
 \end{align}
 \mymarginpar{mikeg: 10/22/19: note that by having product term begin at $i=0$ rather than $i=1$ as in previous equations we can incorporate the orphan $\mu_0$ into the product term}.
 It can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial [Show in appendix or cite a source.].
@@ -818,8 +821,8 @@ In the case of the matrix $\bs{U}$, the Equations~\ref{eq:recurrence_general} al
 %d_{n-2}=-((\imax-(n-2))/\imax)\kappa r+\mu+(n-2)\tau\\
 %p_{n-2}=((n-2)+1)\tau\\
 %and\\
-d_{i}=-\kappa_0\left(1-\frac{i}{\imax}+\mu_0+i\text{\ensuremath{\tau_0}}\right)\\
-p_{i}=(i+1)\tau_0\\
+d_{i}=-\kappa_0\left(1-\frac{i}{\imax}+\mu_0+\text{\ensuremath{\tau_0\frac{i}{\imax}}}\right)\\
+p_{i}=\tau_0\frac{i+1}{\imax}\\
   s_{i}=\kappa_0\left(1-\frac{i-1}{\imax}\right)
 \end{array}
 \]
@@ -917,9 +920,9 @@ Utilizing the formula found for the determinant of $\bs{U}$, a closed form for t
 This formula is given by,
 \begin{align}
   \label{eq:full_matrix_det}
-  \det[\bs{F}] %&=(-1)^{\imax+1}\mu_0 \delta \lambda \tau_0^{\imax}\left(\prod_{l=1}^{\imax}{-l}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +i \tau_0 + \frac{i}{\imax}\kappa_0}\right)
+  \det[\bs{F}] %&=(-1)^{\imax+1}\mu_0 \delta \lambda \tau_0\frac{1}{\imax}^{\imax}\left(\prod_{l=1}^{\imax}{-l}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +\tau_0\frac{i}{\imax} + \frac{i}{\imax}\kappa_0}\right)
                  %-l term and -1 terms in above equation simplifies
-            &=-\delta \lambda \tau_0^{\imax}\imax!\left(\prod_{i=0}^{\imax}\mu_0 +i \left(\tau_0 + \frac{\kappa_0}{\imax}\right)\right).
+            &=-\delta \lambda \tau_0\frac{1}{\imax}^{\imax}\imax!\left(\prod_{i=0}^{\imax}\mu_0 +\frac{i}{\imax} \left(\tau_0 + \kappa_0\right)\right).
 \end{align}
 At equilibrium, the equations for the full system become,
 \begin{equation}
@@ -952,7 +955,7 @@ To distinguish between the discrete ODE system and the continuous PDE system, we
 
 Assuming the functional forms for $\kappa(i)$ and $\tau(i)$ as provided in Equations~\ref{eq:kappa} and \ref{eq:tau} and assuming equilibrium, $\p{m(i,t)}{t}=0$, Equation~\ref{eq:unmarked_pde} becomes,
 \begin{equation}
-0=\left(\frac{\kappa_0}{\imax}-\mu_0+\tau_0\right)m(i)+\left(\frac{(i-1)\kappa_0}{\imax}-\kappa_0+(i+1)\tau_0\right)m'(i)+\frac{1}{2}\left(\kappa_0+i\tau_0-\frac{i\kappa_0}{\imax}\right)m''(i).
+0=\left(\frac{\kappa_0}{\imax}-\mu_0+\tau_0\frac{1}{\imax}\right)m(i)+\left(\frac{(i-1)\kappa_0}{\imax}-\kappa_0+\tau_0\frac{i+1}{\imax}\right)m'(i)+\frac{1}{2}\left(\kappa_0+ \frac{i}{\imax}\left(\tau_0-\kappa_0\right)\right)m''(i).
 \end{equation}
 \subsubsection{The Marked Class PDE approximation}
 The dynamics for the marked class can be modeled by the following nonlinear inhomogenous first-order PDE,
@@ -1176,7 +1179,7 @@ Possessing two different methods to generate equilibrium distributions for the p
 \subsection*{Getting Rid of GCD function}
 If equation
 \begin{equation}\label{eq:anyl_unmarked_imax}
-m_{i_{max}}^{eq}=\dfrac{\prod_{i=1}^{i_{max}}\left(\frac{i}{GCD[i_{max},i]}\kappa_0\right)}{\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+i\tau_0)+\frac{i}{GCD[i_{max},i]}\kappa_0\right)},
+m_{i_{max}}^{eq}=\dfrac{\prod_{i=1}^{i_{max}}\left(\frac{i}{GCD[i_{max},i]}\kappa_0\right)}{\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+\tau_0\frac{i}{\imax})+\frac{i}{GCD[i_{max},i]}\kappa_0\right)},
 \end{equation}
  in previous versions of the write up is correct, then it seems we've missed a very simplification that would simplify our calculations \emph{immensely}.
 Let's imagine three generic functions of $i$, $a_i$, $b_i$, and $c_i$ such that
@@ -1187,9 +1190,9 @@ Let's imagine three generic functions of $i$, $a_i$, $b_i$, and $c_i$ such that
   &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i a_i \prod_i \left(c_i + b_i\right)}\\
   &= \frac{\prod_i b_i }{\prod_i \left(c_i + b_i\right)}\\
 \end{align}
-If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and $c_i (\mu_0 + i \tau_0)$, then the equation \ref{eq:anyl_unmarked_imax} can be rewritten as,
+If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and $c_i (\mu_0 + \tau_0\frac{i}{\imax})$, then the equation \ref{eq:anyl_unmarked_imax} can be rewritten as,
 \begin{equation}
-  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} i \frac{\kappa_0}{\imax}}{prod_{i=1}^{\imax} \mu_0 + i \left(\tau_0 +\frac{\kappa_0}{\imax}\right)} 
+  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} i \frac{\kappa_0}{\imax}}{prod_{i=1}^{\imax} \mu_0 + \left(\tau_0\frac{i}{\imax} +\frac{\kappa_0}{\imax}\right)} 
 \end{equation}
 If this is the case, then I'm both elated and embarrassed as hell we didn't see it earlier.
 

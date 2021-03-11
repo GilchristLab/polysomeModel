@@ -19,3 +19,10 @@
 # 22 Oct 2019
 - Got some work done last week.
 - Need to redefine tau to include imax explicitly 
+
+# 11 Mar 2021
+
+- Trying to finish this project!
+- Step 1
+  - Replace almost all instances of $\tau_0$ with $\tau^\prime_0/\imax$ -- Done
+  - Replaced \tau^\prime with \tau -- Done
