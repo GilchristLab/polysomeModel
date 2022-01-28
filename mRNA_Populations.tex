@@ -323,7 +323,7 @@ This section addresses such topics as why modeling this process important, what 
 		\item As transcripts are cleared by the pioneering round of translations more ribosomes can attach to the transcript, once more than one ribosome is on a transcript this ribosome mRNA complex is called a polysome.
 		\item Transcripts associated to ribosomes are generally assumed to be protected from degradation and only degraded once ribosomes are off the transcript, however both NGD, (sRNA silencing) and 
 			a process called cotranslational decay can degrade actively translated transcripts.
-		\item Cotranslational decay involved the decapping of actively translating mRNA transcripts and subsequent 5' to 3' mRNA degradation which follows a 3 nucleotide periodic pattern in step with the Ribosome. 
+		\item Cotranslational decay involved the decapping of actively translating mRNA transcripts and subsequent 5' to 3' mRNA degradation which follows a 3 nucleotide periodic pattern in step with the Ribosome.   
 	\end{enumerate}
 	\item Current Models/Research and how our model fits in the current field
 
@@ -1196,6 +1196,101 @@ If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and
 \end{equation}
 If this is the case, then I'm both elated and embarrassed as hell we didn't see it earlier.
 
+
+\section{Results}
+
+%Units of the different paramters: $\lambda$ is transcripts/s, $\mu$, $\kappa$, $\tau$ and $\delta$ are is 1/s.
+
+\begin{enumerate}%Exploration of the model it's parameters and their biological implication
+	\item The unmarked class transcript number is determined by $\lambda$, $\mu$
+	\begin{enumerate}	
+		\item In the unmarked class the total transcript abundance is determined by a similar relationship as Equation 21. %Except that the summation ranges from class 0 to imax instead of from 1 to imax. I am not sure that Equation 21 is correct.
+		\begin{equation}\label{eq:eq_unmarked_sum}
+			\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i},
+		\end{equation}
+		\item Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
+		\item $\mu$ affects both the total transcript abundance and the distribution of ribosomal classes across a particular species of transcript.
+		\item First $\mu$ controls the rate of outflow from unmarked unto marked, and second it preferentially weighs small ribosome classes in favor of large ribosome classes.
+		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the unmarked class except m imax. At high mu it quickly dominates moving transcripts quickly into the marked class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
+	\end{enumerate}
+	
+	\item  Ribosomal distribution on the marked class is determined by the ratio of $\kappa$/$\tau$ and $\mu$
+	\begin{enumerate}
+		\item Figure 4 shows a representative contour plot of model solutions for a broad range of $\kappa$ values.
+		\item For  $\kappa < 0.1 $  there is no ribosome loading, while loading maxes out beyond $10^4$, with a smooth transition between boundaries. 
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=30em]{Images/contour_norm_unmarked_l1m1d1t1_k1e-5_1e5_imax_30}
+		\caption{Contour plot of unmarked class over a range of kappa values: $\kappa = 10^-5 - 10^5.\imax=30,\lambda=1,\tau 0=1,\mu 0=0.1,\delta=100,000$. Color scale is percent ribomose load for each kappa value across all 31 ribosome classes.}
+		%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+		\end{figure}
+
+		\item In order to better interpret the model we will focus on parameter ranges dervied from literature. 
+		\begin{enumerate}
+			\item To approximate $\mu$ transcript half-lives calculated by Sorenson (2018) in cordycepin treated  \textit{Arabidopsis thaliana} seedlings. where $\mu$ is:
+			\begin{equation}\label{eq:eq_unmarked_sum}
+				\mu = \frac{ln(2)}{t_{1/2}}
+			\end{equation}
+			Where $t_{1/2}$ is the half-life. Model solutions were produced for a range of half-lives: 1, 5, 25, 50, 75, 95 and 99 percentile values of the half-lives found in Sorenson (2018)%These were12min, 23min, 59min, 109min, 220min, 830min, 4018min
+			\item The resulting range of $\mu$ is from $10^-3 to 10^-6$. 
+			% I would like to discuss the solution for the Adjugate in some part where it shows that there is a base solution for a system with only kappa and tau. Then when mu is added, this weights solutions towards smaller ribosomal classes. I am unsure where to put this. I will work on this after I get these initial results noted down in this document.
+			\item The range for $\tau$ is based from (insert citations here) and ranges from 4-20 aa/s depending on the organism. A plausible biological range of 0.1-20 aa/s was explored.
+			\item The 
+			\item As $\lambda$ is only a scaling factor and does not affect the distribution of the ribosomes it was set to 1.
+
+		\end{enumerate}
+
+
+	\end{enumerate}
+		
+
+
+	\item The marked class depends on the distribution of the unmarked class, $\tau$, $\mu$ and $\delta$
+	\begin{enumerate}
+		\item The marked subsystem can be further divided into the $m_0^*$ class and the $m_i^*$ classes for $i>0$.
+		\item the $m_0^*$  class in the current model design represents only two forms of degradation, free mRNA degradation and the degradation of the remanents of XRN1 mediated degradation.% It could be futher extended to include more degradations mechanisms see note below
+		\item  $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class. It is reasonable to explore the model with   large $\delta$ since marked transcripts are translationally incompetent. % $\delta\ might be more complex with a slightly different model design. In the current model formulation it mimics the primary (but not only) degradation with the cell, the 5' decapping and subsequent VCS /XRN1 5'-3' cotranslation degradation system. This ignores 3 other systems the two 3'- 5' pathways (CCR4-NOT3) and exosome, and the final slew of endodegradation pathways (NGD, NSD, NMD, ribothrypsis, and silencing).
+%Additionally, degradation of the bulk of the mRNA transcript might not be a process specific to each transcript (ie. due to coding sequence, I would have to look this up. Also might be testable with data fitting).
+
+		
+	\end{enumerate}
+
+		
+
+
+
+
+	
+%work with an protein with a short medium and long lifespan, low medium and high intitiation rates, low medium high elongation rates and short, medium long length.
+
+%What are some of the important interesting questions.
+%What does the parameter space look like?
+%	What are the currently known ranges for the parameters of interest and what ribosome densities do they produce.
+%		Mu will follow the distribution of half lives found in an organims of  
+%	Create parameter range which is bounded within relistic parameter values. What are the resulting ribosome loads?
+%	For more extreme cases what would the parameters have to be? 
+%	How does Imax affect the loading?
+%	How does kappa interference affect loading?
+%
+%Half lives. What does each individual process contribute to the half life of transcripts? 
+%	Unmarked 
+%	Marked 
+%		M0* is delta driven
+%		All other M* have a set behaivior dependent on the distribution of transcripts in unmarked.
+%What processes does our current model mimic? What does it miss out? 
+
+
+ 
+
+
+
+
+
+
+
+
+% without interference if kappa is small relative to tau then interference doesn't matter. if kappa is large what is the distribution? How does increasing mu affect it.
 
 %
 %\newpage
