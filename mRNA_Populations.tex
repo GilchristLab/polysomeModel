@@ -1199,16 +1199,40 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 %Units of the different paramters: $\lambda$ is transcripts/s, $\mu$, $\kappa$, $\tau$ and $\delta$ are is 1/s.
 
 \begin{enumerate}%Exploration of the model it's parameters and their biological implication
-	\item The unmarked class transcript number is determined by $\lambda$, $\mu$
+	\item The unmarked system can be split into two components: Total transcript count and the distribution of transcripts throught 
 	\begin{enumerate}	
+		\item The unmarked class transcript number is determined by $\lambda$, $\mu$
 		\item In the unmarked class the total transcript abundance is determined by a similar relationship as Equation 21. %Except that the summation ranges from class 0 to imax instead of from 1 to imax. I am not sure that Equation 21 is correct.
 		\begin{equation}\label{eq:eq_unmarked_sum}
 			\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i},
 		\end{equation}
 		\item Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
 		\item $\mu$ affects both the total transcript abundance and the distribution of ribosomal classes across a particular species of transcript.
-		\item First $\mu$ controls the rate of outflow from unmarked unto marked, and second it preferentially weighs small ribosome classes in favor of large ribosome classes.
+		\item First $\mu$ controls the rate of outflow from unmarked unto marked, and second it shifts mRNAs to lower ribosomal classes.
 		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the unmarked class except m imax. At high mu it quickly dominates moving transcripts quickly into the marked class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
+		\item The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
+		\begin{equation*}
+			\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
+		\end{equation*}
+		\item As $\vec{b}$ is [$\lambda$ 0 0 0 ... 0]. Only the first column of the adjoint matrix contributes to the result. 
+		\begin{equation*}
+			Adj[\bs{U}]\vec{b} = \lambda\vec{a}
+		\end{equation*}	
+		and
+		\begin{equation*}
+			\sum_{j=0}^{\imax}\vec{a}_j = a_{tot} = \sum_{i=0}^{\imax}m_{i}
+		\end{equation*}
+		\item With this we can factor our solution into two parts: 1) the total transcript abundance and 2) The distribution of transcript across the ribosomal classes.
+		\begin{equation*}
+			\vec{m}=-\frac{\lambda a_{tot}}{\det[\bs{U}]} \frac{\vec{a}}{a_{tot}} = \frac {\lambda} {\mu} \vec{p}_m
+		\end{equation*}
+		\item The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.
+		\item This formulation has three interesting properties
+		\begin{enumerate}
+			\item First it gives a determinant free solution to our system. Now, to obatin a full solution of the unmarked solution to our model we only need the first column of the Adjugate matrix.
+			\item Second it splits the two funtions of $\mu$; Its effect on transcript number and its effect on transcript distribution. And allows for their separate analysis.
+			\item Third, it permits analysis of the underlying transcript distribution even under conditions where the model has no solution. For example, when $\mu$ = 0, both solutions are indeterminate. However, the determinant free solution allows for us to explore what the transcript distribution would be when $\mu$=0.
+		\end{enumerate} 
 	\end{enumerate}
 	
 	\item  Ribosomal distribution on the marked class is determined by the ratio of $\kappa$/$\tau$ and $\mu$
@@ -1252,8 +1276,24 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 
 		
 	\end{enumerate}
-
+\end{enumerate}
 		
+
+%Tau prime is the rate at which ribosomes leave the transcript.
+%For a transcript with one ribosome tau prime is the sum of all the individual steps it took the ribosome to get to the stop codon. Since we are not modeling the actual elongation process step by step (and thus mechanistically ignoring pausing or ribosome collisions) we can easily calculate this rate by multiplying the number of codons in gene i by the average translation elongation speed for gene i. 
+%For example in a 900 nucleotide long gene will produce a 300 amino acid long protein. If the average elongation rate of the protein is 3 aa/sec, the translation of one protein will take 300aa/3aa/s = 100 s.
+%100 seconds is the residence time of a ribosomes on transcript j of gene i. If there are 2 ribosomes the residency time will halve and be 50s. 3 ribosomes = 33.33s, 4 25s and so on. 
+%To get the rate of ribosomes leaving the transcript then we will take the reciprocal of this. The leaving rate for 1 ribosome is 1/100 or 0.01. For 2 it is 0.02, for 3, 0.03, and4 0.04 and so on. If every codon was populated by a ribosome (which is physically impossible since a ribosome occupies roughly 9 codons), then the leaving rate would equal the average elongation rate. However, the maximal leaving rate is now imax*termination rate of 1 ribosome. i.e. (imax/#codons)*tau. Or  1/9 tau
+%The equation for the residence time is:
+%τ'=codons/i*τfor i=1,2,…,imax
+%The equation for the termination rate is:
+%\tau^\ast=1/\tau^'=i\ast\tau/\left(#codons\right);\ for\ i=0,1,2,\ldots,i_{max}
+%Where plain tau is the average elongation rate for transcript j.
+
+
+
+
+
 
 
 
