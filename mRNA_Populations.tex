@@ -1220,7 +1220,7 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 		\end{equation*}	
 		and
 		\begin{equation*}
-			\sum_{j=0}^{\imax}\vec{a}_j = a_{tot} = \sum_{i=0}^{\imax}m_{i}
+			\sum_{j=0}^{\imax}\vec{a}_j = a_{tot} 
 		\end{equation*}
 		\item With this we can factor our solution into two parts: 1) the total transcript abundance and 2) The distribution of transcript across the ribosomal classes.
 		\begin{equation*}
@@ -1259,7 +1259,7 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 			\item The range for $\tau$ is based from (insert citations here) and ranges from 4-20 aa/s depending on the organism. A plausible biological range of 0.1-20 aa/s was explored.
 			\item The 
 			\item As $\lambda$ is only a scaling factor and does not affect the distribution of the ribosomes it was set to 1.
-
+ 
 		\end{enumerate}
 
 
@@ -1279,6 +1279,120 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 \end{enumerate}
 		
 
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/Scaled_initiation_histogram_DUC_pgen_2018.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/Figure1_At_Transcript_half_life_histogram.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/Figure1_At_Protein_length_histogram.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{Images/2022-10-21_Figure1_DIIvsDDI_medianlength_low_marking.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+
+\begin{enumerate}
+	\item  As more ribosomes are loaded onto a transcript there is reduced space available for new ribosomes to occupy.
+	\item This in turn would reduce the ability to initiate new rounds of translation.
+	\item To investigate the effect of ribosomal density on initiation we created two versions of the model. A density dependent initiation (DDI) model which scales the initiation rate by the number of ribosomes on the transcript. And a density intedpendent initiation (DII) version of the model which has a fixed initiation rate.
+	\item In the DII model the ribosome load increases linearly with the scaled initiation rate ($\kappa$ \ $\tau$ ) until it reaches 
+	\item Our model does not explicitly capture the mechanism of translation, it just keeps track of the available spaces left on a transcript. As such the model would underestimate the actual effect of ribosomal interference
+
+\end{enumerate}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{Images/2022-10-21_Figure2_Marking_Rate_range_medianlength.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/Protein_production.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_not_scaled_for_imax.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_scaled_for_imax.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+\end{figure}
+
+
+
+
+
+
+
+%most interesting idea I have at the moment is the idea of effective Imax. While our model does not explicitly account for any of the mechanisms or positions of the ribosomes on a transcript, it does predict behavior for hypothetical transcripts. We currently are running on the assumption that one of the determining parameters is the average elongation rate across a transcript. This very well might not be true as 
+
+%Result 1: Longer genes must be translated less efficiently than shorter genes with especially if there is a maximal intitaion/elongation/translation rate. however longer genes might also be more sensitive.  Sensitivity of Translational regulation based on gene size and intiation rate. From results 
+
+
+%Result 2: Explore the rate limiting effects of tau (geometric,arithmetic sequence dependence) and mu on mean ribosome loading.
+
+
+%Result 3: Marked class has only a limited effect of the total distribution of mRNAs and overall protein production.
+
+
+%Result 4: Is translation density dependent or independent? Under which conditions would density start having an effect. 
+
+%Where is translation tuned to? low mid high Translation? Which parameters can have a greater effect. There has to be a maximum speed for all processes (initiation elongation). Test for robustness of protein output vs ranges of these parameters. Does having an early slow stretch of codons effectively shorten a gene's imax?
+
+
+%Header for result
+%First sentence of paragraph
+%last sentence of paragraph
+
+%4-5 key  findings due on Monday
+%outline due on Wednesday
+
+%Definitions of load vs density vs efficiency vs production rate
+
+
+
+
+
+
+
+
+
+
+
 %Tau prime is the rate at which ribosomes leave the transcript.
 %For a transcript with one ribosome tau prime is the sum of all the individual steps it took the ribosome to get to the stop codon. Since we are not modeling the actual elongation process step by step (and thus mechanistically ignoring pausing or ribosome collisions) we can easily calculate this rate by multiplying the number of codons in gene i by the average translation elongation speed for gene i. 
 %For example in a 900 nucleotide long gene will produce a 300 amino acid long protein. If the average elongation rate of the protein is 3 aa/sec, the translation of one protein will take 300aa/3aa/s = 100 s.
@@ -1295,7 +1409,7 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 
 
 
-
+%add new marked class results here. Marked class in its current formulation is very unpopulated. 
 
 
 	
