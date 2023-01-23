@@ -1278,6 +1278,69 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 	\end{enumerate}
 \end{enumerate}
 		
+Data Sources
+\begin{enumerate}
+	 \item Protein Length data
+	\begin{enumerate}
+		\item Saccharomyces cerevisiae
+		\item Arabidopsis thaliana
+		\item Homo Sapiens
+	\end{enumerate}
+	 \item mRNA half life
+	\begin{enumerate}
+		\item Saccharomyces cerevisiae
+		\item Arabidopsis thaliana
+		\item Homo Sapiens
+	\end{enumerate}
+	\item Defining parameter space
+	\begin{enumerate}
+		\item Saccharomyces cerevisiae
+		\item note on At and Hs
+	\end{enumerate}
+\end{enumerate}
+
+
+
+Main results: 
+\begin{enumerate}
+	\item Density independent initiation and density independent initiation models
+	\begin{enumerate}
+		\item stuff
+	\end{enumerate}
+	\item The model provides an upper bound on translational efficiency
+	\begin{enumerate}
+		\item  The behavior of both DDI and DII models were explored at equilibrium.  At equilibrium, the rate of new initiation events must be equal to the rate of ribosomes leaving the transcript. 
+		\item The two key parameters that control this process are initiation ($\kappa$) and elongation ($\tau$). Changes in either parameter alter the predicted distribution of transcripts across ribosomal classes. 
+		\item To summarize their joint behavior, we chose to focus on the elongation scaled initiation rate ($\kappa$$\\$$\tau$) as this provides a single unique parameter for each model response. %Elaborate on how this is unique and why this is important. This is a necessary reduction of the parameter space that can then be reverted with knowledge of the elongation rate from codon usage data or from ribo seq
+		\item  Exploration of the steady state solution showed that the transcription rate only acts to scale the steady state solution. Meaning that the distribution of transcripts across the ribosomal classes is independent of the number of transcripts being produced. All model solutions presented here have the same transcription rate to allow for comparison. 
+		\item The degradation rate ($\delta$) only controls the transcript population in the marked zeroth class. To reduce interference from this we set a very high degradation rate.
+		\item To interpret model behavior within a biologically meaningful context, empirically determined rates for translation initiation, elongation, and half-life (as a proxy for marking rate) were obtained from the literature. 
+%		\item First, average initiation rates in yeast had an average of 0.131 initiation events/s (5th percentile: 0.07 events/s, 95th percentile: 0.26 events/s) . Paired elongation rates for individual genes were not available. However, empirical elongation rates for each codon from the same experiments were available. A weighted average of elongation rates across all protein coding codons (weighted on the codons abundance) gave a mean elongation rate in yeast. The distribution of elongation values was produced using the weighted mean and the average standard deviation of all codons resulting in a mean elongation rate of 5aa/s (5th percentile: 1 aa/s, 95th percentile: 9 aa/s) [31]. The resulting scaled initiation rate ranges from 0.001 to 0.261. This is old. I have since found a different paper which uses the ribo flow model in yeast to estimate the scaled initiation (Duc 2018)
+
+		\item Introduce scaled initiation rate range. Discuss upper and lower limits vis a vis the model output. 
+		\item *** This is a very important question. How do we show in a convincing manner that the model is recapitulating actual biological results? I have previously used the arguement that both polysome profiling and single molecule imaging of in-vivo ribosomes all agree with the approximate range predicted by the model, especially within the scaled initiation values. That is the model predicts that the ribosome load will be between 10-50$\%$, with median loads of 2 - 13 ribosomes for a transcript of median length. This is reasonable and the median behavior aligns with what polysome profiles show. However, Polysome profiles contain all of the mRNAs in a cell or organism at once. This means that the fact that the model predic 
+
+(-3 to -0.6 in log ten). The marking rate was determined from Arabidopsis mRNA half-lives with a median half-life of 115 min (short 1st percentile: 11.5 min, long 99th percentile: 1,500 min) [32]
+To establish the base model behavior, DII and DDI models were run with a long half-life across a broad range of scaled initiation on a transcript encoding a protein of median length (369aa) (Figure 1). In the DII model, all ribosomal classes are populated. At the high end of the biological scaled initiation transcripts reach full ribosomal occupancy (Figure 1A). The DII model ignores initiation interference caused by ribosomes already present on the transcript. The DDI model accounts for initiation interference, and as expected, a decrease in ribosomal load is observed compared to DII. Even with interference, access to most ribosomal classes is attainable in the DDI model. Ribosomal profiling experiments suggest that most transcripts have one to ten ribosomes loaded with a strong preference for smaller polysomes. Live single molecule fluorescence experiments do show higher polysome numbers rising into the 50s [33]. For the long reporters used in these experiments that equates to a 12 to 30 percent ribosomal load. Thus the DDI model probably overestimates the loading for a particular scaled initiation rate.
+	\end{enumerate}
+	\item Marking rates have only a mild effect on ribosomal load, but a large effect on protein production.
+	\begin{enumerate}
+		\item From the solution of the unmarked system we can define two separate effects of transcript marking.
+		\begin{enumerate}
+			\item  First, marking determines how many transcripts can accummulate in the unmarked class, thus determining the total transcript population		
+			\item Second, marking rate shifts the distribution of transcripts  in the unmarked class towards lower ribosomal classes.	
+		\end{enumerate}
+		\item Marking only has a mild effect on the distribution of transcripts on the unmarked class
+
+
+	\end{enumerate}
+	\item Under equilibrium protein length affects ribosomal load but not ribosomal density
+	\begin{enumerate}
+		\item stuff
+	\end{enumerate}
+
+
+\end{enumerate}
 
 
 
@@ -1317,7 +1380,7 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 	\item This in turn would reduce the ability to initiate new rounds of translation.
 	\item To investigate the effect of ribosomal density on initiation we created two versions of the model. A density dependent initiation (DDI) model which scales the initiation rate by the number of ribosomes on the transcript. And a density intedpendent initiation (DII) version of the model which has a fixed initiation rate.
 	\item In the DII model the ribosome load increases linearly with the scaled initiation rate ($\kappa$ \ $\tau$ ) until it reaches 
-	\item Our model does not explicitly capture the mechanism of translation, it just keeps track of the available spaces left on a transcript. As such the model would underestimate the actual effect of ribosomal interference
+	\item Our model does not explicitly capture the mechanism of translation, it just keeps track of the available spaces left on a transcript. As such the model would underestimate the actual e ffect of ribosomal interference
 
 \end{enumerate}
 
