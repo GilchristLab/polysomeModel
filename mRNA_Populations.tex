@@ -359,7 +359,12 @@ Table~\ref{tab:params} provides a summary of state variable and parameter notati
 
 % begin flow diagram for ODE
 \begin{figure} [htbp] \centering
-	\begin{framed}\begin{tikzpicture}[every node/.style={rectangle,fill=white,node distance=16ex, scale=0.75}, scale=0.90]
+  \begin{framed}
+    %% Resize tikzpicture
+    %% Code based on: https://tex.stackexchange.com/a/4340
+    \resizebox{\textwidth}{!}
+    {
+      \begin{tikzpicture}[every node/.style={rectangle,fill=white,node distance=16ex, scale=0.75}]
 		% Row 1
 		\node[cloud, fill=green!30](m0) {\large $m_0$};
 		\node[cloud, fill=green!30, right of = m0, node distance = 13em](m1){\large $m_1$};
@@ -401,7 +406,8 @@ Table~\ref{tab:params} provides a summary of state variable and parameter notati
 		\path [line] (m*imax) -- node[]{\large $\tau(\imax)$} (m*imaxn);
 		\path [line] (m*0) -- node[]{\large $\delta$} (delta);
 		
-	\end{tikzpicture}
+              \end{tikzpicture}
+            } % end resizebox command
 	\caption{Flow diagram for ODE system describing transitions within the mRNA population model.
 State variables and parameters are defined in Table~\ref{tab:params}.
 Model description and notation are described in Section~\ref{sec:description}.}
@@ -1307,7 +1313,7 @@ Data Sources
 Main results: 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{Images/Figure1 biomodel_V2.tif}
+\includegraphics[height=\textheight]{Images/Figure1_biomodel_V2.png}
 \caption{}
 \end{figure}
 \begin{enumerate}
