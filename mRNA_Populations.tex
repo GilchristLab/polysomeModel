@@ -1304,13 +1304,14 @@ Data Sources
 Main results: 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{Images/Figure1 biomodel_V2.tif}
+
+\includegraphics[width=\textwidth]{Images/Figure1_biomodel_V2.png}
 \caption{}
 \end{figure}
 \begin{enumerate}
 % This is material for the intro. but I need it to properly contextualize the introduction of the model and figure 1%
 	\item  The basic representation of the central dogma dictates that epression of protein coding genes starts from genes encoded in DNA that are transcribed to mRNA and subsequently translated to Protein.
-	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
+ 	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
 	\item The maintenance of mRNA populations relies on the balance of mRNA transcription rates, the translation status of transcripts and numerous mRNA decay pathways.
 	\item  mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
 	\item When not not bound by ribosomes, mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
@@ -1320,10 +1321,31 @@ Main results:
 	\item Endonucleic degradation is still possible, but reduced due to a reduced accessibility of the siRNA binding sequence on the transcript through competition with ribosomes.
 	\item However multiple mechanisms of mRNA decay are carried out in association with the ribosome. Nonsense mediated decay, no go decay and no stop decay all rely on ribosomes detecting faults in the transcript and susbsequently interacting with degradation machinery to remove the faulty transcript.
 	\item With some mechanisms of mRNA decay, decay can occur co-translationally. This is mainly seen in 5' decapping. When a translating transcript is decapped the 5' to 3' exonucleic degradation machinery trails the most upstream ribosome. As the ribosome translates the mRNA is degraded.
-	\item In the plant model organism 
+	\item 
+
+\end{enumerate}
+%Link our mean output and the results of TASEP ribosome flow model.
+%because short genes experience inteference at short loads becomes accentuated because turnover rate is high
+%mention heterologous expression due to codon usage bias
+% mean initiation rate to mean elongation rate ratio and shorten it to the Initiation elongation ratio 
+
+%Point for discussion. By varying the granularity of the Ribo flow model it would be possible to fit the model for distinct regulatory regions. In this idea I'm trying to communicate that there might be distinct mRNA regions that behave like different transcripts. Some transcripts might be very granular like every 10 codons has a distinct behavior, But i would imagine that any one major bottleneck in a transcript would make it
+
+\begin{enumerate}
+Figure1
+	\item  The model captures some of the basic processes governing mRNA populations.
+	\item Transcripts enter into the the population by being transcribed at a rate $\lambda$. 
+	\item Transcripts can exist in one of two states: capped and uncapped which captures the both the mRNA protection and Translation capabilities of the 5' cap. 
+	\item Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
+	\item Nascent transcripts enter the population capped and devoid of ribosomes. 
+	\item 
+
+	\item Uncapped transcripts can no long initate new rounds of translation and are eventually completely degraded once  all ribosomes are off.
+	\item Capped transcripts become uncapped through decapping ($\mu$).
+	\item Trans
 
 
-
+\end{enumerate}
 
 	\item Model predicts mRNA distribution across ribosomal classes
 	\begin{enumerate}
