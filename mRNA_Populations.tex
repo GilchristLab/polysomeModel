@@ -1350,13 +1350,33 @@ Figure1
 	\item This process represent co-translational decay, a common method of mRNA decay in eukaryots (Citation) 
 	\item After all ribosome complete translation, the mRNA is in uncapped class 0 and completely degraded at a rate $\delta$.
 
+\end{enumerate}
+
+Text for discussion of figure 1
+\begin{enumerate}
+	\item The model presented most closely resembles the co-translational decay pathway from eukaryotes.
+	\item There are a few current limitations of the model. First and foremost it doesn't model endonucleolytic decay pathways such as gene silencing by siRNA and the RISC complex or the NMD, NGD and NSD pathways or degradation initiated through ribosomal collisions.
+	\item Implementation of endonucleolytic decay would require an ability to track ribosomal position, which is not possible in our model. 
+	\item Alternatively a probabilistic model of ribsomal position given a particular load could allow for redistribution of capped transcripts into uncapped states of lower ribosomal class.
+	
+	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan elife).
+	\item We explored the interaction of ribosomal loading and marking rate, noting that increased marking leads to a lower expected ribosomal load. This particularly noticable for genes with short half lives and is less sensitive with transcripts with halflives above 2 hours.
+	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+	\item However, biology suggests a more complex behavior.
+	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions.
+
+	\item Our model does not model elongation at a single codon level like TASEP, nor at a course grained approximation of groups of codons like the ribo flow models. This means that it is not capable of analyzing the effect of individual non optimal codons, or stretches of mRNA which are non-optimal
+	\item Our model reflects the average elongation rate over a transcript. However it can be set to reflect the slowest bottle neck across a transcript.  
+	\item Another alternative to modeling bottlenecks is increasing granularity to a very coarse grained ribo-flow model comprising of only two or three sectors, depending whether the transcript has one or two bottlenecks. 
+	\item This splits transcripts into an intial sections where the bottleneck effectively "shortens" the transcript length to the first bottleneck site. Increasing the effect of ribosome loading on iinitiation interference. 
+	\item However, the transcript physically has more length and can bear a larger ribosomal load on the section section. This results in a transcript having and "effective" imax between the actual coding sequence length and the lenght of the transcript to the first bottleneck. 
 
 \end{enumerate}
 
 	\item Model predicts mRNA distribution across ribosomal classes
 	\begin{enumerate}
 		\item Density independent initiation and density independent initiation models
-		\item The model predicts the total mRNA quantity in both marked and unmarked states as well as the mRNA's distribution across different ribosomal classes in each state.
+		\item The model predicts the steady state total mRNA quantity in both marked and unmarked states as well as the mRNA's distribution across different ribosomal classes in each state.
 		\item  Figure X Left, 
 	\end{enumerate}
 	\item The model provides an upper bound on translational efficiency
@@ -1394,7 +1414,12 @@ To establish the base model behavior, DII and DDI models were run with a long ha
 
 \end{enumerate}
 
+Figure 2 points for discussion
 
+\begin{enumerate}
+	\item
+
+\end{enumerate}
 
 
 \begin{figure}[ht]
