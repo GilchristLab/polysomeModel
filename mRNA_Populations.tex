@@ -1293,13 +1293,11 @@ Data Sources
 	\begin{enumerate}
 		\item Saccharomyces cerevisiae
 		\item Arabidopsis thaliana
-		\item Homo Sapiens
 	\end{enumerate}
 	 \item mRNA half life
 	\begin{enumerate}
 		\item Saccharomyces cerevisiae
 		\item Arabidopsis thaliana
-		\item Homo Sapiens
 	\end{enumerate}
 	\item Defining parameter space
 	\begin{enumerate}
@@ -1313,31 +1311,80 @@ Data Sources
 Main results: 
 \begin{figure}[ht]
 \centering
-\includegraphics[height=\textheight]{Images/Figure1_biomodel_V2.png}
+\includegraphics[width=\textwidth]{Images/Figure1_biomodel_V2.png}
 \caption{}
 \end{figure}
 \begin{enumerate}
 % This is material for the intro. but I need it to properly contextualize the introduction of the model and figure 1%
 	\item  The basic representation of the central dogma dictates that epression of protein coding genes starts from genes encoded in DNA that are transcribed to mRNA and subsequently translated to Protein.
-	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
+ 	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
 	\item The maintenance of mRNA populations relies on the balance of mRNA transcription rates, the translation status of transcripts and numerous mRNA decay pathways.
-	\item  mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
-	\item When not not bound by ribosomes, mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
-	\item Additionally mRNA can be started through endonucleolytic cleavage promoted by siRNAs.
+	\item mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
+	\item Additionally mRNA degradation can be promoted through endonucleolytic cleavage by RISC (and siRNAs).
+	\item mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
 	\item Ribosomal association of transcripts can lead to both protection of viable transcripts as well as quality control degradation of faulty transcripts. 
 	\item When a viable transcript is bound by the ribosomal and translational machinery, the 5' cap is bound by translational initation factors and the 3' tail is bound by poly A binding proteins. This protects transcripts from exonucleic attack and degradation.
 	\item Endonucleic degradation is still possible, but reduced due to a reduced accessibility of the siRNA binding sequence on the transcript through competition with ribosomes.
 	\item However multiple mechanisms of mRNA decay are carried out in association with the ribosome. Nonsense mediated decay, no go decay and no stop decay all rely on ribosomes detecting faults in the transcript and susbsequently interacting with degradation machinery to remove the faulty transcript.
 	\item With some mechanisms of mRNA decay, decay can occur co-translationally. This is mainly seen in 5' decapping. When a translating transcript is decapped the 5' to 3' exonucleic degradation machinery trails the most upstream ribosome. As the ribosome translates the mRNA is degraded.
-	\item In the plant model organism 
+	\item 
 
+\end{enumerate}
+%Link our mean output and the results of TASEP ribosome flow model.
+%because short genes experience inteference at short loads becomes accentuated because turnover rate is high
+%mention heterologous expression due to codon usage bias
+% mean initiation rate to mean elongation rate ratio and shorten it to the Initiation elongation ratio 
 
+%Point for discussion. By varying the granularity of the Ribo flow model it would be possible to fit the model for distinct regulatory regions. In this idea I'm trying to communicate that there might be distinct mRNA regions that behave like different transcripts. Some transcripts might be very granular like every 10 codons has a distinct behavior, But i would imagine that any one major bottleneck in a transcript would make it
 
+\begin{enumerate}
+A model of mRNA populations under control of translation and co-translational decay
+Figure1
+	\item The model captures some of the basic processes governing mRNA populations.
+	\item Transcript production, degradation and the process of translation.
+	\item Transcripts can exist in one of two states: capped and uncapped which captures the the role of the 5' cap in mRNA protection and translation initiation. 
+	\item Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
+	\item Individual transcripts in the cell will be found with a set number of ribosomes (none, 1, 2, etc).
+	\item The number of ribosomes on a transcript determines that transcripts ribosomal class.
+	\item The model seeks to determine how the population of transcipts of a single gene are distributed between ribosomal classes and capped and uncapped states.
+	\item Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (class 0)
+	\item From capped class 0 a transcript can have two fates. 
+	\item The transcript can be marked for degradation at rate $\mu$ and move into the uncapped class 0.
+	\item Alternatively, a ribosome can initiate translation at rate $\kappa*(1-i/imax)$ and be loaded onto the transcript and move it into capped class 1.Where i is the current transcript class and imax is the maximal ribosomal occupancy on the transcript
+	\item A ribosome on transcript can then elongate and terminate at a rate of $\tau * i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
+	\item Capped transcripts move through rounds of translation initiation and elongation\/termination and distribute along the different ribosomal classes. 
+	\item From any ribosomal class in the capped state the transcript can be marked at rate $\mu$  and move into the uncapped state while maintaining the same ribosomal class.
+	\item Uncapped transcripts can no longer initate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
+	\item This process represent co-translational decay, a common method of mRNA decay in eukaryots (Citation) 
+	\item After all ribosome complete translation, the mRNA is in uncapped class 0 and completely degraded at a rate $\delta$.
+
+\end{enumerate}
+
+Text for discussion of figure 1
+\begin{enumerate}
+	\item The model presented most closely resembles the co-translational decay pathway from eukaryotes.
+	\item There are a few current limitations of the model. First and foremost it doesn't model endonucleolytic decay pathways such as gene silencing by siRNA and the RISC complex or the NMD, NGD and NSD pathways or degradation initiated through ribosomal collisions.
+	\item Implementation of endonucleolytic decay would require an ability to track ribosomal position, which is not possible in our model. 
+	\item Alternatively a probabilistic model of ribsomal position given a particular load could allow for redistribution of capped transcripts into uncapped states of lower ribosomal class.
+	
+	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan elife).
+	\item We explored the interaction of ribosomal loading and marking rate, noting that increased marking leads to a lower expected ribosomal load. This particularly noticable for genes with short half lives and is less sensitive with transcripts with halflives above 2 hours.
+	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+	\item However, biology suggests a more complex behavior.
+	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions.
+
+	\item Our model does not model elongation at a single codon level like TASEP, nor at a course grained approximation of groups of codons like the ribo flow models. This means that it is not capable of analyzing the effect of individual non optimal codons, or stretches of mRNA which are non-optimal
+	\item Our model reflects the average elongation rate over a transcript. However it can be set to reflect the slowest bottle neck across a transcript.  
+	\item Another alternative to modeling bottlenecks is increasing granularity to a very coarse grained ribo-flow model comprising of only two or three sectors, depending whether the transcript has one or two bottlenecks. 
+	\item This splits transcripts into an intial sections where the bottleneck effectively "shortens" the transcript length to the first bottleneck site. Increasing the effect of ribosome loading on iinitiation interference. 
+	\item However, the transcript physically has more length and can bear a larger ribosomal load on the section section. This results in a transcript having and "effective" imax between the actual coding sequence length and the lenght of the transcript to the first bottleneck. 
+
+\end{enumerate}
 
 	\item Model predicts mRNA distribution across ribosomal classes
 	\begin{enumerate}
 		\item Density independent initiation and density independent initiation models
-		\item The model predicts the total mRNA quantity in both marked and unmarked states as well as the mRNA's distribution across different ribosomal classes in each state.
+		\item The model predicts the steady state total mRNA quantity in both marked and unmarked states as well as the mRNA's distribution across different ribosomal classes in each state.
 		\item  Figure X Left, 
 	\end{enumerate}
 	\item The model provides an upper bound on translational efficiency
@@ -1375,7 +1422,12 @@ To establish the base model behavior, DII and DDI models were run with a long ha
 
 \end{enumerate}
 
+Figure 2 points for discussion
 
+\begin{enumerate}
+	\item
+
+\end{enumerate}
 
 
 \begin{figure}[ht]
