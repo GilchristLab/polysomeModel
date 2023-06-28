@@ -186,14 +186,14 @@
 This paper presents a model to describe the dynamics of protein translation.  
 A system of ordinary differential equations is derived to describe the number of ribosomes bound to a strand of mRNA at a given time.
 The number of ribosomes bound to an mRNA at a given time is referred to its ribosome load.
-The mRNA is classified based on its ribosome load and whether or not it's marked for future degradation.  
+The mRNA is classified based on its ribosome load and whether or not it's decapped for future degradation.  
 Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degredation marking rate, and length of the mRNA.
-%The proposed marking phenomena leads to natural division of the state variables in unmarked and marked classes.
+%The proposed marking phenomena leads to natural division of the state variables in capped and decapped classes.
 The length of the mRNA's coding region plays the role of controlling the number of ribosome counts which, in turn, determines the number of ODEs in the system.  
 %This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as \imax.
 A goal of this work is to see how the equilibrium distribution between classes as changes with coding region length.
-A closed form solution to the density in the $i^{th}$ ribosomal class in a system with \imax states is presented for the equilibrium distribution of the marked classes in terms of the unmarked classes.
-The equilibrium solutions in the unmarked classes are shown to be related to the full determinant of the tri-diagonal matrix used to describe the system, as well as all the determinants of the minors associated to it.
+A closed form solution to the density in the $i^{th}$ ribosomal class in a system with \imax states is presented for the equilibrium distribution of the decapped classes in terms of the capped classes.
+The equilibrium solutions in the capped classes are shown to be related to the full determinant of the tri-diagonal matrix used to describe the system, as well as all the determinants of the minors associated to it.
 In general, there is no closed form for the determinant of a tri-diagonal matrix, only a recurrence relation that can be used to find determinants.
 However, in this model a closed form exists for the full determinant as it changes with changing values of \imax and its formula is presented .
 This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.
@@ -230,7 +230,7 @@ bioinformatics \sep mRNA population \sep protein translation \sep ribosome loadi
 \begin{enumerate}
 \item Physical processes captured (Ideally, have a quick discussion of process and inline definitions of variables used to represent process, followed by a total recap in a table)  - \textbf{(Nate)}
 \begin{enumerate}
-\item System described as population model: Dichotomy of marked and unmarked mRNA.
+\item System described as population model: Dichotomy of decapped and capped mRNA.
 State variables based on an mRNA's ribosome load.
 \item Process of mRNA production
 \item Process of Marking mRNA for degradation supposed
@@ -244,14 +244,14 @@ State variables based on an mRNA's ribosome load.
 \item Temporal boundaries and relation to steady state
 \end{enumerate}
 \item Assumptions: Such as initial assumptions of specific functional forms, i.e. marking rate constant among classes  - \textbf{(Nate)}
-\item Justify consideration of system as two subsystems, marked and unmarked.  - \textbf{(Nate)}
+\item Justify consideration of system as two subsystems, decapped and capped.  - \textbf{(Nate)}
 \end{enumerate}
-\item Model Formulation: Total model presented and then analysis of Unmarked and Marked systems  - \textbf{(Nate)}
+\item Model Formulation: Total model presented and then analysis of capped and decapped systems  - \textbf{(Nate)}
 \begin{enumerate}
 \item ODE/Discrete system
 \begin{enumerate}
-\item Present system of ODEs (Total, Unmarked, and Marked)
-\item Matrix Representation of ODE model (Total, Unmarked, and Marked)
+\item Present system of ODEs (Total, capped, and decapped)
+\item Matrix Representation of ODE model (Total, capped, and decapped)
 \item Steady state formulations
 %\item (Make decision to present results for steady state values for ODE here or after formulation of PDE system in a results section)
 \end{enumerate}
@@ -260,10 +260,10 @@ State variables based on an mRNA's ribosome load.
 \item Explain motivation for deriving PDE
 \item Explain framing as `non-linear birth and death process'
 \item Explain derivation using Taylor expansion
-\item Present PDE for unmarked class
+\item Present PDE for capped class
 \item Present non-dimensionalized system
 \item Present 2nd order ODE to be solved for non-dimensionalized PDE at Equilibrium
-\item Motivate and present equation for marked class at equilibrium
+\item Motivate and present equation for decapped class at equilibrium
 \item (Make decision to present results for steady state values for PDE here or in a separate section to follow)
 \end{enumerate}
 \end{enumerate}
@@ -329,138 +329,91 @@ This section addresses such topics as why modeling this process important, what 
 
 \end{enumerate}
 
+\begin{enumerate}
+% This is material for the intro. but I need it to properly contextualize the introduction of the model and figure 1%
+	\item  The basic representation of the central dogma dictates that epression of protein coding genes starts from genes encoded in DNA that are transcribed to mRNA and subsequently translated to Protein.
+ 	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
+	\item The maintenance of mRNA populations relies on the balance of mRNA transcription rates, the translation status of transcripts and numerous mRNA decay pathways.
+	\item mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
+	\item Additionally mRNA degradation can be promoted through endonucleolytic cleavage by RISC (and siRNAs).
+	\item mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
+	\item Ribosomal association of transcripts can lead to both protection of viable transcripts as well as quality control degradation of faulty transcripts. 
+	\item When a viable transcript is bound by the ribosomal and translational machinery, the 5' cap is bound by translational initation factors and the 3' tail is bound by poly A binding proteins. This protects transcripts from exonucleic attack and degradation.
+	\item Endonucleic degradation is still possible, but reduced due to a reduced accessibility of the siRNA binding sequence on the transcript through competition with ribosomes.
+	\item However multiple mechanisms of mRNA decay are carried out in association with the ribosome. Nonsense mediated decay, no go decay and no stop decay all rely on ribosomes detecting faults in the transcript and susbsequently interacting with degradation machinery to remove the faulty transcript.
+	\item With some mechanisms of mRNA decay, decay can occur co-translationally. This is mainly seen in 5' decapping. When a translating transcript is decapped the 5' to 3' exonucleic degradation machinery trails the most upstream ribosome. As the ribosome translates the mRNA is degraded.
+	\item 
+
+\end{enumerate}
 
 
 
 
-\section{Model Description and Notation}\label{sec:description}
-The mechanistic view that is taken for building this model is as follows.
-Mature, but unbound and unmarked, mRNA are introduced to the system into mRNA class $0$ at a constant rate of $\lambda$.
-%Biologically this is representative of the addition of fully mature, translation competent mRNAs into the cytoplasmic mRNA pool.
-If an unmarked mRNA has a ribosome load of $i$, it is defined as being in class $m_i$ and contributes to that class' abundance.
-% This is the free mRNA pool and can be found in both the cytoplasm and processing bodies awaiting tranlation initiation or degradation
-Ribosomal binding to mRNA in class $i$, $m_i$, is assumed to proceed at rate $\kappa(i)$. %translation initiation
-Ribosomes completing translation of the coding region are released from the mRNA at rate $\tau(i)$.  %Combination of  translation elongation and termination
-mRNAs in the unmarked classes can then transition freely between the $m_0$ and $m_{\imax}$ according to ribosome initiation and completion rates.
-
-To begin the process of mRNA degradation, an mRNA must be tagged or marked.
-A marked mRNA with a ribosome load of $i$ is denoted as being in class $m_i^*$.
-Marking of an mRNA in class $i$ takes place at rate of $\mu(i)$.
-Biologically $\mu$  represents different processes according to the class upon which it is acting on. 
-Specifically, $\mu(0)$ represents deadenylation and decapping directly while $\mu(i)$ for $i > 0$ can represent a multitude of processes such as cotranslational decay, NMD, NGD, NSD or miRNA interference.
-\mymarginpar{Ricardo, are you okay with this description of mRNA marking? If not, please correct.
-  Also, would using 'tagged' be better than 'marked'?
-  }
-  Once an mRNA has been marked, it is assumed that no more initiation can take place and only translation completion occurs; this completion occurs until the mRNA's ribosome load drops to 0 and, thus, enters the $m_0^*$ class.
-mRNA transcripts leave the system class $m_0^*$ at a constant rate of $\delta$.
-%The one exception to this is cotranslation decay, where the majority of the transcript is degraded cotranslationally and only the 3' UTR and poly A tail is left following the transcript entering $m_0^*$
-Figure~\ref{fig:flow_diagram} provides a diagram of system flow to accompany the description above.
-Table~\ref{tab:params} provides a summary of state variable and parameter notation.
-
-% begin flow diagram for ODE
-\begin{figure} [htbp] \centering
-  \begin{framed}
-    %% Resize tikzpicture
-    %% Code based on: https://tex.stackexchange.com/a/4340
-    \resizebox{\textwidth}{!}
-    {
-      \begin{tikzpicture}[every node/.style={rectangle,fill=white,node distance=16ex, scale=0.75}]
-		% Row 1
-		\node[cloud, fill=green!30](m0) {\large $m_0$};
-		\node[cloud, fill=green!30, right of = m0, node distance = 13em](m1){\large $m_1$};
-		\node[cloud, fill=green!30, right of = m1, node distance = 13em](cdots1){\large $\cdots$};
-		\node[cloud, fill=green!30, right of = cdots1, node distance = 14em](mimaxn){\large $m_{\imax-1}$};
-		\node[cloud, fill=green!30, right of = mimaxn, node distance = 14em](mimax){\large $m_{\imax}$};
-		
-		% Row 2
-		\node[cloud, fill=red!30, below of = m0, node distance = 10em](m*0) {\large $m^*_0$};
-		\node[cloud, fill=red!30, below of = m1, node distance = 10em](m*1){\large $m^*_1$};
-		\node[cloud, fill=red!30, below of = cdots1, node distance = 10em](cdots2){\large $\cdots$};
-		\node[cloud, fill=red!30, below of = mimaxn, node distance = 10em](m*imaxn){\large $m^*_{\imax-1}$};
-		\node[cloud, fill=red!30, below of = mimax, node distance = 10em](m*imax){\large $m^*_{\imax}$};
-		
-		% empty nodes for input and output flow arrows		
-		\coordinate[above of=m0, node distance=7em] (lambda);
-		\coordinate[below of=m*0, node distance=7em] (delta);
-		
-		% Paths
-		\path [line] (lambda) -- node[]{\large $\lambda$} (m0);
-		\path [line] (m0) to [bend left=10] node{\large $\kappa(0)$} (m1);
-		\path [line] (m1) to [bend left=10] node{\large $\kappa(1)$} (cdots1);
-		\path [line] (cdots1) to [bend left=10] node{\normalsize $\kappa(\imax-2)$} (mimaxn);
-		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\kappa(\imax-1)$} (mimax);
-		\path [line] (m1) to [bend left=10] node{\large $\tau(1)$} (m0);
-		\path [line] (cdots1) to [bend left=10] node{\large $\tau(2)$} (m1);
-		\path [line] (mimaxn) to [bend left=10] node{\normalsize $\tau(\imax-1)$} (cdots1);
-		\path [line] (mimax) to [bend left=10] node{\large $\tau(\imax)$} (mimaxn);
-		\path [line] (m0) -- node[]{\large $\mu(0)$} (m*0);
-		\path [line] (m1) -- node[]{\large $\mu(1)$} (m*1);
-		%Options for middle path between (...)
-		\path [line] (cdots1) -- (cdots2);
-		%\path [line] (cdots1) -- node[]{\large $\mu(\cdots)$} (cdots2);
-		\path [line] (mimaxn) -- node[]{\large $\mu(\imax-1)$} (m*imaxn);
-		\path [line] (mimax) -- node[]{\large $\mu(\imax)$} (m*imax);
-		\path [line] (m*1) -- node[]{\large $\tau(1)$} (m*0);
-		\path [line] (cdots2) -- node[]{\large $\tau(2)$} (m*1);
-		\path [line] (m*imaxn) -- node[]{\normalsize $\tau(\imax-1)$} (cdots2);
-		\path [line] (m*imax) -- node[]{\large $\tau(\imax)$} (m*imaxn);
-		\path [line] (m*0) -- node[]{\large $\delta$} (delta);
-		
-              \end{tikzpicture}
-            } % end resizebox command
-	\caption{Flow diagram for ODE system describing transitions within the mRNA population model.
-State variables and parameters are defined in Table~\ref{tab:params}.
-Model description and notation are described in Section~\ref{sec:description}.}
-	\label{fig:flow_diagram}
-	\end{framed}
-\end{figure}
-
-\begin{table}
+\section{Methods}\label{sec:description}
+%A model of mRNA populations under control of translation and co-translational decay
+\subsection{Model Overview}
+\pagebreak
+\begin{figure}[!ht]
 \centering
-\begin{tabular}{|rp{4in}|}\hline
-\textbf{Symbol}&\textbf{Description}\\ \hline\hline
-State Variables & \\ \hline
-$m_i$ & Abundance of mRNAs with a ribosome load of $i$ not marked for degradation. \\
-$m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ marked for degradation. \\ \hline
-\multicolumn{2}{r}{Model Parameters} \\ \hline
-  \imax & \shortstack{Maximum number of ribosomes able to bind to mRNA;\\
-           defines number of state variables and is a function of gene length.} \\
-$\kappa(i)$ & Translation initiation rate for unmarked mRNAs with a ribosome load of $i$.\\
-$\tau(i)$ & Translation completion rate for the marked and unmarked mRNAs with a ribosome load of $i$. \\
-$\mu(i)$ & Marking rate for unmarked mRNAs with a ribosome load of $i$.\\
-$\lambda$ & Production rate of newly produced, ribosome free, and unmarked mRNA to the $m_0$ class.\\
-$\delta$ & Removal rate of marked mRNA with a ribosome load of 0 from the $m_0^*$ class.\\ \hline \hline
-%\multicolumn{3}{|p{450pt}|}{\footnotesize Note: $\mathbb{R}^+$ represents the non-negative real numbers and $\mathbb{Z}^{(+)}$ represents the strictly positive integers.} \\ \hline
-\end{tabular}
-\caption{State variables and model parameters for ODE model of mRNA populations.
-Variable \imax is in the domain of non-negative integers; all other variables are non-negative real numbers.}
-\label{tab:params}
-\end{table}
+\includegraphics[width=150mm]{Images/Figure1_biomodel_V3.png}
+\caption{Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda$ through transcription. Transcripts are free to move up and down ribosomal classes at rates $\kappa$ for translation initiation and $\tau$ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu$. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta$. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflect the total protein production potential.}
+\end{figure}
+\pagebreak
 
-\section{Model Definition and Analysis}
+
+The model captures some of the basic processes governing mRNA populations: transcript production, degradation and the process of translation (Figure 1A).
+Transcripts can exist in one of two states: capped and decapped which captures the the role of the 5' cap in mRNA protection and translation initiation. 
+Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
+Individual transcripts in the cell will be found with a set number of ribosomes (none, 1, 2, etc).
+The number of ribosomes on a transcript determines that transcripts ribosomal class.
+The model seeks to determine how the population of transcipts of a single gene are distributed between ribosomal classes and capped and decapped states.
+Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (class 0)
+From capped class 0 a transcript can have two fates. 
+The transcript can be decapped for degradation at rate $\mu$ and move into the decapped class 0.
+Alternatively, a ribosome can initiate translation at rate $\kappa*(1-i/imax)$ and be loaded onto the transcript and move it into capped class 1.Where i is the current transcript class and imax is the maximal ribosomal occupancy on the transcript
+A ribosome on transcript can then elongate and terminate at a rate of $\tau * i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
+Capped transcripts move through rounds of translation initiation and elongation\/termination and distribute along the different ribosomal classes. 
+From any ribosomal class in the capped state the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same ribosomal class.
+decapped transcripts can no longer initate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
+This process represent co-translational decay, a common method of mRNA decay in eukaryots (Citation) 
+After all ribosome complete translation, the mRNA is in decapped class 0 and completely degraded at a rate $\delta$.
+The saturated state of a transcript is denoted as \emph{imax}, meaning that that transcript can no longer accept any more ribosomes. 
+The model produces two outputs. 
+First, the total mRNA in each state and therefore the system (Figure 1B-D). 
+Second, The distribution of the mRNAs in each mRNA in each ribosomal class. (Figure 1 B-D).
+The total protein output at steady state from our model can be obtrained by calculating the average ribosomal class in the system by the total mRNA in the system (Figure 1D). 
+
+\subsection{Model Definition and Analysis}
 For simplicity, we begin by defining our model equations using generic functions to describe the transition of mRNAs between different classes or states.
 We then constrain the model by assuming specific functions to describe the transition of mRNAs between classes.
-%Note that from here forward the unmarked and marked subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
+%Note that from here forward the capped and decapped subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
 
-\subsection*{General Model Equations}
-%\subsection{The Unmarked subsystem}
+\subsection*{General model equations of the density independent initation model}
+%\subsection{The capped subsystem}
 Our model consists of two sets of time dependent and coupled ODEs.
-Each set of ODEs describes the abundance of mRNAs that are either unmarked and marked for degradation.
+Each set of ODEs describes the abundance of mRNAs that are either capped and decapped for degradation.
 The ODEs within each sets equations are structured by the ribosome load of the mRNA.
-The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the marking of unmarked mRNAs or the degradation of marked mRNAs with a ribosome load of 0.
+The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the marking of capped mRNAs or the degradation of decapped mRNAs with a ribosome load of 0.
 
-Specifically, new mRNA enter the $0^{th}$ unmarked class $m_0(t)$ at a rate..
-Ribosomal bind mRNAs in the $i^{th}$ unmarked class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
+Specifically, new mRNA enter the $0^{th}$ capped class $m_0(t)$ at a rate..
+Ribosomal bind mRNAs in the $i^{th}$ capped class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
 By definition, $\kappa(\imax)= 0$, i.e.~mRNAs with a ribosome load of \imax cannot accommodate any addtional mRNAs.
-Unmarked mRNAs with ribosome load $i$ are marked at a rate of $\mu(i)$.
-Accordingly, the ribosome load of marked mRNAs remains unchanged, but they are transitioned from the unmarked class $m_i(t)$ to the marked class $m_i^*(t)$ .
-Ribosome movement along an mRNA is assumed to occur independent of whether or not its unmarked or marked for degradation.
-Thus, ribosomes complete translation of both marked and unmarked mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
+An average ribosomal footprint covers 9 codons (~27 nucleotides). Therefore for a protein of 270 amino acids in length, the maximal ribsomal load, \imax = 10.
+Capped mRNAs with ribosome load $i$ are decapped at a rate of $\mu(i)$.
+Accordingly, the ribosome load of decapped mRNAs remains unchanged, but they are transitioned from the capped class $m_i(t)$ to the decapped class $m_i^*(t)$ .
+Ribosome movement along an mRNA is assumed to occur independent of whether or not its capped or decapped for degradation.
+Thus, ribosomes complete translation of both decapped and capped mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mmRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
+Where $\tau(i)= i \cdot \tau(1)$ and .
+This is because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
+Thus, the chance that a ribosome on a transcript of class $i$ will complete translation increases as ribosome load increases.  
 Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
-Only mRNAs marked for degradation and with a ribosome load of 0 are removed from the system.
-Specifically, marked mRNAs are removed from the $0^{th}$ class at a rate of $\delta \, m^*_0(t)$.
+It is important to note that $\tau(1)$ is not the same as the average elongation rate. $\tau(1) = average \: elongation \: rate/(9 \cdot \imax)$. 
+That is, the average elongation rate in $aa/s$ is rescaled to the average rate of total elongation and termination through a transcript in units of $1/s$.
+At equilibrium every $\tau(i)$ must equal every $\kappa(i)$ by definition.  
+Only mRNAs decapped for degradation and with a ribosome load of 0 are removed from the system.
+Specifically, decapped mRNAs are removed from the $0^{th}$ class at a rate of $\delta \, m^*_0(t)$.
 
-The functional form of the unmarked subsystem is:
+The functional form of the capped subsystem is:
 \begin{align*}
 \frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\left(\kappa(0) + \mu(0)\right)m_{0} \\
 \frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\left(\tau(1)+\kappa(1)+\mu(1)\right) m_{1}\\
@@ -470,7 +423,7 @@ The functional form of the unmarked subsystem is:
 \frac{dm_{\imax}}{dt} &= \kappa(\imax-1)m_{\imax-1}-\left(\tau(\imax)+\mu(\imax)\right) m_{\imax}\\
 \end{align*}
 
-Similarly, the functional form of the marked subsystem is:
+Similarly, the functional form of the decapped subsystem is:
 \begin{align*}
 \frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
 \frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
@@ -480,30 +433,23 @@ Similarly, the functional form of the marked subsystem is:
 \frac{dm_{\imax}^{*}}{dt} &= \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
 \end{align*}
 
-\subsection{Model Equations Assuming Specific Transition Functions}\label{sec:assumed_forms}
+\subsection{The density dependent initiation model}\label{sec:assumed_forms}
 As stated above, we assume mRNAs marked for degradation cannot initiate translation.
-Thus the initiation function for the marked set of mRNAS is $\kappa(i) = 0$.
-In contrast,  ribosomes can initiate translation on an mRNA marked for degradation.
+Thus the initiation function for the decapped set of mRNAs is $\kappa(i) = 0$.
+In contrast,  ribosomes can initiate translation on a capped mRNA.
 For simplicity, we assume ribosome binding of an mRNA is independent of their ribosome load, but that successful initiation of translation is affected by ribosome load.
 Specifically, we assume the start codon must be unoccupied by a ribosome in order for translation initiation to be successful.
-Because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
 As a consequence of this assumption, the probability of a ribosome occupying a given position on an mRNA with a ribosome load of $i$ is simply $i/\imax$.
 Thus, the probability the start codon is unoccupied is $1-i/\imax$ and, in turn, our translation initiation rate function can be defined as, 
 \begin{equation}\label{eq:kappa}
 \kappa(i)=\kappa_0\left(1-\frac{i}{\imax}\right),
 \end{equation} 
-where $\kappa_0$ is a gene specific parameter that describes the rate at which unmarked mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
+where $\kappa_0$ is a gene specific parameter that describes the rate at which capped mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
 
-
-Similarly, the probability a ribosome is at the penultimate codon (i.e.~the codon immediately upstream from the stop codon) is $i/\imax$.
-Assuming that the rate of translation termination is greater than the average elongation rate (i.e.~translation termination is not a rate limiting step), we can define our translation completion rate function as,
-\begin{equation}\label{eq:tau}
-\tau(i)=\tau_0 i/\imax
-\end{equation}
-\mymarginpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
-  mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
-  TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
-  mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
+%\mymarginpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
+ % mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
+  %TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
+  %mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
 % \mymarginpar{Should this be $i/(\tau \imax)$?
 %  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
 %  However, I seem to recall deriving this result that indicate otherwise.
@@ -511,10 +457,10 @@ Assuming that the rate of translation termination is greater than the average el
 %  TODO for mike: Check notes.}
 	%% Mike, the arguement for the derivation was as follows (if I remember correctly): For an mRNA with i ribosomes bound, it was assumed that each ribsome had an equal probability of being in any position, therefore, a ribosome was equally likely to be completing translation, therefore the probability of translation being completed was equal to the number of ribosomes bound, and thus the rate proportional to the number of ribosomes bound, leading to the form provided in eq:tau.  Does that stack up with what you were thinking?
 where $\tau_0$ describes the average elongation rate of a ribosome along the protein coding sequence of that gene and, thus, could vary between genes.
-Finally, we assume that unmarked mRNAs are marked for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
+Finally, we assume that capped mRNAs are decapped for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
 As with $\tau_0$,  $\mu_0$ is assumed to fixed for a given gene, but may vary between genes.
 
-Incorporating these explicit functional forms leads to representation of unmarked subsystem as: %\subsubsection{The Unmarked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:unmarked_simp}
+Incorporating these explicit functional forms leads to representation of capped subsystem as: %\subsubsection{The capped subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:capped_simp}
 \begin{align*}
 \frac{dm_{0}}{dt} &= \lambda+\tau_0\frac{1}{\imax} m_{1}-\left(\kappa_0 +\mu_0\right) m_{0} \\
 \frac{dm_{1}}{dt} &= \kappa_0 m_{0}+\tau_0\frac{2}{\imax} m_{2}-\left(\tau_0\frac{1}{\imax} +\kappa_0\left(1-\frac{1}{\imax}\right) +\mu_0\right) m_{1}\\
@@ -523,8 +469,8 @@ Incorporating these explicit functional forms leads to representation of unmarke
 & \vdots & \\
 \frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right) m_{\imax-1}-\left(\tau_0\frac{\imax}{\imax} -\mu_0\right) m_{\imax} \\
 \end{align*}
-and the marked subsystem as,
-%\subsubsection{The Marked subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:marked_simp}
+and the decapped subsystem as,
+%\subsubsection{The decapped subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:decapped_simp}
 \begin{align*}
 \frac{dm_{0}^{*}}{dt} &= \mu_0 m_{0}+\tau_0\frac{1}{\imax} m_{1}^{*}-\delta m_{0}^{*} \\
 \frac{dm_{1}^{*}}{dt} &= \mu_0 m_{1}+\tau_0\frac{2}{\imax} m_{2}^{*}- \tau_0\frac{1}{\imax} m_{1}^{*} \\
@@ -536,7 +482,7 @@ and the marked subsystem as,
 %These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
 \subsection{Matrix-vector Formulation of ODE System}
 It is frequently useful to work with the matrix-vector formulation for a system of ODE.
-In this model, the dynamics of the marked and unmarked mRNAs can be represented as,
+In this model, the dynamics of the decapped and capped mRNAs can be represented as,
 \begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
 \end{equation} 
 where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
@@ -551,14 +497,14 @@ The matrix $\bs{F}$ is block lower-diagonal and is given in Equation~\ref{eq:ful
 \bs{\mu} & \bs{R} \\
 \end{array} \right).
 \end{equation}
-The upper-left block, $\bs{U}$, corresponds to the unmarked state variables, where $\bs{U}$'s general form is provided in Equation~\ref{eq:unmarked_matrix}.
+The upper-left block, $\bs{U}$, corresponds to the capped state variables, where $\bs{U}$'s general form is provided in Equation~\ref{eq:capped_matrix}.
 The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
 Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
-The lower-right block, $\bs{R}$, corresponds to the marked state variables and its form is provided in Equation~\ref{eq:marked_matrix}.
+The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Equation~\ref{eq:decapped_matrix}.
 
 The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
 \begin{equation}
-\label{eq:unmarked_matrix}
+\label{eq:capped_matrix}
 \bs{U}=\left(\begin{array}{cccccc}
 -(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
 \kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
@@ -569,12 +515,12 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
                           &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
 \end{array}\right).
 \end{equation}
-In the representation given in Equation~\ref{eq:unmarked_matrix}, all blank entries are 0.
-The $(\imax-1)^{\text{th}}$ row has been suppressed in Equation~\ref{eq:unmarked_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
+In the representation given in Equation~\ref{eq:capped_matrix}, all blank entries are 0.
+The $(\imax-1)^{\text{th}}$ row has been suppressed in Equation~\ref{eq:capped_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
 
 The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix $\bs{F}$ (Equation~\ref{eq:full_matrix}),
 \begin{equation}
-\label{eq:marked_matrix}
+\label{eq:decapped_matrix}
 \bs{R}=\left(
 \begin{array}{ccccccc}
 -\delta & \tau_0\frac{`}{\imax} & & & & & \\
@@ -589,9 +535,9 @@ The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix 
 \end{equation}
 $\bs{R}$ is upper-diagonal with only non-zero entries on the diagonal and the super-diagonal.
 
-\subsubsection{Unmarked Subsystem Matrix-vector Representation}
-As a group the unmarked subsystem decouples from the marked subsystem, as such the unmarked subsystem can be solved independently of the marked subsystem.  
-The matrix-vector formula representing the unmarked subsystem is \begin{equation}\label{eq:matrix_unmarked}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of unmarked state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the unmarked subsystem (Figure~\ref{eq:unmarked_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
+\subsubsection{Capped Subsystem Matrix-vector Representation}
+As a group the capped subsystem decouples from the decapped subsystem, as such the capped subsystem can be solved independently of the decapped subsystem.  
+The matrix-vector formula representing the capped subsystem is \begin{equation}\label{eq:matrix_capped}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of capped state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the capped subsystem (Figure~\ref{eq:capped_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
 With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
 
 
@@ -600,8 +546,8 @@ With all equations defined for the full ODE system, include matrix-vector repres
 %\begin{figure}
 %\tiny
 %\centering
-%\caption{Equation~\ref{eq:matrix_unmarked}, $\vec{m}'=\bs{U}\vec{m}+\vec{b}$, is the matrix-vector equation representing the unmarked system from Section~\ref{sec:unmarked_simp}. As it can be seen, the matrix $\bs{U}$ is tri-diagonal, where all blank entries appearing in the matrix are 0. This property of $\bs{U}$ is desirable and leads to a scheme for finding equilibrium solutions that is presented later in this paper}
-%\label{fig:unmarked_matrix}
+%\caption{Equation~\ref{eq:matrix_capped}, $\vec{m}'=\bs{U}\vec{m}+\vec{b}$, is the matrix-vector equation representing the capped system from Section~\ref{sec:capped_simp}. As it can be seen, the matrix $\bs{U}$ is tri-diagonal, where all blank entries appearing in the matrix are 0. This property of $\bs{U}$ is desirable and leads to a scheme for finding equilibrium solutions that is presented later in this paper}
+%\label{fig:capped_matrix}
 %\[\left(\begin{array}{c}
 %m_{0}'\\
 %m_{1}'\\
@@ -640,80 +586,14 @@ With all equations defined for the full ODE system, include matrix-vector repres
 
 %Include???
 
-%From the matrix representation above, one can see that this system has a format, that when viewed in blocks, has desirable properties. Specifically the large square matrix $A\in\mathbb{M}_{2\imax+1,2\imax+1}$, is in the form where the upper-left block is tri-diagonal, and corresponds to the unmarked system. The lower left is diagonal, and corresponds to the input from the unmarked class to the marked class, and the lower right is matrix is upper-triangular corresponding to the marked system. There is an inhomogeneous term represented by the $\vec{B}$which functions as an input to the first unmarked class. These properties make it desirable to begin work by considering the unmarked and marked classes separately.
+%From the matrix representation above, one can see that this system has a format, that when viewed in blocks, has desirable properties. Specifically the large square matrix $A\in\mathbb{M}_{2\imax+1,2\imax+1}$, is in the form where the upper-left block is tri-diagonal, and corresponds to the capped system. The lower left is diagonal, and corresponds to the input from the capped class to the decapped class, and the lower right is matrix is upper-triangular corresponding to the decapped system. There is an inhomogeneous term represented by the $\vec{B}$which functions as an input to the first capped class. These properties make it desirable to begin work by considering the capped and decapped classes separately.
 
 \section{Determining steady-state solutions}
-%SET OUT GOALS EARLIER IN THE PAPER----------
-A goal of this research is to confront the mechanistic model proposed with empirical gene expression data.
-This comparison takes place using the equilibrium distribution of polysomal classes.
-As such, analytical solutions to equilibrium distributions are seen as desirable for the parameter inference step.
-Although this model formulation has characteristics that make the derivation of analytical solutions seem attainable, a unique challenge arises from the flexibility to define the maximum number of polysomal classes through the parameter \imax.
-It is likely clear to the reader at this point, but is worth explicit mention that the number of state variables in the model is controlled by parameter \imax.
-Therefore whatever scheme is developed to solve for steady-state distributions among polysomal classes must be flexible enough to handle a varying number of states.
-Although challenging, the parameterizable number of states necessitates the use and development of a set of equilibrium solution methods that differ slightly from the standard ODE equilibrium solution fare.
-
-%NOTE: There is really only TWO methods, with a second variation on the matrix-inversion method (is the second-order non-linear difference equation a method? I think so, but perhaps should be left for future research?  Discussion of determined boundary conditions and formulation owing to tri-diagonal form should suffice.)
-
-For this study two different methods for finding steady-state solutions for the polysomal classes were developed.
-These methods include (1) an iterative scheme that leverages the tri-diagonal form of the unmarked classes in the matrix-vector representation (2) a partial differential equation approximation where the polysomal class is assumed to be continuous.  
-
-Our discussion of equilibrium solution methods begins using the original formulation of the ODEs.
-This scheme for the matrix-vector formulation of the original system was pursued to find analytical solutions, while the continuous approximation through the PDE was derived as an alternate approach to be solved numerically.  %In either case, due to the unmarked-marked class decoupling, equilibrium solution methods focus on solving for unmarked class distributions and then utilizing these solutions to find marked class distributions.
-
-\subsection{ODE system}
-Steady-state analytical solutions for equilibrium distributions of the ODE system enables efficient parameter inference.
-Decoupling of the unmarked subsystems allows one to focus on it and use the determined values for solving the marked subsystem.  
-\subsubsection{Marked subsystem: \mstarvec}
-The analytical form of the equilibrium distribution in the marked subsystem is quite concise.
-Solved for as a function of the unmarked distribution, the marked distribution at equilibrium is as follows:
-Let $\hat{m}_{i}$ be the steady state or equilibrium solution the $i^{th}$ state in the unmarked subsystem.
-Then the solution to the $i^{th}$ state in the marked subsystem at equilibrium, denoted $\hat{m}_{i}^{*}$, is given by:
-\begin{equation}\label{eq:anyl_marked_eq}
-\hat{m}_{i}^{*} = \frac{\mu_0}{\tau_0\frac{1}{\imax}}\frac{\sum_{j=i}^{\imax}\hat{m}_{j}}{\gamma (i)} \text{, where\quad}
-\gamma (i) = \left\{
-        \begin{array}{ll}
-            \frac{\delta}{\tau_0\frac{1}{\imax}} & \quad i = 0 \\
-            i & \quad i > 0
-        \end{array}
-    \right. .
-\end{equation} 
-In contrast to the solutions for the components of the marked subsystem, the unmarked subsystem components do not have such a straight-forward analytical representation.
-
-\subsubsection{Unmarked subsystem: \mvec}
-Analytical steady-state solutions to the unmarked subsystem were generated for low levels of \imax $(\imax=1,2,...,9)$ using the symbolic computation capabilities of \emph{Mathematica}.
-Visual inspection and hand-calculation was used to determine patterns in these solutions.
-Upon investigation it was found that the uppermost, \imax, polysomal class has the closed-form equilibrium solution of:
-%\begin{equation}\label{eq:anyl_unmarked_imax}
-%\hat{m}_{\imax}=\dfrac{\prod_{i=1}^{\imax}\left(\kappa_0 \frac{i}{\GCD[\imax,i]}\right)}{\prod_{i=1}^{\imax}\left(\frac{\imax}{\GCD[\imax,i]}(\mu_0+\tau_0\frac{i}{\imax})+\kappa_0 \frac{i}{\GCD[\imax,i]}\right)},
-%\end{equation}
-%for any level of \imax and where \GCD is the greatest common divisor function.
-%Which can be simplified further as,
-%\begin{equation}\label{eq:anyl_unmarked_imax_simp}
-%\hat{m}_{\imax}=\prod_{i=1}^{\imax}{\left(\frac{\imax}{i\kappa_0}\left(\mu_0+\tau_0\frac{i}{\imax}\right)+1\right)},
-%\end{equation} 
-\begin{align}
-  \hat{m}_{\imax} &=\prod_{i=1}^{\imax}\frac{i \frac{\kappa_0}{\imax} }{\mu_0+\frac{i}{\imax}\left(\tau_0 + \kappa_0\right)},\label{eq:anyl_unmarked_imax_simp}\\
-  &= \frac{\left(\frac{\kappa_0}{\imax}\right)^\imax \imax!}{\prod_{i=1}^{\imax} \mu_0+\frac{i}{\imax}\left(\tau_0 + \kappa_0\right)}
-\end{align}
-for any level of \imax. \mymarginpar{mikeg: 10/22/19 Note we no longer have any GCD since they cancelled out.  See text in Note section at end of document.
-Nate, can you verify the product term should be from $i=1$ and not $i=0$?}
-As a general observation, for all \imax levels investigated the complexity of analytical solutions increased as one moved from higher to lower polysomal classes.
-In fact, beyond the uppermost polysomal class (Eq~\ref{eq:anyl_unmarked_imax}), no other classes were able to be determined completely in closed-form.
-Notably, as a side-benefit having a closed-form solution for the upper-most class is beneficial when considering other solution methods, such as PDE approximation, where such a solution can provide a boundary condition.
 
 
 
-It follows that the formula for the determinant of $\bs{U}$ is,
-\begin{align}
-  \det[\bs{U}] & =(-1)^{\imax+1}\prod_{i=0}^{\imax}{\left(\frac{i}{\imax}(\kappa_0)+(\mu_0+\tau_0\frac{i}{\imax})\right)}.\label{eq:U_det}
-  %& =(-1)^{\imax+1}\mu_0\prod_{i=1}^{\imax}{\left(\frac{i}(\kappa_0/imax + \tau_0\frac{1}{\imax})+ \mu_0\right)}.\label{eq:U_det}
-\end{align}
-\mymarginpar{mikeg: 10/22/19: note that by having product term begin at $i=0$ rather than $i=1$ as in previous equations we can incorporate the orphan $\mu_0$ into the product term}.
-It can also be shown that this formula may be rewritten in terms of the Pochhammer symbol, or rising factorial [Show in appendix or cite a source.].
-Considering that in general there is no closed form for the determinant of a tri-diagonal matrix, the fact that this formula exists is a unique and desirable property of our system of ODEs.
-
-With a closed-form expression for the determinant of the unmarked class matrix $\bs{U}$ we are now able to formulate another method to determine equilibrium solutions in the unmarked class by utilizing the matrix-vector formulation of the unmarked subsystem.
-At equilibrium $\vec{m}'=0$, and so the matrix-vector equation (Eq. \ref{eq:matrix_unmarked}), when solved for the vector of state variables, $\vec{m}$, becomes,
+With a closed-form expression for the determinant of the capped class matrix $\bs{U}$ we are now able to formulate another method to determine equilibrium solutions in the capped class by utilizing the matrix-vector formulation of the capped subsystem.
+At equilibrium $\vec{m}'=0$, and so the matrix-vector equation (Eq. \ref{eq:matrix_capped}), when solved for the vector of state variables, $\vec{m}$, becomes,
 \begin{equation}
 \vec{m}=-\bs{U}^{-1}\vec{b}.
 \end{equation}
@@ -722,7 +602,7 @@ and making determination of equilibrium solutions come down to deriving an effic
 The closed-form of the determinant enables the identification of parameters in which $\bs{U}$ is invertible.
 Using the fact that $\bs{U}$ is invertible iff $\det[\bs{U}]\neq0$.
 Equation \ref{eq:U_det} shows that the only possible scenario where $\bs{U}$ is non-invertible is when $\mu_0=0$.
-Given that $\mu_0$ controls the rate at which unmarked mRNA become marked for deletion, the physical interpretation of $\mu_0=0$ is no degradation of unmarked mRNA and thus no loss in the system, leading to linear, unbounded growth in unmarked mRNA populations equal to the mRNA transcription rate $\lambda$.
+Given that $\mu_0$ controls the rate at which capped mRNA become decapped for deletion, the physical interpretation of $\mu_0=0$ is no degradation of capped mRNA and thus no loss in the system, leading to linear, unbounded growth in capped mRNA populations equal to the mRNA transcription rate $\lambda$.
 
 With a classification of when $\bs{U}$ is invertible we now consider a particular method for matrix inversion that can make use of the closed-form of the determinant.
 Namely, the method considered here is the determinant-adjoint approach given by,
@@ -731,494 +611,23 @@ Namely, the method considered here is the determinant-adjoint approach given by,
 \end{equation*}
 Thus inverting $\bs{U}$ now falls onto the task of simplifying the product of $Adj[\bs{U}]\vec{b}$.
 Owing in part to the tri-diagonal form of $\bs{U}$ and to the fact that $\vec{b}$ is only non-zero in the first component, an expression for $\vec{m}$ was able to be determined as follows,
-\begin{equation}\label{eq:U_det_adj}
-\vec{m}=-\frac{1}{\det[\bs{U}]}\lambda\begin{vmatrix}\det[\bs{U}_{\imax-1}]\\
--s_{1}\det[\bs{U}_{\imax-2}]\\
-s_{1}s_{2}\det[\bs{U}_{\imax-3}]\\
-\vdots\\
-(-1)^{i}(\prod_{j=1}^{i}s_{j})\det[\bs{U}_{\imax-(i+1)}]\\
-\vdots\\
-(-1)^{\imax-2}(\prod_{j=1}^{\imax-2}s_{j})\det[\bs{U}_1]\\
-(-1)^{\imax-1}(\prod_{j=1}^{\imax-1}s_{j})\det[\bs{U}_0]
-\end{vmatrix}
-\end{equation}
-Along with the convention that $\det[\bs{U}_0]=1$, we also define $\bs{U}_{i}$ as $i\times i$ lower right sub-matrix, or minor, of $\bs{U}$ and  $s_{i}$ as the sub-diagonal entry of the $i^{th}$ of entry of $\bs{U}$, where $s_{i}= \kappa(i-1) = \kappa_0\left(1-\frac{i-1}{\imax}\right)$.\mymarginpar{mikeg: 10/22/19: note $s_i = \kappa(i-1)$ so we should be able to simplify notation by replacing $s$ with $\kappa$}
-Equation~\ref{eq:U_det_adj} provides a solution to the equilibrium distributions in the unmarked sub-system in terms of the determinants of $\bs{U}$ and each of its lower-right sub-matrices, $\bs{U}_i$.
-This result points to the determination of a closed-form for the equilibrium distributions as being linked to a determination of an efficient way to generate the sub-matrix determinants.
-However, at this point a closed-form for the sub-matrix determinants has yet to be found, encouraging further research into efficient methods to determine equilibrium distributions.
-
-%\subsubsection{Equilibrium Solutions and Other Results}
-%
-%The \emph{Solve{[}{]}} command in \emph{Mathematica }was used to generate
-%solutions to the unmarked system at equilibrium. Through various manipulations
-%it was shown that the equilibrium level in each class for a system
-%with $\imax+1$ classes, is always divided by the following product
-%(indexed by \imax):
-%
-%\begin{equation}
-%\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))
-%\end{equation}
-%
-%This discovery by itself was not enough to describe equilibrium distributions
-%in each class since it only gives a closed form for the denominator
-%of each class in a system for unmarked classes up to \imax. Additionally,
-%the product given in (5) gives an explicit formula for the total number
-%of mRNA in the system at equilibrium as a function of \imax.
-%However, it turns out that this quantity is highly related to the
-%determinant of the matrix $A$ defined for the unmarked system. This
-%gives way to the following relationship,
-%
-%\begin{equation*}
-%\det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}(\frac{i}{\GCD[\imax,i]}\kappa r+\frac{\imax}{\GCD[\imax,i]}(\mu+i\tau))\frac{1}{\frac{\imax}{\GCD[\imax,i]}}
-%\end{equation*}
-%Which simplifies to:
-%\begin{equation}
-%\det[A]=(-1)^{\imax+1}\mu\prod_{i=1}^{\imax}{\left(\frac{i}{\imax}(\kappa r)+(\mu+i\tau)\right)}
-%\end{equation}
-%
-%In fact, it can also be shown that this formula may be rewritten in
-%terms of the Pochhammer symbol, or rising factorial. The formula above
-%is not necessarily a simple expression, but, considering that in general
-%there is no closed form for the determinant of a tri-diagonal matrix,
-%the fact that this formula exists is a unique and desirable property
-%of this system particular. Unfortunately, there does not seem to be
-%a closed form for the sub-determinants, which are needed to calculate
-%the state variables at equilibrium. 
-
-In order to move forward solving the system using Equation~\ref{eq:U_det_adj} above, all the sub-determinants are needed.
-Another property of tri-diagonal matrices is that their determinants can be calculated by solving a $2^{nd}$ degree partial recurrence equation.
-This means two things, the first is that if a closed form solution existed for that recurrence relation, it could be used to calculate all the determinants and sub-determinants of the system.
-Additionally, it specifies that one can work forward iteratively from $\det[\bs{U}_{1}]$ in order to generate all $\det[\bs{U}_{i}]$. %Since this system has a formula
-%for the full determinant of $A$, one might be able to devise a scheme %that identifies the $\det[A_{n-1}],\det[A_{n-2}],\,...$ and so on. %The approach taken here was to attempt to solve the recurrence relation %using \emph{RSolve{[}{]}.}
-Specifically, taking a tri-diagonal matrix written in the general form,
-\[
-  \bs{A}=
-\left(\begin{array}{ccccc}
-d_{0} & p_{0} & 0 & 0 & 0\\
-s_{1} & d_{1} & p_{1} & 0 & 0\\
-0 & s_{2} & d_{2} & p_{2} & 0\\
-\vdots & \ddots & \ddots & \ddots & \vdots\\
-0 & 0 & s_{n-1} & d_{n-1} & p_{n-1}\\
-0 & 0 & 0 & s_{n} & d_{n}
-\end{array}\right).
-\]
-
-The determinants of the $\bs{A}_{1},...,\bs{A}_{n-1}$ sub-matrices can be solved by the following recurrence relation, 
-\begin{equation}\label{eq:recurrence_general}
-\detA{i} = d_{n-i}\cdot \detA{i-1} - p_{n-i}\cdot s_{n-(i-1)}\cdot \detA{i-2},
-\end{equation}
-with the initial conditions,
-\begin{equation}\label{eq:recurrence_general_ic}
-\detA{1}=d_{n}\; \text{and}\; \detA{2}=d_{n-1}\cdot a(n,1)-p_{n-1}s_{n}.
-\end{equation}
-
-%This was then used in \emph{Mathematica }with \emph{RSolve{[}{]} }by
-%changing from the general form above to the form of this system with
-%the following substitutions:
-
-In the case of the matrix $\bs{U}$, the Equations~\ref{eq:recurrence_general} along with the initial conditions in \ref{eq:recurrence_general_ic} can be specified with the following equations,
-\[
-\begin{array}{l}
-%d_{n-i}=-((\imax-(n-i))/\imax)\kappa r+\mu+(n-i)\tau\\
-%s_{n-i+1}=\kappa r((\imax-((n-i+1)-1))/\imax)\\
-%p_{n-i}=(n-i+1)\tau\\
-%d_{n-1}=-((\imax-(n-1))/\imax)\kappa r+\mu+(n-1)\tau\\
-%s_{n-1}=\kappa r((\imax-((n-1)-1))/\imax)\\
-%d_{n-2}=-((\imax-(n-2))/\imax)\kappa r+\mu+(n-2)\tau\\
-%p_{n-2}=((n-2)+1)\tau\\
-%and\\
-d_{i}=-\left(\kappa_0\left(1-\frac{i}{\imax}\right)+\mu_0+\text{\ensuremath{\tau_0\frac{i}{\imax}}}\right)\\
-p_{i}=\tau_0\frac{i+1}{\imax}\\
-  s_{i}=\kappa_0\left(1-\frac{i-1}{\imax}\right)
-\end{array}
-\]
-This iterative scheme provides one approach to finding the sub-matrix determinants, $\det[A_{\imax-1}]$, $\det[A_{\imax-2}]$, $... $ needed to determine the equilibrium solutions given in Equation~\ref{eq:U_det_adj}. 
-
-%The solution given by \emph{Mathematica} is in the form of a ``function-like''
-%object that can be evaluated in \emph{Mathematica} , it is
-%called a \emph{DifferenceRoot{[}{]}. }From the documentation about
-%this object it is not clear if it will be able to be utilized in other
-%software such as \emph{R} or \emph{Matlab}.  With that being the case more work should be done to find a solution to this 2nd order difference equation that is not software dependent. \\
-
-%None the less, this solution utilizing \emph{RSolve{[}{]}},
-%does give the desired result. The function is given by the fairly
-%dense \emph{Mathematica} object below, it has been labeled as \emph{TriDET{[}{]}}:
-
-%\includegraphics[draft, type=eps,width=200pt,height=50pt]{../../../../Desktop/tridet_image.gif}
-%\begin{equation}
-%(**Fix\, and\, Add\, Image\, as\, Tex\, formula**)
-%\end{equation}
- 
-
-%This is then used in the formula given in (4) to generate the quantities
-%$\det[A_{i}]$, and the function, named \emph{UMEQSoln($\imax,i$),
-%}will give the solution to the to $m_{i}$ at equilibrium with $\imax+1$
-%classes.
-
-%\begin{equation}
-%UMEQSoln(\imax,i)\text{:=}\frac{1}{TriDET[\imax+1,\imax+1]}(\lambda)\text{\ensuremath{TriDET}}[\imax+1,(\imax+1)-(i+1)]\left(\prod_{j=1}^{i}\left(\frac{\imax-(j-1)}{\imax}\right)\kappa r\right)
-%\end{equation}
-
-%%%% Move this to opportunities for future research %%%%%
-
-%\subsection{Density Independent Initiation}
-%
-%A simplification of the system can be made in the case where initiation rate $\kappa$ is assumed to be independent of the current number of ribosomes bound for a given mRNA.  With this simplifying assumption, $\kappa(i)=\hat{\kappa}$ and the following result holds for the denominator of each of the unmarked classes at equilibrium:
-%
-%\begin{align}
-%\sum _{q=0}^{\imax} \frac{imax!}{q!(imax-q)!} (\hat{\kappa})^{imax-q} \prod _{j=0}^{q} (j \tau +\mu )
-%\end{align}
-%
-%****Want to investigate this form to see if can be linked to a known probability distribution**** 
-
-%\subsubsection{Summary of Current Results in the Unmarked System}
-%
-%The largest breakthough in finding a closed form solution to the unmarked class at equilibrium comes from having a closed form for the determinant of the matrix representation.  The method that is currently being used to solve the system in simulations utilizes this determinant and determinant-adjoint method for matrix inversion.
-%
-%%----This is related to the tridet solution that has no been pursued any longer.------
-%%With this solution now in hand, anyone with access to \emph{Mathematica}
-%%can generate solutions to the equilibrium levels of Unmarked mRNA
-%%in the system as a functions of $\imax,i,\lambda,\kappa,r,\tau$.
-%%After running some simulations with the function above, some of the
-%%expected behavior of the system is exhibited. We see that as \imaxincreases
-%%(from $1$ to $10$ for example), the distribution in the unmarked
-%%system changes from being heavily weighted towards the higher classes,
-%%to being more weighted in the middle classes. Of note is that \emph{Mathematica}
-%%can easily generate solutions with (8) for a lower \imaxvalues,
-%%but when values of $\imax>20$ were used, there was no quick return
-%%% THIS MIGHT BE WORTH MENTIONING %%%%%%%  of solutions. One reason for this, is that it can be shown that the
-%%number of terms in $\det[A_{n}]$ grows exponentially, and more specifically,
-%%the number of terms grows according to the Fibonacci sequence. This
-%%is a consequence of the tri-diagonal form of $A$. 
-%
-%%Additionally, in order to make use of the above results, they still
-%%need to be applied to generating simultaneous solutions to the marked
-%%class. For the end-user, something must be done in order to deal with
-%%values of \imaxthat are more biologically relevant. These areas
-%%for expansion and future research are addressed in the following section.
-
-%%%% THIS SECTION WAS MOVED ABOVE %%%%
-%\subsection{The Marked System}
-%
-%The dynamics in the marked system are slightly more simple than those that occur in the Unmarked system; with the exception of the fact that the marked system depends on the solution the unmarked system.  This is because of the assumption that once an mRNA has entered a marked class, it can only lose ribosomes. This leads to a one directional flow of ribosomes through the marked classes.
-%
-%\subsubsection{Equilibrium Solutions to the Marked System}
-%
-%Let $\hat{m_{i}}$ be the solution the $i^{th}$ state in the unmarked class at equilibrium.  Then the solution to the $i^{th}$ state in the marked class at equilibrium, denoted $m_{i}^{* eq}$ is given by:
-%\begin{equation}
-%\hat{m}_{i}^{*} = \frac{\mu}{\tau}\frac{\sum_{j=i}^{n}\hat{m}_{i}{\gamma (i)} \text{, where\quad}
-%\gamma (i) = \left\{
-        %\begin{array}{ll}
-            %\frac{\delta}{\tau} & \quad i = 0 \\
-            %i & \quad i > 0
-        %\end{array}
-    %\right.
-%\end{equation}
-%
-%This formula was found by investigating the system and finding patterns by inspection.  The closed form solution for the Marked class is both concise and quickly solved in \emph{Mathematica} and \emph{R}.  When the Unmarked and Marked systems are solved separately, this is the formula that is used to generate the solutions to the Marked class at equilibrium.  Most commonly, the two systems are solved separately when a continuous approximation is used to generated equilibrium solutions to the Unmarked class. The other occasion when the Unmarked and Marked classes are solved separately is when the recurrence relation solution for the Unmarked class is utilized.
-%
-%With the methods given above to find equilibrium solutions to Unmarked and Marked classes separately, the next section will describe the method used solve for the solutions for the full system at equilibrium simultaneously. 
-
-\subsection{Steady-state in ODE full system}
-The Full ODE system was described in matrix-vector form in Equation~\ref{eq:matrix_full}.
-Recall that $\bs{F}$ has a block matrix form given in Figure~\ref{eq:full_matrix}, where the upper-left matrix is tri-diagonal, the upper-right block is the zero matrix, the lower-left matrix is diagonal, and the lower-right block is upper-triangular.
-Utilizing the formula found for the determinant of $\bs{U}$, a closed form for the determinant of $\bs{F}$ was determined.
-This formula is given by,
-\begin{align}
-  \label{eq:full_matrix_det}
-  \det[\bs{F}] %&=(-1)^{\imax+1}\mu_0 \delta \lambda \tau_0\frac{1}{\imax}^{\imax}\left(\prod_{l=1}^{\imax}{-l}\right)\left(\prod_{i=1}^{\imax}{\mu_0 +\tau_0\frac{i}{\imax} + \frac{i}{\imax}\kappa_0}\right)
-                 %-l term and -1 terms in above equation simplifies
-            &=-\delta \lambda \tau_0\frac{1}{\imax}^{\imax}\imax!\left(\prod_{i=0}^{\imax}\mu_0 +\frac{i}{\imax} \left(\tau_0 + \kappa_0\right)\right).
-\end{align}
-At equilibrium, the equations for the full system become,
-\begin{equation}
-\vec{M}=-\vec{B}\bs{F}^{-1}.
-\end{equation}
-If one uses the determinant-adjoint method to invert $\bs{F}$ then the form of $\vec{B}$, being $\lambda$ in the first component and 0's else, entails that only the co-factors for the first row of $\bs{F}$ need to be determined.
-This eases the computation of the adjoint matrix for $\bs{F}$, and once again points to the determinant-adjoint inversion as a method for determining equilibrium solutions.
-Unlike the previous solution methods, this method solves the for unmarked and marked classes simultaneously.
-
-We have now presented multiple methods for solving the ODE system at equilibrium.
-Advantages and drawbacks for each of the methods are addressed in the discussion section later in this paper.
-We now turn our attention to describing a method where the discrete unmarked and marked polysomal classes are approximated as continuous and a system of PDE are used to solve for equilibrium solutions.
-%%%% COMMENT ON ABILITY FIND ADJOINT OF F MATRIX IN DISCUSSION%%%%
-
-\section{Partial differential equation approximation using continuous polysomal classes}
-The derivation of the system of partial differential equations utilizes the observation that the unmarked system can be viewed as a \emph{non-linear birth and death process}. \emph{Births} in this case are initiation events and \emph{deaths} are translation completion events.
-The benefit of this observation about the unmarked class is that non-linear birth and death processes are a well-studied type of system and previous research can be leveraged here.
-In addition to simply providing another view of the system, the continuous polysomal classes assumed in the PDE derivation allow one to more easily handle high levels of \imax.
-
-\subsection{The unmarked class PDE approximation}
-The rate of initiation and translation completion in our model is controlled by two functions, $\kappa(i)$ and $\tau(i)$, respectively.
-From a non-linear birth and death process perspective, these two functions control births and deaths in our system, with exception of births into the $m_0$ unmarked non-polysomal class which is controlled by the parameter $\lambda$.
-Each birth represents a transition in the population of an mRNA in a given polysomal state to the next highest state and each death transitions a given mRNA from its current state to the next lower state.
-Following the derivation from Karev et al., (CITE) a continuous approximation for the unmarked class can be given as follows:
-
-\begin{equation}\label{eq:unmarked_pde}
-\p{m(i,t)}{t}=-m(i,t)\mu(i)-\p{}{i}\left(m(i,t)(\kappa(i)-\tau(i)\right)+\frac{1}{2}\ptwo{}{i}\left(m(i,t)(\kappa(i)+\tau(i))\right),
-\end{equation} where the quantity $\kappa(i)-\tau(i)$ is considered the \emph{drift coefficient} and $\kappa(i)+\tau(i)$ the \emph{diffusion coefficient}.
-To distinguish between the discrete ODE system and the continuous PDE system, we use continue to use the subscript notation of $m_i$ and $m_i^*$ for the unmarked and marked ODE classes and now use $m(i,t)$ and $m^*(i,t)$ for the unmarked and marked classes in the PDE system.
-
-Assuming the functional forms for $\kappa(i)$ and $\tau(i)$ as provided in Equations~\ref{eq:kappa} and \ref{eq:tau} and assuming equilibrium, $\p{m(i,t)}{t}=0$, Equation~\ref{eq:unmarked_pde} becomes,
-\begin{equation}
-0=\left(\frac{\kappa_0}{\imax}-\mu_0+\tau_0\frac{1}{\imax}\right)m(i)+\left(\frac{(i-1)\kappa_0}{\imax}-\kappa_0+\tau_0\frac{i+1}{\imax}\right)m'(i)+\frac{1}{2}\left(\kappa_0+ \frac{i}{\imax}\left(\tau_0-\kappa_0\right)\right)m''(i).
-\end{equation}
-\subsubsection{The Marked Class PDE approximation}
-The dynamics for the marked class can be modeled by the following nonlinear inhomogenous first-order PDE,
-
-\begin{equation}\label{eq:marked_pde}
-\frac{\partial m^*(i)}{\partial t}+\frac{\partial}{\partial i}\left(-\tau(i)m^*(i)\right)=\mu(i)m(i,t)
-\end{equation}
-In practice, just as in the ODE system, we utilize the exact quantities in the marked classes as a function of the unmarked class abundances given by Equation~\ref{eq:anyl_marked_eq}.
-As such, Equation~\ref{eq:marked_pde} is presented only to provide a complete full-system PDE approximation to the system of ODE and is not discussed further.
-
-\subsubsection{Unmarked PDE Boundary Conditions}
-At equilibrium, the unmarked PDE reduces to 2nd order non-linear ODE, requiring two boundary conditions for a specific solution.
-Two approaches were investigated for the upper boundary condition.
-The first is an approximation that $m(\imax)=0$ meaning  that the $(\imax)^{th}$ unmarked class has no members at equilibrium.
-This boundary condition is based on the assumption that the likelihood of any mRNA being completed saturated with ribosomes is nearly zero.
-The second approach for the upper boundary condition utilizes a result from the ODE system.
-Namely, in the unmarked ODE system a closed form for $m(\imax)$ was determined, so Equation~\ref{eq:anyl_unmarked_imax} can be used to provide an exact upper boundary for the unmarked PDE.
-%In practice,
-%it makes very little difference whether this condition is used for
-%the upper boundary condition or if $m(n)=0$ or even $m'(n)=0$ as
-%numerically the results are indistinguishable. ({*}{*}This statement
-%may be stated more precisely, perhaps ``negligible based on simulation
-%results'' would be more appropriate{*}{*}) 
-
-For the lower boundary condition, setting it exactly means knowing the value of the $0^{th}$ unmarked class; unlike the $m_{\imax}$ class, no simple closed form solution was able to be determined.
-In the absence of the closed form for $m_0$ an alternate approach needed to be determined.
-Utilizing the analytical solvers in \emph{Mathematica}, an arbitrary initial value, $m(0)=m0$ was used and solutions were studied.
-From this, it was determined that $m(0)$ served only to scale the solutions in the PDE.
-Using this and borrowing the following observation from the discrete system,
-\begin{equation}\label{eq:eq_unmarked_sum}
-\frac{\lambda}{\mu}=\sum_{i=1}^{\imax}m_{i},
-\end{equation}
-an efficient method for supplying the appropriate scaling through the boundary condition was deduced.
-We originally solve the PDE for the unmarked class at equilibrium with $m(0)=1$ and $m(i_max)=0$ as boundary conditions, call this equilibrium solution $m_{pre}(i)$.
-We then let $m_{sum}=\sum_{i=0}^{n}m(i)_{pre}$, and finally, using the relationship in Equation~\ref{eq:eq_unmarked_sum}, let $m0=\left(\frac{\lambda}{\mu_0}\right)\frac{1}{m_{sum}}$, which is now the correct, unscaled lower boundary condition.
-At this point one can either use this value and resolve the unmarked PDE at equilibrium with the proper boundary conditions $m(0)=m0$ and $m(\imax)=0$ or, given that $m0$ is just a scaling factor, one can simply multiply the solution $m_{pre}(i)$ by $m0$ to obtain the solution the unscaled equilibrium values for the unmarked classes.
-
-Another option to write the boundary condition for the lower boundary that is slightly more straight-forward is to write $m(0)$ explicitly in terms of the sum, $m(0)=\left(\frac{\lambda}{\mu}\right)\frac{1}{\sum{}_{i=0}^{\imax}m(i)}$.
-Use of this form for the boundary condition was not pursued since the results of the previously outlined method were found to be sufficient.
-
-%Due to the relationship between the discrete and continuous approximations, specifically $m_{i}\approx m(i)$, Equation~\ref{eq:eq_unmarked_sum} translates to,
-%And then for unmarked classes in the continuous PDE approximation, Equation~\ref{eq:eq_unmarked_sum} translates to,
-%\begin{equation*}\frac{\lambda}{\mu}\approx\sum_{i=1}^{n}m(i),
-%\end{equation*} and this formula can be used to re-scale the unmarked classes from the specified boundary condition of $m(0)=1$.
-
-
-
-%One might expect that, in general, when moving from discrete to the continuous approximation
-%that the sum in Equation~\ref{eq:eq_unmarked_sum} would be translated to an integral, however,
-%we have found that the continuous approximation in this case does
-%translate directly. In fact the relationship found between the continuous and discrete unmarked classes
-%is given by $m_{i}\approx m(i)$, and not $m_{i}\approx\int_{i-1}^{i}m(i)$. 
-
-
-%({*}{*} Perhaps the relationship between
-%the ODE and PDE approximation will be better explained previously
-%so I might just reference the previous explanation and restate the
-%relationship $m_{i}\approx m(i)$, alternatively, I may just tell
-%the reader to reference the section where the relationship between
-%the discrete and continuous {*}{*})
-
-%In order to better understand the effects of the boundary condition
-%choice at the lower boundary. The following condition was used
-%to solve the 2nd order ODE. $m(0)=\hat{m0}$. It can be shown that
-%in the analytical solution returned by \emph{Mathematica} that $\hat{m0}$
-%serves as a scaling factor for the solution. This results suggests
-%a scheme to use an integral boundary condition to solve the unmarked
-%PDE at equilibrium. 
-
-%
-%\subsubsection{Marked PDE Boundary Condition}
-%
-%The marked PDE (\emph{10}) is has a similar condition at the upper
-%boundary as the unmarked PDE, $m^{*}(n)=0$. The same justification
-%applies in that the likelihood of an mRNA being completed saturated
-%with ribosomes small enough that assuming that the $n^{th}=0$ should
-%not have a large influence on the dynamics. 
-%
-%The lower boundary condition however is being approached differently.
-%The $m^{*}(0)$ class in the discrete system ($m_{0}^{*}$) is given
-%by: 
-%\[
-%\frac{dm_{0}^{*}}{dt}=\mu m_{0}+\tau m_{1}^{*}-\delta m_{0}^{*}
-%\]
-%
-%
-%and it can be seen that the inputs are proportional to the abundance
-%in the $m(i)$ class and the $m^{*}(1)$ class. The loss rate is proportional
-%to the amount of ribosomes in the $m^{*}(0)$ class. In the PDE system
-%the following process is being used to solve for the $m^{*}(0)$ class.
-%First, the $m^{*}(i)$ PDE \emph{(10) }is solved numerically from
-%$i=1$ to $i=n$ (Note the exclusion of $i\in[0,1]$), let this solution
-%be denoted as $m_{pre}^{*}(i)$. Then the following equation is solved
-%for $m^{*}(0)$ at equilibrium, call this solution $m_{pre}^{*}(0)$:
-%\[
-%\mu m_{eq}(0)+\tau m_{pre}^{*}(1)-\delta m^{*}(0)=0
-%\]
-%
-%
-%With this solution, $m_{pre}^{*}(0)$, then the solution for the marked
-%class at equilibrium in the continuous approximation is given by the
-%following piecewise function.
-%\[
-%m_{eq}^{*}(i)=\begin{cases}
-%m_{pre}^{*}(0) & ,\, if\; i=0\\
-%m_{pre}^{*}(i) & ,\, otherwise
-%\end{cases}\; for\, i\in\mathbb{N}
-%\]
-%
-%
-%It is also worth noting, as will be addressed in the comparison between
-%the discrete and continuous system solutions, that we need not consider
-%any non-integer values of $i$ in the continuous approximation, thus
-%the above formula serves as the continuous approximation for the marked
-%class for all $i\in\mathbb{N}.$
-%
-%For data interpretation, we need a total number of mRNA in a given
-%class, not distinguished by marked or unmarked. Let $m_{tot}(i)=m_{eq}(i)+m_{eq}^{*}(i)$
-%represent the total equilibrium amount of mRNA in the $i^{th}$ class.
-%
-%
-%%\subsection{Scheme for Solving the System of PDEs}
-%%Due to the derivation of the ODEs, we have made sure to distinguish
-%%between the marked and unmarked classes at equilibrium. However, the
-%%fluorescence data to be analyzed makes no distinction, so these two
-%%PDEs although solved separately need to be combined as the data in
-%%interpreted. 
-%%({*}{*} May not be necessary to include this section {*}{*})
-%
-
-
-\subsection{Nondimensionalization}
-In order to aid in parameter estimation and computation, a nondimensionalization was conducted for the PDE system.  Investigation of a variety of parameters and parameter combinations to nondimensionalize the system with was undertaken.
-Although multiple options were present, the parameter $\tau_0$ was chosen as the value to scale time, owing in part to its physical identifiability.
-The resulting parameters and notation for the nondimensionalized system are provided in Table~\ref{tab:nond_params}.
-
-\begin{table}
-\begin{tabular}{|c l|}
-\hline
-\multicolumn{2}{|l|}{\textbf{Nondimensionalized variables and parameter definitions}} \\ \hline \hline
-$\bar{m}(i)$ &  Dimensionless unmarked state variable \\
-$\bar{m}^{*}(i)$ &  Dimensionless marked state variable \\
-$\bar{t}=\frac{1}{\tau_{0}}$ & New time unit scaled by $\tau_{0}$ \\ 
-$\bar{\kappa}_0=\frac{\kappa_{0}}{\tau_{0}}$ & Dimensionless parameter
-associated to translation initiation rate \\
-$\bar{\mu}_0=\frac{\mu_{0}}{\tau_{0}}$ & Dimensionless parameter associated
-to marking rate \\
-$\bar{\lambda}=\frac{\lambda}{\tau_{0}}$ & Dimensionless parameter associated
-to mRNA input rate into class $m_(0)$ in the system\\
-$\bar{\delta}=\frac{\delta}{\tau_{0}}$ & Dimensionless parameter associated
-to the loss of marked mRNA from class $\bar{m}^*(0)$ out of the system\\ \hline
-\end{tabular}
-\caption{Nondimensionalized state variable and parameter definitions using the translation completion parameter, $\tau_0$, for scaling the system time-scale.}
-\label{tab:nond_params}
-\end{table}
-
-%In the dimensionless system the following definitions are used to
-%describe the system.
-%\begin{description}
-%\item [{$Time,\; t=\hat{t}*\bar{t}$:}] Where $\hat{t}$ is the dimensionless
-%variable and $\bar{t}$ represents the time units.
-%\item [{$\bar{m} (i)$:}] The new independent variable to describe the unmarked
-%class in the nondimensionalized equation
-%\item [{$\bar{m}^{*}(i)$:}] The new independent variable to describe the marked
-%class in the nondimensionalized equation
-%\item [{$\bar{t}=\dfrac{1}{\tau_{0}}$:}] The new time unit scaled by $\tau_{0}$,
-%the translation completion rate.
-%\item [{$\bar{\kappa}_0=\dfrac{\kappa_{0}}{\tau_{0}}$:}] The dimensionless parameter
-%associated to translation initiation rate
-%\item [{$\bar{\mu}_0=\dfrac{\mu_{0}}{\tau_{0}}$:}] The dimensionless parameter associated
-%to marking rate
-%\item [{$\bar{\lambda}=\dfrac{\lambda}{\tau_{0}}$:}] The dimensionless parameter associated
-%to mRNA input rate into class $m_{0}$ in the system
-%\item [{$\bar{\delta}=\dfrac{\delta}{\tau_{0}}$:}] The dimensionless parameter associated
-%to the loss of marked mRNA from class $m_{0}^{*}$ out of the system
-%\end{description}
-\textbf{Nondimensionalized Unmarked PDE:}
-Similar to the original PDE, at equilibrium we solve the following nondimensionalized, 2nd order,
-non-linear ODE to describe the distribution within the Unmarked classes:
-\begin{equation*}
-0=\frac{1}{2n} (2(\bar{\kappa}_0+n -\bar{\mu}_0 n)\cdot \bar{m}(i)+2(\bar{\kappa}_0(-1+i-n)+(1+i)n)\bar{m}'(i)+(in+\bar{\kappa}_0 (-i+n))\bar{m}''(i))
-\end{equation*}
-
-\textbf{Nondimensionalized Marked PDE:}
-Once again, the marked PDE was not used in application, however it is once again presented for completeness.
-At equilibrium we have the following nondimensionalized, 1st order, ODE to describe the distribution within marked classes:
-\begin{equation*}
-0=-\bar{\mu}_0 \bar{m}(i)-\bar{m}^{*}(i)-i\bar{m}^{*\prime}(i)
-\end{equation*}
-With the standard and nondimensionalized PDE system defined we now present results that compare solution methods and show concordance among the varying approaches for determining equilibrium solutions.
-
-\section{Comparison of Solution Methods}
-This section compares the exact ODE solutions at equilibrium to the approximate PDE solutions at equilibrium.
-Although both are based on the same mechanistic underpinning 
-
-\begin{figure}[ht]
-\centering
-\begin{subfigure}[ht]{0.4\textwidth}
-\includegraphics[width=\textwidth]{Images/ex_disc_eq}
-\caption{Discrete model solutions}
-\end{subfigure}
-\begin{subfigure}[ht]{0.4\textwidth}
-\includegraphics[width=\textwidth]{Images/ex_cont_eq}
-\caption{Continuous approximation model solutions}
-\end{subfigure}
-\caption{Model results for parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{Images/ex_both_eq}
-\caption{Comparison of discrete and continuous approximation model Solutions for Parameters: $\imax=30,\lambda=5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta=0.1$}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
-\end{figure}
-
-Although solutions for only one set of parameter values is shown, the same behavior has been observed for all sets of parameters simulated.
-Additionally, since the two solution were derived using different methods, they serve to validate each other.
-Possessing two different methods to generate equilibrium distributions for the polysomal classes is advantageous in that it provides flexibility to researchers for model fitting and parameter estimation when investigating empirically derived data.
-
-\section*{Additional Notes}
-\subsection*{Getting Rid of GCD function}
-If equation
-\begin{equation}\label{eq:anyl_unmarked_imax}
-m_{i_{max}}^{eq}=\dfrac{\prod_{i=1}^{i_{max}}\left(\frac{i}{GCD[i_{max},i]}\kappa_0\right)}{\prod_{i=1}^{i_{max}}\left(\frac{i_{max}}{GCD[i_{max},i]}(\mu_0+\tau_0\frac{i}{\imax})+\frac{i}{GCD[i_{max},i]}\kappa_0\right)},
-\end{equation}
- in previous versions of the write up is correct, then it seems we've missed a very simplification that would simplify our calculations \emph{immensely}.
-Let's imagine three generic functions of $i$, $a_i$, $b_i$, and $c_i$ such that
-\begin{align}
-  F &= \frac{ \prod_i \left(a_i b_i\right)}{\prod_i \left(a_i c_i + a_i b_i\right)}\\
-\intertext{Based on my understanding of mathematics,}
-  F &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i \left(a_i \left(c_i + b_i\right)\right)}\\
-  &= \frac{ \prod_i a_i \prod_i b_i }{\prod_i a_i \prod_i \left(c_i + b_i\right)}\\
-  &= \frac{\prod_i b_i }{\prod_i \left(c_i + b_i\right)}\\
-\end{align}
-If this is correct and we define $a_i = 1/\GCD[\imax, i]$ and $b_i \kappa_0$ and $c_i (\mu_0 + \tau_0\frac{i}{\imax})$, then the equation \ref{eq:anyl_unmarked_imax} can be rewritten as,
-\begin{equation}
-  \hat{m}_{\imax}= \frac{ prod_{i=1}^{\imax} i \frac{\kappa_0}{\imax}}{prod_{i=1}^{\imax} \mu_0 + \left(\tau_0\frac{i}{\imax} +\frac{\kappa_0}{\imax}\right)} 
-\end{equation}
-If this is the case, then I'm both elated and embarrassed as hell we didn't see it earlier.
-
 
 \section{Results}
 
 %Units of the different paramters: $\lambda$ is transcripts/s, $\mu$, $\kappa$, $\tau$ and $\delta$ are is 1/s.
 
 \begin{enumerate}%Exploration of the model it's parameters and their biological implication
-	\item The unmarked system can be split into two components: Total transcript count and the distribution of transcripts. 
+	\item The capped system can be split into two components: Total transcript count and the distribution of transcripts. 
 	\begin{enumerate}	
-		\item The unmarked class transcript number is determined by $\lambda$, $\mu$
-		\item In the unmarked class the total transcript abundance is determined by a similar relationship as Equation 21. %Except that the summation ranges from class 0 to imax instead of from 1 to imax. I am not sure that Equation 21 is correct.
-		\begin{equation}\label{eq:eq_unmarked_sum}
+		\item The capped class transcript number is determined by $\lambda$, $\mu$
+		\item In the capped class the total transcript abundance is determined by a similar relationship as Equation 21. %Except that the summation ranges from class 0 to imax instead of from 1 to imax. I am not sure that Equation 21 is correct.
+		\begin{equation}\label{eq:eq_capped_sum}
 			\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i},
 		\end{equation}
 		\item Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
 		\item $\mu$ affects both the total transcript abundance and the distribution of ribosomal classes across a particular species of transcript.
-		\item First $\mu$ controls the rate of outflow from unmarked unto marked, and second it shifts mRNAs to lower ribosomal classes.
-		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the unmarked class except m imax. At high mu it quickly dominates moving transcripts quickly into the marked class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
+		\item First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower ribosomal classes.
+		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
 		\item The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
 		\begin{equation*}
 			\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
@@ -1238,13 +647,13 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 		\item The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.
 		\item This formulation has three interesting properties
 		\begin{enumerate}
-			\item First it gives a determinant free solution to our system. Now, to obatin a full solution of the unmarked solution to our model we only need the first column of the Adjugate matrix.
+			\item First it gives a determinant free solution to our system. Now, to obatin a full solution of the capped solution to our model we only need the first column of the Adjugate matrix.
 			\item Second it splits the two funtions of $\mu$; Its effect on transcript number and its effect on transcript distribution. And allows for their separate analysis.
 			\item Third, it permits analysis of the underlying transcript distribution even under conditions where the model has no solution. For example, when $\mu$ = 0, both solutions are indeterminate. However, the determinant free solution allows for us to explore what the transcript distribution would be when $\mu$=0.
 		\end{enumerate} 
 	\end{enumerate}
 	
-	\item  Ribosomal distribution on the marked class is determined by the ratio of $\kappa$/$\tau$ and $\mu$
+	\item  Ribosomal distribution on the decapped class is determined by the ratio of $\kappa$/$\tau$ and $\mu$
 	\begin{enumerate}
 		\item Figure 4 shows a representative contour plot of model solutions for a broad range of $\kappa$ values.
 		\item For  $\kappa < 0.1 $  there is no ribosome loading, while loading maxes out beyond $10^4$, with a smooth transition between boundaries. 
@@ -1252,14 +661,14 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 		\begin{figure}[ht]
 		\centering
 		\includegraphics[width=30em]{Images/contour_norm_unmarked_l1m1d1t1_k1e-5_1e5_imax_30}
-		\caption{Contour plot of unmarked class over a range of kappa values: $\kappa = 10^-5 - 10^5.\imax=30,\lambda=1,\tau 0=1,\mu 0=0.1,\delta=100,000$. Color scale is percent ribomose load for each kappa value across all 31 ribosome classes.}
-		%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+		\caption{Contour plot of capped class over a range of kappa values: $\kappa = 10^-5 - 10^5.\imax=30,\lambda=1,\tau 0=1,\mu 0=0.1,\delta=100,000$. Color scale is percent ribomose load for each kappa value across all 31 ribosome classes.}
+		%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 		\end{figure}
 
 		\item In order to better interpret the model we will focus on parameter ranges dervied from literature. 
 		\begin{enumerate}
 			\item To approximate $\mu$ transcript half-lives calculated by Sorenson (2018) in cordycepin treated  \textit{Arabidopsis thaliana} seedlings. where $\mu$ is:
-			\begin{equation}\label{eq:eq_unmarked_sum}
+			\begin{equation}\label{eq:eq_capped_sum}
 				\mu = \frac{ln(2)}{t_{1/2}}
 			\end{equation}
 			Where $t_{1/2}$ is the half-life. Model solutions were produced for a range of half-lives: 1, 5, 25, 50, 75, 95 and 99 percentile values of the half-lives found in Sorenson (2018)%These were12min, 23min, 59min, 109min, 220min, 830min, 4018min
@@ -1276,11 +685,11 @@ If this is the case, then I'm both elated and embarrassed as hell we didn't see 
 		
 
 
-	\item The marked class depends on the distribution of the unmarked class, $\tau$, $\mu$ and $\delta$
+	\item The decapped class depends on the distribution of the capped class, $\tau$, $\mu$ and $\delta$
 	\begin{enumerate}
-		\item The marked subsystem can be further divided into the $m_0^*$ class and the $m_i^*$ classes for $i>0$.
+		\item The decapped subsystem can be further divided into the $m_0^*$ class and the $m_i^*$ classes for $i>0$.
 		\item the $m_0^*$  class in the current model design represents only two forms of degradation, free mRNA degradation and the degradation of the remanents of XRN1 mediated degradation.% It could be futher extended to include more degradations mechanisms see note below
-		\item  $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class. It is reasonable to explore the model with   large $\delta$ since marked transcripts are translationally incompetent. % $\delta\ might be more complex with a slightly different model design. In the current model formulation it mimics the primary (but not only) degradation with the cell, the 5' decapping and subsequent VCS /XRN1 5'-3' cotranslation degradation system. This ignores 3 other systems the two 3'- 5' pathways (CCR4-NOT3) and exosome, and the final slew of endodegradation pathways (NGD, NSD, NMD, ribothrypsis, and silencing).
+		\item  $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class. It is reasonable to explore the model with   large $\delta$ since decapped transcripts are translationally incompetent. % $\delta\ might be more complex with a slightly different model design. In the current model formulation it mimics the primary (but not only) degradation with the cell, the 5' decapping and subsequent VCS /XRN1 5'-3' cotranslation degradation system. This ignores 3 other systems the two 3'- 5' pathways (CCR4-NOT3) and exosome, and the final slew of endodegradation pathways (NGD, NSD, NMD, ribothrypsis, and silencing).
 %Additionally, degradation of the bulk of the mRNA transcript might not be a process specific to each transcript (ie. due to coding sequence, I would have to look this up. Also might be testable with data fitting).
 
 		
@@ -1309,27 +718,6 @@ Data Sources
 
 
 Main results: 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{Images/Figure1_biomodel_V2.png}
-\caption{}
-\end{figure}
-\begin{enumerate}
-% This is material for the intro. but I need it to properly contextualize the introduction of the model and figure 1%
-	\item  The basic representation of the central dogma dictates that epression of protein coding genes starts from genes encoded in DNA that are transcribed to mRNA and subsequently translated to Protein.
- 	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
-	\item The maintenance of mRNA populations relies on the balance of mRNA transcription rates, the translation status of transcripts and numerous mRNA decay pathways.
-	\item mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
-	\item Additionally mRNA degradation can be promoted through endonucleolytic cleavage by RISC (and siRNAs).
-	\item mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
-	\item Ribosomal association of transcripts can lead to both protection of viable transcripts as well as quality control degradation of faulty transcripts. 
-	\item When a viable transcript is bound by the ribosomal and translational machinery, the 5' cap is bound by translational initation factors and the 3' tail is bound by poly A binding proteins. This protects transcripts from exonucleic attack and degradation.
-	\item Endonucleic degradation is still possible, but reduced due to a reduced accessibility of the siRNA binding sequence on the transcript through competition with ribosomes.
-	\item However multiple mechanisms of mRNA decay are carried out in association with the ribosome. Nonsense mediated decay, no go decay and no stop decay all rely on ribosomes detecting faults in the transcript and susbsequently interacting with degradation machinery to remove the faulty transcript.
-	\item With some mechanisms of mRNA decay, decay can occur co-translationally. This is mainly seen in 5' decapping. When a translating transcript is decapped the 5' to 3' exonucleic degradation machinery trails the most upstream ribosome. As the ribosome translates the mRNA is degraded.
-	\item 
-
-\end{enumerate}
 %Link our mean output and the results of TASEP ribosome flow model.
 %because short genes experience inteference at short loads becomes accentuated because turnover rate is high
 %mention heterologous expression due to codon usage bias
@@ -1337,31 +725,12 @@ Main results:
 
 %Point for discussion. By varying the granularity of the Ribo flow model it would be possible to fit the model for distinct regulatory regions. In this idea I'm trying to communicate that there might be distinct mRNA regions that behave like different transcripts. Some transcripts might be very granular like every 10 codons has a distinct behavior, But i would imagine that any one major bottleneck in a transcript would make it
 
-\begin{enumerate}
-A model of mRNA populations under control of translation and co-translational decay
-Figure1
-	\item The model captures some of the basic processes governing mRNA populations.
-	\item Transcript production, degradation and the process of translation.
-	\item Transcripts can exist in one of two states: capped and uncapped which captures the the role of the 5' cap in mRNA protection and translation initiation. 
-	\item Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
-	\item Individual transcripts in the cell will be found with a set number of ribosomes (none, 1, 2, etc).
-	\item The number of ribosomes on a transcript determines that transcripts ribosomal class.
-	\item The model seeks to determine how the population of transcipts of a single gene are distributed between ribosomal classes and capped and uncapped states.
-	\item Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (class 0)
-	\item From capped class 0 a transcript can have two fates. 
-	\item The transcript can be marked for degradation at rate $\mu$ and move into the uncapped class 0.
-	\item Alternatively, a ribosome can initiate translation at rate $\kappa*(1-i/imax)$ and be loaded onto the transcript and move it into capped class 1.Where i is the current transcript class and imax is the maximal ribosomal occupancy on the transcript
-	\item A ribosome on transcript can then elongate and terminate at a rate of $\tau * i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
-	\item Capped transcripts move through rounds of translation initiation and elongation\/termination and distribute along the different ribosomal classes. 
-	\item From any ribosomal class in the capped state the transcript can be marked at rate $\mu$  and move into the uncapped state while maintaining the same ribosomal class.
-	\item Uncapped transcripts can no longer initate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
-	\item This process represent co-translational decay, a common method of mRNA decay in eukaryots (Citation) 
-	\item After all ribosome complete translation, the mRNA is in uncapped class 0 and completely degraded at a rate $\delta$.
 
 Supplemental Figure 1
+\begin{enumerate}
 	\item The model solution at equilibrium has three outputs.
-	\item First the total number of mRNA transcripts.  Second split between the capped and uncapped states. And third the distribution of the transcripts across ribosomal classes for each of the states.
-	\item 
+	\item First the total number of mRNA transcripts.  Second split between the capped and decapped states. And third the distribution of the transcripts across ribosomal classes for each of the states.
+	\item  s
 
 	\item After exploring the model solutions it was determined that the transcription rate $\lambda$ acts simply as a scalar for the whole system. 
 
@@ -1372,7 +741,7 @@ Text for discussion of figure 1
 	\item The model presented most closely resembles the co-translational decay pathway from eukaryotes.
 	\item There are a few current limitations of the model. First and foremost it doesn't model endonucleolytic decay pathways such as gene silencing by siRNA and the RISC complex or the NMD, NGD and NSD pathways or degradation initiated through ribosomal collisions.
 	\item Implementation of endonucleolytic decay would require an ability to track ribosomal position, which is not possible in our model. 
-	\item Alternatively a probabilistic model of ribsomal position given a particular load could allow for redistribution of capped transcripts into uncapped states of lower ribosomal class.
+	\item Alternatively a probabilistic model of ribsomal position given a particular load could allow for redistribution of capped transcripts into decapped states of lower ribosomal class.
 	
 	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan elife).
 	\item We explored the interaction of ribosomal loading and marking rate, noting that increased marking leads to a lower expected ribosomal load. This particularly noticable for genes with short half lives and is less sensitive with transcripts with halflives above 2 hours.
@@ -1388,47 +757,46 @@ Text for discussion of figure 1
 
 \end{enumerate}
 
-	\item Model predicts mRNA distribution across ribosomal classes
+	Model predicts mRNA distribution across ribosomal classes
 	\begin{enumerate}
 		\item The model 
 		\item Density independent initiation and density independent initiation models
-		\item The model predicts the steady state total mRNA quantity in both marked and unmarked states as well as the mRNA's distribution across different ribosomal classes in each state.
+		\item The model predicts the steady state total mRNA quantity in both decapped and capped states as well as the mRNA's distribution across different ribosomal classes in each state.
 		\item  Figure X Left, 
 	\end{enumerate}
-	\item The model provides an upper bound on translational efficiency
+	The model provides an upper bound on translational efficiency
 	\begin{enumerate}
 		\item  The behavior of both DDI and DII models were explored at equilibrium.  At equilibrium, the rate of new initiation events must be equal to the rate of ribosomes leaving the transcript. 
 		\item The two key parameters that control this process are initiation ($\kappa$) and elongation ($\tau$). Changes in either parameter alter the predicted distribution of transcripts across ribosomal classes. 
 		\item To summarize their joint behavior, we chose to focus on the elongation scaled initiation rate ($\kappa$$\\$$\tau$) as this provides a single unique parameter for each model response. %Elaborate on how this is unique and why this is important. This is a necessary reduction of the parameter space that can then be reverted with knowledge of the elongation rate from codon usage data or from ribo seq
 		\item  Exploration of the steady state solution showed that the transcription rate only acts to scale the steady state solution. Meaning that the distribution of transcripts across the ribosomal classes is independent of the number of transcripts being produced. All model solutions presented here have the same transcription rate to allow for comparison. 
-		\item The degradation rate ($\delta$) only controls the transcript population in the marked zeroth class. To reduce interference from this we set a very high degradation rate.
+		\item The degradation rate ($\delta$) only controls the transcript population in the decapped zeroth class. To reduce interference from this we set a very high degradation rate.
 		\item To interpret model behavior within a biologically meaningful context, empirically determined rates for translation initiation, elongation, and half-life (as a proxy for marking rate) were obtained from the literature. 
 %		\item First, average initiation rates in yeast had an average of 0.131 initiation events/s (5th percentile: 0.07 events/s, 95th percentile: 0.26 events/s) . Paired elongation rates for individual genes were not available. However, empirical elongation rates for each codon from the same experiments were available. A weighted average of elongation rates across all protein coding codons (weighted on the codons abundance) gave a mean elongation rate in yeast. The distribution of elongation values was produced using the weighted mean and the average standard deviation of all codons resulting in a mean elongation rate of 5aa/s (5th percentile: 1 aa/s, 95th percentile: 9 aa/s) [31]. The resulting scaled initiation rate ranges from 0.001 to 0.261. This is old. I have since found a different paper which uses the ribo flow model in yeast to estimate the scaled initiation (Duc 2018)
 
 		\item Introduce scaled initiation rate range. Discuss upper and lower limits vis a vis the model output. 
-		\item *** This is a very important question. How do we show in a convincing manner that the model is recapitulating actual biological results? I have previously used the arguement that both polysome profiling and single molecule imaging of in-vivo ribosomes all agree with the approximate range predicted by the model, especially within the scaled initiation values. That is the model predicts that the ribosome load will be between 10-50$\%$, with median loads of 2 - 13 ribosomes for a transcript of median length. This is reasonable and the median behavior aligns with what polysome profiles show. However, Polysome profiles contain all of the mRNAs in a cell or organism at once. This means that the fact that the model predic 
+		\item *** This is a very important question. How do we show in a convincing manner that the model is recapitulating actual biological results? I have previously used the arguement that both polysome profiling and single molecule imaging of in-vivo ribosomes all agree with the approximate range predicted by the model, especially within the scaled initiation values. That is the model predicts that the ribosome load will be between 10-50$\%0$, with median loads of 2 - 13 ribosomes for a transcript of median length. This is reasonable and the median behavior aligns with what polysome profiles show. However, Polysome profiles contain all of the mRNAs in a cell or organism at once. This means that the fact that the model predic 
 
 (-3 to -0.6 in log ten). The marking rate was determined from Arabidopsis mRNA half-lives with a median half-life of 115 min (short 1st percentile: 11.5 min, long 99th percentile: 1,500 min) [32]
 To establish the base model behavior, DII and DDI models were run with a long half-life across a broad range of scaled initiation on a transcript encoding a protein of median length (369aa) (Figure 1). In the DII model, all ribosomal classes are populated. At the high end of the biological scaled initiation transcripts reach full ribosomal occupancy (Figure 1A). The DII model ignores initiation interference caused by ribosomes already present on the transcript. The DDI model accounts for initiation interference, and as expected, a decrease in ribosomal load is observed compared to DII. Even with interference, access to most ribosomal classes is attainable in the DDI model. Ribosomal profiling experiments suggest that most transcripts have one to ten ribosomes loaded with a strong preference for smaller polysomes. Live single molecule fluorescence experiments do show higher polysome numbers rising into the 50s [33]. For the long reporters used in these experiments that equates to a 12 to 30 percent ribosomal load. Thus the DDI model probably overestimates the loading for a particular scaled initiation rate.
 	\end{enumerate}
-	\item Marking rates have only a mild effect on ribosomal load, but a large effect on protein production.
+	Marking rates have only a mild effect on ribosomal load, but a large effect on protein production.
 	\begin{enumerate}
-		\item From the solution of the unmarked system we can define two separate effects of transcript marking.
+		\item From the solution of the capped system we can define two separate effects of transcript marking.
 		\begin{enumerate}
-			\item  First, marking determines how many transcripts can accummulate in the unmarked class, thus determining the total transcript population		
-			\item Second, marking rate shifts the distribution of transcripts  in the unmarked class towards lower ribosomal classes.	
+			\item  First, marking determines how many transcripts can accummulate in the capped class, thus determining the total transcript population		
+			\item Second, marking rate shifts the distribution of transcripts  in the capped class towards lower ribosomal classes.	
 		\end{enumerate}
-		\item Marking only has a mild effect on the distribution of transcripts on the unmarked class
+		\item Marking only has a mild effect on the distribution of transcripts on the capped class
 
 
 	\end{enumerate}
-	\item Under equilibrium protein length affects ribosomal load but not ribosomal density
+	Under equilibrium protein length affects ribosomal load but not ribosomal density
 	\begin{enumerate}
 		\item stuff
 	\end{enumerate}
 
 
-\end{enumerate}
 
 Figure 2 points for discussion
 
@@ -1442,21 +810,21 @@ Figure 2 points for discussion
 \centering
 \includegraphics[width=\textwidth/2]{Images/Scaled_initiation_histogram_DUC_pgen_2018.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth/2]{Images/Figure1_At_Transcript_half_life_histogram.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth/2]{Images/Figure1_At_Protein_length_histogram.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
@@ -1464,7 +832,7 @@ Figure 2 points for discussion
 \centering
 \includegraphics[width=\textwidth]{Images/2022-10-21_Figure1_DIIvsDDI_medianlength_low_marking.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
@@ -1482,7 +850,7 @@ Figure 2 points for discussion
 \centering
 \includegraphics[width=\textwidth]{Images/2022-10-21_Figure2_Marking_Rate_range_medianlength.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
@@ -1490,14 +858,14 @@ Figure 2 points for discussion
 \centering
 \includegraphics[width=\textwidth/2]{Images/Protein_production.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_not_scaled_for_imax.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
@@ -1505,7 +873,7 @@ Figure 2 points for discussion
 \centering
 \includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_scaled_for_imax.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: Marked class, Green: Unmarked class, Blue: Total= unmarked+marked classes}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
@@ -1522,7 +890,7 @@ Figure 2 points for discussion
 %Result 2: Explore the rate limiting effects of tau (geometric,arithmetic sequence dependence) and mu on mean ribosome loading.
 
 
-%Result 3: Marked class has only a limited effect of the total distribution of mRNAs and overall protein production.
+%Result 3: decapped class has only a limited effect of the total distribution of mRNAs and overall protein production.
 
 
 %Result 4: Is translation density dependent or independent? Under which conditions would density start having an effect. 
@@ -1565,7 +933,7 @@ Figure 2 points for discussion
 
 
 
-%add new marked class results here. Marked class in its current formulation is very unpopulated. 
+%add new decapped class results here. decapped class in its current formulation is very unpopulated. 
 
 
 	
@@ -1581,10 +949,10 @@ Figure 2 points for discussion
 %	How does kappa interference affect loading?
 %
 %Half lives. What does each individual process contribute to the half life of transcripts? 
-%	Unmarked 
-%	Marked 
+%	capped 
+%	decapped 
 %		M0* is delta driven
-%		All other M* have a set behaivior dependent on the distribution of transcripts in unmarked.
+%		All other M* have a set behaivior dependent on the distribution of transcripts in capped.
 %What processes does our current model mimic? What does it miss out? 
 
 
@@ -1777,9 +1145,9 @@ Figure 2 points for discussion
 %
 %This section will include our results from simulation as they become available.
 %\part*{Appendix}
-%\section*{A1: Example solutions to unmarked system for ODE formulation at equilibrium}
+%\section*{A1: Example solutions to capped system for ODE formulation at equilibrium}
 %\begin{description}
-%\item This set of solutions is generated from solving the system of unmarked ODE at equilibrium directly using \emph{Solve[]} in \emph{Mathematica}
+%\item This set of solutions is generated from solving the system of capped ODE at equilibrium directly using \emph{Solve[]} in \emph{Mathematica}
 %\item For $\imax=1$
 %\item \hspace{5pt} $\left\{M(0)\to \frac{\lambda  (\mu +\tau )}{\mu  (\kappa +\mu +\tau )},M(1)\to \frac{\kappa  \lambda }{\mu  (\kappa +\mu +\tau )}\right\}$
 %\item For $\imax=2$ 
@@ -1793,7 +1161,7 @@ Figure 2 points for discussion
 %\item \hspace{9pt} $M(2)\to \frac{\kappa ^2 \lambda  (\kappa  \mu +(\mu +3 \tau ) (\mu +4 \tau ))}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$\item \hspace{9pt} $M(3)\to \frac{\kappa ^3 \lambda  (\mu +4 \tau )}{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)},$
 %\item \hspace{9pt} $M(4)\to \frac{\kappa ^4 \lambda }{\mu  \left(2 \tau ^3 (12 \kappa +25 \mu )+\tau ^2 (2 \kappa +5 \mu ) (6 \kappa +7 \mu )+2 \tau  (2 \kappa +5 \mu ) (\kappa +\mu )^2+(\kappa +\mu )^4+24 \tau ^4\right)}\Big\}$
 %
-%\item Recall that the marked solutions are solved completely in terms of the unmarked solutions using equation (7).
+%\item Recall that the decapped solutions are solved completely in terms of the capped solutions using equation (7).
 %
 %\end{description}
 
