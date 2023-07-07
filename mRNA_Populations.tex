@@ -518,8 +518,7 @@ Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the low
 The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Equation~\ref{eq:decapped_matrix}.
 
 The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
-\begin{equation}
-\label{eq:capped_matrix}
+\begin{equation}\label{eq:capped_matrix}
 \bs{U}=\left(\begin{array}{cccccc}
 -(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
 \kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
@@ -581,7 +580,7 @@ $\mu$ affects both the total transcript abundance and the distribution of riboso
 First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower ribosomal classes.
 		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
 The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
-	\begin{equation*}
+	\begin{equation*}label{eq:eq_general_adjugate_determinant_solution}
 		\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
 	\end{equation*}
 As $\vec{b}$ is [$\lambda$ 0 0 0 ... 0]. Only the first column of the adjoint matrix contributes to the result. 
@@ -612,9 +611,9 @@ If we sum across all classes to get the total mRNA population we find,
 		-\frac{a_{tot}}{\det[\bs{U}]} = \frac{1}{\mu}
 	\end{equation*}
 We finally arrive at,
-	\begin{equation*}
-		\vec{m}=- \frac{\lambda}{\mu}\vec{p}_m
-	\end{equation*}
+	\begin{equation} \label{eq:capped_solution}
+		\vec{m}=\frac{\lambda}{\mu}\vec{p}_m
+	\end{equation}
 
 
 The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.
@@ -684,7 +683,7 @@ The total transcript population in the decapped state does not have a closed for
 	m_{tot}^{*} = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
 \end{equation}
 This can be further shortened using element wise multiplication denoted by the hadamard product ($\odot$).
-\begin{equation}
+\begin{equation} \label{eq: marked_total_pop} 
 	m_{tot}^{*} = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
 \end{equation}
 Where $\vec{S}$ is a vector of all the cummulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the marking rate and elongation/termination rate. This result will be explored further in the results.
@@ -707,15 +706,15 @@ To understand how mRNA is divided  between the two subsystem we can calculate th
 	p_{mtot} &= \frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}	
 \end{align*}
 Then you calculate the odds,
-\begin{align*}
+\begin{align}
 	odds_{m}& = \frac{p_{mtot}}{1-p_{mtot}}\\
 	odds_{m} &= \frac{\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}{1-\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}
-\end{align*}
+\end{align}
 It simplifies to,
-\begin{align*}
+\begin{align}
 	odds_{m} &= \frac{1}{\frac{\mu}{\tau}\vec{S} \odot \vec{l}} \\
-	log_{10}(odds_{m}) &= log_{10}(\frac{\mu}{\tau}\vec{S} \odot \vec{l})
-\end{align*}
+	log_{10}(odds_{m}) &= -log_{10}(\frac{\mu}{\tau}\vec{S} \odot \vec{l})  \label{eq:eq_log_odds}
+\end{align}
 
 
 
@@ -800,55 +799,68 @@ Code to solve the model was written in the R package Ribosome. To solve the capp
 		
 \subsection{Data Sources}
 
-In order to better interpret the model we will focus on parameter ranges dervied from literature. 
-To approximate $\mu$ transcript half-lives calculated by Sorenson (2018) in cordycepin treated  \textit{Arabidopsis thaliana} seedlings. where $\mu$ is:
-	\begin{equation}\label{eq:eq_capped_sum}
+In order to  interpret the model within biological context, we will focus on parameter ranges derived from the literature.
+The range of \imax is determined from the distribution of protein lengths obtained from yeast (Figure 2A) or Arabidopsis (Figure 2C) which is then divided by the average number of codons covered by a ribosome (9 codons). 
+Both were extracted from the Ensembl (version 109) and Ensembl plants (version 56) respectively (Cunningham 2022, Yates 2022, Kinsella 2011).  
+The marking rate between the Capped and uncapped system was approximated from the protein half-lives from Presnyak 2015 for yeast (Figure 2B) and Sorenson 2018 for arabidopsis (Figure 2D).
+ Presnyak utilized the temperature sensitive \textit{rbp-1} RNA polymerase mutant in yeast. This mutant can not undergo transcription at non-optimal temperatures, thus allowing for the measurement of mRNA decay over time. Sorenson (2018) used the transcriptional inhibitor, cordycepin, to treat  \textit{Arabidopsis thaliana} seedlings and measured their decay using RNA-Seq.
+To approximate $\mu$ transcript half-lives were converted to rates with the following:
+	\begin{equation}\label{eq:eq_half-life_conversion_to_rate}
 		\mu = \frac{ln(2)}{t_{1/2}}
 	\end{equation}
-Where $t_{1/2}$ is the half-life. Model solutions were produced for a range of half-lives: 1, 5, 25, 50, 75, 95 and 99 percentile values of the half-lives found in Sorenson (2018)%These were12min, 23min, 59min, 109min, 220min, 830min, 4018min
-The resulting range of $\mu$ is from $10^-3 to 10^-6$. 
-			% I would like to discuss the solution for the Adjugate in some part where it shows that there is a base solution for a system with only kappa and tau. Then when mu is added, this weights solutions towards smaller ribosomal classes. I am unsure where to put this. I will work on this after I get these initial results noted down in this document.
-The range for $\tau$ is based from (insert citations here) and ranges from 4-20 aa/s depending on the organism. A plausible biological range of 0.1-20 aa/s was explored.
-The 
-As $\lambda$ is only a scaling factor and does not affect the distribution of the ribosomes it was set to 1.
+Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $10^-2$ to $10^-4$ for yeast and $10^-3$ to $10^-6$ for arabidopsis. 
+
+Translation initiation and elongation rates ($\kappa$ and $\tau*9*\imax$) were obtained for Yeast from Duc and Song 2018. Remember, that $\tau$ is the overall rate of translating a transcript, not the average elongation rate (see section 2.2). In Duc and So stng 2018, the authors used 850 highly translated transcripts from the ribo-seq dataset from Weinberg 2016. They employed a TASEP model to estimate the initiation rates and correct the empirical elongation rates from the footprint distributions. We calculated an average gene specific elongation rate from the corrected elongations rates. We scale the each gene specific initiation rate by dividing it by the gene specific elongation rate.This is due to the fact that many combinations of $\kappa$ and $\tau$ can yield the same scaled initiation rate (e.g. $\kappa$ =0.02 and $\tau*9*\imax$ = 2, and $\kappa$=0.04 and $\tau*9*\imax$=4, both yield $\kappa/\tau$=0.01). This simplifies the model behavior to one generalized parameter with a unique response (Figure 2E).  The scaled initiation rate ranges from 0.1$s^{-1}$ to 0.001$s^{-1}$.
+
+The transcription rate, $\lambda$ only acts as a scaling factor throughout the model and does not affect the distribution of the ribosomes. For solutions provided in this work $\lambda$ has been set to one. However, as a point of reference, the transcriptomic results from Weinberg 2016 are included in Figure 2F. In short, reads per kilobase million from Weinberg were further converted into a log10 fold change based on the median expression level. Figure 2F shows that the absolute range of transcriptional control ranges just under 5 orders of magnitude.
+
+Finally, $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class. In our model the remaining transcripts in class $m_0^*$ are either only the 3' end of co-translationally degraded transcripts or full transcripts from class $m_0$. Recently, the rate of degradation for the 5' - 3' exonuclease XRN1 was determined to be ~26 nt/s (Atthapattu 2021). XRN1 is the primary exonuclease involved in co-translational degradation and  5' degradation pathways (Sorenson 2018,Yu 2016, Collart 2019, Pelechano 2015). For an average 3' UTR of 121 nts (Kebaara 2009) this would take ~4.6s, and an average transcript of ~ 1400nt would take 54s to degrade.  This means the average degradation rate $\delta$ would take between 1/54s = 0.019/s or 1/4.6s = 0.22/s . The total population of mRNA in $m_tot^*$ is determined by $1/\delta$, $1/\tau$ and $\mu$ (as part of $\vec{S}$) as shown Equation  ~\ref{eq:  marked_total_pop}. $\tau$ ranges from 0.03 to $10^-4$. This makes $1/\delta \leq 1/\tau$. It is reasonable to explore the model with large $\delta$ since decapped transcripts are translationally incompetent. 
  
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm]{Images/2023-07-04_parameter_histograms.png}
+\caption{Histograms of empirical values of model parameters. A) Yeast protein lengths. B) Yeast half-life C) Arabidopsis Protein Lengths. D) Arabidopsis Half-Life. E) Yeast Scaled elongation rates (Translational initiation rate/average translation elongation rate) on a per gene basis. F) Log 10 Fold Changes between all transcripts compared ot the median transcript expression in yeast. }
+%\centering Red: de_s class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
 		
 
 
-The decapped class depends on the distribution of the capped class, $\tau$, $\mu$ and $\delta$
-The decapped subsystem can be further divided into the $m_0^*$ class and the $m_i^*$ classes for $i>0$.
-The $m_0^*$  class in the current model design represents only two forms of degradation, free mRNA degradation and the degradation of the remanents of XRN1 mediated degradation.% It could be futher extended to include more degradations mechanisms see note below
-$\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class. It is reasonable to explore the model with   large $\delta$ since decapped transcripts are translationally incompetent. % $\delta\ might be more complex with a slightly different model design. In the current model formulation it mimics the primary (but not only) degradation with the cell, the 5' decapping and subsequent VCS /XRN1 5'-3' cotranslation degradation system. This ignores 3 other systems the two 3'- 5' pathways (CCR4-NOT3) and exosome, and the final slew of endodegradation pathways (NGD, NSD, NMD, ribothrypsis, and silencing).
+% It could be futher extended to include more degradations mechanisms see note below
+% $\delta\ might be more complex with a slightly different model design. In the current model formulation it mimics the primary (but not only) degradation with the cell, the 5' decapping and subsequent VCS /XRN1 5'-3' cotranslation degradation system. This ignores 3 other systems the two 3'- 5' pathways (CCR4-NOT3) and exosome, and the final slew of endodegradation pathways (NGD, NSD, NMD, ribothrypsis, and silencing).
 %Additionally, degradation of the bulk of the mRNA transcript might not be a process specific to each transcript (ie. due to coding sequence, I would have to look this up. Also might be testable with data fitting).
-
-\begin{enumerate}
-	 \item Protein Length data
-	\begin{enumerate}
-		\item Saccharomyces cerevisiae
-		\item Arabidopsis thaliana
-	\end{enumerate}
-	 \item mRNA half life
-	\begin{enumerate}
-		\item Saccharomyces cerevisiae
-		\item Arabidopsis thaliana
-	\end{enumerate}
-	\item Defining parameter space
-	\begin{enumerate}
-		\item Saccharomyces cerevisiae
-		\item note on At and Hs
-	\end{enumerate}
-\end{enumerate}
 
 
 \section{Results}
 
-Main results: 
+The model outputs two sets of results. First it provides the total mRNA population and how this population is split between capped and decapped states. Secondly, it describes how transcripts are distributed among ribosomal classes within each state. 
+
+\subsection{Marking rate and ribosomal load determine mRNA distribution between states}
+
+%Main results: 
 %Link our mean output and the results of TASEP ribosome flow model.
 %because short genes experience inteference at short loads becomes accentuated because turnover rate is high
 %mention heterologous expression due to codon usage bias
 % mean initiation rate to mean elongation rate ratio and shorten it to the Initiation elongation ratio 
 
 %Point for discussion. By varying the granularity of the Ribo flow model it would be possible to fit the model for distinct regulatory regions. In this idea I'm trying to communicate that there might be distinct mRNA regions that behave like different transcripts. Some transcripts might be very granular like every 10 codons has a distinct behavior, But i would imagine that any one major bottleneck in a transcript would make it
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=100mm]{Images/2023-07-02_logodds.png}
+\caption{Log odds of finding mRNA in the capped state for a range of marking rates in yeast and arabidopsis. }
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
+
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=100mm]{Images/2023-07-04_Marked_slices.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
+
 
 
 Supplemental Figure 1
@@ -860,6 +872,14 @@ Supplemental Figure 1
 	\item After exploring the model solutions it was determined that the transcription rate $\lambda$ acts simply as a scalar for the whole system. 
 
 \end{enumerate}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=100mm]{Images/2023-07-04_Unmarked_slices.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
 
 Text for discussion of figure 1
 \begin{enumerate}
@@ -931,23 +951,10 @@ Figure 2 points for discussion
 \end{enumerate}
 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth/2]{Images/Scaled_initiation_histogram_DUC_pgen_2018.png}
-\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-\end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth/2]{Images/Figure1_At_Transcript_half_life_histogram.png}
-\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth/2]{Images/Figure1_At_Protein_length_histogram.png}
+\includegraphics[width=150mm]{Images/2023-06-28_Figure1_DIIvsDDI_medianlength_low_marking.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
@@ -955,7 +962,7 @@ Figure 2 points for discussion
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{Images/2022-10-21_Figure1_DIIvsDDI_medianlength_low_marking.png}
+\includegraphics[width=150mm]{Images/2022-10-21_Figure1_DIIvsDDI_medianlength_low_marking.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
@@ -973,33 +980,40 @@ Figure 2 points for discussion
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{Images/2022-10-21_Figure2_Marking_Rate_range_medianlength.png}
+\includegraphics[width=150mm]{Images/2023-06-28_Figure2_Marking_Rate_range_medianlength.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
+
 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth/2]{Images/Protein_production.png}
+\includegraphics[width=150mm]{Images/2022-10-21_Figure2_Marking_Rate_range_medianlength.png}
+\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=120mm]{Images/2023-07-04_length_independence.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_not_scaled_for_imax.png}
+\includegraphics[width = 120mm]{Images/protein_production_stacked_log.png}
 \caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth/2]{Images/TE_linear_DDI_scaled_for_imax.png}
-\caption{Comparison of density independent initiation (DII) and density dependent initiation (DDI)}
-%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-\end{figure}
 
 
 
