@@ -171,16 +171,15 @@
 
 \begin{document}
 \title{Modeling mRNA Populations}
-\author[utkm,curradd]{N.~Pollesch\corref{cor1}}
-\ead{pollesch@math.utk.edu}
-\author[utkgst]{Ricardo Urquidi}
-\author[utkeeb,nimbios,cor1]{M.A.~Gilchrist}
+\author[utkgst]{R.~Urquidi Camacho}
+\author[utkm,curradd]{N.~Pollesch}
+\author[utkgst,utkeeb,nimbios,cor1]{M.A.~Gilchrist\corref{cor1}}
 \ead{mikeg@utk.edu}
 \cortext[cor1]{Corresponding author}
+\address[utkgst]{Genome Science and Technology Program, University of Tennessee, Knoxville, TN 37996-XXX}
 \address[utkm]{Department of Mathematics, University of Tennessee,  Knoxville, TN 37996-1320}
 \address[utkeeb]{Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, TN 37996-1610}
 \address[nimbios]{National Institute for Mathematical and Biological Synthesis, University of Tennessee, Knoxville, TN 37996-3410}
-\address[utkgst]{Genome Science and Technology Program, University of Tennessee, Knoxville, TN 37996-XXX}
 
 \begin{abstract}
 This paper presents a model to describe the dynamics of protein translation.  
@@ -365,35 +364,66 @@ The model captures some of the basic processes governing mRNA populations: trans
 Transcripts can exist in one of two states: capped and decapped which captures the the role of the 5' cap in mRNA protection and translation initiation. 
 Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
 Individual transcripts in the cell will be found with a set number of ribosomes (none, 1, 2, etc).
-The number of ribosomes on a transcript determines that transcripts ribosomal class.
-The model seeks to determine how the population of transcipts of a single gene are distributed between ribosomal classes and capped and decapped states.
-Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (class 0)
+The number of ribosomes on a transcript determines that transcripts polysomal class.
+The model seeks to determine how the population of transcripts of a single gene are distributed between ribosomal classes and capped and decapped states.
+
+Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (polysome class 0)
 From capped class 0 a transcript can have two fates. 
-The transcript can be decapped for degradation at rate $\mu$ and move into the decapped class 0.
-Alternatively, a ribosome can initiate translation at rate $\kappa*(1-i/imax)$ and be loaded onto the transcript and move it into capped class 1.Where i is the current transcript class and imax is the maximal ribosomal occupancy on the transcript
-A ribosome on transcript can then elongate and terminate at a rate of $\tau * i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
-Capped transcripts move through rounds of translation initiation and elongation\/termination and distribute along the different ribosomal classes. 
-From any ribosomal class in the capped state the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same ribosomal class.
-decapped transcripts can no longer initate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
-This process represent co-translational decay, a common method of mRNA decay in eukaryots (Citation) 
+The transcript can be decapped, thus marked for degradation at rate $\mu$ and move into the decapped class 0.
+Alternatively, a ribosome can initiate translation at rate $\kappa(1-i/\imax)$ and be loaded onto the transcript and move it into capped class 1.
+Where i is the current transcript class and \imax is the maximal ribosomal occupancy on the transcript. 
+The first term, $\kappa$ is the average initiation rate on an empty transcript. 
+For ribosomes initiating on transcripts already harboring ribosomes, this initiation rate is scaled to reflect the probability of a ribosome being present at or near the start codon. 
+This attempts to account for the ribosomal density dependent effects on initiation and is called the density dependent initiation (DDI) model.
+As our model does not track ribosomal positions, we assume a uniform distribution of ribosomes across a transcript.
+
+A ribosome on transcript can then elongate and terminate at a rate of $\tau' \times  i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
+The term $\tau'$ is calculated by using the average elongation rate $\tau_0$ on a particular transcript divided by the length of the transcript $\tau'=\tau_0/\text{protein length in aa}$.
+As the number of ribosomes on a transcript increase, the probability of a ribosome being at the end of the transcript also increases, again following a uniform distribution. 
+To better represent this mathematically, $\tau'$ can also  be written as:
+\begin{equation}
+	\tau' = \frac{\tau_0}{protein \: length} = \frac{\tau_0}{9\times \imax}
+\end{equation}
+Where the saturated state of a transcript is denoted as \imax, meaning that that transcript can no longer accept any more ribosomes. The factor nine arises from the average number of codons that is occupied by a ribosome. 
+We can now formulate $\tau' \times i$ in the same way we formulated $\kappa$. 
+\begin{equation}
+	\tau' \times i = \frac{\tau_0}{9} \times \frac{i}{\imax}
+\end{equation}
+Where $\tau_0/9$ is the scaled elongation/termination rate, and $i/\imax$ is the probability that a ribosome is at the end of a transcript.
+
+Capped transcripts move through rounds of translation initiation and elongation-termination and distribute along the different polysomal classes. 
+From any ribosomal class in the capped state the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same polysomal class.
+Decapped transcripts can no longer initiate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
+This process represent co-translational decay, a common method of mRNA decay in eukaryotes (Hu 2009, Pelechano 2015, Collart 2020) 
 After all ribosome complete translation, the mRNA is in decapped class 0 and completely degraded at a rate $\delta$.
-The saturated state of a transcript is denoted as \emph{imax}, meaning that that transcript can no longer accept any more ribosomes. 
 The model produces two outputs. 
 First, the total mRNA in each state and therefore the system (Figure 1B-D). 
 Second, The distribution of the mRNAs in each mRNA in each ribosomal class. (Figure 1 B-D).
-The total protein output at steady state from our model can be obtrained by calculating the average ribosomal class in the system by the total mRNA in the system (Figure 1D). 
+The total protein output at steady state from our model can be obtained by calculating the average ribosomal class in the system by the total mRNA in the system (Figure 1D). 
 
-\subsection{Model Definition and Analysis}
-For simplicity, we begin by defining our model equations using generic functions to describe the transition of mRNAs between different classes or states.
-We then constrain the model by assuming specific functions to describe the transition of mRNAs between classes.
-%Note that from here forward the capped and decapped subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
+\subsection{Formal Model Definition}
+We formalize the DDI model presented in Figure 1 by converting each state in to a series of ordinary differential equations (ODEs) representing the mRNA population for each polysomal class. 
+The functional form of the capped mRNA sub population is:
+\begin{align} \label{eq:Capped_ODE}
+\frac{dm_{0}}{dt} &= \lambda+\frac{\tau_0}{9}\frac{1}{\imax}m_{1}-\left(\kappa_0\left(1-\frac{0}{\imax}\right) + \mu\right)m_{0} \\ \nonumber
+\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\frac{\tau_0}{9}\frac{2}{\imax}m_{2}-\left(\frac{\tau_0}{9}\frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\\ \nonumber
+& \vdots & \\ \nonumber
+\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\frac{\tau_0}{9}\frac{i+1}{\imax}m_{i+1}-\left(\frac{\tau_0}{9}\frac{i}{\imax}+\kappa_0\left(1-\frac{i-1}{\imax}\right)+\mu\right) m_{i} \\ \nonumber
+& \vdots & \\ \nonumber
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left(\frac{\tau_0}{9}\frac{\imax}{\imax}+\mu\right) m_{\imax}\\ \nonumber
+\end{align}
 
-\subsection*{General model equations of the density independent initation model}
-%\subsection{The capped subsystem}
-Our model consists of two sets of time dependent and coupled ODEs.
-Each set of ODEs describes the abundance of mRNAs that are either capped and decapped for degradation.
-The ODEs within each sets equations are structured by the ribosome load of the mRNA.
-The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the marking of capped mRNAs or the degradation of decapped mRNAs with a ribosome load of 0.
+Similarly, the functional form of the decapped mRNA sub population is: 
+\begin{align}\label{eq:Capped_ODE}
+\frac{dm_{0}^{*}}{dt} &= \mu m_{0}+\frac{\tau_0}{9}\frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
+\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+\frac{\tau_0}{9}\frac{2}{\imax}m_{2}^{*}-\tau(1)m_{1}^{*} \\ \nonumber
+& \vdots & \\ \nonumber
+\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+\frac{\tau_0}{9}\frac{i+1}{\imax}m_{i+1}^{*}-\tau(i)m_{i}^{*} \\ \nonumber
+& \vdots & \\ \nonumber
+\frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}-\frac{\tau_0}{9}\frac{\imax}{\imax}m_{\imax} \\ \nonumber
+\end{align}
+
+A less constrained version of the model does not account for the DDI effects and doesn't scale $\kappa$ by $(1-i/\imax)$. This is the density independent initiation (DII) version of the model. Parameters and their units are fully defined in Table 1. All parameters are assumed to fixed for a given gene, but may vary between genes.
 
 \begin{table}
 \centering
@@ -403,8 +433,9 @@ State Variables & &  \\ \hline
 $m_i$ & Abundance of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
 $m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
 \multicolumn{1}{l}{Model Parameters} \\ \hline
+i & ribosomal load index & Ribosome\\
   \imax & \shortstack{Maximum number of ribosomes able to bind to mRNA;\\
-           defines number of state variables and is a function of gene length.} & ND \\
+           defines number of state variables and is a function of gene length.} & Ribosome \\
 $\kappa(i)$ & Translation initiation rate for unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
 $\tau(i)$ & Translation completion rate for the marked and unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
 $\mu(i)$ & Marking rate for unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
@@ -417,47 +448,10 @@ Variable \imax is in the domain of non-negative integers; all other variables ar
 \label{tab:params}
 \end{table}
 
-Specifically, new mRNA enter the $0^{th}$ capped class $m_0(t)$ at a rate..
-Ribosomal bind mRNAs in the $i^{th}$ capped class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
-By definition, $\kappa(\imax)= 0$, i.e.~mRNAs with a ribosome load of \imax cannot accommodate any addtional mRNAs.
-In the density independent model (DII), we assume that the current ribosomal load has no effect on the ability of another ribosome to bind to the transcript. 
-An average ribosomal footprint covers 9 codons (~27 nucleotides). Therefore for a protein of 270 amino acids in length, the maximal ribsomal load, \imax = 10.
-Capped mRNAs with ribosome load $i$ are decapped at a rate of $\mu(i)$.
-We assume that capped mRNAs are decapped for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
-Accordingly, the ribosome load of decapped mRNAs remains unchanged, but they are transitioned from the capped class $m_i(t)$ to the decapped class $m_i^*(t)$ .
-Ribosome movement along an mRNA is assumed to occur independent of whether or not its capped or decapped for degradation.
-Thus, ribosomes complete translation of both decapped and capped mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mmRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
-Where $\tau(i)= i \cdot \tau(1)$ and .
-This is because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
-Thus, the chance that a ribosome on a transcript of class $i$ will complete translation increases as ribosome load increases.  
-Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
-It is important to note that $\tau(1)$ is not the same as the average elongation rate. $\tau(1) = average \: elongation \: rate/(9 \cdot \imax)$. 
-That is, the average elongation rate in $aa/s$ is rescaled to the average rate of total elongation and termination through a transcript in units of $1/s$.
-At equilibrium every $\tau(i)$ must equal every $\kappa(i)$ by definition.  
-Only mRNAs decapped for degradation and with a ribosome load of 0 are removed from the system.
-Specifically, decapped mRNAs are removed from the $0^{th}$ class at a rate of $\delta \, m^*_0(t)$.
-All parameters are assumed to fixed for a given gene, but may vary between genes.
+
+ 
 
 
-The functional form of the capped subsystem is:
-\begin{align*}
-\frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\left(\kappa(0) + \mu(0)\right)m_{0} \\
-\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\left(\tau(1)+\kappa(1)+\mu(1)\right) m_{1}\\
-& \vdots & \\
-\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\left(\tau(i)+\kappa(i)+\mu(i)\right) m_{i} \\
-& \vdots & \\
-\frac{dm_{\imax}}{dt} &= \kappa(\imax-1)m_{\imax-1}-\left(\tau(\imax)+\mu(\imax)\right) m_{\imax}\\
-\end{align*}
-
-Similarly, the functional form of the decapped subsystem is:
-\begin{align*}
-\frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
-\frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
-& \vdots & \\
-\frac{dm_{i}^{*}}{dt} &= \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
-& \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} &= \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
-\end{align*}
 
 \subsection{The density dependent initiation model}\label{sec:assumed_forms}
 The DII model above is insensitive to the current ribosomal load on a transcript. 
@@ -494,65 +488,8 @@ Incorporating Equation 1 into the DII system yeild the density dependent intiati
 \frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left(\tau(\imax)+\mu(\imax)\right) m_{\imax}\\
 \end{align*}
 and the decapped subsystem is unchanged.
-%These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 
-\subsection{Matrix-vector Formulation of ODE System}
-It is frequently useful to work with the matrix-vector formulation for a system of ODE.
-In this model, the dynamics of the decapped and capped mRNAs can be represented as,
-\begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
-\end{equation} 
-where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
-Using the functional forms presented above, matrix formulations are provided next.
+%These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 0
 
-As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
-The matrix $\bs{F}$ is block lower-diagonal and is given in Equation~\ref{eq:full_matrix}.
-\begin{equation}
-\label{eq:full_matrix}
-\bs{F}=\left(\begin{array}{cc}
-\bs{U} & \bs{0} \\
-\bs{\mu} & \bs{R} \\
-\end{array} \right).
-\end{equation}
-The upper-left block, $\bs{U}$, corresponds to the capped state variables, where $\bs{U}$'s general form is provided in Equation~\ref{eq:capped_matrix}.
-The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
-Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
-The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Equation~\ref{eq:decapped_matrix}.
-
-The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
-\begin{equation}\label{eq:capped_matrix}
-\bs{U}=\left(\begin{array}{cccccc}
--(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
-\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
-   &\ddots        & \ddots        & \ddots & &  \\
-   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} & \\
-                  &         &        & \ddots  & \ddots & \ddots \\
-     
-                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
-\end{array}\right).
-\end{equation}
-In the representation given in Equation~\ref{eq:capped_matrix}, all blank entries are 0.
-The $(\imax-1)^{\text{th}}$ row has been suppressed in Equation~\ref{eq:capped_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
-
-The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix $\bs{F}$ (Equation~\ref{eq:full_matrix}),
-\begin{equation}
-\label{eq:decapped_matrix}
-\bs{R}=\left(
-\begin{array}{ccccccc}
--\delta & \tau_0\frac{`}{\imax} & & & & & \\
- & -\tau_0\frac{1}{\imax} & \tau_0\frac{2}{\imax} & & & &\\
- & & \ddots & \ddots & & & \\
- & & & -\tau_0\frac{i-1}{\imax} & \tau_0\frac{(i+1)}{\imax} & & \\
- & & & & \ddots & \ddots & \\
- & & & & & -\tau_0\frac{(\imax-2)}{\imax} & \tau_0\frac{\imax}{\imax} \\
- & & & & & & -\tau_0\frac{\imax}{\imax} \\
-\end{array}
-\right),
-\end{equation}
-$\bs{R}$ is upper-diagonal with only non-zero entries on the diagonal and the super-diagonal.
-
-\subsubsection{Capped Subsystem Matrix-vector Representation}
-As a group the capped subsystem decouples from the decapped subsystem, as such the capped subsystem can be solved independently of the decapped subsystem.  
-The matrix-vector formula representing the capped subsystem is \begin{equation}\label{eq:matrix_capped}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of capped state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the capped subsystem (Figure~\ref{eq:capped_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
-With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
 
 \subsubsection{Capped state steady state solution}
 
@@ -694,6 +631,11 @@ To get the probability distribution of transcripts across the decapped state we 
   	p_{j}^{*} &= \frac{S_{j}}{j(\frac{\tau}{\delta} + \vec{S} \odot \vec{l})}	\:\:\:\:, for j=1, 2, ..., i, ..., \imax
 \end{align*}
 
+
+
+
+
+
 \subsection{Complete system mRNA population}
 The total mRNA ($M_{tot}$) in the system is defined by,
 \begin{equation}
@@ -720,79 +662,6 @@ It simplifies to,
 
 
 
-%
-%
-%Ribosomal distribution on the decapped class is determined by the ratio of $\kappa$/$\tau$ and $\mu$
-%Figure 4 shows a representative contour plot of model solutions for a broad range of $\kappa$ values.
-%For  $\kappa < 0.1 $  there is no ribosome loading, while loading maxes out beyond $10^4$, with a smooth transition between boundaries. 
-%	\begin{figure}[ht]
-%		\centering
-%		\includegraphics[width=30em]{Images/contour_norm_unmarked_l1m1d1t1_k1e-5_1e5_imax_30}
-%		\caption{Contour plot of capped class over a range of kappa values: $\kappa = 10^-5 - 10^5.\imax=30,\lambda=1,\tau 0=1,\mu 0=0.1,\delta=100,000$. Color scale is percent ribomose load for each kappa value across all 31 ribosome classes.}
-%		%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-%	\end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-%\begin{landscape}
-%\begin{figure}
-%\tiny
-%\centering
-%\caption{Equation~\ref{eq:matrix_capped}, $\vec{m}'=\bs{U}\vec{m}+\vec{b}$, is the matrix-vector equation representing the capped system from Section~\ref{sec:capped_simp}. As it can be seen, the matrix $\bs{U}$ is tri-diagonal, where all blank entries appearing in the matrix are 0. This property of $\bs{U}$ is desirable and leads to a scheme for finding equilibrium solutions that is presented later in this paper}
-%\label{fig:capped_matrix}
-%\[\left(\begin{array}{c}
-%m_{0}'\\
-%m_{1}'\\
-%\vdots\\
-%m_{i}'\\
-%\vdots\\
-%m_{\imax-1}'\\
-%m_{\imax}'
-%\end{array}\right)=\left(\begin{array}{cccccccc}
-%-(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  &  &  &   \\
-%\kappa_0 & -\left(\frac{\imax-1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  &  &  &   \\
-%   &\ddots        & \ddots        & \ddots & &  &  &  \\
-%   & &    \frac{\imax-(i-1)}{\imax}\kappa_0 & -\left(\frac{\imax-i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} &  &  & \\
-%                  &         &        & \ddots  & \ddots & \ddots &  &   \\
-%                  &         &        &  & \frac{2}{\imax}\kappa_0 & -\left(\frac{1}{\imax}\kappa_0+\mu_0+\tau_0\frac{\imax-1}{\imax}\right) & \tau_0\frac{\imax}{\imax} &   \\
-%                          &        &  &  &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
-%\end{array}\right)\left(\begin{array}{c}
-%m_{0}\\
-%m_{1}\\
-%\vdots\\
-%m_{i}\\
-%\vdots\\
-%m_{\imax-1}\\
-%m_{\imax}\end{array}\right)+\left(\begin{array}{c}
-%\lambda\\
-%0\\
-%\vdots\\
-%0\\
-%\vdots\\
-%0\\
-%0
-%\end{array}\right)
-%\]
-%\end{figure}
-%\end{landscape}
-
-%Include???
-
-%From the matrix representation above, one can see that this system has a format, that when viewed in blocks, has desirable properties. Specifically the large square matrix $A\in\mathbb{M}_{2\imax+1,2\imax+1}$, is in the form where the upper-left block is tri-diagonal, and corresponds to the capped system. The lower left is diagonal, and corresponds to the input from the capped class to the decapped class, and the lower right is matrix is upper-triangular corresponding to the decapped system. There is an inhomogeneous term represented by the $\vec{B}$which functions as an input to the first capped class. These properties make it desirable to begin work by considering the capped and decapped classes separately.
-
-
-
-%Units of the different paramters: $\lambda$ is transcripts/s, $\mu$, $\kappa$, $\tau$ and $\delta$ are is 1/s.
 
 \subsection{model implementation in R}
 Code to solve the model was written in the R package Ribosome. To solve the capped subsystem of the model, the Solve.tridiag routing from limSolve (Soetaert,K 2009). The model solutions presented previously serve their purpose to make the mathematics more interpretable by humans. However, solving for just the first column of the adjugate matrix is far slower than solving the whole tridiagonal system using limSolve. To solve for the deapped subsytem, the values of the capped state were plugged in to the solutions above. Utility functions, plots and statistics were created using R (v 3.6),  data.table (v1.14.0), and limSolve (v 1.5.6). 
@@ -831,6 +700,20 @@ Finally, $\delta$ only determines the accumulation of transcripts in the  $m_0^*
 
 
 \section{Results}
+
+
+
+At equilibrium every $\tau(i)$ must equal every $\kappa(i)$ by definition.  
+Only mRNAs decapped for degradation and with a ribosome load of 0 are removed from the system.
+Specifically, decapped mRNAs are removed from the $0^{th}$ class at a rate of $\delta \, m^*_0(t)$.
+
+
+
+
+
+
+
+
 
 The model outputs two sets of results. First it provides the total mRNA population and how this population is split between capped and decapped states. Secondly, it describes how transcripts are distributed among ribosomal classes within each state. 
 
@@ -936,7 +819,7 @@ As shown in previous results, shorter half-lives (faster marking) leads to lower
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=100mm]{Images/2023-07-02_logodds.png}
+\includegraphics[width=100mm]{Images/2023-07-13_logodds.png}
 \caption{Log odds of finding mRNA in the capped state for a range of marking rates in yeast and arabidopsis. }
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
@@ -1136,8 +1019,97 @@ In terms of protein production TL is a scalar multiplier of TX abundances. But i
  
 
 
+\section{Appendix}
+
+%%%%%%%%%%%%%
+For simplicity, we begin by defining our model equations using generic functions to describe the transition of mRNAs between different classes or states.
+We then constrain the model by assuming specific functions to describe the transition of mRNAs between classes.
+%Note that from here forward the capped and decapped subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
+
+\subsection*{General model equations of the density independent initiation model}
+%\subsection{The capped subsystem}
+Our model consists of two sets of time dependent and coupled ODEs.
+Each set of ODEs describes the abundance of mRNAs that are either capped and decapped for degradation.
+The ODEs within each sets equations are structured by the ribosome load of the mRNA.
+The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the marking of capped mRNAs or the degradation of decapped mRNAs with a ribosome load of 0.
 
 
+Specifically, new mRNA enter the $0^{th}$ capped class $m_0(t)$ at a rate..
+Ribosomal bind mRNAs in the $i^{th}$ capped class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
+By definition, $\kappa(\imax)= 0$, i.e.~mRNAs with a ribosome load of \imax cannot accommodate any addtional mRNAs.
+In the density independent model (DII), we assume that the current ribosomal load has no effect on the ability of another ribosome to bind to the transcript. 
+An average ribosomal footprint covers 9 codons (~27 nucleotides). Therefore for a protein of 270 amino acids in length, the maximal ribsomal load, \imax = 10.
+Capped mRNAs with ribosome load $i$ are decapped at a rate of $\mu(i)$.
+We assume that capped mRNAs are decapped for degradation rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
+Accordingly, the ribosome load of decapped mRNAs remains unchanged, but they are transitioned from the capped class $m_i(t)$ to the decapped class $m_i^*(t)$ .
+Ribosome movement along an mRNA is assumed to occur independent of whether or not its capped or decapped for degradation.
+Thus, ribosomes complete translation of both decapped and capped mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mmRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
+Where $\tau(i)= i \cdot \tau(1)$ and .
+This is because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
+Thus, the chance that a ribosome on a transcript of class $i$ will complete translation increases as ribosome load increases.  
+Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
+It is important to note that $\tau(1)$ is not the same as the average elongation rate. $\tau(1) = average \: elongation \: rate/(9 \cdot \imax)$. 
+That is, the average elongation rate in $aa/s$ is rescaled to the average rate of total elongation and termination through a transcript in units of $1/s$.
+
+
+\subsection{Matrix-vector Formulation of ODE System}
+It is frequently useful to work with the matrix-vector formulation for a system of ODE.
+In this model, the dynamics of the decapped and capped mRNAs can be represented as,
+\begin{equation}\label{eq:matrix_full}\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
+\end{equation} 
+where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
+Using the functional forms presented above, matrix formulations are provided next.
+
+As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
+The matrix $\bs{F}$ is block lower-diagonal and is given in Equation~\ref{eq:full_matrix}.
+\begin{equation}
+\label{eq:full_matrix}
+\bs{F}=\left(\begin{array}{cc}
+\bs{U} & \bs{0} \\
+\bs{\mu} & \bs{R} \\
+\end{array} \right).
+\end{equation}
+The upper-left block, $\bs{U}$, corresponds to the capped state variables, where $\bs{U}$'s general form is provided in Equation~\ref{eq:capped_matrix}.
+The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
+Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
+The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Equation~\ref{eq:decapped_matrix}.
+
+The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
+\begin{equation}\label{eq:capped_matrix}
+\bs{U}=\left(\begin{array}{cccccc}
+-(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
+\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
+   &\ddots        & \ddots        & \ddots & &  \\
+   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} & \\
+                  &         &        & \ddots  & \ddots & \ddots \\
+     
+                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
+\end{array}\right).
+\end{equation}
+In the representation given in Equation~\ref{eq:capped_matrix}, all blank entries are 0.
+The $(\imax-1)^{\text{th}}$ row has been suppressed in Equation~\ref{eq:capped_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
+
+The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix $\bs{F}$ (Equation~\ref{eq:full_matrix}),
+\begin{equation}
+\label{eq:decapped_matrix}
+\bs{R}=\left(
+\begin{array}{ccccccc}
+-\delta & \tau_0\frac{`}{\imax} & & & & & \\
+ & -\tau_0\frac{1}{\imax} & \tau_0\frac{2}{\imax} & & & &\\
+ & & \ddots & \ddots & & & \\
+ & & & -\tau_0\frac{i-1}{\imax} & \tau_0\frac{(i+1)}{\imax} & & \\
+ & & & & \ddots & \ddots & \\
+ & & & & & -\tau_0\frac{(\imax-2)}{\imax} & \tau_0\frac{\imax}{\imax} \\
+ & & & & & & -\tau_0\frac{\imax}{\imax} \\
+\end{array}
+\right),
+\end{equation}
+$\bs{R}$ is upper-diagonal with only non-zero entries on the diagonal and the super-diagonal.
+
+\subsubsection{Capped Subsystem Matrix-vector Representation}
+As a group the capped subsystem decouples from the decapped subsystem, as such the capped subsystem can be solved independently of the decapped subsystem.  
+The matrix-vector formula representing the capped subsystem is \begin{equation}\label{eq:matrix_capped}\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of capped state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the capped subsystem (Figure~\ref{eq:capped_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
+With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
 
 
 
