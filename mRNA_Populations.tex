@@ -576,35 +576,13 @@ Finally, the degradation rate $\delta$ only determines the accumulation of trans
 
 \section{Results}
 
-
-\begin{enumerate}
-
-
-\item The DII model above is insensitive to the current ribosomal load on a transcript. But this doesn't mimic what happens in reality. Steric hindrance of recently initiated ribosomes prevent subsequent initiation. This might be one explanation for the sometimes observed "translational ramp", a short strecth of amino acids right after the start codon which translate slower than the remaining transcript (Verma 2019). 
-
-The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the marking rate and elongation/termination rate. This result will be explored further in the results.
-
-
-First it gives a determinant free solution to our system. Now, to obatin a full solution of the capped solution to our model we only need the first column of the Adjugate matrix.
-Second it splits the two funtions of $\mu$; Its effect on transcript number and its effect on transcript distribution. And allows for their separate analysis.
-Third, it permits analysis of the underlying transcript distribution even under conditions where the model has no solution. For example, when $\mu$ = 0, both solutions are indeterminate. However, the determinant free solution allows for us to explore what the transcript distribution would be when $\mu$=0.
-	
-In our model the remaining transcripts in class $m_0^*$ are either only the 3' end of co-translationally degraded transcripts or full transcripts from class $m_0$. Recently, the rate of degradation for the 5' - 3' exonuclease XRN1 was determined to be ~26 nt/s (Atthapattu 2021). XRN1 is the primary exonuclease involved in co-translational degradation and  5' degradation pathways (Sorenson 2018,Yu 2016, Collart 2019, Pelechano 2015). For an average 3' UTR of 121 nts (Kebaara 2009) this would take ~4.6s, and an average transcript of ~ 1400nt would take 54s to degrade.  This means the average degradation rate $\delta$ would take between 1/54s = 0.019/s or 1/4.6s = 0.22/s . The total population of mRNA in $m_tot^*$ is determined by $1/\delta$, $1/\tau$ and $\mu$ (as part of $\vec{S}$) as shown Equation  ~\ref{eq:  marked_total_pop}. $\tau$ ranges from 0.03 to $10^-4$. This makes $1/\delta \leq 1/\tau$. It is reasonable to explore the model with large $\delta$ since decapped transcripts are translationally incompetent. 
-
-
-\end{enumerate}
-
-
-
-
-
-The model outputs two sets of results. First it provides the total mRNA population and how this population is split between capped and decapped states. Secondly, it describes how transcripts are distributed among ribosomal classes within each state. 
-
 \subsection{Model provides a unique distribution of mRNAs across ribosomal classes for each scaled initiation rate}
 
-The model outputs the probability of finding a transcript in each ribosomal class for a particular parameter set. In figure 3A the mRNA distribution in the capped state is presented for four different scaled initiation rates (as shown in Figure 3B) for a median length protein with a long (52 minute) half life. To summarize the model results across a range of parameters a heatmap where each row is the distribution of mRNA at a particular scaled initiation rate is shown. As the scaled initiation rate increases the density moves to the right and spreads out in the capped system. The same heatmap can be produced for the marked class (Figure 4) and for the whole system (Figure 5). 
+The capped solution splits the two funtions of the marking rate $\mu$; Its effect on transcript number and its effect on transcript distribution. And allows for their separate analysis. The mRNA population is defined by the ratio of the transcription rate $\lambda$ to $\mu$.  
 
-The distribution in the capped system is bounded at class 0 and class \imax and roughly symmetrical away from the boundaries (Figure 3B). The decapped system is centered around the lowest classes (Figure 4). This is a result of higher classes having a higher chance of terminating, therefore skewing the distribution left. As scaled initiation increases, the distribution in the capped class shifts to higher ribosomal loads which results in an increase in the ribosomal class of the decapped system. This is due to transcripts entering the decapped system at a higher ribosomal class. The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
+The probability of finding a transcript in each ribosomal class for a particular parameter set is dependent on the initiation rate $\kappa$, elongation rate $\tau_0$ and $\mu$. In figure 3A the mRNA distribution in the capped state is presented for four different scaled initiation rates (as shown in Figure 3B) for a median length protein with a long (52 minute) half life. To summarize the model results across a range of parameters a heatmap where each row is the distribution of mRNA at a particular scaled initiation rate is shown. As the scaled initiation rate increases the density moves to the right and spreads out in the capped system.  The distribution in the capped system is bounded at class 0 and class \imax and roughly symmetrical away from the boundaries (Figure 3B). 
+
+The decapped system is centered around the lowest classes (Figure 4). This is due to the distribution in ~\ref{eq: decapped_distribution} having the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$ dependant on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
 
 \begin{figure}[!ht]
 \centering
@@ -635,7 +613,9 @@ The distribution in the capped system is bounded at class 0 and class \imax and 
 
 \subsection{Initiation interference due to increasing ribosome density is noticeable beginning at moderate to high ribosomal loads }
 
- On a physical level, ribosomes initiating on a transcript depend on having sufficient space around the start codon. Transcripts at with higher ribosomal loads therefore have a higher probability of having an obstructed start codon. In order to explore the effect of ribosomal load on initiation we created two versions of the model. The first is independent on the ribosomal load of a transcript, the density independent model (DII). A second dependent on the ribosomal load of a transcript, the density dependent initiation (DDI) model. The DII model is presented in figure 5 A-B, with individual probability profiles presented in 5A and the summary heatmap in 5B. The DDI model is presented in Figure 5C-D. Individual probability profiles are generated at low, mid and high scaled initiation rates as determined from Duc and Song 2018. Note that in the DII model the system saturates just above the high scaled initiation rate, while the DDI model doesn't. Additionally, model profiles are very similar at low to mid scaled initiation values for both models. Figures 5 B and D suggest that the density dependent effects start appearing between mid and high scaled initiation rates. Polysome profiling experiments usually ony resolve 8-10 ribosomal peaks, with the majority of the signal arising from polysomes 2-5. This generally agrees with single molecule imaging of nascent peptides where ribosomal densities are on the range of 0.5\% - 30\% (Morisaki 2016, Wang 2016, Wu 2016, Yan 2016). While both the DII and DDI models show similar behavior and low density at low to mid scaled initiation values, empirical evidence and physical reality would indicate that a transcript is unlikely to ever reach saturation. This supports the DDI model. From here on out all results will be solely based on the DDI model.
+ On a physical level, ribosomes initiating on a transcript depend on having sufficient space around the start codon. Transcripts at with higher ribosomal loads therefore have a higher probability of having an obstructed start codon. In order to explore the effect of ribosomal load on initiation we created two versions of the model. The first is dependent on the ribosomal load of a transcript, the density dependent initiation (DDI) model. The DII model is is independent on the ribosomal load of a transcript, the density independent model (DII) presented in figure 5 A-B, with individual probability profiles presented in 5A and the summary heatmap in 5B. The DDI model is presented in Figure 5C-D. Individual probability profiles are generated at low, mid and high scaled initiation rates as determined from Duc and Song 2018. Note that in the DII model the system saturates just above the high scaled initiation rate, while the DDI model doesn't. Additionally, model profiles are very similar at low to mid scaled initiation values for both models. Figures 5 B and D suggest that the density dependent effects start appearing between mid and high scaled initiation rates. Polysome profiling experiments usually ony resolve 8-10 ribosomal peaks, with the majority of the signal arising from polysomes 2-5. This generally agrees with single molecule imaging of nascent peptides where ribosomal densities are on the range of 0.5\% - 30\% (Morisaki 2016, Wang 2016, Wu 2016, Yan 2016). While both the DII and DDI models show similar behavior and low density at low to mid scaled initiation values, empirical evidence and physical reality would indicate that a transcript is unlikely to ever reach saturation. This supports the DDI model. From here on out all results will be solely based on the DDI model.
+
+
 
 \begin{figure}[!ht]
 \centering
@@ -825,6 +805,9 @@ In terms of protein production TL is a scalar multiplier of TX abundances. But i
 
 
 model begins to allow for the estimation of protein productions from different populations of the mRNA available. It brings into focus that protein production could potentially arise from outside the "active" translation pool. This may also be a side effect of the model brought about by not considering other degradation mechanisms. Considering ~60 percent of mRNA in Arabidopsis employ 5' decapping as their decay mechanism (sorenson 2018) it is not a stretch that some production may arise from uncapped transcripts.
+
+
+ Steric hindrance of recently initiated ribosomes prevent subsequent initiation. This might be one explanation for the sometimes observed "translational ramp", a short strecth of amino acids right after the start codon which translate slower than the remaining transcript (Verma 2019). 
 
 
 %most interesting idea I have at the moment is the idea of effective Imax. While our model does not explicitly account for any of the mechanisms or positions of the ribosomes on a transcript, it does predict behavior for hypothetical transcripts. We currently are running on the assumption that one of the determining parameters is the average elongation rate across a transcript. This very well might not be true as 
@@ -1213,6 +1196,11 @@ It simplifies to,
  Presnyak utilized the temperature sensitive \textit{rbp-1} RNA polymerase mutant in yeast. This mutant can not undergo transcription at non-optimal temperatures, thus allowing for the measurement of mRNA decay over time. Sorenson (2018) used the transcriptional inhibitor, cordycepin, to treat  \textit{Arabidopsis thaliana} seedlings and measured their decay using RNA-Seq.
 
 .This is due to the fact that many combinations of $\kappa$ and $\tau$ can yield the same scaled initiation rate (e.g. $\kappa$ =0.02 and $\tau*9*\imax$ = 2, and $\kappa$=0.04 and $\tau*9*\imax$=4, both yield $\kappa/\tau$=0.01).
+
+
+	
+In our model the remaining transcripts in class $m_0^*$ are either only the 3' end of co-translationally degraded transcripts or full transcripts from class $m_0$. Recently, the rate of degradation for the 5' - 3' exonuclease XRN1 was determined to be ~26 nt/s (Atthapattu 2021). XRN1 is the primary exonuclease involved in co-translational degradation and  5' degradation pathways (Sorenson 2018,Yu 2016, Collart 2019, Pelechano 2015). For an average 3' UTR of 121 nts (Kebaara 2009) this would take ~4.6s, and an average transcript of ~ 1400nt would take 54s to degrade.  This means the average degradation rate $\delta$ would take between 1/54s = 0.019/s or 1/4.6s = 0.22/s . The total population of mRNA in $m_tot^*$ is determined by $1/\delta$, $1/\tau$ and $\mu$ (as part of $\vec{S}$) as shown Equation  ~\ref{eq:  marked_total_pop}. $\tau$ ranges from 0.03 to $10^-4$. This makes $1/\delta \leq 1/\tau$. It is reasonable to explore the model with large $\delta$ since decapped transcripts are translationally incompetent. 
+
 
 
 % without interference if kappa is small relative to tau then interference doesn't matter. if kappa is large what is the distribution? How does increasing mu affect it.
