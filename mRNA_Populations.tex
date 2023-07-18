@@ -529,13 +529,13 @@ Then you calculate the odds,
 
 \subsection{Calculating expected ribosomal load and protein production}
 The expected ribosomal load for either the capped or decapped state is calculated by:
-\begin{equation}
+\begin{equation}\label{eq:Expected_ribo_load}
 	E(ribosome) =\sum_{i=0}^{\imax}j\times p_{i}
 \end{equation}
 Where $\vec{p_m}$ is the distribution in either state and i is the polysome class.
 
 To find the global mean ribosomal load we obtain,
-\begin{equation}
+\begin{equation}\label{eq:System_ribo_load}
 	\text{Total Ribosomal Load} = p_{mtot}\times E(ribosome)_{mtot} + (1-p_{mtot})\times E(ribosome)_{mtot^*}
 \end{equation}
 
@@ -582,7 +582,7 @@ The capped solution splits the two funtions of the marking rate $\mu$; Its effec
 
 The probability of finding a transcript in each ribosomal class for a particular parameter set is dependent on the initiation rate $\kappa$, elongation rate $\tau_0$ and $\mu$. In figure 3A the mRNA distribution in the capped state is presented for four different scaled initiation rates (as shown in Figure 3B) for a median length protein with a long (52 minute) half life. To summarize the model results across a range of parameters a heatmap where each row is the distribution of mRNA at a particular scaled initiation rate is shown. As the scaled initiation rate increases the density moves to the right and spreads out in the capped system.  The distribution in the capped system is bounded at class 0 and class \imax and roughly symmetrical away from the boundaries (Figure 3B). 
 
-The decapped system is centered around the lowest classes (Figure 4). This is due to the distribution in ~\ref{eq: decapped_distribution} having the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$ dependant on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
+The decapped system is centered around the lowest classes (Figure 4). This is due to the distribution in ~\ref{eq:decapped_distribution} having the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$ dependant on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
 
 \begin{figure}[!ht]
 \centering
@@ -672,7 +672,6 @@ One particular aspect of analyzing the model at equilibrium is that while the to
 As shown in previous results, shorter half-lives (faster marking) leads to lower ribosomal load and a shift towards the decapped state. To explore this shift we can use the results in equation~\ref{eq:capped_solution}, which splits the mRNA population in the capped state and the distribution of reads within and equation ~\ref{eq:  marked_total_pop} the total transcript population to derive the log odds in equation ~\ref{eq:log_odds}. Using equation ~\ref{eq:log_odds}, we can see under which parameter regimes mRNA is more abundant in the capped state. We produced output across all scaled initiation values and under the 1\%, 50\% and 99\% percentiles for marking rates in both yeast and Arabidopsis (Figure 9). We note two patterns. First as the scaled initiation rate increases the amount of mRNA in the decapped class increases. Secondly, shorter mRNA half-life bias transcripts towards the decapped class as previously seen in Figures 6 and 7.  
 
 
-~\ref{eq:decapped_solution}
 
 %Main results: 
 %Link our mean output and the results of TASEP ribosome flow model.
@@ -738,33 +737,71 @@ As shown in previous results, shorter half-lives (faster marking) leads to lower
 
 
 
-\subsection{Protein production is a function of}
+\subsection{Decapped state can be a significant source of protein production}
+%For the capped state rate on is rate off at equilibrium. And by using the initiation rate, it is the same as the protein production rate per transcript. Same applies for %\tau_0$/9*\imax as this is equal to the initiation rate.
+%For the decapped state, the equilibrium exists between the inflow of marked transcripts at in a particular distribution and the same %\tau_0$/9*\imax parameter. Or not really. There is really no "on" rate, just an off rate.
+%in the capped sytem the on off rate directly relates to the ribosomal density/load on a transcript and it is a decent ad hoc measure of relative expression. 
+%Decapped is more complex. The mRNAs enter at rate $\mu$, but these don't carry the same number of ribosomes with them. Unlike $\kappa$ they are not the loading rate of one ribomsome. Is it the mean riboload of the capped system times $\mu$? No, the mean underestimate the contribution of the higher classes needing to percolate down into the lower classes. The decapped class steady state has no simple way of calculating it's steady state load from the parameters.
+
+Protein production is a function of the rate at which ribosomes leave the transcript and the underlying total number of transcripts. Naively, the average protein production rate (PPR) for the capped state could be estimated by multiplying the total number of transcript by the initiation rate. However, this ignores the DDI and marking effects in the system and the actual PPR will be lower. Contributions from the decapped state are harder to estimate from the parameters as the distribution is dependent on the capped state's distribution. 
+
+Another way of comparing relative protein output (RPO) is to calculate the mean ribosomal load (MRL) for each state using \label{eq:Expected_ribo_load} and multiply is by the total number of transcripts in their respective state. The full systems protein production can be found with \label{eq:System_ribo_load}. In our model the MRL of the capped system will always be equal to or greater than the decapped MRL (Figure 10 A). As the scaled initiation rate increases and the MRL of the capped class increases, the distributional properties of the uncapped class mean that it will always be proportionally less to the MRL of the capped class.  
+
+The RPO of a state is dependent on both the MRL of each state and the total transcript population of each state (Figure 10B). As the scaled initiation rate increases RPO will increase. The marking rate $\mu$ plays an important role in controlling both the underlying mRNA population and the distribution of transcripts in the capped state. Therefore, and increase in marking rate reduces RPO through two mechanisms. Each of the three cases in Figure 10 B, has been broken down into the RPO contributions from the capped and decapped states (Figure 10 C-E). A surprising finding from out model is that under certain biologically relavant parameter combinations, almost half of all protein production can arise from the decapped state. This can be seen inf Figure 10 F, wherea substantial portion of all protein arises from the decapped state. The reason behind this is despite the the relative MRL of the decapped state being lower than the capped state as scaled initiation rises, the amount of mRNA in the decapped state rises faster.
 
 
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width = 120mm]{Images/protein_production_stacked_log.png}
-%\caption{Estimated average protein production in yeast.}
-%%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-%\end{figure}
 
-
-
-
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = 135mm]{Images/2023-07-17_Protein_Production.png}
+\caption{Estimated average protein production in yeast. A) Ratio of the expected ribomal load of Decapped over Capped states for a protein of \imax 40 and low marking rate for distribution of the capped state that result in MRL of 0-40. B) Protein protein production across different marking rates. Total protein production is normalized to the maximal protein production across all parameters. C-F) Contribution of capped and decapped states to total protein production. C) Low marking D) Medium marking E) High marking F) zoom in of high marking result. }
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
 
 
 
 \section{Discussion}
 
-Paragraph summary
+\begin{enumerate}
+\item In this work we present a model which tracks mRNA populations and their association with ribosomes across two states, a translationally competent capped state and incompetent decapped state. 
+	\begin{enumerate}
+	\item As the process of translation is entirely dependent on its mRNA substrate to produce protein, understanding the underlying fluctuation in mRNA is crucial. 
+	\item We demonstrate that the process of marking an mRNA for degradation through decapping alters the total number of mRNA molecules in a system, their distribution between the two states as well as lowering the mean number of ribosomes on a transcript. 
+	\item A surprising outcome of this process is that, under certain biological conditions, a substantial amount of protein produced may arise from terminating ribosomes in the decapped state.
+	\end{enumerate}
+\end{enumerate}
 
-paragraph in context to other models TASEP, RFM cell wide models and results comparison
+\begin{enumerate}
+\item The model recapitulates empirical measurements of translation.
+	\begin{enumerate}	
+	\item Despite the model itself not being fit to data, through use of empirically obtained parameter values it still displays ribosomal loading patterns that would be expected in polysome profiles. 
+	\item In polysome profiles all transcripts in a sample are separated based on the number of ribosomes translating on them.
+	\item The majority of transcripts are found with 1-10 ribosomes and strongly bias towards lower ribosomal loads (Weinberg 2016, Lokdarshi 2020).
+	\item Throughout the scaled initiation range we observe that, for a protein of average length and transcripts with a long half-life, the transcript is below a MRL of 10 for the majority of the range. 
+	\item Moreover, Duc and Song 2018, only studied the most highly translated genes (850 out of 5,300 expressed genes). This means that a majority of translated genes fall below the scaled initiation range used in this study.  
+	\item This is further corroborated with single molecule imaging analyses, which find low levels of ribosomal loading of 5/transcript (Morisaki 2016), 
+	\end{enumerate}
+\end{enumerate}
 
-paragraph that talks about marking rate effects vis a vis effects on translation
 
-paragraph that talks about limitations and extensions
 
-paragraph that talks about protein production
+
+2. The inclusion of mRNA degradation effects shows that mRNA decay not only regulates transcript abundance, but also mean ribosomal load .
+
+
+3. Co-translational decay may allow for decapped transcripts to provide substantial protein production under certain mRNA behaviors. 	
+
+4. model limitations and extension
+
+
+The model presented here displays interesting opportunities for further integration. 
+	RFM at every level (not that applicable really)
+	population level modeling (competition for ribosomes/trna)
+	integration with models of transcription.
+	
+
+
+
 
 
 Text for discussion of figure 1
