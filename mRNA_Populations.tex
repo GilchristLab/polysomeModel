@@ -776,21 +776,35 @@ The RPO of a state is dependent on both the MRL of each state and the total tran
 \section{Discussion}
 
 \begin{enumerate}
-\item mRNA decay not only regulates transcript abundance, but also reduces mean ribosomal load.
+\item Summary paragraph of results?
+
+
+Stuff for intro
+	\item mRNA degradation mechanisms (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019) and translation (Reuveni 2011, Nanikashvili 2019, Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
+	\item in our model we are going to be focusing on the process of mRNA 5' decapping.
+
+
+General Model Finding
+
+\item Our model combines the processes of transcription, translation and mRNA degradation (through 5' decapping) in order to predict mRNA populations and the protein production that arises from them. 
 	\begin{enumerate}
-		\item This reduction can be interpreted as a inhibiting the system from reaching the unobstructed steady state. This has previously been suggested but not demonstrated by (Reuveni 2011) and explored by (Valleriani 2011). 
-		\item This suggests that if left given enough time in the capped state each transcript species would reach a characteristic MRL during a set period of time.
-		\item  
-
+			\item Model predictions of the mRNA distribution across polysome classes match what would be expected in polysome gradients (Lokdarshi 2020, Dasgupta 2023), Ribo-seq (Weinberg 2016), and single molecule measurements of translation (Morisaki 2016, Yan 2016, Wang 2016, Wu 2016).   
+		\item Analytical and numerical solutions show that the transcription rate $\lambda$ is only a scaling factor across the whole system. 
+		\item  The population size of capped mRNAs $m_{tot}$ is solely determined by $\lambda$ divided by the marking rate $\mu$.
+		\item The $m_0^*$ class is also independent of translation and is determined by $\lambda$ divided by the clearance rate $\delta$.
+		\item While the remaining classes in the decapped state depend on the elongation/termination rate $\tau_0$ and the underlying distribution of the mRNA in the capped state. Our model predictions of the capped to decapped mRNA ratios also align with empirical measurements (Pelechano 2015)
+		\item A unique feature of our model is that we can separate the translational behavior between the capped and decapped classes.
+		\item The distribution of mRNAs across the whole system can be unimodal or bimodal depending on how transcripts are distributed between the capped and decapped states.
+		\item The capped mRNA distribution appears to be a truncated gaussian, with bounds at $i$ = 0 and \imax.		
+		\item  The decapped mRNA distribution is skewed towards lower polysomal classes.
+		\item The MRL of the capped class will always be greater or equal to the MRL of the Decapped class.
+		\item Finally, under steady state conditions the MRL is independent of the protein length, this too is corroborated by single molecule imaging of translation (Wu 2016).
 	\end{enumerate}
-	\begin{enumerate}
-	\item	Points for results
 
-	\end{enumerate}
+The interplay between marking rate and scaled initiation rates affect MRL and protein production
 
-\item In addition to the effects on the distribution of transcripts across polysomal classes, marking rate along with the scaled initiation rate determine the distribution of mRNA across the two states. 
+\item Marking rate impacts the MRL, but only for transcripts with high initiation rates. 
 	\begin{enumerate}	
-		\item Mature mRNA populations and their degradation has been modeled before, but in absence of translation and it's quality control effects (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019). 
 		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
 		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
 		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
@@ -802,8 +816,9 @@ Most transcripts will have a scaled initiation rate below 0.01 and have most of 
 	\end{enumerate}
 
 
-\item	Co-translational decay may allow for decapped transcripts to provide substantial protein production.
+\item	Co-translational degradation may allow for decapped transcripts to provide substantial protein production.
 	\begin{enumerate}
+	\item The interplay between the ma
 	\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
 	\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
 	
@@ -813,6 +828,7 @@ Most transcripts will have a scaled initiation rate below 0.01 and have most of 
 
 	\end{enumerate}
 
+Model limitations, extensions and future work
 
 \item	Model Limitations, extension and future work, modeling decay
 	\begin{enumerate}
@@ -838,116 +854,198 @@ Most transcripts will have a scaled initiation rate below 0.01 and have most of 
 	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
 	\end{enumerate}
 
-\item Model Extension: Population level modeling with degradation
-	\begin{enumerate}
-	\item Modeling individual transcripts is of value to understand the mechanism of translation.
-	\item Our model does not account for limitations in the tRNA or ribosome pools.
-	\item Modeling of the all the species of transcript (Nanikashvili 2019, Raveh 2016) and taking to account ribsome availability have been done previously (Shah 2013), but without considering mRNA degradation.
-	\item Our model is extensible to modeling the full mRNA population of a sample.
-	\end{enumerate}	
-	\begin{enumerate}
-	\item	Points for results
-
-	\end{enumerate}
-
 \end{enumerate}
-
-
-
-
-
-
-
-\begin{enumerate}
-\item In this work we present a model which tracks mRNA populations and their association with ribosomes across two states, a translationally competent capped state and incompetent decapped state. 
-	\begin{enumerate}
-	\item As the process of translation is entirely dependent on its mRNA substrate to produce protein, understanding the underlying fluctuation in mRNA is crucial. 
-	\item We demonstrate that the process of marking an mRNA for degradation through decapping alters the total number of mRNA molecules in a system, their distribution between the two states as well as lowering the mean number of ribosomes on a transcript. 
-	\item A surprising outcome of this process is that, under certain biological conditions, a substantial amount of protein produced may arise from terminating ribosomes in the decapped state.
-	\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}
-\item The model recapitulates empirical measurements of translation.
-	\begin{enumerate}	
-	\item Despite the model itself not being fit to data, through use of empirically obtained parameter values it still displays ribosomal loading patterns that would be expected in polysome profiles. 
-	\item In polysome profiles all transcripts in a sample are separated based on the number of ribosomes translating on them.
-	\item The majority of transcripts are found with 1-10 ribosomes and strongly bias towards lower ribosomal loads (Weinberg 2016, Lokdarshi 2020).
-	\item Throughout the scaled initiation range we observe that, for a protein of average length and transcripts with a long half-life, the transcript is below a MRL of 10 for the majority of the range. 
-	\item Moreover, Duc and Song 2018, only studied the most highly translated genes (850 out of 5,300 expressed genes). This means that a majority of translated genes fall below the scaled initiation range used in this study.  
-%morisaki uses 10xFLAG-TAG which they call spaghetti monster. Flag tag is 8aa long. so 80aa tag. Plus 1544aa long KDM5B, or 374aa long beta actin or 125aa long H2B. The average ribosomal load estimated was 5, 3 and 2.2 respectively. Converting them to imax that would be (80+1544)/9= 180,(80+374)/9=  50 and (80+125)/9= 22. and the densities would be 0.0277, 0.06, and 0.1. Converting to model imax of 40, 1.1118, 2.4 and 4 ribosomes each. 
-%Yan uses a 24xSunTag kif18b PP7 reporter. only the suntag and kif are protein coding. A suntag has a length of 24 aa and kif18b 852aa. so total length is 852 + 24*24 = 1482. imax of 158. the relative frequency of mRNAs with ribosomes are an average of 12 with a range of 1 to 30.  that is a density of 0.076 +- 0.0063 to 0.19. in imax 40 that is 3 +- 0.25 to 7.6. 
-%Wang also uses a 24x suntag, but with ODC (461aa) as the protein. 461+24*24= 1037. imax = 115. with an average ribosomal load of 12 +- 1-37. density of 0.104 +- 0.009 to 0.322. in imax 40 that is 4.16 +- 0.36 to 13
-%Finally wu usese a 1x flag 24xsuntag blue fluorescent protein (239) and an auxin induced degron (228). total length is 1051. imax is 116. mean of 5. 0.043 and at imax 40 1.7.shorter and longer constructs allowed wu to see that number of ribsomes linearly scale with construct length .  agreeing with our results and indicating that their estimates are very likely steady state estimates.
-
-	\item This is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each study to an \imax of 40 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016). 
-	\item Wu 2016, also designed constructs containing different lengths of protein sequences and found that ribosome load scales linearly with protein length. Agreeing with our results in Figure 8 and implying the measurement was performed at true steady state. 
-	\item Despite this general agreement, the model still represents an upper bound of translation as many other forms of translational control are not included. 
-	\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}
-	\item Our model integrates the effect of mRNA decay into translation.
-	\begin{enumerate} 
-		\item mRNA decay not only regulates transcript abundance, but also reduces mean ribosomal load.
-		\item This reduction can be interpreted as a inhibiting the system from reaching the unobstructed steady state. This has previously been suggested but not demonstrated by (Reuveni 2011) and explored by (Valleriani 2011). 
-		\item This suggests that if left unobstructed each transcript species would reach a characteristic MRL during a set period of time. 
-		\item The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
-		\item However, other mechanisms exist with different outcomes for translation. 3' decay would result in no ribosome terminating and abruptly remove a subset of transcripts and overall protein production from the pool. Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
-		\item Extension of the model to include these mechanisms is yet to be explored. However, it is safe to speculate that they would both result in a further reduction of MRL.
-		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
-	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
-	\item Our model currently cannot distinguish between the protective effects of translation or 
-	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
-	\item However, biology suggests a more complex behavior.
-	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This leaves much to be explored further	
-	\end{enumerate}
-\end{enumerate}
-
-
-\begin{enumerate}
-	\item In addition to the effects on the distribution of transcripts across polysomal classes, marking rate along with the scaled initiation rate determine the distribution of mRNA across the two states. 
-	\begin{enumerate}	
-		\item Mature mRNA populations and their degradation has been modeled before, but in absence of translation and it's quality control effects (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019). 
-		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
-		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
-		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
-Most transcripts will have a scaled initiation rate below 0.01 and have most of the mRNA in the capped state. However, our model result is on a per gene basis. To estimate a the global proportion of decapped to capped mRNA will require a larger sample of marking, transcription and scaled initiation rates.
-	\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}
-	\item Co-translational decay may allow for decapped transcripts to provide substantial protein production. 	
-	\begin{enumerate}
-		\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
-		\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
-	\end{enumerate}
-		\item We also highlight that all examples in the model have been run under the same transcription rate $\lambda$. The underlying amount of transcript will scale protein output globally, which translation and mRNA degradation will subsequently tune.
-	\begin{enumerate}
-		\item We have not correlated protein production to transcription as in (de Sousa Abreu 2013, Schwanhauser 2013, Edfors 2016, Brion 2020) due to not modeling protein degradation. 
-		\item Properly setting the transcription rate is important for determining final protein production, but not for understanding the translational dynamics.
-	\end{enumerate}
-\item In our model the remaining transcripts in class $m_0^*$ are either only the 3' end of co-translationally degraded transcripts or full transcripts from class $m_0$.
-	\begin{enumerate}
-		\item The role of the degradation rate  is to account for the remaining transcripts.
-		\item Mathematically and biologically it is essential for completing the lifecyle of an mRNA, but difficult to measure.
-	\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}
-	\item The model suggest that regulation mechanisms for translation are concerned with reducing MRL.
-	\begin{enumerate}	
-		\item This is first seen by comparing DII, the simplest, most unobstructed model to the DDI model. 
-		\item As scaled initiation rates increase, density dependence reduces MRL. We do not include bottlenecking due to translational folding, codon optimality or pausing in our model therefor density dependent effects might occur earlier in a transcript. 
-		\item With in the design of our model this would mean a transcript would behave as if its total length were <\imax. Given a shorter effective \imax for translation.
-		\item This particular aspect could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
-		\item As described above, mRNA degradation further reduces the MRL as can mRNA secondary structure.
-		\item Other methods such as the canonical global repression of translation by eIF2$\alpha$ phoshorylation and upstream open reading frames are all inhibitory methods (Dever 2022, Lokdarshi 2020).
-		\item Finally, modeling of the all the species of transcript (Nanikashvili 2019, Raveh 2016) and taking to account ribsome availability have been done previously (Shah 2013), but without considering mRNA degradation.
-		\item All these biological phenomena provide ample room for extension of our base model.
-	\end{enumerate}
-\end{enumerate}
- 
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%\begin{enumerate}
+%\item Summary paragraph of results?
+%
+%
+%\item mRNA decay not only regulates transcript abundance, but also reduces mean ribosomal load.
+%	\begin{enumerate}
+%		\item This reduction can be interpreted as a inhibiting the system from reaching the unobstructed steady state. This has previously been suggested but not demonstrated by (Reuveni 2011) and explored by (Valleriani 2011). 
+%		\item This suggests that if left given enough time in the capped state each transcript species would reach a characteristic MRL during a set period of time.
+%		\item  
+%
+%	\end{enumerate}
+%	\begin{enumerate}
+%	\item	Points for results
+%
+%	\end{enumerate}
+%
+%\item In addition to the effects on the distribution of transcripts across polysomal classes, marking rate along with the scaled initiation rate determine the distribution of mRNA across the two states. 
+%	\begin{enumerate}	
+%		\item Mature mRNA populations and their degradation has been modeled before, but in absence of translation and it's quality control effects (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019). 
+%		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
+%		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
+%		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
+%Most transcripts will have a scaled initiation rate below 0.01 and have most of the mRNA in the capped state. However, our model result is on a per gene basis. To estimate a the global proportion of decapped to capped mRNA will require a larger sample of marking, transcription and scaled initiation rates.
+%	\end{enumerate}
+%	\begin{enumerate}
+%	\item	Points for results
+%	\item mention pelechano in results briefly
+%	\end{enumerate}
+%
+%
+%\item	Co-translational decay may allow for decapped transcripts to provide substantial protein production.
+%	\begin{enumerate}
+%	\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
+%	\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
+%	
+%	\end{enumerate}
+%	\begin{enumerate}
+%	\item	Points for results
+%
+%	\end{enumerate}
+%
+%
+%\item	Model Limitations, extension and future work, modeling decay
+%	\begin{enumerate}
+%	\item The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
+%		\item However, other mechanisms exist with different outcomes for translation. 3' decay would result in no ribosome terminating and abruptly remove a subset of transcripts and overall protein production from the pool. Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
+%		\item Extension of the model to include these mechanisms is yet to be explored. However, it is safe to speculate that they would both result in a further reduction of MRL.
+%		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
+%	
+%	\end{enumerate}
+%	\begin{enumerate}
+%	\item	Points for results
+%
+%	\end{enumerate}
+%
+%\item	Model extension and future work, Codon opt
+%	\begin{enumerate}
+%	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
+%	\item Our model currently cannot distinguish between the protective effects of translation, codon effects or other decay pathways.
+%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+%	\item Our model does not consider codon specific effects such as pausing sites. 
+%	\item Difficult to fold or translate regions of a transcript  could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
+%	\item These hyptotheses could be tested by fitting out model to the Chan 2018 dataset.
+%	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
+%	\end{enumerate}
+%
+%\item Model Extension: Population level modeling with degradation
+%	\begin{enumerate}
+%	\item Modeling individual transcripts is of value to understand the mechanism of translation.
+%	\item Our model does not account for limitations in the tRNA or ribosome pools.
+%	\item Modeling of the all the species of transcript (Nanikashvili 2019, Raveh 2016) and taking to account ribsome availability have been done previously (Shah 2013), but without considering mRNA degradation.
+%	\item Our model is extensible to modeling the full mRNA population of a sample.
+%	\end{enumerate}	
+%	\begin{enumerate}
+%	\item	Points for results
+%
+%	\end{enumerate}
+%
+%\end{enumerate}
+%
+%
+%
+%
+%
+%
+%
+%\begin{enumerate}
+%\item In this work we present a model which tracks mRNA populations and their association with ribosomes across two states, a translationally competent capped state and incompetent decapped state. 
+%	\begin{enumerate}
+%	\item As the process of translation is entirely dependent on its mRNA substrate to produce protein, understanding the underlying fluctuation in mRNA is crucial. 
+%	\item We demonstrate that the process of marking an mRNA for degradation through decapping alters the total number of mRNA molecules in a system, their distribution between the two states as well as lowering the mean number of ribosomes on a transcript. 
+%	\item A surprising outcome of this process is that, under certain biological conditions, a substantial amount of protein produced may arise from terminating ribosomes in the decapped state.
+%	\end{enumerate}
+%\end{enumerate}
+%
+%\begin{enumerate}
+%\item The model recapitulates empirical measurements of translation.
+%	\begin{enumerate}	
+%	\item Despite the model itself not being fit to data, through use of empirically obtained parameter values it still displays ribosomal loading patterns that would be expected in polysome profiles. 
+%	\item In polysome profiles all transcripts in a sample are separated based on the number of ribosomes translating on them.
+%	\item The majority of transcripts are found with 1-10 ribosomes and strongly bias towards lower ribosomal loads (Weinberg 2016, Lokdarshi 2020).
+%	\item Throughout the scaled initiation range we observe that, for a protein of average length and transcripts with a long half-life, the transcript is below a MRL of 10 for the majority of the range. 
+%	\item Moreover, Duc and Song 2018, only studied the most highly translated genes (850 out of 5,300 expressed genes). This means that a majority of translated genes fall below the scaled initiation range used in this study.  
+%%morisaki uses 10xFLAG-TAG which they call spaghetti monster. Flag tag is 8aa long. so 80aa tag. Plus 1544aa long KDM5B, or 374aa long beta actin or 125aa long H2B. The average ribosomal load estimated was 5, 3 and 2.2 respectively. Converting them to imax that would be (80+1544)/9= 180,(80+374)/9=  50 and (80+125)/9= 22. and the densities would be 0.0277, 0.06, and 0.1. Converting to model imax of 40, 1.1118, 2.4 and 4 ribosomes each. 
+%%Yan uses a 24xSunTag kif18b PP7 reporter. only the suntag and kif are protein coding. A suntag has a length of 24 aa and kif18b 852aa. so total length is 852 + 24*24 = 1482. imax of 158. the relative frequency of mRNAs with ribosomes are an average of 12 with a range of 1 to 30.  that is a density of 0.076 +- 0.0063 to 0.19. in imax 40 that is 3 +- 0.25 to 7.6. 
+%%Wang also uses a 24x suntag, but with ODC (461aa) as the protein. 461+24*24= 1037. imax = 115. with an average ribosomal load of 12 +- 1-37. density of 0.104 +- 0.009 to 0.322. in imax 40 that is 4.16 +- 0.36 to 13
+%%Finally wu usese a 1x flag 24xsuntag blue fluorescent protein (239) and an auxin induced degron (228). total length is 1051. imax is 116. mean of 5. 0.043 and at imax 40 1.7.shorter and longer constructs allowed wu to see that number of ribsomes linearly scale with construct length .  agreeing with our results and indicating that their estimates are very likely steady state estimates.
+%
+%	\item This is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each study to an \imax of 40 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016). 
+%	\item Wu 2016, also designed constructs containing different lengths of protein sequences and found that ribosome load scales linearly with protein length. Agreeing with our results in Figure 8 and implying the measurement was performed at true steady state. 
+%	\item Despite this general agreement, the model still represents an upper bound of translation as many other forms of translational control are not included. 
+%	\end{enumerate}
+%\end{enumerate}
+%
+%\begin{enumerate}
+%	\item Our model integrates the effect of mRNA decay into translation.
+%	\begin{enumerate} 
+%		\item mRNA decay not only regulates transcript abundance, but also reduces mean ribosomal load.
+%		\item This reduction can be interpreted as a inhibiting the system from reaching the unobstructed steady state. This has previously been suggested but not demonstrated by (Reuveni 2011) and explored by (Valleriani 2011). 
+%		\item This suggests that if left unobstructed each transcript species would reach a characteristic MRL during a set period of time. 
+%		\item The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
+%		\item However, other mechanisms exist with different outcomes for translation. 3' decay would result in no ribosome terminating and abruptly remove a subset of transcripts and overall protein production from the pool. Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
+%		\item Extension of the model to include these mechanisms is yet to be explored. However, it is safe to speculate that they would both result in a further reduction of MRL.
+%		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
+%	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
+%	\item Our model currently cannot distinguish between the protective effects of translation or 
+%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+%	\item However, biology suggests a more complex behavior.
+%	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This leaves much to be explored further	
+%	\end{enumerate}
+%\end{enumerate}
+%
+%
+%\begin{enumerate}
+%	\item In addition to the effects on the distribution of transcripts across polysomal classes, marking rate along with the scaled initiation rate determine the distribution of mRNA across the two states. 
+%	\begin{enumerate}	
+%		\item Mature mRNA populations and their degradation has been modeled before, but in absence of translation and it's quality control effects (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019). 
+%		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
+%		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
+%		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
+%Most transcripts will have a scaled initiation rate below 0.01 and have most of the mRNA in the capped state. However, our model result is on a per gene basis. To estimate a the global proportion of decapped to capped mRNA will require a larger sample of marking, transcription and scaled initiation rates.
+%	\end{enumerate}
+%\end{enumerate}
+%
+%\begin{enumerate}
+%	\item Co-translational decay may allow for decapped transcripts to provide substantial protein production. 	
+%	\begin{enumerate}
+%		\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
+%		\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
+%	\end{enumerate}
+%		\item We also highlight that all examples in the model have been run under the same transcription rate $\lambda$. The underlying amount of transcript will scale protein output globally, which translation and mRNA degradation will subsequently tune.
+%	\begin{enumerate}
+%		\item We have not correlated protein production to transcription as in (de Sousa Abreu 2013, Schwanhauser 2013, Edfors 2016, Brion 2020) due to not modeling protein degradation. 
+%		\item Properly setting the transcription rate is important for determining final protein production, but not for understanding the translational dynamics.
+%	\end{enumerate}
+%\item In our model the remaining transcripts in class $m_0^*$ are either only the 3' end of co-translationally degraded transcripts or full transcripts from class $m_0$.
+%	\begin{enumerate}
+%		\item The role of the degradation rate  is to account for the remaining transcripts.
+%		\item Mathematically and biologically it is essential for completing the lifecyle of an mRNA, but difficult to measure.
+%	\end{enumerate}
+%\end{enumerate}
+%
+%\begin{enumerate}
+%	\item The model suggest that regulation mechanisms for translation are concerned with reducing MRL.
+%	\begin{enumerate}	
+%		\item This is first seen by comparing DII, the simplest, most unobstructed model to the DDI model. 
+%		\item As scaled initiation rates increase, density dependence reduces MRL. We do not include bottlenecking due to translational folding, codon optimality or pausing in our model therefor density dependent effects might occur earlier in a transcript. 
+%		\item With in the design of our model this would mean a transcript would behave as if its total length were <\imax. Given a shorter effective \imax for translation.
+%		\item This particular aspect could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
+%		\item As described above, mRNA degradation further reduces the MRL as can mRNA secondary structure.
+%		\item Other methods such as the canonical global repression of translation by eIF2$\alpha$ phoshorylation and upstream open reading frames are all inhibitory methods (Dever 2022, Lokdarshi 2020).
+%		\item Finally, modeling of the all the species of transcript (Nanikashvili 2019, Raveh 2016) and taking to account ribsome availability have been done previously (Shah 2013), but without considering mRNA degradation.
+%		\item All these biological phenomena provide ample room for extension of our base model.
+%	\end{enumerate}
+%\end{enumerate}
+% 
 
 
 %most interesting idea I have at the moment is the idea of effective Imax. While our model does not explicitly account for any of the mechanisms or positions of the ribosomes on a transcript, it does predict behavior for hypothetical transcripts. We currently are running on the assumption that one of the determining parameters is the average elongation rate across a transcript. This very well might not be true as 
