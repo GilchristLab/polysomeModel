@@ -294,6 +294,19 @@ This section addresses such topics as why modeling this process important, what 
 %description of the biological underpinnings of the model.
 %T
 
+Intro Outline
+3.1.1.	 Gene regulation, translation and mRNA stability
+3.1.1.1.	Short introduction to Gene expression, transcription, translation, and the regulation of mRNA populations both dependent and independent of translation
+3.1.2.	 Ever increasing methods of measuring mRNA decay and Translation provide ample grounds for testing and knitting together hypothesis underlying the mechanism of translation.
+3.1.2.1.	Ribo-seq, microarrays, polysome profiling, proteomics and live imaging. 
+3.1.2.1.1.	But most of these approaches are not measurements of single transcripts, but ensemble measurements of populations
+3.1.3.	 Mathematical modeling as a tool to interpret and generate hypotheses to better understand translation
+3.1.3.1.	TASEP
+3.1.3.2.	Riboflow
+3.1.3.3.	Other bulk “cell-wide” approaches shah 2013
+3.1.4.	 Our model acts as an intermediate between cell wide approaches and single transcript models such as TASEP and Riboflow. Our coarse-grained model of translation focuses on the behavior of transcript populations. This includes effects originating from transcription and mRNA decay as well as translation initiation and elongation/termination. By modeling translation at the population level, we can also use the model in the future to better understand the information held in ribo-seq and proteomics experiments. 
+
+
 
 \begin{enumerate}%rough ideas / poteintially important concepts
 	\item Gene expression short overview
@@ -761,6 +774,89 @@ The RPO of a state is dependent on both the MRL of each state and the total tran
 
 
 \section{Discussion}
+
+\begin{enumerate}
+\item mRNA decay not only regulates transcript abundance, but also reduces mean ribosomal load.
+	\begin{enumerate}
+		\item This reduction can be interpreted as a inhibiting the system from reaching the unobstructed steady state. This has previously been suggested but not demonstrated by (Reuveni 2011) and explored by (Valleriani 2011). 
+		\item This suggests that if left given enough time in the capped state each transcript species would reach a characteristic MRL during a set period of time.
+		\item  
+
+	\end{enumerate}
+	\begin{enumerate}
+	\item	Points for results
+
+	\end{enumerate}
+
+\item In addition to the effects on the distribution of transcripts across polysomal classes, marking rate along with the scaled initiation rate determine the distribution of mRNA across the two states. 
+	\begin{enumerate}	
+		\item Mature mRNA populations and their degradation has been modeled before, but in absence of translation and it's quality control effects (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019). 
+		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
+		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
+		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
+Most transcripts will have a scaled initiation rate below 0.01 and have most of the mRNA in the capped state. However, our model result is on a per gene basis. To estimate a the global proportion of decapped to capped mRNA will require a larger sample of marking, transcription and scaled initiation rates.
+	\end{enumerate}
+	\begin{enumerate}
+	\item	Points for results
+	\item mention pelechano in results briefly
+	\end{enumerate}
+
+
+\item	Co-translational decay may allow for decapped transcripts to provide substantial protein production.
+	\begin{enumerate}
+	\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
+	\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
+	
+	\end{enumerate}
+	\begin{enumerate}
+	\item	Points for results
+
+	\end{enumerate}
+
+
+\item	Model Limitations, extension and future work, modeling decay
+	\begin{enumerate}
+	\item The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
+		\item However, other mechanisms exist with different outcomes for translation. 3' decay would result in no ribosome terminating and abruptly remove a subset of transcripts and overall protein production from the pool. Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
+		\item Extension of the model to include these mechanisms is yet to be explored. However, it is safe to speculate that they would both result in a further reduction of MRL.
+		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
+	
+	\end{enumerate}
+	\begin{enumerate}
+	\item	Points for results
+
+	\end{enumerate}
+
+\item	Model extension and future work, Codon opt
+	\begin{enumerate}
+	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
+	\item Our model currently cannot distinguish between the protective effects of translation, codon effects or other decay pathways.
+	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+	\item Our model does not consider codon specific effects such as pausing sites. 
+	\item Difficult to fold or translate regions of a transcript  could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
+	\item These hyptotheses could be tested by fitting out model to the Chan 2018 dataset.
+	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
+	\end{enumerate}
+
+\item Model Extension: Population level modeling with degradation
+	\begin{enumerate}
+	\item Modeling individual transcripts is of value to understand the mechanism of translation.
+	\item Our model does not account for limitations in the tRNA or ribosome pools.
+	\item Modeling of the all the species of transcript (Nanikashvili 2019, Raveh 2016) and taking to account ribsome availability have been done previously (Shah 2013), but without considering mRNA degradation.
+	\item Our model is extensible to modeling the full mRNA population of a sample.
+	\end{enumerate}	
+	\begin{enumerate}
+	\item	Points for results
+
+	\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+
 
 \begin{enumerate}
 \item In this work we present a model which tracks mRNA populations and their association with ribosomes across two states, a translationally competent capped state and incompetent decapped state. 
