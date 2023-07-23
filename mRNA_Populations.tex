@@ -339,6 +339,12 @@ Intro Outline
 	\end{enumerate}
 	\item Current Models/Research and how our model fits in the current field
 
+	
+Stuff for intro
+	\item mRNA degradation mechanisms (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019) and translation (Reuveni 2011, Nanikashvili 2019, Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
+	\item in our model we are going to be focusing on the process of mRNA 5' decapping.
+
+
 \end{enumerate}
 
 \begin{enumerate}
@@ -776,15 +782,8 @@ The RPO of a state is dependent on both the MRL of each state and the total tran
 \section{Discussion}
 
 \begin{enumerate}
-\item Summary paragraph of results?
 
-
-Stuff for intro
-	\item mRNA degradation mechanisms (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019) and translation (Reuveni 2011, Nanikashvili 2019, Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
-	\item in our model we are going to be focusing on the process of mRNA 5' decapping.
-
-
-General Model Finding
+\subsection{General Model Findings}
 
 \item Our model combines the processes of transcription, translation and mRNA degradation (through 5' decapping) in order to predict mRNA populations and the protein production that arises from them. 
 	\begin{enumerate}
@@ -801,56 +800,53 @@ General Model Finding
 		\item Finally, under steady state conditions the MRL is independent of the protein length, this too is corroborated by single molecule imaging of translation (Wu 2016).
 	\end{enumerate}
 
-The interplay between marking rate and scaled initiation rates affect MRL and protein production
+\subsection{The interplay between marking rate and scaled initiation rates affects MRL, proportion of mRNA in the capped state and protein production}
 
-\item Marking rate impacts the MRL, but only for transcripts with high initiation rates. 
+\item Increasing marking rate and scaled initiation rate both increase the proportion of transcripts in the decapped state.
+	\begin{enumerate}
+	\item The model formalizes the interplay between mRNA decapping and translation initiation. 
+	\item As expected, increasing marking rates result in an increase in the number of transcripts in the decapped state.
+	\item However, increasing the scaled initiation rate also leads to an increase of transcripts in the decapped state. 
+	\item As MRL in the capped classes increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
+	\item Model predictions of the fraction of mRNA in the decapped class fall with the 12.4\% population wide empirical estimate from Pelechano 2015. 
+	\end{enumerate}
+
+\item Increasing marking rate also decreases the MRL proportional to increasing scaled initiation rates. 
 	\begin{enumerate}	
-		\item Our model shows that even decapped populations of mRNAs can produce protein and can be the most abundant species of mRNA in the population. 
-		\item Through 5'P mRNA sequencing Pelechano 2015 can track degradation intermediates. They find that degradation products in the CDS follow a 3 nucleotide periodic pattern and compose 12.4 of all reads recovered. This indicates that a significant portion of the bulk mRNA population is undergoing cotranslational decay.
-		\item  Figure 9 shows that a significant amount of mRNA can be found in the decapped state.
-Most transcripts will have a scaled initiation rate below 0.01 and have most of the mRNA in the capped state. However, our model result is on a per gene basis. To estimate a the global proportion of decapped to capped mRNA will require a larger sample of marking, transcription and scaled initiation rates.
-	\end{enumerate}
-	\begin{enumerate}
-	\item	Points for results
-	\item mention pelechano in results briefly
-	\end{enumerate}
+		\item  Under low marking rates ($\mu ~ 10^{-6}$ 1/s, Half-life ~ 1,500 minutes), MRL for the system comes almost entirely from the capped state. 
+		\item As marking rate increases, a bimodal distribution starts to appear.
+		\item This bimodal distribution consists of  a mixture of the MRL from the capped and decapped states. 
+		\item As marking rates increase further, a greater proportion of the MRL arises from the decapped states.
+		\item As the decapped MRL $\leq$ the capped MRL, the whole system MRL decreases.   
+	\end{enumerate} 
 
-
-\item	Co-translational degradation may allow for decapped transcripts to provide substantial protein production.
+\item A surprising prediction from our model is that genes with  high marking rates ($\mu ~ 5 \times 10^{-3}$) can have almost half of their protein produced in the decapped state. 
 	\begin{enumerate}
-	\item The interplay between the ma
-	\item A surprising result from our model is that genes with short half-lives can have almost half of their protein produced in the decapped state. 
-	\item This suggests that short lived transcripts can produce more protein than expected despite having a half-life comparable to the time it takes an average length protein to get translated.
-	
-	\end{enumerate}
-	\begin{enumerate}
-	\item	Points for results
-
+	\item As marking rates increase, the difference between capped and decapped MRL decrease as more transcripts populate the decapped state. 
+	\item The ability to predict decapped mRNA population size and translational activity is a unique feature of our model.
+	\item The high relative protein production from the decapped state suggests that high marking rate transcripts can produce more protein than expected from their capped MRL alone.
 	\end{enumerate}
 
-Model limitations, extensions and future work
 
-\item	Model Limitations, extension and future work, modeling decay
+
+\subsection{Model limitations, extensions and future work}
+
+\item	The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
 	\begin{enumerate}
-	\item The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
-		\item However, other mechanisms exist with different outcomes for translation. 3' decay would result in no ribosome terminating and abruptly remove a subset of transcripts and overall protein production from the pool. Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
-		\item Extension of the model to include these mechanisms is yet to be explored. However, it is safe to speculate that they would both result in a further reduction of MRL.
-		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
-	
+		\item However, other mechanisms exist with different outcomes for translation. 
+		\item 3' decay would result in no ribosomes terminating and send all transcripts into the $m_0^*$ class . 
+		\item Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
+		\item Thus, depending on the ditribution of mRNAs in the capped class, and the site of the endonucleolytic decay a transcript in $m_i$ would end up in $m_{j}$, where $j < i$.		
+		\item The interplay of these mechanisms is of interest as mRNA stability is essential for protein expression for biotech and mRNA vaccines. (Cheng 2023 viruses, Boo and Kim 2020+) 
 	\end{enumerate}
-	\begin{enumerate}
-	\item	Points for results
+		
 
-	\end{enumerate}
-
-\item	Model extension and future work, Codon opt
+\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
 	\begin{enumerate}
-	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
-	\item Our model currently cannot distinguish between the protective effects of translation, codon effects or other decay pathways.
-	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
-	\item Our model does not consider codon specific effects such as pausing sites. 
-	\item Difficult to fold or translate regions of a transcript  could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
-	\item These hyptotheses could be tested by fitting out model to the Chan 2018 dataset.
+	\item Our model currently cannot distinguish between the protective effects of translation or codon effects.
+	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading which could be modeled by weighting the marking rate $\mu $ by $(1-i/imax)$, or having separate marking rates for $m_0$ and the other polysomal classes.
+	\item Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon optimality (Wu and Bazzini 2023).
+	\item Splitting each polysome class into two regions would approximate a ribosome flow model of only two regions, bounded by the pausing site.
 	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
 	\end{enumerate}
 
