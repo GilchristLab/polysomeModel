@@ -60,8 +60,11 @@
 
 %%custom commands for sanity
 \newcommand{\imax}{\ensuremath{i_{\max}}\xspace}
+\newcommand{\mhat}{\ensuremath{\hat{m}}\xspace}
 \newcommand{\mvec}{\ensuremath{\vec{m}}\xspace}
-\newcommand{\mstarvec}{\ensuremath{\vec{m}}\xspace}
+\newcommand{\mvechat}{\ensuremath{\hat{\mvec}}\xspace}
+\newcommand{\mvecstar}{\ensuremath{\mvec^*}\xspace}
+\newcommand{\mvechatstar}{\ensuremath{\mhatvec^*}\xspace}
 \newcommand{\GCD}{\ensuremath{\text{GCD}}\xspace}
 \newcommand{\detA[1]}{\ensuremath{\ensuremath{\det\left[\bs{A}_{#1}\right]}\xspace}}
 
@@ -435,7 +438,7 @@ The functional form of the capped mRNA sub population is:
 \end{align}
 
 Similarly, the functional form of the decapped mRNA sub population is: 
-\begin{align}\label{eq:Capped_ODE}
+\begin{align}\label{eq:Decapped_ODE}
 \frac{dm_{0}^{*}}{dt} &= \mu m_{0}+\frac{\tau_0}{9}\frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
 \frac{dm_{1}^{*}}{dt} &= \mu m_{1}+\frac{\tau_0}{9}\frac{2}{\imax}m_{2}^{*}-\tau(1)m_{1}^{*} \\ \nonumber
 & \vdots & \\ \nonumber
@@ -764,7 +767,7 @@ As shown in previous results, shorter half-lives (faster marking) leads to lower
 
 Protein production is a function of the rate at which ribosomes leave the transcript and the underlying total number of transcripts. Naively, the average protein production rate (PPR) for the capped state could be estimated by multiplying the total number of transcript by the initiation rate. However, this ignores the DDI and marking effects in the system and the actual PPR will be lower. Contributions from the decapped state are harder to estimate from the parameters as the distribution is dependent on the capped state's distribution. 
 
-Another way of comparing relative protein output (RPO) is to calculate the mean ribosomal load (MRL) for each state using \label{eq:Expected_ribo_load} and multiply is by the total number of transcripts in their respective state. The full systems protein production can be found with \label{eq:System_ribo_load}. In our model the MRL of the capped system will always be equal to or greater than the decapped MRL (Figure 10 A). As the scaled initiation rate increases and the MRL of the capped class increases, the distributional properties of the uncapped class mean that it will always be proportionally less to the MRL of the capped class.  
+Another way of comparing relative protein output (RPO) is to calculate the mean ribosomal load (MRL) for each state using \ref{eq:Expected_ribo_load} and multiply is by the total number of transcripts in their respective state. The full systems protein production can be found with \ref{eq:System_ribo_load}. In our model the MRL of the capped system will always be equal to or greater than the decapped MRL (Figure 10 A). As the scaled initiation rate increases and the MRL of the capped class increases, the distributional properties of the uncapped class mean that it will always be proportionally less to the MRL of the capped class.  
 
 The RPO of a state is dependent on both the MRL of each state and the total transcript population of each state (Figure 10B). As the scaled initiation rate increases RPO will increase. The marking rate $\mu$ plays an important role in controlling both the underlying mRNA population and the distribution of transcripts in the capped state. Therefore, and increase in marking rate reduces RPO through two mechanisms. Each of the three cases in Figure 10 B, has been broken down into the RPO contributions from the capped and decapped states (Figure 10 C-E). A surprising finding from out model is that under certain biologically relavant parameter combinations, almost half of all protein production can arise from the decapped state. This can be seen inf Figure 10 F, wherea substantial portion of all protein arises from the decapped state. The reason behind this is despite the the relative MRL of the decapped state being lower than the capped state as scaled initiation rises, the amount of mRNA in the decapped state rises faster.
 
@@ -778,78 +781,135 @@ The RPO of a state is dependent on both the MRL of each state and the total tran
 \end{figure}
 
 
-
+\end{document}
 \section{Discussion}
 
+
+In this study we develop and study a novel model of mRNA populations which includes the contributions of mRNA transcription, the initiation and termination of translation as well as mRNA decapping and degradation.
+
+
+\subsection*{Model Steady State Behavior}
+
+(Add relevant equation and figure references to points below)
+
 \begin{enumerate}
+\item Although our model is only a very simplified description of protein translation, it includes several steps that have been left out of earlier models.
+  \begin{enumerate}
+  \item Detail 1
+  \item Detail 2
+  \item Detail 3      
+  \end{enumerate}
+\item  In addition to being more biologically realistic, structuring the mRNA population by its polysome classes (ribosome load) and the status of its 5' cap allows us to understand how the the rates mRNA production $\lambda$, decapping $\mu$, elongation $\tau$, and degradation $\delta$ shape the steady state distribution of a gene's mRNA population across polysome classes and capping state.
+  Overall, we find that 
+  \begin{enumerate}
+  \item Capped mRNA population
+    \begin{enumerate}
+    \item Analytical and numerical solutions show that the transcription rate $\lambda$ acts as a scaling factor, such that the entire mRNA population is proportional to $\lambda$.
+      (Explain why this is important in a sentence).
+    \item The sum of the of capped mRNA classes $\mvechat$ is solely determined the ratio of $\lambda$ to the 5' decapping rate $\mu$, i.e. $\sum_{i = 0}^{i_{\imax}} \mhat_i= \lambda/mu$.
+      \begin{enumerate}
+      \item This result suggests that under biologically realistic conditions \ldots.
+      \end{enumerate}
+    \item Impact of $\kappa/\mu$
+      \begin{enumerate}
+      \item When $\kappa/\mu \ll 1$, the capped mRNA distribution $\mvechat$ is greatest in the polysome class $i=0$ and declines rapidly with $i$.
+      \item As $\kappa/\mu$ increases, the capped mRNA distribution shifts away from the lower bound of $i = 0$ appears to follow a truncated gaussian distribution.
+      \item At very high and generally unrealistic values of $\kappa/\mu$, ....
+      \end{enumerate}
+    \end{enumerate}
+  \item Decapped mRNA population
+    \begin{enumerate}
+    \item The steady state abundance of the decapped, ribosome free mRNA class class  $\mhat_0^*$  is decoupled from the dynamics of the rest of the population.
+      This decoupling has a number of important implications.
+      \begin{enumerate}
+      \item The steady state abundance (density?) of $\mhat_0^* = \lambda/\delta$ and, thus, depends only on the ratio of the mRNA transcription rate $\lambda$ to the degradation rate $\delta$.
+        If the transcription rate $\lambda$ of new, capped, but ribosome free mRNAs $\mhat_0$ is lower than the per capita degradation rate of decapped, ribosome free mRNAs $delta$, such that  $\lambda \ll \delta$, then $\mhat_0^* \ll 1$ and our model predicts that there will be few mRNAs in the $\mhat_0^*$ class.
+      \item Because $\mhat^*_0$ has no impact on the rest of the mRNA population, this result allows us to greatly simplifying our analysis since we need not consider $\mhat_0^*$ nor the mRNA degradation parameter $\delta$.
+      \end{enumerate}
+    \item Shifting our focus to the steady state abundance of the decapped, ribosome occupied mRNA classes  $\mhat_i^*$ where $i > 0$
+      \begin{enumerate}
+      \item The distribtuion of $\mhat^*_i$  with $i > 0 $ depends on the gene specific ribosome elongation rate $\tau_0$ (where `elongation`  includes the ribosome's reading of the mRNA's stop codon) and the distribution of capped mRNA $\mhat_i$ with $i > 0$.
+        This implies that
+        \begin{enumerate}
+        \item Item 1
+        \item Item 2
+        \end{enumerate}
+      \item The density of $\mhat^*_i$ monotonically decreases with $i$.
+        Thus, the decapped mRNA distribution is generally skewed towards lower polysomal classes.
+      \item The MRL of the decapped class is bounded, such that it never exceeds than  MRL of the capped class.
+      \end{enumerate}
+    \end{enumerate}
+  \item Combined distributions of the capped and decapped polysome class
+    \begin{enumerate}      
+    \item Distribution is unimodal when...
+    \item Becomes increasingly bimodal when...
+    \item Increasing marking rate and scaled initiation rate both increase the proportion of transcripts in the decapped state.
+      \begin{enumerate}
+      \item The model formalizes the interplay between mRNA decapping $\mu$ and translation initiation $\kappa$. 
+      \item As expected, increasing $\mu$ results in an increase in the abundance of decapped transcripts \mvechatstar (relative to anything?)
+      \item However, increasing ratio of initiation to elongation rates $\kappa/\tau$ also results in an increase of \mvechatstar.
+      \item As $\kappa/tau$ (?) increases the MRL of the capped population \mvechat increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
+        (Make terminology consistent with discussion about the general behavior of \mvechat above.)
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
 
-\subsection{General Model Findings}
-
-\item Our model combines the processes of transcription, translation and mRNA degradation (through 5' decapping) in order to predict mRNA populations and the protein production that arises from them. 
-	\begin{enumerate}
-			\item Model predictions of the mRNA distribution across polysome classes match what would be expected in polysome gradients (Lokdarshi 2020, Dasgupta 2023), Ribo-seq (Weinberg 2016), and single molecule measurements of translation (Morisaki 2016, Yan 2016, Wang 2016, Wu 2016).   
-		\item Analytical and numerical solutions show that the transcription rate $\lambda$ is only a scaling factor across the whole system. 
-		\item  The population size of capped mRNAs $m_{tot}$ is solely determined by $\lambda$ divided by the marking rate $\mu$.
-		\item The $m_0^*$ class is also independent of translation and is determined by $\lambda$ divided by the clearance rate $\delta$.
-		\item While the remaining classes in the decapped state depend on the elongation/termination rate $\tau_0$ and the underlying distribution of the mRNA in the capped state. Our model predictions of the capped to decapped mRNA ratios also align with empirical measurements (Pelechano 2015)
-		\item A unique feature of our model is that we can separate the translational behavior between the capped and decapped classes.
-		\item The distribution of mRNAs across the whole system can be unimodal or bimodal depending on how transcripts are distributed between the capped and decapped states.
-		\item The capped mRNA distribution appears to be a truncated gaussian, with bounds at $i$ = 0 and \imax.		
-		\item  The decapped mRNA distribution is skewed towards lower polysomal classes.
-		\item The MRL of the capped class will always be greater or equal to the MRL of the Decapped class.
-		\item Finally, under steady state conditions the MRL is independent of the protein length, this too is corroborated by single molecule imaging of translation (Wu 2016).
-	\end{enumerate}
-
-\subsection{The interplay between marking rate and scaled initiation rates affects MRL, proportion of mRNA in the capped state and protein production}
-
-\item Increasing marking rate and scaled initiation rate both increase the proportion of transcripts in the decapped state.
-	\begin{enumerate}
-	\item The model formalizes the interplay between mRNA decapping and translation initiation. 
-	\item As expected, increasing marking rates result in an increase in the number of transcripts in the decapped state.
-	\item However, increasing the scaled initiation rate also leads to an increase of transcripts in the decapped state. 
-	\item As MRL in the capped classes increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
-	\item Model predictions of the fraction of mRNA in the decapped class fall with the 12.4\% population wide empirical estimate from Pelechano 2015. 
-	\end{enumerate}
-
+Integrate the following points into the points above
+\begin{enumerate}
 \item Increasing marking rate also decreases the MRL proportional to increasing scaled initiation rates. 
-	\begin{enumerate}	
-		\item  Under low marking rates ($\mu ~ 10^{-6}$ 1/s, Half-life ~ 1,500 minutes), MRL for the system comes almost entirely from the capped state. 
-		\item As marking rate increases, a bimodal distribution starts to appear.
-		\item This bimodal distribution consists of  a mixture of the MRL from the capped and decapped states. 
-		\item As marking rates increase further, a greater proportion of the MRL arises from the decapped states.
-		\item As the decapped MRL $\leq$ the capped MRL, the whole system MRL decreases.   
-	\end{enumerate} 
-
+  \begin{enumerate}	
+  \item  Under low marking rates ($\mu \sim 10^{-6}$ 1/s, Half-life ~ 1,500 minutes), MRL for the system comes almost entirely from the capped state. 
+  \item As marking rate increases, a bimodal distribution starts to appear.
+  \item This bimodal distribution consists of  a mixture of the MRL from the capped and decapped states. 
+  \item As marking rates increase further, a greater proportion of the MRL arises from the decapped states.
+  \item As the decapped MRL $\leq$ the capped MRL, the whole system MRL decreases.   
+  \end{enumerate} 
 \item A surprising prediction from our model is that genes with  high marking rates ($\mu ~ 5 \times 10^{-3}$) can have almost half of their protein produced in the decapped state. 
-	\begin{enumerate}
-	\item As marking rates increase, the difference between capped and decapped MRL decrease as more transcripts populate the decapped state. 
-	\item The ability to predict decapped mRNA population size and translational activity is a unique feature of our model.
-	\item The high relative protein production from the decapped state suggests that high marking rate transcripts can produce more protein than expected from their capped MRL alone.
-	\end{enumerate}
+  \begin{enumerate}
+  \item As marking rates increase, the difference between capped and decapped MRL decrease as more transcripts populate the decapped state. 
+  \item The ability to predict decapped mRNA population size and translational activity is a unique feature of our model.
+  \item The high relative protein production from the decapped state suggests that high marking rate transcripts can produce more protein than expected from their capped MRL alone.
+  \end{enumerate}
+\end{enumerate}
 
+\end{document}
+\subsection{Model Validation}
+
+In addition to studying the general behavior of our model, we validate this behavior using empirically based parameter values from the literature.
+In general, we find that our model's predictions of mRNA distributions are highly consistent with a wide range of empirical data.
+For example,
+\begin{enumerate}
+\item Previously observed polysome gradients (Lokdarshi 2020, Dasgupta 2023, Figure ?),
+\item Ribo-seq (Weinberg 2016, Figure ?)
+\item single molecule measurements of translation (Morisaki 2016, Yan 2016, Wang 2016, Wu 2016, Figure ?).         
+\item Predicted capped to decapped mRNA ratios also align with empirical measurements (Pelechano 2015)
+\item MRL is largely independent of the protein length (single molecule imaging of translation (Wu 2016), Figure ?).
+\item Fraction of mRNA in the decapped class under XXX conditions are consistent with population wide estimates (Pelechano 2015, Figure ?). 
+\end{enumerate}
 
 
 \subsection{Model limitations, extensions and future work}
 
-\item	The 5' mRNA decay pathway presented in our model most closely resembles that of co-translational decay, and in Arabidopisis 68\% of mRNAs are degraded this way (Sorenson 2018).
-	\begin{enumerate}
-		\item However, other mechanisms exist with different outcomes for translation. 
-		\item 3' decay would result in no ribosomes terminating and send all transcripts into the $m_0^*$ class . 
-		\item Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
-		\item Thus, depending on the ditribution of mRNAs in the capped class, and the site of the endonucleolytic decay a transcript in $m_i$ would end up in $m_{j}$, where $j < i$.		
-		\item The interplay of these mechanisms is of interest as mRNA stability is essential for protein expression for biotech and mRNA vaccines. (Cheng 2023 viruses, Boo and Kim 2020+) 
-	\end{enumerate}
-		
-
-\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
-	\begin{enumerate}
-	\item Our model currently cannot distinguish between the protective effects of translation or codon effects.
-	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading which could be modeled by weighting the marking rate $\mu $ by $(1-i/imax)$, or having separate marking rates for $m_0$ and the other polysomal classes.
-	\item Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon optimality (Wu and Bazzini 2023).
-	\item Splitting each polysome class into two regions would approximate a ribosome flow model of only two regions, bounded by the pausing site.
-	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
-	\end{enumerate}
-
+\item	Our model's assumptions about the process of mRNA decapping, the continued competence of ribosomes present prior to decapping, and degradation of mRNA solely from the decapped and ribosome free class $m_0^*$  closely resembles the biological process of co-translational mRNA decay.
+  \begin{enumerate}
+  \item   The existence of co-translational mRNA decay is well established and is estimated to occur in $\sim 68\%$ of Arabadopsis genes (Sorenson 2018).
+  \item However, other mechanisms exist with different outcomes for translation. 
+    \begin{enumerate}
+    \item 3' decay would result in no ribosomes terminating and send all transcripts into the $m_0^*$ class . 
+    \item Endonucleolytic decay due to NGD or NMD would potentially allow ribosomes downstream to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017).
+    \item Thus, depending on the ditribution of mRNAs in the capped class, and the site of the endonucleolytic decay a transcript in $m_i$ would end up in $m_{j}$, where $j < i$.		
+    \end{enumerate}
+  \end{enumerate}
+\item  A better understanding of how different factors affect a gene's mRNA stability and, in turn, protein expression, relevant to a wide range of applied molecular biology (e.g. the design of efficient heterologous genes expression and mRNA vaccines. (Cheng 2023 viruses, Boo and Kim 2020+).
+  Current debate is focused on the contributions of the protective effects of ribosome association vs. ribosome stalling to mRNA transcript stability.
+  \begin{enumerate}
+  \item Our model currently cannot distinguish between the protective effects of translation or codon effects.
+  \item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading which could be modeled by weighting the marking rate $\mu $ by $(1-i/imax)$, or having separate marking rates for $m_0$ and the other polysomal classes.
+  \item Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon optimality (Wu and Bazzini 2023).
+  \item Splitting each polysome class into two regions would approximate a ribosome flow model of only two regions, bounded by the pausing site.
+  \item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
+  \end{enumerate}
 \end{enumerate}
 %
 %
