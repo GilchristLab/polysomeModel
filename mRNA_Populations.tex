@@ -1,54 +1,39 @@
 \documentclass[review]{elsarticle}
 
 %\documentclass[1p,review]{elsarticle}
-\usepackage{pifont}
-\usepackage{booktabs}
-\usepackage{natbib}
-\usepackage{blkarray}
-\usepackage{caption} 
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{amsmath}%
-\usepackage{amsfonts}%
-\usepackage{amssymb}%
-\usepackage{graphicx}
-\usepackage{pdflscape}
-\usepackage{tablefootnote}
-\usepackage{array}
-\usepackage{framed}
-\usepackage{setspace}
+%\usepackage{pdflscape}
+%\usepackage{subcaption}
 \usepackage[margin=3cm]{geometry} %changed from 2.5cm to 3cm so that margin notes don't get cut off.
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{natbib}
+\usepackage[mathlines]{lineno}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amsfonts}%
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{amsthm}
+\usepackage{array}
 \usepackage{bibentry}
 \usepackage{blkarray}
-\usepackage{caption} 
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{amsmath}%
-\usepackage{amsfonts}%
-\usepackage{amssymb}%
-\usepackage{tablefootnote}
-\usepackage{array}
-\usepackage{setspace}
-\usepackage[mathlines]{lineno}
-\usepackage{geometry}
-\usepackage{url}
-%\usepackage{subcaption}
-%\usepackage{pdflscape}
-\usepackage{lineno}
-\usepackage{xargs}
-\usepackage{amsthm}
-\usepackage{graphics}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{caption}
 \usepackage{dsfont}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{lineno}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{pdflscape}
+\usepackage{pifont}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{tablefootnote}
 \usepackage{tabularx}
 \usepackage{tikz}\usetikzlibrary{shapes,arrows,positioning,calc,fit}
+\usepackage{url}
+\usepackage{xargs}
 
 
 
@@ -56,7 +41,9 @@
 \usepackage[normalem]{ulem}  %provides strikeout \sout{}
 \usepackage{xspace} %%needed for mike's commands
 
-\newcommand\mymarginpar[1]{\marginpar{\begin{spacing}{0.7}\singlespacing \tiny #1 \end{spacing}}}  %for notes in margin
+%% Define mike's margin par
+\newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
+\newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
 
 %%custom commands for sanity
 \newcommand{\imax}{\ensuremath{i_{\max}}\xspace}
@@ -802,36 +789,41 @@ The RPO of a state is dependent on both the MRL of each state and the total tran
 
 \section{Discussion}
 
+In this study we develop, analyze, and validate a novel model of mRNA polysome populations \mmpar{Terminology: do we like `mRNA polysome populations'?} which includes the contributions of mRNA transcription, the initiation and termination of translation as well as mRNA degradation through 5' decapping and cotranslational decay.
+\rmpar{Need to be specific. \textbf{M:} So be specific.}
+\rmpar{Yes our model is a simplified description of protein synthesis. It contains no new aspects of the process of protein synthesis itself. It does include the interaction between two commonly studied processes. Translation and mRNA degradation. \textbf{M:} So incorporate this fact into the text here or below. Also, isn't the way the model treats ribosomes on the transcripts (uniform as opposed to flux or explicit) novel?}
+\mmpar{(Add relevant equation and figure references to points below)}
+\subsection{Model Formulation \& Structure}
 
-In this study we develop and study a novel model of mRNA populations which includes the contributions of mRNA transcription, the initiation and termination of translation as well as mRNA degradation through 5' decapping and cotranslational decay. %Need to be specific
 
-
-\subsection*{Model Steady State Behavior}
-
-(Add relevant equation and figure references to points below)
+Although our model is only a very simplified description of the mRNA polysome population and, in turn, protein translation, it includes interactions \mmpar{interactions between what?} with the process of mRNA degradation which has been underexplored (Yadav 2021).
 
 \begin{enumerate}
-% Yes our model is a simplified description of protein synthesis. It contains no new aspects of the process of protein synthesis itself. It does include the interaction between two commonly studied processes. Translation and mRNA degradation
-\item Although our model is only a very simplified description of protein synthesis (translation), it includes interactions with the process of mRNA degradation which is has been underexplored (Yadav 2021).
-%\item Our model combines a simplified descriptions of translation and mRNA 5' decay   
-  \begin{enumerate}
-  \item The process of translation is dependent on the underlying population of capped, translationally competent mRNAs. 
-  \item However, empirical measurements suggest that $\sim 12\%$ of transcripts are undergoing co-translational decay (Pelechano 2015).
-  \item Our model includes 5' mRNA decapping followed by cotranslational decay, permiting the analysis of the decapped mRNA state (called degratome in Ma 2020), changes in MRL for capped and decapped states and the contribution of cotranslational decay to protein production. 
- % \item This is a common pathway in many organisms and accounts for decay in $\sim 68\%$ of Arabadopsis genes (Sorenson 2018).
+\item The process of translation is dependent on the underlying population of capped, translationally competent mRNAs. 
+\item However, empirical measurements suggest that $\sim 12\%$ of transcripts are undergoing co-translational decay (Pelechano 2015).
+\item This is a common pathway in many organisms and accounts for decay in $\sim 68\%$ of Arabadopsis genes (Sorenson 2018).
+  \mmpar{I uncommented this point, can you reconcile it with the previous sentence?}    
+\item Our model includes 5' mRNA decapping followed by cotranslational decay, permiting the analysis of the decapped mRNA state (called degratome in Ma 2020), changes in MRL for capped and decapped states and the contribution of cotranslational decay to protein production. 
+ 
   \end{enumerate}
-\item  In addition to being more biologically realistic, structuring the mRNA population by its polysome classes (ribosome load) and the status of its 5' cap allows us to understand how the the rates mRNA production $\lambda$, decapping $\mu$, elongation $\tau$, and clearance rate $\delta$ shape the steady state distribution of a gene's mRNA population across polysome classes and capping state.
+  
+\subsection*{Model Steady State Behavior}
+
+
+\begin{enumerate}
+\item  In addition to being more biologically realistic, structuring the mRNA population by its polysome classes (ribosome load) and the status of its 5' cap allows us to understand how the the rates mRNA production $\lambda$, decapping $\mu$, protein elongation $\tau$, and the clearance rate $\delta$ decapped and ribosome free mRNAs $\mhatstar_0$ shape the steady state distribution of a gene's mRNA population across polysome classes and capping state.
   Overall, we find that 
   \begin{enumerate}
   \item Capped mRNA population
     \begin{enumerate}
-    \item Analytical and numerical solutions show that the transcription rate $\lambda$ acts as a scaling factor, such that the entire mRNA population is proportional to $\lambda$.
-      This indicates that as long as $\lambda \neq 0$, the distribution of transcripts across polysomal classes is independent of transcription.
+    \item Analytical and numerical solutions show transcription rate $\lambda$ acts as a scaling factor such that the abundance \mmpar{abundance or density?} of all of the mRNA polysome classes are proportional to $\lambda$.
+      For example,
     \item The sum of the of capped mRNA classes $\mvechat$ is solely determined the ratio of $\lambda$ to the 5' decapping rate $\mu$, i.e. $\sum_{i = 0}^{i_{\imax}} \mhat_i= \lambda/ \mu$.
       \begin{enumerate}
       \item This result suggests that, under biologically realistic conditions, as $\mu$  decreases, the capped population increases. Further exploration of the empirical data used for this model suggest that $\mu$ buffers $\lambda$, with most genes implying a constant $\lambda$  (supplemental figure 1).
       \end{enumerate}
-    \item Impact of $\kappa/\mu$
+      \item Recognizing that the relative frequency distribution of transcripts across polysomal classes is independent of $\lambda$, allowing us to focus on how the remaining model parameters alter the relative distribution of the capped and decapped polysome classes \mvechat and \mvechatstar, respecitvely.
+    \item Impact of $\kappa/\mu$ \mmpar{Turn into a topic sentence.}
       \begin{enumerate}
       \item When $\kappa/\mu \ll 1$, the capped mRNA distribution $\mvechat$ is greatest in the polysome class $i=0$ and declines rapidly with $i$.
       \item As $\kappa/\mu$ increases, the capped mRNA distribution shifts away from the lower bound of $i = 0$ appears to follow a truncated gaussian distribution.
@@ -879,7 +871,7 @@ In this study we develop and study a novel model of mRNA populations which inclu
 
     \end {enumerate}
   \end{enumerate}
-\end{enumerate}
+
 
 \subsection{Model Validation}
 
@@ -1304,12 +1296,11 @@ Thus, the probability the start codon is unoccupied is $1-i/\imax$ and, in turn,
 \end{equation} 
 where $\kappa_0$ is a gene specific parameter that describes the rate at which capped mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
 
-
-%\mymarginpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
+%\mpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
  % mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
   %TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
   %mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
-% \mymarginpar{Should this be $i/(\tau \imax)$?
+% \mpar{Should this be $i/(\tau \imax)$?
 %  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
 %  However, I seem to recall deriving this result that indicate otherwise.
 %  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
