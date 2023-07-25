@@ -1,5 +1,11 @@
 \documentclass[review]{elsarticle}
 
+%% Try and use Arial font.
+%% Following instructions at (https://tex.stackexchange.com/a/23960/110759)
+%% indicates one should use xelatex, not pdflatex
+\usepackage{fontspec}
+\setmainfont{Arial}
+
 %\documentclass[1p,review]{elsarticle}
 %\usepackage{pdflscape}
 %\usepackage{subcaption}
@@ -47,7 +53,7 @@
 \newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
 
 %%custom commands for sanity
-\newcommand{\imax}{\ensuremath{i_{\max}}\xspace}
+\newcommand{\imax}{\ensuremath{{i_{\max}}}\xspace}
 \newcommand{\kappaprime}{\ensuremath{\kappa^{\prime}}\xspace}
 \newcommand{\mhat}{\ensuremath{\hat{m}}\xspace}
 \newcommand{\mhati}{\ensuremath{\hat{m}_i}\xspace}
@@ -487,7 +493,7 @@ m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
 & \vdots & \\
 m_{i}^{*}  &= \frac{\mu}{i \: \tau}\sum_{j=i}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=imax}^{\imax}m_{j}  \\
+m_{\imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=\imax}^{\imax}m_{j}  \\
 \end{align*}
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by ~\ref{eq:capped_solution}.
 Additionally, for any $i=j$ where $S_{j}$ is cumulative probability from $i$ = class $j$ to $ i= \imax$.
@@ -503,7 +509,7 @@ m_{1}^{*}  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
 & \vdots & \\ \nonumber
 m_{i}^{*}  &= \frac{\lambda}{i \: \tau}S_{i}  \\ \nonumber
 & \vdots & \\ \nonumber
-m_{imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
+m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
 \end{align}
 
 
@@ -606,7 +612,7 @@ The capped solution splits the two funtions of the marking rate $\mu$; Its effec
 
 The probability of finding a transcript in each ribosomal class for a particular parameter set is dependent on the initiation rate $\kappa$, elongation rate $\tau_0$ and $\mu$. In figure 3A the mRNA distribution in the capped state is presented for four different scaled initiation rates (as shown in Figure 3B) for a median length protein with a long (52 minute) half life. To summarize the model results across a range of parameters a heatmap where each row is the distribution of mRNA at a particular scaled initiation rate is shown. As the scaled initiation rate increases the density moves to the right and spreads out in the capped system.  The distribution in the capped system is bounded at class 0 and class \imax and roughly symmetrical away from the boundaries (Figure 3B). 
 
-The decapped system is centered around the lowest classes (Figure 4). This is due to the distribution in ~\ref{eq:decapped_distribution} having the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$ dependant on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
+The decapped system is centered around the lowest classes (Figure 4). This is due to the distribution in ~\ref{eq:decapped_distribution} having the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ dependant on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The whole system incorporates the transcript distributions from both capped and decapped systems. This is apparent in the bimodal peaks at higher scaled initiation values, with a peak at lower ribosomal load representing the decapped system and a high ribosomal load from the capped system (Figure 5).
 
 \begin{figure}[!ht]
 \centering
@@ -826,7 +832,7 @@ Overall, we find that
   % \mmpar{abundance or density? \textbf{R:} Abundance. $\lambda$ scales the density to a number of transcripts. }
   of all of the mRNA polysome classes are proportional to $\lambda$.
   In other words, the total abundance of the capped and decapped mRNA polysome classes $\mvechat$ and $\mvechatstar$ are simply proportional to $\lambda$ (see (\ref{eq:capped_sum}) where $\sum_{i = 0} ^\imax m_i = \lambda/\mu$ and (\ref{eq: marked_total_pop}), respectively).
-  The fact that the abundance of the entire capped and decapped mRNA polysome classes are proportional to the transcrption rate $\lambda$ is consistent with intuition, as \lambda increases, so does the abundance of both the capped and decapped populations.
+  The fact that the abundance of the entire capped and decapped mRNA polysome classes are proportional to the transcrption rate $\lambda$ is consistent with intuition, as $\lambda$ increases, so does the abundance of both the capped and decapped populations.
   Similarly, the fact that the abundance of the capped mRNA polysome classes declines as an inverse funcdtion of the decapping rate $\mu$ is also consistent with intuition.
   Because it is the ratio of $\lambda$ and $\mu$, rather than their individual values, that determine the size of the capped mRNA polysome classes, our model indicates that there will be an infinite set of transcription $\lambda$ and decapping rates $\mu$ that can result in the same population size of capped mRNA polysomes.
   All else being equal, this result suggests that these rates could vary greatly between genes with similar abundances.
@@ -849,7 +855,7 @@ Shifting our focus now to the relative distribution of the decapped mRNA polysom
   If the transcription rate $\lambda$ of new, capped, but ribosome free mRNAs $\mhat_0$ is substantially lower than the per capita degradation rate of decapped, ribosome free mRNAs $\delta$, such that  $\lambda \ll \delta$, then our model predicts that there will be few mRNAs in the $\mhat_0^*$ class $\mhat_0^* \ll 1$.
   Because $\mhat^*_0$ has no impact on the rest of the mRNA population, this result allows us to greatly simplify our analysis since we need not consider $\mhat_0^*$ nor the parameter $\delta$.
 \item Focusing now steady state abundance of the ribosome occupied decapped mRNA polysome classes, i.e.  $\mhat_i^*$ where $i > 0$, we find that the distribtuion of $\mhat^*_i$  depends on the gene specific ribosome elongation rate $\tau_0$ (where `elongation`  includes the ribosome's reading of the mRNA's stop codon) and the distribution of capped mRNA $\mhat_i$ with $i > 0$ (Figure 4).
-  This finding implies that because the density of $\mhat^*_i$ monotonically decreases with $i$, the distribution of decapped mRNA polysome classes is skewed and dominated by lower polysomal classes.
+\item \label{item:protein_production} This finding implies that because the density of $\mhat^*_i$ monotonically decreases with $i$, the distribution of decapped mRNA polysome classes is skewed and dominated by lower polysomal classes.
   This is monotonic decline coupled with the fact that the decapped ribosome free polysome class $\mhat_0$ does not contribute to protein production, implies that MRL of the decapped mRNA polysomes is must be less than MRL the of the capped mRNA polysomes.
   Thus, while the decapped class does contribute to protein production, substantially under particular parameter values (EXAMPLE), its contributution to the mRNA population's protein production will always be less than  $50\%$.
 \end{enumerate}
@@ -866,19 +872,17 @@ Combined distributions of the capped and decapped polysome class
   \item However, increasing ratio of initiation to elongation rates $\kappa/\tau$ also results in an increase of \mvechatstar.
   \item As $\kappa/\tau$ increases the MRL of the capped population \mvechat increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
   \end{enumerate}
-\end{enumerate}
-\mmpar{The following points be incorporated into the previous discussion of MRL and protien production.} 
+  \mmpar{The following points be incorporated into the previous discussion of MRL and protien production (\ref{item:protein_production}).} 
 \item A surprising prediction from our model is that genes with  high marking rates (e.g. $\mu  \sim 5 \times 10^{-3}$ or a half-life of $\sim 120 \sec$) has almost (but never more than) half of its protein production coming from the decapped mRNA polysome classes (Figure 11).
-    \begin{enumerate}
-    \item As $\mu$ increases, a greater proportion of the MRL arises from the decapped states.
-    \item This increase is mainly a function of a shift in transcripts to the decapped state \mvechatstar due to larger $\mu$.
-    \item The decapped MRL $\leq$ the capped MRL.   
-    \item The high relative protein production from the decapped state suggests that high marking rate transcripts can produce more protein than expected from their capped MRL alone. \rmpar{Relative protein production here $MRL\times \sum{\mvechat}$/total protein production is not a rate, but a comparison of the relative amount of protein produced by a state over a set period of time. This is explained (poorly) in the results. I chose this over $E(i) \times \tau $ because while the off rate for the capped class is simply $\tau$, the off rate for ribosomes in the decapped class is some constant $c \times \tau$  c is determined by the distribution in the capped class. Can I numerically calculate it? Yes. But I dont have an analytical solution for it.}
-    \item As we are assuming the mRNA clearance rate $\delta >> \lambda$, $\mhatstar_0$ will be negligible. 
-    \item Thus, our current results act as an upper bound of the protein production contribution from the decapped class. 
-    \end{enumerate}
+  \begin{enumerate}
+  \item As $\mu$ increases, a greater proportion of the MRL arises from the decapped states.
+  \item This increase is mainly a function of a shift in transcripts to the decapped state \mvechatstar due to larger $\mu$.
+  \item The decapped MRL $\leq$ the capped MRL.   
+  \item The high relative protein production from the decapped state suggests that high marking rate transcripts can produce more protein than expected from their capped MRL alone. \rmpar{Relative protein production here $MRL\times \sum{\mvechat}$/total protein production is not a rate, but a comparison of the relative amount of protein produced by a state over a set period of time. This is explained (poorly) in the results. I chose this over $E(i) \times \tau $ because while the off rate for the capped class is simply $\tau$, the off rate for ribosomes in the decapped class is some constant $c \times \tau$  c is determined by the distribution in the capped class. Can I numerically calculate it? Yes. But I dont have an analytical solution for it.}
+  \item As we are assuming the mRNA clearance rate $\delta >> \lambda$, $\mhatstar_0$ will be negligible. 
+  \item Thus, our current results act as an upper bound of the protein production contribution from the decapped class. 
   \end{enumerate}
-
+\end{enumerate}
 
 \subsection{Model Validation}
 
@@ -911,15 +915,13 @@ For example,
   Current debate is focused on the contributions of the protective effects of ribosome association vs. ribosome stalling to mRNA transcript stability.
   \begin{enumerate}
   \item While our model currently does not include the protective effects of translation or stall prone codons, it should be possible to do so.
-  \item The protective effects of ribosomal loading which could be modeled by making the marking rate $\mu $ by $(1-i/imax)$, or having one, higher marking rate for $m_0$ and a lower marking rate for the other polysomal classes.
+  \item The protective effects of ribosomal loading which could be modeled by making the marking rate $\mu $ by $(1-i/\imax)$, or having one, higher marking rate for $m_0$ and a lower marking rate for the other polysomal classes.
   \item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
   \item Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon optimality, or protein quality control (Wu and Bazzini 2023).
   \item Splitting each polysome class into two regions could approximate a ribosome flow model of only two regions, a 5' and 3', split by the pausing site.
   \end{enumerate}
 \end{enumerate}
 
-
-\end{enumerate}
 
 
 %
@@ -996,7 +998,7 @@ For example,
 %	\begin{enumerate}
 %	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
 %	\item Our model currently cannot distinguish between the protective effects of translation, codon effects or other decay pathways.
-%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/\imax).
 %	\item Our model does not consider codon specific effects such as pausing sites. 
 %	\item Difficult to fold or translate regions of a transcript  could be further modeled by splitting each transcript species into two or three regions defined biologically by pausing sites. This would resemble a nested ribosome flow model withing our model structure. 
 %	\item These hyptotheses could be tested by fitting out model to the Chan 2018 dataset.
@@ -1040,10 +1042,10 @@ For example,
 %	\item The majority of transcripts are found with 1-10 ribosomes and strongly bias towards lower ribosomal loads (Weinberg 2016, Lokdarshi 2020).
 %	\item Throughout the scaled translation initiation range we observe that, for a protein of average length and transcripts with a long half-life, the transcript is below a MRL of 10 for the majority of the range. 
 %	\item Moreover, Duc and Song 2018, only studied the most highly translated genes (850 out of 5,300 expressed genes). This means that a majority of translated genes fall below the scaled translation initiation range used in this study.  
-%%morisaki uses 10xFLAG-TAG which they call spaghetti monster. Flag tag is 8aa long. so 80aa tag. Plus 1544aa long KDM5B, or 374aa long beta actin or 125aa long H2B. The average ribosomal load estimated was 5, 3 and 2.2 respectively. Converting them to imax that would be (80+1544)/9= 180,(80+374)/9=  50 and (80+125)/9= 22. and the densities would be 0.0277, 0.06, and 0.1. Converting to model imax of 40, 1.1118, 2.4 and 4 ribosomes each. 
-%%Yan uses a 24xSunTag kif18b PP7 reporter. only the suntag and kif are protein coding. A suntag has a length of 24 aa and kif18b 852aa. so total length is 852 + 24*24 = 1482. imax of 158. the relative frequency of mRNAs with ribosomes are an average of 12 with a range of 1 to 30.  that is a density of 0.076 +- 0.0063 to 0.19. in imax 40 that is 3 +- 0.25 to 7.6. 
-%%Wang also uses a 24x suntag, but with ODC (461aa) as the protein. 461+24*24= 1037. imax = 115. with an average ribosomal load of 12 +- 1-37. density of 0.104 +- 0.009 to 0.322. in imax 40 that is 4.16 +- 0.36 to 13
-%%Finally wu usese a 1x flag 24xsuntag blue fluorescent protein (239) and an auxin induced degron (228). total length is 1051. imax is 116. mean of 5. 0.043 and at imax 40 1.7.shorter and longer constructs allowed wu to see that number of ribsomes linearly scale with construct length .  agreeing with our results and indicating that their estimates are very likely steady state estimates.
+%%morisaki uses 10xFLAG-TAG which they call spaghetti monster. Flag tag is 8aa long. so 80aa tag. Plus 1544aa long KDM5B, or 374aa long beta actin or 125aa long H2B. The average ribosomal load estimated was 5, 3 and 2.2 respectively. Converting them to \imax that would be (80+1544)/9= 180,(80+374)/9=  50 and (80+125)/9= 22. and the densities would be 0.0277, 0.06, and 0.1. Converting to model \imax of 40, 1.1118, 2.4 and 4 ribosomes each. 
+%%Yan uses a 24xSunTag kif18b PP7 reporter. only the suntag and kif are protein coding. A suntag has a length of 24 aa and kif18b 852aa. so total length is 852 + 24*24 = 1482. \imax of 158. the relative frequency of mRNAs with ribosomes are an average of 12 with a range of 1 to 30.  that is a density of 0.076 +- 0.0063 to 0.19. in \imax 40 that is 3 +- 0.25 to 7.6. 
+%%Wang also uses a 24x suntag, but with ODC (461aa) as the protein. 461+24*24= 1037. \imax = 115. with an average ribosomal load of 12 +- 1-37. density of 0.104 +- 0.009 to 0.322. in \imax 40 that is 4.16 +- 0.36 to 13
+%%Finally wu usese a 1x flag 24xsuntag blue fluorescent protein (239) and an auxin induced degron (228). total length is 1051. \imax is 116. mean of 5. 0.043 and at \imax 40 1.7.shorter and longer constructs allowed wu to see that number of ribsomes linearly scale with construct length .  agreeing with our results and indicating that their estimates are very likely steady state estimates.
 %
 %	\item This is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each study to an \imax of 40 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016). 
 %	\item Wu 2016, also designed constructs containing different lengths of protein sequences and found that ribosome load scales linearly with protein length. Agreeing with our results in Figure 8 and implying the measurement was performed at true steady state. 
@@ -1063,7 +1065,7 @@ For example,
 %		\item Our model also used two conservative set of marking rate estimates (Presnyak 2015 and Sorenson 2018). 
 %	\item Currently there is a debate whether mRNA stability is regulated primarily through the protective effects of ribosomal association or through the suboptimal codons causing ribosomal stalling and the subsequect ribosome associated decay pathways  (Chan 2018 elife).
 %	\item Our model currently cannot distinguish between the protective effects of translation or 
-%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/imax).
+%	\item In the current implementation of the model we did not directly explore the protective effects of ribosomal loading. This could be first implemented by including a similar weighting term analogous to the wieght for the intiation rate of (1-i/\imax).
 %	\item However, biology suggests a more complex behavior.
 %	\item The protective effects of translation could increase per ribosome, but eventually at high loads  could trigger ribosome associated decay pathways through ribosomal collisions. This leaves much to be explored further	
 %	\end{enumerate}
@@ -1115,7 +1117,7 @@ For example,
 % 
 
 
-%most interesting idea I have at the moment is the idea of effective Imax. While our model does not explicitly account for any of the mechanisms or positions of the ribosomes on a transcript, it does predict behavior for hypothetical transcripts. We currently are running on the assumption that one of the determining parameters is the average elongation rate across a transcript. This very well might not be true as 
+%most interesting idea I have at the moment is the idea of effective \imax. While our model does not explicitly account for any of the mechanisms or positions of the ribosomes on a transcript, it does predict behavior for hypothetical transcripts. We currently are running on the assumption that one of the determining parameters is the average elongation rate across a transcript. This very well might not be true as 
 
 %Result 1: Longer genes must be translated less efficiently than shorter genes with especially if there is a maximal intitaion/elongation/translation rate. however longer genes might also be more sensitive.  Sensitivity of Translational regulation based on gene size and intiation rate. From results 
 
@@ -1128,7 +1130,7 @@ For example,
 
 %Result 4: Is translation density dependent or independent? Under which conditions would density start having an effect. 
 
-%Where is translation tuned to? low mid high Translation? Which parameters can have a greater effect. There has to be a maximum speed for all processes (initiation elongation). Test for robustness of protein output vs ranges of these parameters. Does having an early slow stretch of codons effectively shorten a gene's imax?
+%Where is translation tuned to? low mid high Translation? Which parameters can have a greater effect. There has to be a maximum speed for all processes (initiation elongation). Test for robustness of protein output vs ranges of these parameters. Does having an early slow stretch of codons effectively shorten a gene's \imax?
 
 
 %Header for result
@@ -1154,9 +1156,9 @@ For example,
 %For a transcript with one ribosome tau prime is the sum of all the individual steps it took the ribosome to get to the stop codon. Since we are not modeling the actual elongation process step by step (and thus mechanistically ignoring pausing or ribosome collisions) we can easily calculate this rate by multiplying the number of codons in gene i by the average translation elongation speed for gene i. 
 %For example in a 900 nucleotide long gene will produce a 300 amino acid long protein. If the average elongation rate of the protein is 3 aa/sec, the translation of one protein will take 300aa/3aa/s = 100 s.
 %100 seconds is the residence time of a ribosomes on transcript j of gene i. If there are 2 ribosomes the residency time will halve and be 50s. 3 ribosomes = 33.33s, 4 25s and so on. 
-%To get the rate of ribosomes leaving the transcript then we will take the reciprocal of this. The leaving rate for 1 ribosome is 1/100 or 0.01. For 2 it is 0.02, for 3, 0.03, and4 0.04 and so on. If every codon was populated by a ribosome (which is physically impossible since a ribosome occupies roughly 9 codons), then the leaving rate would equal the average elongation rate. However, the maximal leaving rate is now imax*termination rate of 1 ribosome. i.e. (imax/#codons)*tau. Or  1/9 tau
+%To get the rate of ribosomes leaving the transcript then we will take the reciprocal of this. The leaving rate for 1 ribosome is 1/100 or 0.01. For 2 it is 0.02, for 3, 0.03, and4 0.04 and so on. If every codon was populated by a ribosome (which is physically impossible since a ribosome occupies roughly 9 codons), then the leaving rate would equal the average elongation rate. However, the maximal leaving rate is now \imax*termination rate of 1 ribosome. i.e. (\imax/#codons)*tau. Or  1/9 tau
 %The equation for the residence time is:
-%τ'=codons/i*τfor i=1,2,…,imax
+%τ'=codons/i*τfor i=1,2,…,\imax
 %The equation for the termination rate is:
 %\tau^\ast=1/\tau^'=i\ast\tau/\left(#codons\right);\ for\ i=0,1,2,\ldots,i_{max}
 %Where plain tau is the average elongation rate for transcript j.
@@ -1178,7 +1180,7 @@ For example,
 %		Mu will follow the distribution of half lives found in an organims of  
 %	Create parameter range which is bounded within relistic parameter values. What are the resulting ribosome loads?
 %	For more extreme cases what would the parameters have to be? 
-%	How does Imax affect the loading?
+%	How does \imax affect the loading?
 %	How does kappa interference affect loading?
 %
 %Half lives. What does each individual process contribute to the half life of transcripts? 
@@ -1294,7 +1296,7 @@ Thus, the probability the start codon is unoccupied is $1-i/\imax$ and, in turn,
 \end{equation} 
 where $\kappa_0$ is a gene specific parameter that describes the rate at which capped mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
 
-%\mpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
+%\mpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/\imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
  % mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
   %TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
   %mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
@@ -1352,7 +1354,7 @@ For mulitple classes, as the transcripts get distrbuted, each class contribute a
 Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
 $\mu$ affects both the total transcript abundance and the distribution of ribosomal classes across a particular species of transcript.
 First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower ribosomal classes.
-		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
+		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m \imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
 The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
 	\begin{equation*}
 		\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
@@ -1417,7 +1419,7 @@ m_{1}^{*}  &= \frac{\mu \; m_{1}+\tau(2)m_{2}^{*}}{\tau(1)} \\
 & \vdots & \\
 m_{i}^{*}  &= \frac{\mu \; m_{i}+\tau(2)m_{i+1}^{*}}{\tau(i)} \\
 & \vdots & \\
-m_{imax}^{*}  &= \frac{\mu \; m_{imax}}{\tau(imax)} \\
+m_{\imax}^{*}  &= \frac{\mu \; m_{\imax}}{\tau(\imax)} \\
 \end{align*}
 
 We can rearrange the solutions and simplify to find,
@@ -1427,7 +1429,7 @@ m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
 & \vdots & \\
 m_{i}^{*}  &= \frac{\mu}{i \: \tau}\sum_{j=i}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=imax}^{\imax}m_{j}  \\
+m_{\imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=\imax}^{\imax}m_{j}  \\
 \end{align*}
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by the following.
 \begin{equation}
@@ -1448,7 +1450,7 @@ m_{1}^{*}  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
 & \vdots & \\ \nonumber
 m_{i}^{*}  &= \frac{\lambda}{i \: \tau}S_{i}  \\ \nonumber
 & \vdots & \\ \nonumber
-m_{imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
+m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
 \end{align}
 
 The total transcript population in the decapped state does not have a closed form solution. However it can be summarized as follows,
@@ -1460,7 +1462,7 @@ This can be further shortened using element wise multiplication denoted by the h
 \begin{equation}  
 	m_{tot}^{*} = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
 \end{equation}
-Where $\vec{S}$ is a vector of all the cummulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the marking rate and elongation/termination rate. This result will be explored further in the results.
+Where $\vec{S}$ is a vector of all the cummulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the degradation rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the marking rate and elongation/termination rate. This result will be explored further in the results.
 
 To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/m_{tot}^{*}$ which results in,
 \begin{align*}
