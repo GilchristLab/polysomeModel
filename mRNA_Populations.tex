@@ -55,6 +55,7 @@
 %%custom commands for sanity
 \newcommand{\imax}{\ensuremath{{i_{\max}}}\xspace}
 \newcommand{\kappaprime}{\ensuremath{\kappa^{\prime}}\xspace}
+\newcommand{\tauprime}{\ensuremath{\tau^{\prime}}\xspace}
 \newcommand{\mhat}{\ensuremath{\hat{m}}\xspace}
 \newcommand{\mhati}{\ensuremath{\hat{m}_i}\xspace}
 \newcommand{\mhatstar}{\ensuremath{\mhat^{*}}\xspace}
@@ -392,26 +393,29 @@ The model seeks to determine how the population of transcripts of a single gene 
 Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (polysome class 0)
 From capped class 0 a transcript can have two fates. 
 The transcript can be decapped, thus marked for degradation at rate $\mu$ and move into the decapped class 0.
-Alternatively, a ribosome can initiate translation at rate $\kappa(1-i/\imax)$ and be loaded onto the transcript and move it into capped class 1.
-Where i is the current transcript class and \imax is the maximal ribosomal occupancy on the transcript. 
-The first term, $\kappa$ is the average initiation rate on an empty transcript. 
-For ribosomes initiating on transcripts already harboring ribosomes, this initiation rate is scaled to reflect the probability of a ribosome being present at or near the start codon. 
+Alternatively, a ribosome can initiate translation on the mRNAs in the capped, ribosome free polysome class 0 at rate $\kappa$ and be loaded onto the transcript and move it into capped class 1.
+Because only one ribosomes can occupy a particular location on the mRNA at any given time and our model does not track ribosomal positions,
+, we model translation intiation across polysome classes $i = 0$ to $\imax$, more generally as
+\begin{equation}
+  \label{eq:\kappa_i}
+  \kappa_i = \kappa_0 \left(1- \frac{i}/\imax),
+\end{equation}
+where $i$ is the mRNA polysome class, \imax is the maximal ribosomal occupancy on the transcript.
+We note $i/\imax$ represents, under the assumptions of a uniform distribution,  the probability a randomly chosen codon position is occupied by a ribosome.
+Correspondingly, $(1 - i/\imax)$ represents probability a randomly chose codon position, such as the initiation site is unoccupied.
+Because, the natural units for mRNA coding sequence length in our model is the amount of space the bound ribosome takes when translating it follows that $\imax = n_{c}/9$ where $n_{c}$ is the length of the mRNA's coding sequence in codons and 9 represents the length in codons of space a single ribosome occupies.
+%$\imax = n_{\text{nt}}/27$ where $n_{\text{nt}}$ is the length of the mRNA's coding sequence in nucleotides.
 This attempts to account for the ribosomal density dependent effects on initiation and is called the density dependent initiation (DDI) model.
-As our model does not track ribosomal positions, we assume a uniform distribution of ribosomes across a transcript.
 
-A ribosome on transcript can then elongate and terminate at a rate of $\tau' \times  i$. After a ribosome fully elongates and terminates it leaves the transcript and the transcript falls to a lower class.
-The term $\tau'$ is calculated by using the average elongation rate $\tau_0$ on a particular transcript divided by the length of the transcript $\tau'=\tau_0/\text{protein length in aa}$.
-As the number of ribosomes on a transcript increase, the probability of a ribosome being at the end of the transcript also increases, again following a uniform distribution. 
-To better represent this mathematically, $\tau'$ can also  be written as:
+
+A ribosome on the transcript elongates the peptide and, in turn, terminates at a rate of $\tau$, 
+Given that the length scale of our model is formulated in terms of ribosome widths but most estimates of elongation are at the scale of codons, if $\tau_c$ is the average elongation rate of an mRNA in codons, $\tau = \tau_c/9$.
+As the number of ribosomes on a transcript increase, the probability of a ribosome being at the end of the transcript also increases.
+Again assuming ribosomes are distributed across a transcript according to a uniform distribution, the expected ribosome termination rate on a mRNA in polysome class $i$ is simply, 
 \begin{equation}
-	\tau' = \frac{\tau_0}{protein \: length} = \frac{\tau_0}{9\times \imax}
+	\tau_i = \tau \frac{i}{\imax}.
 \end{equation}
-Where the saturated state of a transcript is denoted as \imax, meaning that that transcript can no longer accept any more ribosomes. The factor nine arises from the average number of codons that is occupied by a ribosome. 
-We can now formulate $\tau' \times i$ in the same way we formulated $\kappa$. 
-\begin{equation}
-	\tau' \times i = \frac{\tau_0}{9} \times \frac{i}{\imax}
-\end{equation}
-Where $\tau_0/9$ is the scaled elongation/termination rate, and $i/\imax$ is the probability that a ribosome is at the end of a transcript.
+
 
 Capped transcripts move through rounds of translation initiation and elongation-termination and distribute along the different polysomal classes. 
 From any ribosomal class in the capped state the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same polysomal class.
@@ -427,25 +431,24 @@ The total protein output at steady state from our model can be obtained by calcu
 We formalize the DDI model presented in Figure 1 by converting each state in to a series of ordinary differential equations (ODEs) representing the mRNA population for each polysomal class. 
 The functional form of the capped mRNA sub population is:
 \begin{align} \label{eq:Capped_ODE}
-\frac{dm_{0}}{dt} &= \lambda+\frac{\tau_0}{9}\frac{1}{\imax}m_{1}-\left(\kappa_0\left(1-\frac{0}{\imax}\right) + \mu\right)m_{0} \\ \nonumber
-\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\frac{\tau_0}{9}\frac{2}{\imax}m_{2}-\left(\frac{\tau_0}{9}\frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\\ \nonumber
+\frac{dm_{0}}{dt} &= \lambda+ \tau \frac{1}{\imax}m_{1}-\left(\kappa_0 + \mu\right)m_{0} \\ \nonumber
+\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+ \tau \frac{2}{\imax}m_{2}-\left( \tau \frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\\ \nonumber
 & \vdots & \\ \nonumber
-\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\frac{\tau_0}{9}\frac{i+1}{\imax}m_{i+1}-\left(\frac{\tau_0}{9}\frac{i}{\imax}+\kappa_0\left(1-\frac{i-1}{\imax}\right)+\mu\right) m_{i} \\ \nonumber
+\frac{dm_{i}}{dt} &= \kappa0 \left(\frac{i-1}{\imax}\right) m_{i-1}+ \tau \frac{i+1}{\imax}m_{i+1}-\left( \tau \frac{i}{\imax}+\kappa_0\left(1-\frac{i}{\imax}\right)+\mu\right) m_{i} \\ \nonumber
 & \vdots & \\ \nonumber
-\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left(\frac{\tau_0}{9}\frac{\imax}{\imax}+\mu\right) m_{\imax}\\ \nonumber
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left( \tau +\mu\right) m_{\imax}\\ \nonumber
 \end{align}
 
 Similarly, the functional form of the decapped mRNA sub population is: 
 \begin{align}\label{eq:Decapped_ODE}
-\frac{dm_{0}^{*}}{dt} &= \mu m_{0}+\frac{\tau_0}{9}\frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
-\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+\frac{\tau_0}{9}\frac{2}{\imax}m_{2}^{*}-\tau(1)m_{1}^{*} \\ \nonumber
+\frac{dm_{0}^{*}}{dt} &= \mu m_{0}+ \tau \frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
+\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+ \tau \frac{2}{\imax}m_{2}^{*}-\tau(1)m_{1}^{*} \\ \nonumber
 & \vdots & \\ \nonumber
-\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+\frac{\tau_0}{9}\frac{i+1}{\imax}m_{i+1}^{*}-\tau(i)m_{i}^{*} \\ \nonumber
+\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+ \tau \frac{i+1}{\imax}m_{i+1}^{*}-\tau(i)m_{i}^{*} \\ \nonumber
 & \vdots & \\ \nonumber
-\frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}-\frac{\tau_0}{9}\frac{\imax}{\imax}m_{\imax} \\ \nonumber
+\frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}- \tau m_{\imax}. \\ \nonumber
 \end{align}
-
-A less constrained version of the model does not account for the DDI effects and doesn't scale $\kappa$ by $(1-i/\imax)$. This is the density independent initiation (DII) version of the model. Parameters and their units are fully defined in Table 1. All parameters are assumed to fixed for a given gene, but may vary between genes.
+In closing, we note the parameters $\imax, \kappa, \mu,$ and $\tau$ likely vary between genes.
 
 \begin{table}
 \centering
