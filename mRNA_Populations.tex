@@ -397,8 +397,8 @@ Alternatively, a ribosome can initiate translation on the mRNAs in the capped, r
 Because only one ribosomes can occupy a particular location on the mRNA at any given time and our model does not track ribosomal positions,
 , we model translation intiation across polysome classes $i = 0$ to $\imax$, more generally as
 \begin{equation}
-  \label{eq:\kappa_i}
-  \kappa_i = \kappa_0 \left(1- \frac{i}/\imax),
+  \label{eq:kappa_i}
+  \kappa_i = \kappa_0 \left(1- \frac{i}{\imax}\right),
 \end{equation}
 where $i$ is the mRNA polysome class, \imax is the maximal ribosomal occupancy on the transcript.
 We note $i/\imax$ represents, under the assumptions of a uniform distribution,  the probability a randomly chosen codon position is occupied by a ribosome.
