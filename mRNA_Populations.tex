@@ -700,11 +700,11 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \end{figure}
 \clearpage
 
-  \item Steady states solution for the full system
+  \item Steady states solution for the full model
   \begin{enumerate}
-    \item The full system combines the mRNA distributions from the capped and decapped states.
+    \item The full model combines the mRNA distributions from the capped and decapped states.
     \begin{enumerate}
-      \item Figure 5A shows the mRNA distribution in the full system for three values of $\kappa'$, for a median length protein with a low decapping rate ($2\times10^{-4}$) and the full range of $\kappa'$ are shown in the heatmap in Figure 5B.
+      \item Figure 5A shows the mRNA distribution in the full model for three values of $\kappa'$, for a median length protein with a low decapping rate ($2\times10^{-4}$) and the full range of $\kappa'$ are shown in the heatmap in Figure 5B.
       \item The system is unimodal at low $\kappa'<0.01$ when the capped and decapped distributions overlap around low $i$ (Figure 5A mid and low). 
       \item As $\kappa'>0.01$ increases, the full distribution becomes bimodal (Figure 5A high).
       \item The peak at low $i$ representing the decapped distribution, and the higher gaussian peak representing the capped distribution. 
@@ -718,7 +718,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.png}
-\caption{mRNA distribution in the full system. A) Distribution profiles for three scaled initiation values low) $1\times 10^{-3}$ mid) $2\times 10^{-2}$ and high) $1\times 10^{-1}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular ribosomal class.}
+\caption{mRNA distribution in the full model. A) Distribution profiles for three scaled initiation values low) $1\times 10^{-3}$ mid) $2\times 10^{-2}$ and high) $1\times 10^{-1}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular ribosomal class.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -739,7 +739,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png}
-\caption{Higher decapping rates $\mu$ reduce ribosome load in the capped system in yeast.  A)  Heatmaps for the full system. Left) low $\mu$ ($2\times 10^{-4}$ /s) Center) median $\mu$ ($1.7\times 10^{-3}$ /s) Right) $\mu$ ($5.7\times 10^{-3}$ /s)  B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu$ All results calculate with \imax = 39.}
+\caption{Higher decapping rates $\mu$ reduce ribosome load in the capped system in yeast.  A)  Heatmaps for the full model. Left) low $\mu$ ($2\times 10^{-4}$ /s) Center) median $\mu$ ($1.7\times 10^{-3}$ /s) Right) $\mu$ ($5.7\times 10^{-3}$ /s)  B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu$ All results calculate with \imax = 39.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -755,7 +755,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.png}
-\caption{Low decapping rates $\mu$ in Arabidopsis result in a smaller effect on mRNA distributions in the capped system.  A)  Heatmaps for the full system. Left) low $\mu$ ($7.7\times 10^{-6}$ /s) Center) median $\mu$ (1$\times 10^{-4}$ /s) Right) $\mu$ ($1\times 10^{-3}$ /s) B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu$. All results calculate with \imax = 41.}
+\caption{Low decapping rates $\mu$ in Arabidopsis result in a smaller effect on mRNA distributions in the capped system.  A)  Heatmaps for the full model. Left) low $\mu$ ($7.7\times 10^{-6}$ /s) Center) median $\mu$ (1$\times 10^{-4}$ /s) Right) $\mu$ ($1\times 10^{-3}$ /s) B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu$. All results calculate with \imax = 41.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -810,7 +810,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=150mm]{Images/MRL.png}
-\caption{The mean ribosomal density on a transcript is dependent on coding sequence length. MRL per transcript is higher for longer transcripts. A) Capped state B) Decapped state C) Full system. Yeast parameters were used \imax =  4 (1\textsuperscript{st} percentile),  39 (50\textsuperscript{th} percentile), 194 (99\textsuperscript{th} percentile), low decapping rate ($2.2\times 10^{-4}$ /s), over the full scaled initiation range 0.0001- 0.5.}
+\caption{The mean ribosomal density on a transcript is dependent on coding sequence length. MRL per transcript is higher for longer transcripts. A) Capped state B) Decapped state C) full model. Yeast parameters were used \imax =  4 (1\textsuperscript{st} percentile),  39 (50\textsuperscript{th} percentile), 194 (99\textsuperscript{th} percentile), low decapping rate ($2.2\times 10^{-4}$ /s), over the full scaled initiation range 0.0001- 0.5.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -821,7 +821,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 %in the capped sytem the on off rate directly relates to the ribosomal density/load on a transcript and it is a decent ad hoc measure of relative expression. 
 %Decapped is more complex. The mRNAs enter at rate $\mu$, but these don't carry the same number of ribosomes with them. Unlike $\kappa$ they are not the loading rate of one ribomsome. Is it the mean riboload of the capped system times $\mu$? No, the mean underestimate the contribution of the higher classes needing to percolate down into the lower classes. The decapped class steady state has no simple way of calculating it's steady state load from the parameters.
 \begin{enumerate}
-\item Protein production rate (PPR) is a function of full system MRL $\times \tau$ and plots normalized to highest protein output are shown in Figure 10.
+\item Protein production rate (PPR) is a function of full model MRL $\times \tau$ and plots normalized to highest protein output are shown in Figure 10.
 \begin{enumerate}
   \item As the decapping rate $\mu$ increases it reduces the capped and uncapped MRL as well as shifting transcript abundance to the decapped state (Figure 10A).
   \item  Each of the three cases in Figure 10 A, has been broken down into the PPR contributions from the capped and decapped states (Figure 10 B-D). 
@@ -850,7 +850,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
   \item This result is impressive as the model performs well despite no model fitting being performed.
   \item  Model performance is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each single molecule study to an \imax of 39 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016).
 %  \item All of which align with low to mid initiation to elongation ratio MRL predictions. 
-  %\item Finally, mRNA distributions for the full system agree with signal from polysome traces (Lokdarshi 2020, Dasgupta 2023).
+  %\item Finally, mRNA distributions for the full model agree with signal from polysome traces (Lokdarshi 2020, Dasgupta 2023).
 \end{enumerate}
 
 \end{enumerate}
@@ -919,28 +919,25 @@ Focusing now on the steady state abundance of the ribosome occupied decapped mRN
 
 
 
-Combined distributions of the capped and decapped polysome class
-\begin{enumerate}      
-\item Distribution is strictly unimodal when $\sum \mvechat >> \sum \mvechatstar$, effectively when $\kappaprime/\mu \ll 1$ (Figure 6 and 7).
-\item The distribution is bimodal otherwise. The bimodal peaks of this arised from the distributions from the capped and decapped states. 
-\item Increasing decapping rate $\mu$ and scaled translation initiation rate $\kappa/\tau$ both increase the proportion of transcripts in the decapped state.
-  \begin{enumerate}
-  \item The model formalizes the interplay between mRNA decapping $\mu$ and translation initiation $\kappa$. 
-  \item As expected, increasing $\mu$ results in an increase in the proportion of decapped transcripts \mvechatstar compared to capped transcripts \mvechat.
-  \item However, increasing ratio of initiation to elongation rates $\kappa/\tau$ also results in an increase of \mvechatstar.
-  \item As $\kappa/\tau$ increases the MRL of the capped population \mvechat increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
-  \end{enumerate}
-  \mmpar{The following points be incorporated into the previous discussion of MRL and protien production (\ref{item:protein_production}).} 
-\item A surprising prediction from our model is that genes with  high decapping rates (e.g. $\mu  \sim 5 \times 10^{-3}$ or a half-life of $\sim 120 \sec$) has almost (but never more than) half of its protein production coming from the decapped mRNA polysome classes (Figure 11).
-  \begin{enumerate}
-  \item As $\mu$ increases, a greater proportion of the MRL arises from the decapped states.
-  \item This increase is mainly a function of a shift in transcripts to the decapped state \mvechatstar due to larger $\mu$.
-  \item The decapped MRL $\leq$ the capped MRL.   
-  \item The high relative protein production from the decapped state suggests that high decapping rate transcripts can produce more protein than expected from their capped MRL alone. \rmpar{Relative protein production here $MRL\times \sum{\mvechat}$/total protein production is not a rate, but a comparison of the relative amount of protein produced by a state over a set period of time. This is explained (poorly) in the results. I chose this over $E(i) \times \tau $ because while the off rate for the capped class is simply $\tau$, the off rate for ribosomes in the decapped class is some constant $c \times \tau$  c is determined by the distribution in the capped class. Can I numerically calculate it? Yes. But I dont have an analytical solution for it.}
-  \item As we are assuming the mRNA clearance rate $\delta >> \lambda$, $\mhatstar_0$ will be negligible. 
-  \item Thus, our current results act as an upper bound of the protein production contribution from the decapped class. 
-  \end{enumerate}
-\end{enumerate}
+The full model combines the distributions of the capped and decapped states and is equivalent to mRNA population that is often measured in translational assays.
+The full model distribution is strictly unimodal when the majority of trasncripts are in the capped state ($\sum \mvechat >> \sum \mvechatstar$), effectively when $\kappaprime/\mu \ll 1$ (Figure 6 and 7).
+The distribution is also unimodal when the $\kappaprime << 0.01$, meaning that the MRL is low and near the $i=0$ bound. 
+In all other cases the distribution is bimodal. The high MRL peak arises from the capped state, while the small MRL peak comes from the decapped states. 
+
+The model formalizes the interplay between mRNA decapping $\mu$ and initiation elongation ratio $\kappa/\tau$ and its effect on protein production.
+By multiplying the state specific MRL [\ref{eq:MRL}] by $\tau$ we can estimate protein production rate.
+Shifts in mRNA between capped and decapped states as well as changes in MRL control protein production.
+As expected, increasing $\mu$ raises the proportion of decapped transcripts \mvechatstar compared to capped transcripts \mvechat.
+Increasing ratio of initiation to elongation rates $\kappa/\tau$ also results in an increase of decapped mRNAs \mvechatstar.
+As $\kappa/\tau$ increases the MRL of the capped population \mvechat increases, transcripts enter the decapped state at higher polysomal classes and thus take longer to reach $m_0^*$.
+At high $\mu$ this shift in transcripts is enough to partly overcome the fact that the decapped MRL $\leq$ the capped MRL.
+One final consideration is the assumption that the mRNA clearance rate $\delta >> \lambda$, and therefore $\mhatstar_0$ will be negligible. If $\mhatstar_0$ is small our current results act as an upper bound of the protein production contribution from the decapped class. 
+
+
+A unique property of our model is that it can differentiate the capped and decapped states individual contributions to protein production. 
+A surprising prediction from our model is that genes with  high decapping rates (e.g. $\mu  \sim 5 \times 10^{-3}$ or a half-life of $\sim 120 \sec$) has almost (but never more than) half of its protein production coming from the decapped mRNA polysome classes (Figure 10).
+The high protein production from the decapped state suggests that high decapping rate transcripts can produce more protein than would be expected from their capped MRL alone. 
+
 
 \subsection{Model Validation}
 
@@ -963,7 +960,7 @@ While our model currently does not include the protective effects of translation
 The protective effects of ribosomal loading which could be modeled by making the decapping rate $\mu $ by $(1-i/\imax)$, or having one, higher decapping rate for $m_0$ and a lower decapping rate for the other polysomal classes.
 The protective effects of translation could increase per ribosome, but eventually at high MRL could trigger ribosome associated decay pathways through ribosomal collisions. This would require analysis on an individual transcript basis.
 Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon optimality, or protein quality control (Wu and Bazzini 2023).
-Pausing sites could be addressed by splitting each polysome class into two regions and could approximate a ribosome flow model of only two regions, a 5' and 3', split by the pausing site. Current models of translation focus mainly on the behavior of the average transcripts. However this ignores tha
+Pausing sites could be addressed by splitting each polysome class into two regions and could approximate a ribosome flow model of only two regions, a 5' and 3', split by the pausing site. Current models of translation focus mainly on the behavior of the average transcripts. However this ignores th
 
 
 
@@ -1276,10 +1273,10 @@ In this model, the dynamics of the decapped and capped mRNAs can be represented 
 \begin{equation}
 \vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
 \end{equation} 
-where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full system (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
+where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full model (Equation~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
 Using the functional forms presented above, matrix formulations are provided next.
 
-As opposed to explicitly listing elements of the full system matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
+As opposed to explicitly listing elements of the full model matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
 The matrix $\bs{F}$ is block lower-diagonal and is given in Equation~\ref{eq:full_matrix}.
 \begin{equation}
 \bs{F}=\left(\begin{array}{cc}
