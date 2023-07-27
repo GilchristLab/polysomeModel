@@ -309,6 +309,45 @@ Intro Outline
 3.1.3.3.	Other bulk “cell-wide” approaches shah 2013
 3.1.4.	 Our model acts as an intermediate between cell wide approaches and single transcript models such as TASEP and Riboflow. Our coarse-grained model of translation focuses on the behavior of transcript populations. This includes effects originating from transcription and mRNA decay as well as translation initiation and elongation/termination. By modeling translation at the population level, we can also use the model in the future to better understand the information held in ribo-seq and proteomics experiments. 
 
+\begin{enumerate}
+\item Gene expression relies on transfer of information encoded in DNA into a final functional form, often protein. 
+\begin{enumerate}	
+  \item Protein production begins when DNA is transcribed into mobile messenger RNAs (mRNA).
+  \item Subsequently, the nucleotide code in the mRNA is translated by the Ribosome into the final protein sequence. 
+  \item While this process represents the basic flow of genetic information, each step has multiple regulatory mechanisms adjusting gene expression.  
+\end{enumerate}
+
+\item The process of translation
+\begin{enumerate}	
+  \item ss
+\end{enumerate}
+
+
+\item mRNA populations are regulated by a series of degradation mechanism
+\begin{enumerate}	
+  \item mRNA degradation 
+  \item 5' decapping
+  \item 3' deg
+  \item Ribsome quality control mechanisms and degadation
+\end{enumerate}
+
+\item modelling intro
+\begin{enumerate}	
+  \item TASEP
+  \item Ribo flow
+  \item Shah
+  \item Degradation papers
+  \item Translation and mRNA degradation have both received ample attention in the literature, however few have explored the interaction between mRNA degradation and translation.
+\end{enumerate}
+
+\item Paper summary
+\begin{enumerate}	
+ \item stuff
+\end{enumerate}
+
+\end{enumerate}
+
+
 
 
 \begin{enumerate}%rough ideas / poteintially important concepts
@@ -549,7 +588,7 @@ To understand how mRNA is divided  between we start with the probability of find
 \end{equation*}
 Then you calculate the odds,
 \begin{equation}\label{eq:odds}
-	odds_{m} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}} \\
+	odds_{\hat{m}} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}} )\\
 \end{equation}
 
 
@@ -717,67 +756,16 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \end{figure}
 \clearpage
 
-\subsection{Model replicates ribo-seq and single molecule measurements of translation}
-
-\begin{enumerate}
-\item Gene specific MRL ~\ref{eq:MRL} were calculated for the genes analyzed in Duc and Song 2018 and compared to the empirical MRL calculated from raw data from Weinberg 2016.
-\begin{enumerate}
-  \item Model predictions of MRL showed a significant positive correlation to empirical MRLs.
-  \item This result is reassuring as the model performs well despite no model fitting being performed.
-  \item 
-  \item  Model performance is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each single molecule study to an \imax of 39 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016).
-  \item All of which align with low to mid scaled initiation rate MRL predictions. 
-  \item Finally, mRNA distributions for the full system agree with signal from polysome traces (Lokdarshi 2020, Dasgupta 2023).
-\end{enumerate}
-
-\end{enumerate}
 
 
-   
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=120mm]{Images/Duc_Song_vs_model_log.png}
-\caption{Predicted mean ribosomal loads coincide with observed mean ribosomal loads from Weinberg 2016. Using the 850 genes from Duc and song 2018, marking rates from Presnyak 2015 were mined. Gene specific MRL were calculated and compared to the empircal MRL. Spearman's $\rho$ was calculated and found to be significant, pvalue $<10^{-16}$}
-%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-\end{figure}
-\clearpage 
-
-\subsection{At steady state protein production per transcript is independent of protein length}
-\begin{enumerate}
-\item At steady state the MRL increases with protein length, for the same values of marking rate $\mu$ and scaled initiation rate $\kappa'$ (Figure 9A).
-\begin{enumerate}
-  \item This is misleading with regards to per transcript protein production. 
-  \item By the definition of steady state the same number of ribosomes must initiate and terminate translation on a transcript. 
-  \item The higher MRL for longer proteins is due to the fact that more ribosomes can be loaded on a transcript at one time.
-  \item However, that does not affect the rate ribosomes initiate and terminate. 
-  \item Mean ribosomal density, i.e. the MRL/\imax, is a better proxy for understanding per transcript protein production between transcripts of different lengths (Figure 9B). 
-  \item The mean ribosomal density represent the fraction of the transcript actively producing protein, and thus is invariant to length.
-  \begin{enumerate}
-    \item
-
-  \end{enumerate}
-
-\end{enumerate}
-
-\end{enumerate}
-
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=120mm]{Images/2023-07-04_length_independence.png}
-\caption{The mean ribosomal density on a transcript is independent of their length. A) MRL per transcript is higher for longer transcripts. B) When the MRL is corrected for the length of the transcript, the  mean ribsomal density collapses to the same curve for all transcripts under the same parameters. For this plot Arabidopsis parameters were used \imax =  8 (1\textsuperscript{st} percentile),  40 (50\textsuperscript{th} percentile), 164 (99\textsuperscript{th} percentile), low marking rate ($7.7\times 10^{-6}$ 1/s), over the full scaled initiation range 0.0001- 0.5.}
-%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
-\end{figure}
-\clearpage
-
-\subsection{Marking rate and ribosomal load determine mRNA distribution between states}
+\subsection{Marking rate and ribosomal load determine mRNA distribution between capped and decapped states}
 \begin{enumerate}
 \item As shown in previous results, higher marking rates $\mu$ lead to lower MRL in the capped state and increase mRNA abundance in the decapped state.
 \begin{enumerate}
-  \item Using ~\ref{eq:log_odds}, we can determine how much of the mRNA population is in the capped state.
-  \item We produced output across all scaled initiation values $\kappa'$ and under the 1\textsuperscript{st}, 50\textsuperscript{th} and 99\textsuperscript{th} percentiles for marking rates in both yeast and Arabidopsis (Figure 10). 
+  \item Using ~\ref{eq:odds}, we can determine how much of the mRNA population is in the capped state.
+  \item We produced output across all scaled initiation values $\kappa'$ and under the 1\textsuperscript{st}, 50\textsuperscript{th} and 99\textsuperscript{th} percentiles for marking rates in both yeast and Arabidopsis (Figure 8). 
   \item We note two patterns. First as the $\kappa'$ increases, so does the amount of mRNA in the decapped class  \mvechatstar increases. 
-  \item Secondly and similarly, higher $\mu$ biases transcripts towards the decapped class as previously seen in Figures 6 and 7.  
+  \item Secondly and similarly, higher $\mu$ shifts mRNA population from the capped state to the decapped state as previously seen in Figures 6 and 7.  
 \end{enumerate}
 
 \end{enumerate}
@@ -800,30 +788,40 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \end{figure}
 \clearpage
 
+\subsection{At steady state protein production is scales with coding sequence length \imax}
+\begin{enumerate}
+\item At steady state the MRL increases with coding sequence length and begins to assymptote at high scaled initiation rate $\kappa'$ (Figure 9). \rmpar{Mike, you were right. There is a DDI effect on mean ribosomal density. After looking into it deeper I found the old findings completely wrong. Created this new set of results to properly explain the MRL behavior}
+\begin{enumerate}
+  \item While the capped state MRL is always greater than the decapped MRL, the MRL of the whole system is defined by both capped and decapped MRLs as well as the transcript abundance in each state as shown in eq ~\ref{eq:MRL}.
+  \item  As protein length \imax increases, mRNAs enter the decapped state at higher polysome classes. 
+  \item Therefore ribosomes take longer  to clear the mRNA, and thus increase the contribution from the decapped state. 
+  \item For $\kappa'$= 0.1, the percentage of the mRNA in the capped class is  99\% 78\%  and 35\% for \imax of 4, 39 and 194 respectively.
+  \item The \imax dependence is captured in the 1/$\tau$ term in eq ~\ref{eq:odds}, remembering that $\tau = \tau_c/9*\imax$.
+  
+\end{enumerate}
 
-\subsection{Decapped state can be a significant source of protein production}
+\end{enumerate}
+
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm]{Images/MRL.png}
+\caption{The mean ribosomal density on a transcript is dependent on coding sequence length. MRL per transcript is higher for longer transcripts. A) Capped state B) Decapped state C) Full system. Yeast parameters were used \imax =  4 (1\textsuperscript{st} percentile),  39 (50\textsuperscript{th} percentile), 194 (99\textsuperscript{th} percentile), low marking rate ($2.2\times 10^{-4}$ 1/s), over the full scaled initiation range 0.0001- 0.5.}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
+\clearpage
+
+\subsection{Decapped state can be a significant source of protein production} \rmpar{may now be superfluous}
 %For the capped state rate on is rate off at equilibrium. And by using the initiation rate, it is the same as the protein production rate per transcript. Same applies for %\tau_0$/9*\imax as this is equal to the initiation rate.
 %For the decapped state, the equilibrium exists between the inflow of marked transcripts at in a particular distribution and the same %\tau_0$/9*\imax parameter. Or not really. There is really no "on" rate, just an off rate.
 %in the capped sytem the on off rate directly relates to the ribosomal density/load on a transcript and it is a decent ad hoc measure of relative expression. 
 %Decapped is more complex. The mRNAs enter at rate $\mu$, but these don't carry the same number of ribosomes with them. Unlike $\kappa$ they are not the loading rate of one ribomsome. Is it the mean riboload of the capped system times $\mu$? No, the mean underestimate the contribution of the higher classes needing to percolate down into the lower classes. The decapped class steady state has no simple way of calculating it's steady state load from the parameters.
 \begin{enumerate}
-\item Protein production is a function of the rate at which ribosomes leave the transcript and the underlying total number of transcripts.
+\item Protein production rate (PPR) is a function of full system MRL $\times \tau$ and plots normalized to highest protein output are shown in Figure 10.
 \begin{enumerate}
-  \item When the scaled initiation rate $\kappa'$ is low, the average protein production rate (PPR) for the capped state could be estimated by multiplying the total number of transcript by the initiation rate. At higher $\kappa'$ this would be an upper limit.
-  \item However, this ignores the DDI and marking effects in the system and the actual PPR will be lower. 
-  \item Contributions from the decapped state are harder to estimate from the parameters as the distribution is dependent on the capped state's distribution.
-\end{enumerate}
-\item Another way of comparing protein production is to calculate the relative protein output (RPO) \ref{eq:Expected_ribo_load}, MRL $\times \sum{\mvechat}$ . 
-\begin{enumerate}
-  \item This uses the MRL as a proxy for protein production rate. To compare across transcripts of different length you can divide by \imax.
-  \item The full systems protein production can be found with \ref{eq:System_ribo_load}.
-  \item The RPO of the capped and decapped state is dependent on both the MRL and the total transcript population of each state.
-  \item A property of our model is the the decapped state MRL $\leq$ the MRL of the capped state (Figure 11A).
-  \item As $\kappa'$ increases the RPO will increase as well (Figure 11B).
-  \item The marking rate $\mu$ plays an important role in determining the capped MRL and transcript abundance in the two states (Figure 11B).
-  \item  Each of the three cases in Figure 10 B, has been broken down into the RPO contributions from the capped and decapped states (Figure 11 C-E). 
-  \item A surprising finding from out model is that when $\mu$ is low ($2\times 10^{-4}$ 1/s), almost half of all protein production can arise from the decapped state.
-  \item This can be seen inf Figure 11 F, where 41\% of all protein arises from the decapped state.
+  \item As the marking rate $\mu$ increases it reduces the capped and uncapped MRL as well as shifting transcript abundance to the decapped state (Figure 10A).
+  \item  Each of the three cases in Figure 10 A, has been broken down into the PPR contributions from the capped and decapped states (Figure 10 B-D). 
+  \item A surprising finding from out model is that when $\mu$ is high ($5.7\times 10^{-3}$ 1/s), 41\% of all protein production can arise from the decapped state (Figure 10 D).
   \item  The reason behind this is despite the the relative MRL of the decapped state being lower than the capped state as scaled initiation rises, the amount of mRNA in the decapped state rises faster.
 \end{enumerate}
 
@@ -833,11 +831,37 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
  
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = 135mm]{Images/2023-07-17_Protein_Production.png}
-\caption{Estimated average protein production in yeast. A) Ratio of the MRL of the decapped and capped states for a protein of \imax 40 and low marking rate ($2\times 10^{-4}$ 1/s) at values of capped MRL of 0-40. B) Protein production across different marking rates  low $\mu$ ($2\times 10^{-4}$ 1/s), median $\mu$ ($1.7\times 10^{-3}$ 1/s), high $\mu$ ($5.7\times 10^{-3}$ 1/s). Total protein production is normalized to the maximal protein production across all parameters. C-F) Contribution of capped and decapped states to total protein production. C) Low marking D) Medium marking E) High marking F) zoom in of high marking result. }
+\includegraphics[width = 135mm]{Images/2023-07-17_Protein_Production_v2.png}
+\caption{Estimated average protein production in yeast.  A) Protein production across different marking rates  low $\mu$ ($2.2\times 10^{-4}$ 1/s), median $\mu$ ($1.7\times 10^{-3}$ 1/s), high $\mu$ ($5.7\times 10^{-3}$ 1/s). Total protein production is normalized to the maximal protein production across all parameters. B-D) Contribution of capped and decapped states to total protein production. B) Low marking C) Medium marking D) High marking. }
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
+
+\subsection{Model validation}
+
+\begin{enumerate}
+\item Gene specific MRL ~\ref{eq:MRL} were calculated for the genes analyzed in Duc and Song 2018 and compared to the empirical MRL calculated from raw data from Weinberg 2016 (Figure 11).
+\begin{enumerate}
+  \item Model predictions of MRL showed a significant positive correlation to empirical MRLs.
+  \item This result is impressive as the model performs well despite no model fitting being performed and supports the idea that the model is a useful representaiton of the complex processes underlying protein production.
+  \item  Model performance is further corroborated with single molecule imaging analyses. Rescaling ribosome abundances from each single molecule study to an \imax of 39 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016).
+%  \item All of which align with low to mid scaled initiation rate MRL predictions. 
+  %\item Finally, mRNA distributions for the full system agree with signal from polysome traces (Lokdarshi 2020, Dasgupta 2023).
+\end{enumerate}
+
+\end{enumerate}
+
+
+   
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm]{Images/Duc_Song_vs_model_log.png}
+\caption{Predicted mean ribosomal loads coincide with observed mean ribosomal loads from Weinberg 2016. Using the 850 genes from Duc and song 2018, marking rates from Presnyak 2015 were mined. Gene specific MRL were calculated and compared to the empircal MRL. Spearman's $\rho$ was calculated and found to be significant, pvalue $<10^{-16}$}
+%\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
+\end{figure}
+\clearpage 
+
+
 
 \section{Discussion}
 
