@@ -4,7 +4,6 @@
 %% Following instructions at (https://tex.stackexchange.com/a/23960/110759)
 %% indicates one should use xelatex, not pdflatex
 \usepackage{fontspec}
-\setmainfont{Arial}
 
 %\documentclass[1p,review]{elsarticle}
 %\usepackage{pdflscape}
@@ -182,34 +181,18 @@
 \address[utkm]{Department of Mathematics, University of Tennessee,  Knoxville, TN 37996-1320}
 \address[utkeeb]{Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, TN 37996-1610}
 \address[nimbios]{National Institute for Mathematical and Biological Synthesis, University of Tennessee, Knoxville, TN 37996-3410}
+\setcounter{page}{68}
 
 \begin{abstract}
-This paper presents a model to describe the dynamics of protein translation.  
-A system of ordinary differential equations is derived to describe the number of ribosomes bound to a strand of mRNA at a given time.
-The number of ribosomes bound to an mRNA at a given time is referred to its ribosome load.
-The mRNA is classified based on its ribosome load and whether or not it's decapped for future degradation.  
-Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degredation decapping rate, and length of the mRNA.
-%The proposed marking phenomena leads to natural division of the state variables in capped and decapped classes.
-The length of the mRNA's coding region plays the role of controlling the number of ribosome counts which, in turn, determines the number of ODEs in the system.  
-%This maximum number of ribosomes that can be bound at any given time as a function of gene length is denoted as \imax.
-A goal of this work is to see how the equilibrium distribution between classes as changes with coding region length.
-A closed form solution to the density in the $i^{th}$ ribosomal class in a system with \imax states is presented for the equilibrium distribution of the decapped classes in terms of the capped classes.
-The equilibrium solutions in the capped classes are shown to be related to the full determinant of the tri-diagonal matrix used to describe the system, as well as all the determinants of the minors associated to it.
-In general, there is no closed form for the determinant of a tri-diagonal matrix, only a recurrence relation that can be used to find determinants.
-However, in this model a closed form exists for the full determinant as it changes with changing values of \imax and its formula is presented .
-This closed form for the determinant provides a method to efficiently find equilibrium solutions for the entire system.
-Additionally, a continuous approximation using PDE is derived and also used to find equilibrium solutions to the system.
-Both of these methods for determining equilibrium solutions are utilized in an effort to find the set of parameters that maximizes the likelihood of a given data set.
-A process for mapping the equilibrium model results to data is also presented and used to begin preliminary estimation of model parameters and to verify model function.
+Understanding the underlying mechanisms of protein production is essential to understanding life and for biotech applications.
+Translation and mRNA degradation are key coupled processes in the cell, which regulate protein output.
+While both translation and mRNA degradation have been extensively studied through modeling, there is little work exploring their interaction.
+Here we introduce a novel coupled ODE model which integrates mRNA transcription, 5' mRNA degradation and translation.
+Using empirically derived parameter estimates, our model predicts the protein productions from two populations of mRNA: Stable and actively translating 5' capped mRNA and decapped mRNA undergoing cotranslational decay.
+We are able to predict the capped and decapped mRNA population abudances, distribution of ribosomes loaded onto transcripts and the mean number of ribosomes associated to a transcript.
+Surprisingly, we find that genes with a high decapping rate (short half life) will produce just under half their protein from decapped transcripts.
+Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a stepping stone for future development. %yes I know this is also at the end of my intro. I'll change the one in the intro because I like how it sounds here
  
-\textbf{alternate abstract: Modeling Ribosomal Loading of mRNA}\\
-A model is presented to describe the dynamics of protein translation related to the ribosomal load of an mRNA.
-The number of ribosomes bound at a given time is referred to as ribosome load, and using this value a population of mRNA are classified.
-A system of ordinary differential equations (ODEs) is derived and solved for the equilibrium distribution of a population of mRNA.
-Distribution of ribosome counts is assumed to be related to the translation initiation rate, translation completion rate, degradation decapping rate, and length of the mRNA.
-Methods are developed to find analytical equilibrium solutions to the system of ODEs and a system of partial differential equations (PDEs) are derived to find numerical approximations to the ODE system at equilibrium as well.
-Both the PDE continuous approximation and the analytical solutions to the ODE system agree offering two different methods for finding solutions at equilibrium within optimization routines.
-Additionally, a tool is developed and presented that is used to compare the model results to empirical microarray data measures of ribosome load.  
 \end{abstract}
 \begin{keyword}
 bioinformatics \sep mRNA population \sep protein translation \sep ribosome loading \sep ribosome count \sep polysome \sep mathematical model
@@ -269,7 +252,7 @@ bioinformatics \sep mRNA population \sep protein translation \sep ribosome loadi
 \begin{enumerate}	
   \item Our model despite not being fit to data can demonstrate biological behavior using empirically derived parametres.
   \item The structure of the model allows for the exploration of protein production from both capped and uncapped mRNAs undergoing cotranslational decay.
-  \item Moreover, we find that 
+  \item Moreover, we find that genes with a high decapping rate (short half life) will produce just under half their protein from decapped transcripts. 
   \item Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a stepping stone for future development.
 
 \end{enumerate}
@@ -285,22 +268,22 @@ bioinformatics \sep mRNA population \sep protein translation \sep ribosome loadi
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=150mm]{Images/Figure1_biomodel_V3.png}
-\caption{Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda$ through transcription. Transcripts are free to move up and down ribosomal classes at rates $\kappa$ for translation initiation and $\tau$ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu$. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta$. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflect the total protein production potential.}
+\caption{Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda$ through transcription. Transcripts are free to move up and down polysome classes at rates $\kappa$ for translation initiation and $\tau$ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu$. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta$. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflect the total protein production potential.}
 \end{figure}
 \clearpage
 
 
 The model captures some of the basic processes governing mRNA populations: transcript production, degradation and the process of translation (Figure 1A).
-Transcripts can exist in one of two states: capped and decapped which captures the the role of the 5' cap in mRNA protection and translation initiation. 
-Capped transcripts are translationally competent, meaning that new ribosome can be loaded onto the transcript. 
-Individual transcripts in the cell will be found with a set number of ribosomes (none, 1, 2, etc).
+Transcripts can exist in one of two states: capped and decapped which captures the role of the 5' cap in mRNA protection and translation initiation. 
+Capped transcripts are translation initiation competent, while decapped transcripts are not. 
+Individual transcripts in the cell are categorized by an integer number of ribosomes (0, 1, 2, ..., \imax).
 The number of ribosomes on a transcript determines that transcripts polysomal class.
-The model seeks to determine how the population of transcripts of a single gene are distributed between ribosomal classes and capped and decapped states.
+The model seeks to determine how the population of transcripts of a given gene are distributed between polysome classes and capped and decapped states.
 
-Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes (polysome class 0)
-From capped class 0 a transcript can have two fates. 
-The transcript can be decapped, thus marked for degradation at rate $\mu$ and move into the decapped class 0.
-Alternatively, a ribosome can initiate translation on the mRNAs in the capped, ribosome free polysome class 0 at rate $\kappa$ and be loaded onto the transcript and move it into capped class 1.
+Transcripts enter into the model as defined by the transcription rate $\lambda$ into the capped state with no ribosomes,  ie. polysome class 0 ($m_0$). 
+From the $m_0$ class a transcript can have two fates. 
+The transcript can be decapped, thus marked for degradation at rate $\mu$ and move into the decapped class $m_0*$.
+Alternatively, a ribosome can initiate translation on the mRNAs in the capped, ribosome free polysome class 0 at rate $\kappa$ and be loaded onto the transcript and move it into capped class $m_1$.
 Because only one ribosomes can occupy a particular location on the mRNA at any given time and our model does not track ribosomal positions,
 , we model translation intiation across polysome classes $i = 0$ to $\imax$, more generally as
 \begin{equation}
@@ -325,17 +308,16 @@ Again assuming ribosomes are distributed across a transcript according to a unif
 
 
 Capped transcripts move through rounds of translation initiation and elongation-termination and distribute along the different polysomal classes. 
-From any ribosomal class in the capped state the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same polysomal class.
+From any polysome class in the capped state $m_i$ the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same polysomal class $m_i^*$.
 Decapped transcripts can no longer initiate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
-This process represent co-translational decay, a common method of mRNA decay in eukaryotes (Hu 2009, Pelechano 2015, Collart 2020) 
-After all ribosome complete translation, the mRNA is in decapped class 0 and completely degraded at a rate $\delta$.
-The model produces two outputs. 
-First, the total mRNA in each state and therefore the system (Figure 1B-D). 
-Second, The distribution of the mRNAs in each mRNA in each ribosomal class. (Figure 1 B-D).
-The total protein output at steady state from our model can be obtained by calculating the average ribosomal class in the system by the total mRNA in the system (Figure 1D). 
+The behavior of the $m_i^*$ classes represent co-translational decay, a common method of mRNA decay in eukaryotes (Hu 2009, Pelechano 2015, Collart 2020) 
+After all ribosomes on a decapped transcript complete translation, the mRNA is in decapped class 0 and completely degraded at the mRNA clearance rate $\delta$.
 
-\subsection{Formal Model Definition}
-We formalize the DDI model presented in Figure 1 by converting each state in to a series of ordinary differential equations (ODEs) representing the mRNA population for each polysomal class. 
+The model produces two outputs. 
+First, the total mRNA in either the capped or decapped state and therefore the system (Figure 1B-D). 
+Second, the distribution of the mRNAs in each mRNA in each polysome class. (Figure 1 B-D).
+
+We represent each state by a series of coupled ordinary differential equations (ODEs), one equation for the mRNA population for each polysome class. 
 The functional form of the capped mRNA sub population is:
 \begin{align} \label{eq:Capped_ODE}
 \frac{dm_{0}}{dt} &= \lambda+ \tau \frac{1}{\imax}m_{1}-\left(\kappa_0 + \mu\right)m_{0} \\ \nonumber
@@ -364,15 +346,16 @@ In closing, we note the parameters $\imax, \kappa, \mu,$ and $\tau$ likely vary 
 State Variables & &  \\ \hline
 $m_i$ & Abundance of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
 $m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
+$p_i$ & Distribution of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
+$p_i^*$ & Distribution of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
 \multicolumn{1}{l}{Model Parameters} \\ \hline
-i & ribosomal load index & Ribosome\\
-  \imax & \shortstack{Maximum number of ribosomes able to bind to mRNA;\\
-           defines number of state variables and is a function of gene length.} & Ribosome \\
-$\kappa(i)$ & Translation initiation rate for unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
-$\tau(i)$ & Translation completion rate for the marked and unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
-$\mu(i)$ & decapping rate for unmarked mRNAs with a ribosome load of $i$. & $1/s$\\
-$\lambda$ & Production rate of newly produced, ribosome free, and unmarked mRNA to the $m_0$ class. & $mRNA/s$\\
-$\delta$ & Removal rate of marked mRNA with a ribosome load of 0 from the $m_0^*$ class. & $1/s$\\ \hline 
+$i$ & ribosomal load index & Ribosome\\
+ \imax & Maximum number of ribosomes able to bind to mRNA\\ & Ribosome \\
+$\kappa_0$ & Translation initiation rate for capped mRNAs with a ribosome load of $i=0$. & $1/s$\\
+$\tau$ & Translation completion rate for one ribosome & $1/s$\\
+$\mu $ & Decapping rate. & $1/s$\\
+$\lambda$ & Production rate of newly produced, ribosome free, and capped mRNA to the $m_0$ class. & $mRNA/s$\\
+$\delta$ & Removal rate of decapped mRNA with a ribosome load of 0 from the $m_0^*$ class. & $1/s$\\ \hline 
 %\multicolumn{3}{|p{450pt}|}{\footnotesize Note: $\mathbb{R}^+$ represents the non-negative real numbers and $\mathbb{Z}^{(+)}$ represents the strictly positive integers.} \\ \hline
 \end{tabular}
 \caption{State variables and model parameters for ODE model of mRNA populations.
@@ -380,88 +363,85 @@ Variable \imax is in the domain of non-negative integers; all other variables ar
 \label{tab:params}
 \end{table}
 
-\subsubsection{Analytical steady state solutions of the capped transcript population}
-Analytical exploration of the model's capped system presents no closed form solution for the capped system.
-However, the model solution can be represented in the following form,
+\subsubsection{Steady state solutions of the capped transcript population}
+ The model solution for the capped state can be represented in the following form,
 	\begin{equation} \label{eq:capped_solution}
-		\vec{m}=\frac{\lambda}{\mu}\vec{p}_m
+		\mvechat=\frac{\lambda}{\mu}\vec{p}_m
 	\end{equation}
-Where $\vec{m}$ is a vector of the steady state mRNA abundances in each polysomal class.
-$\vec{m}$ is calculated from by scaling  the vector $\vec{p}$, which represents the distribution of the mRNA across the polysomal classes, by transcript production rate $\lambda$ and the decapping rate $\mu$ scale s.
-While the individual components of $\vec{p}$ are functions of $i$, \imax, the translation initiation rate $\kappa$, the elongation rate $\tau_0$ and $\mu$ and have no closed form solution, it is worth noting that because the probability distribution of the capped population must sum to 1, by definition, it follows that
+Where \mvechat is a vector of the steady state mRNA abundances in each polysomal class.
+\mvechat is calculated from by scaling  the vector $\vec{p}$ (where $\sum \vec(p) = 1$), which represents the steady state distribution of the mRNA across the polysomal classes, by transcript production rate $\lambda$ and the decapping rate $\mu$.
+While the individual components of $\vec{p}$ are functions of $i$, \imax, the translation initiation rate $\kappa$, the elongation rate $\tau_0$ and $\mu$ and we could not find a closed form solution, it is worth noting that because the probability distribution of the capped population must sum to 1, by definition, it follows that
 \begin{equation}\label{eq:capped_sum}
 \sum_{i = 0} ^\imax m_i = \lambda/\mu.
 \end{equation}
 
-\subsubsection{Analytical steady state solutions of the decapped transcript population}
+\subsubsection{Steady state solutions of the decapped transcript population}
 
 The solution for the decapped system is dependent on the underlying distribution of the capped system and can be represented as:
 
-\begin{align*}
-m_{0}^{*}  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\
-m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
-& \vdots & \\
-m_{i}^{*}  &= \frac{\mu}{i \: \tau}\sum_{j=i}^{\imax}m_{j}  \\
-& \vdots & \\
-m_{\imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=\imax}^{\imax}m_{j}  \\
-\end{align*}
-We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by ~\ref{eq:capped_solution}.
-Additionally, for any $i=j$ where $S_{j}$ is cumulative probability from $i$ = class $j$ to $ i= \imax$.
+\begin{align}\label{eq:decapped_abundance}
+\mhatstar_0  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\ \nonumber
+\mhatstar_1  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\ \nonumber
+& \vdots & \\ \nonumber
+\mhatstar_i  &= \frac{1}{i}\frac{\mu}{\tau}\sum_{j=i}^{\imax}m_{j}  \\ \nonumber
+& \vdots & \\ \nonumber
+\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\mu}{\tau} \mvechat_{\imax}   \\ \nonumber
+\end{align}
+We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by eq. (\ref{eq:capped_solution}).
+By defining $S_{j}$ as the cumulative probability from an mRNA found in class $i$ and above as,
 \begin{equation}
-		S_{j} = \sum_{i=j}^{\imax}\vec{p_{i}}
+		S_{i} = \sum_{i}^{\imax}\vec{p_{i}}
 \end{equation}
 
-Now the solution becomes,
+Now the solution to eq. (\ref{eq:decapped_abundance}) becomes,
 
 \begin{align} \label{eq:decapped_solution} 
-m_{0}^{*}  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \\ \nonumber
-m_{1}^{*}  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
+\mhatstar_0  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \\ \nonumber
+\mhatstar_1  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
 & \vdots & \\ \nonumber
-m_{i}^{*}  &= \frac{\lambda}{i \: \tau}S_{i}  \\ \nonumber
+\mhatstar_i  &= \frac{1}{i}\frac{\lambda}{\tau}S_{i}  \\ \nonumber
 & \vdots & \\ \nonumber
-m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
+\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\lambda}{\tau}S_{\imax}  \\ \nonumber
 \end{align}
  Note that $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ dependant on the distribution of \mvechat of the capped state. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
 
-\subsection{Calculation of the decapped mRNA population}
-
-The total transcript population in the decapped state does not have a closed form solution. However it can be summarized as follows,
+The total transcript population in the decapped state $\mhatstar_{tot}$ does not have a closed form solution. However it can be summarized as follows,
 
 \begin{equation*}
-	m_{tot}^{*} = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
+	\mhatstar_{tot} = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
 \end{equation*}
 This can be further shortened to:
 \begin{equation} \label{eq: marked_total_pop}
 	m_{tot}^{*} = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}	) 
 \end{equation}
-Where $\vec{S}$ is a vector of all the cumulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . 
+Where $\vec{S}$ is a vector of all the cumulative sums and $\vec{l}$ is a vector of $1,\frac{1}{2},...,\frac{1}{\imax}$ . 
 
-\subsection{Probability distribution in the decapped state}
 
-To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/m_{tot}^{*}$ which results in,
+To get the probability distribution of transcripts across the decapped state we can divide $\mvechatstar/\mhatstar_{tot}$ which results in,
 \begin{align}\label{eq:decapped_distribution}
 	p_{0}^{*} &= \frac{1}{1 + \frac{\delta}{\tau}\vec{S} \cdot \vec{l}}	\\
-  	p_{j}^{*} &= \frac{S_{j}}{j(\frac{\tau}{\delta} + \vec{S} \cdot \vec{l})}	\:\:\:\: \text{for } j=1, 2, ..., i, ..., \imax
+  	p_{i}^{*} &= \frac{S_{i}}{i(\frac{\tau}{\delta} + \vec{S} \cdot \vec{l})}	\:\:\:\: \text{for } i=1, 2, ..., \imax
 \end{align}
 
 \subsection{Calculation of the total mRNA population and its distribution between capped and decapped states}
-The total mRNA ($M_{tot}$) in the system is defined by,
+The total mRNA ($M$) in the system is defined by,
 \begin{equation}
-	M_{tot} = \frac{\lambda}{\mu} +  \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})
+	M = \lambda(\frac{1}{\mu} +  \frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})
 \end{equation}
 
 To understand how mRNA is divided  between we start with the probability of finding an mRNA in the capped state.
 \begin{equation*}
 	p_{mtot} = \frac{1}{(1  + \frac{\mu}{\delta} + \frac{\mu}{\tau}\vec{S} \cdot \vec{l})}	
 \end{equation*}
-Then you calculate the odds,
+Then we calculate the odds,
 \begin{equation}\label{eq:odds}
-	odds_{\hat{m}} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}} )\\
+	odds_{\hat{m}} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})} \\
 \end{equation}
 
 
 \subsection{Calculating expected ribosomal load and protein production}
 The expected ribosomal load for either the capped or decapped state is calculated by:
+
 \begin{equation}\label{eq:Expected_ribo_load}
 	E(ribosome) =\sum_{i=0}^{\imax}j\times p_{i}
 \end{equation}
@@ -542,7 +522,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm]{Images/2023-07-04_Unmarked_slices.png}
-\caption{mRNA distribution in capped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular ribosomal class.}
+\caption{mRNA distribution in capped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -561,7 +541,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm]{Images/2023-07-04_Marked_slices.png}
-\caption{mRNA distribution in decapped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular ribosomal class.}
+\caption{mRNA distribution in decapped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -584,7 +564,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.png}
-\caption{mRNA distribution in the full model. A) Distribution profiles for three scaled initiation values low) $1\times 10^{-3}$ mid) $2\times 10^{-2}$ and high) $1\times 10^{-1}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular ribosomal class.}
+\caption{mRNA distribution in the full model. A) Distribution profiles for three scaled initiation values low) $1\times 10^{-3}$ mid) $2\times 10^{-2}$ and high) $1\times 10^{-1}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \imax of 39 and a low decapping rate of $2\times10^{-4}$  (99\textsuperscript{th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}
 %\centering Red: decapped class, Green: capped class, Blue: Total= capped+decapped classes}
 \end{figure}
 \clearpage
@@ -597,7 +577,7 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
   50\textsuperscript{th} and 99\textsuperscript{th} percentile values as determined from  Presnyak 2015.
   \item As $\mu$ increases the distribution of mRNAs changes in two ways. 
   \begin{enumerate}
-     \item First there is shift to lower ribosomal classes in the capped state (Figure 6).
+     \item First there is shift to lower polysome classes in the capped state (Figure 6).
      \item This is likely due to the mRNAs leaving the capped state at a higher rate and driving the equilibrium towards lower ribosomal loads. 
      \item Secondly, as half-life decreases, a larger proportion of the mRNA is found in the decapped state. This is further explored later. 
   \end{enumerate}
@@ -1238,7 +1218,7 @@ and the decapped subsystem is unchanged.
 
 
 
-The capped system can be split into two components: Total transcripts in the capped state and how the transcripts are distributed across ribosomal classes. 
+The capped system can be split into two components: Total transcripts in the capped state and how the transcripts are distributed across polysome classes. 
 From manual exploration of model solutions of the capped state at low \imax values. 
 We discovered that the capped class transcript number is determined by $\lambda/ \mu$
 If you take the simplest version of the model consisting of only the zeroth capped class.
@@ -1258,8 +1238,8 @@ For mulitple classes, as the transcripts get distrbuted, each class contribute a
 		\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i},
 	\end{equation}
 Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
-$\mu$ affects both the total transcript abundance and the distribution of ribosomal classes across a particular species of transcript.
-First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower ribosomal classes.
+$\mu$ affects both the total transcript abundance and the distribution of polysome classes across a particular species of transcript.
+First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower polysome classes.
 		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m \imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
 The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
 	\begin{equation*}
@@ -1273,7 +1253,7 @@ and
 	\begin{equation*}
 		\sum_{j=0}^{\imax}\vec{a}_j = a_{tot} 
 	\end{equation*}
-With this we can factor our solution into two parts: 1) the total transcript abundance and 2) The distribution of transcript across the ribosomal classes.
+With this we can factor our solution into two parts: 1) the total transcript abundance and 2) The distribution of transcript across the polysome classes.
 	\begin{equation*}
 		\vec{m}=-\frac{\lambda a_{tot}}{\det[\bs{U}]} \frac{\vec{a}}{a_{tot}} 
 	\end{equation*}
