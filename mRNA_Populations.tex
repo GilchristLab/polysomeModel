@@ -297,17 +297,6 @@ This section addresses such topics as why modeling this process important, what 
 %description of the biological underpinnings of the model.
 %T
 
-Intro Outline
-3.1.1.	 Gene regulation, translation and mRNA stability
-3.1.1.1.	Short introduction to Gene expression, transcription, translation, and the regulation of mRNA populations both dependent and independent of translation
-3.1.2.	 Ever increasing methods of measuring mRNA decay and Translation provide ample grounds for testing and knitting together hypothesis underlying the mechanism of translation.
-3.1.2.1.	Ribo-seq, microarrays, polysome profiling, proteomics and live imaging. 
-3.1.2.1.1.	But most of these approaches are not measurements of single transcripts, but ensemble measurements of populations
-3.1.3.	 Mathematical modeling as a tool to interpret and generate hypotheses to better understand translation
-3.1.3.1.	TASEP
-3.1.3.2.	Riboflow
-3.1.3.3.	Other bulk “cell-wide” approaches shah 2013
-3.1.4.	 Our model acts as an intermediate between cell wide approaches and single transcript models such as TASEP and Riboflow. Our coarse-grained model of translation focuses on the behavior of transcript populations. This includes effects originating from transcription and mRNA decay as well as translation initiation and elongation/termination. By modeling translation at the population level, we can also use the model in the future to better understand the information held in ribo-seq and proteomics experiments. 
 
 \begin{enumerate}
 \item Gene expression relies on transfer of information encoded in DNA into a final functional form, often protein. 
@@ -317,99 +306,53 @@ Intro Outline
   \item While this process represents the basic flow of genetic information, each step has multiple regulatory mechanisms adjusting gene expression.  
 \end{enumerate}
 
-\item The process of translation
+\item The process of translation encompasses three steps: initiation, elongation and termination and is reviewed in (Browning and Bailey-Serres 2015, Urquidi Camacho 2020).
 \begin{enumerate}	
-  \item ss
+  \item In eukaryotes, translation initiation consists of a ribosome binding to the capped 5' end of an mRNA molecule. 
+  \item Following binding to the mRNA a Ribosome proceeds to scan the mRNA until it encounters a start codon and initiates protein synthesis.
+  \item Protein is synthesized through the process of elongations, as the ribosome adds one amino acid at a time to the nascent peptide chain. 
+  \item Finally, in the termination step, the ribosome and protein are released from the transcript.
+  \item Multiple ribosomes can be on a transcript at once. 
+  \item This polyribosomal mRNAs, or polysomes are common and often measured as a proxy for protein production by ribosome footprinting, polysome profiling and single molecule imaging of translation. 
 \end{enumerate}
 
-The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in mRNA stability (Wu 2019, Medina-Munoz 2021, Bae and Collier 2022).
-
-
-\item mRNA populations are regulated by a series of degradation mechanism
+\item To produce protein Translation relies a pool of capped mRNAs being available.
 \begin{enumerate}	
-  \item mRNA degradation 
-  \item 5' decapping
-  \item 3' deg
-  \item Ribsome quality control mechanisms and degadation
+  \item The maintenance of this mRNA pool relies on a broad range of ribsome dependent and independent mechanisms (reviewed in Collart 2020).
+  \item 5' decapping removes the protective 5' cap from a transcript allowing for the 5'-3' exonuclease XNR1 to degrade the transcript (Collart 2020).
+  \item If a ribosome is already present on the transcript, XRN1 trails behind performing cotranslational decay (Pelechano 2015).
+  \item This allows for protein to be produced from decaying transcripts.
+  \item Another mechanism of decay relies on 3'-5' degradation of transcripts, which does not permit for any more protein to be made.
+  \item Decay can also occur following ribosomal collisions.
+  \item Collided ribsomes can also initiate endonucleolytic decay pathways such as  nonsense mediated decay or no go decay or ribosomal quality control.
+  \item The resulting 3' fragments may complete translation.
+  \item The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in mRNA stability (Wu 2019, Medina-Munoz 2021, Bae and Collier 2022).
 \end{enumerate}
 
-\item modelling intro
+ and translation (Reuveni 2011, , Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
+\item Both mRNA decay and translation have been explored in the literature (Yadav 2021, von der Haar 2012.)
 \begin{enumerate}	
-  \item TASEP
-  \item Ribo flow
-  \item Shah
-  \item Degradation papers
+  \item Some early translation modeling papers used the totally assymetric exclusion process (TASEP) framework to study codon by codon movement of ribosomes (Duc and Song 2018, Shaw 2003)
+  \item While powerful, TASEP is computationally expesive to run. 
+  \item The Ribosome Flow Model (RFM) introduced by (Reuveni 2011), make a course grain approximation to translation by splitting an mRNA into regions reducing computational cost at little accuracy (Reuveni 2011).
+  \item Extension on the RFM look at the combined translational behavior of pools of different transcript species (Nanikashvili 2019).
+  \item Other protein synthesis models take a cell wide approach to model transaltion (Shah 2013) providng a systems wide overview of protein production.
+  \item mRNA degradation mechanisms have also been explored, either mechanistically (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016) or using a basic protein produciton model (Zupanic 2016) and are reviewed in (Ashworth 2019).
+  \item A combined 5' mRNA decay model has previously been explored briefly by (Valleriani 2010), finding a moderate effect of decay on ribosomal load.
   \item Translation and mRNA degradation have both received ample attention in the literature, however few have explored the interaction between mRNA degradation and translation.
 \end{enumerate}
 
-\item Paper summary
+\item Here we introduce a novel coupled ODE model of mRNA polysome classes which integrates mRNA transcription, 5' mRNA degradatiaon and translation.
 \begin{enumerate}	
- \item stuff
-\end{enumerate}
+  \item Our model despite not being fit to data can demonstrate biological behavior using empirically derived parametres.
+  \item The structure of the model allows for the exploration of protein production from both capped and uncapped mRNAs undergoing cotranslational decay.
+  \item Moreover, we find that 
+  \item Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a stepping stone for future development.
 
 \end{enumerate}
 
-
-
-
-\begin{enumerate}%rough ideas / poteintially important concepts
-	\item Gene expression short overview
-	\begin{enumerate}
-		\item Gene expression is often stated as the central dogma in which genetic information encoded in the DNA is transcribed into mRNA which is subsequently translated into protein. 
-		\item Often, a greater amount of attention is focused on explaining gene expression at the transcriptional level and prevailing changes of mRNA transcript levels. 
-		\item However, multiple studies across all kingdoms of life have shown that transcript expression level is only moderately predictive of the final protein expression.
-		\item Gene expression at the post transcriptional level is controlled by mRNA transcript stability and degradation, translation and protein maturation/degradation.
-		\item The model presented in this paper encompasses gene expression regulation occuring at the translational and the mature mRNA population level.
-	\end{enumerate}
-	\item Biology controlling mRNA stability and translation
-	\begin{enumerate}
-		\item Mature mRNAs in the cytosol are called the free mRNA pool, and are in one of three states. 
-		\item They are actively being translated by ribosomes and will continue to initiate new rounds of translation until the transcript is degraded.
-		\item Transcripts are degraded directly from the free mRNA pool.
-		\item Transcripts are protected from degradation by RNA binding protein chaperones or are found in processesing bodies awaiting translation initiation or degradation.
-		\item Degradation of mature mRNAs is controlled by numerous processes depending on whether they are bound to ribosome, in processing bodies or in the free mRNA pool.
-		\item Free mRNAs can be decapped or deadenylated followed by exonuclease digestion.
-		\item Ribosomes can destine transcripts to degradation under multiple conditions. 
-		\item The first ribosome to bind to a freshly exported transcript performs the "pioneer round of translation", which is charged with assesing the mRNA's quality.
-		\item There are 3 processes which occur in the pioneer round of translation, all of which detect different mRNA defects. 
-		\item No Go Decay (NGD) detects a stalled ribosome, either due to mRNA structural features, slowly translating sequence or inteference of translation elongation. %sRNA interference has been suggested, need to read sources
-		\item No stop decay (NSD) detects a missing stop codon and nonsense mediated decay (NMD)  detects potential mis splicing or nonsense mutations.
-		\item All three decay  mechanisms, NMD, NSD and NGD lead to the eventual degradation of their bound transcripts. 
-		\item While NSD and NMD are a restricted to the pioneering round of translation, NGD can also uccur during the following rounds of translation.
-		\item As transcripts are cleared by the pioneering round of translations more ribosomes can attach to the transcript, once more than one ribosome is on a transcript this ribosome mRNA complex is called a polysome.
-		\item Transcripts associated to ribosomes are generally assumed to be protected from degradation and only degraded once ribosomes are off the transcript, however both NGD, (sRNA silencing) and 
-			a process called cotranslational decay can degrade actively translated transcripts.
-		\item Cotranslational decay involved the decapping of actively translating mRNA transcripts and subsequent 5' to 3' mRNA degradation which follows a 3 nucleotide periodic pattern in step with the Ribosome.   
-	\end{enumerate}
-	\item Current Models/Research and how our model fits in the current field
-
-	
-Stuff for intro
-	\item mRNA degradation mechanisms (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016, Zupanic 2016, reviewed in Ashworth 2019) and translation (Reuveni 2011, Nanikashvili 2019, Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
-	\item in our model we are going to be focusing on the process of mRNA 5' decapping.
-
-
 \end{enumerate}
 
-\begin{enumerate}
-% This is material for the intro. but I need it to properly contextualize the introduction of the model and figure 1%
-	\item  The basic representation of the central dogma dictates that epression of protein coding genes starts from genes encoded in DNA that are transcribed to mRNA and subsequently translated to Protein.
- 	\item A more careful representation considers that the final protein production is dependent on both the maintenance of an actively translating mRNA population, the association of ribosomes on the population and finally the degradation of the protein itself.
-	\item The maintenance of mRNA populations relies on the balance of mRNA transcription rates, the translation status of transcripts and numerous mRNA decay pathways.
-	\item mRNA degradation relies on removing protective and translation enhancing componenets of the mRNA. These include the 5' mG cap and the 3' polyadenosine tail.   
-	\item Additionally mRNA degradation can be promoted through endonucleolytic cleavage by RISC (and siRNAs).
-	\item mRNA degradation can occur in both a ribosomal associated or a ribosome free manner.
-	\item Ribosomal association of transcripts can lead to both protection of viable transcripts as well as quality control degradation of faulty transcripts. 
-	\item When a viable transcript is bound by the ribosomal and translational machinery, the 5' cap is bound by translational initation factors and the 3' tail is bound by poly A binding proteins. This protects transcripts from exonucleic attack and degradation.
-	\item Endonucleic degradation is still possible, but reduced due to a reduced accessibility of the siRNA binding sequence on the transcript through competition with ribosomes.
-	\item However multiple mechanisms of mRNA decay are carried out in association with the ribosome. Nonsense mediated decay, no go decay and no stop decay all rely on ribosomes detecting faults in the transcript and susbsequently interacting with degradation machinery to remove the faulty transcript.
-	\item With some mechanisms of mRNA decay, decay can occur co-translationally. This is mainly seen in 5' decapping. When a translating transcript is decapped the 5' to 3' exonucleic degradation machinery trails the most upstream ribosome. As the ribosome translates the mRNA is degraded.
-	\item 
-
-\end{enumerate}
-
-
-many models seek to understand separate aspects of mRNA biology. Some focus on the mechanistic aspects of decay, separate from the interaction with the transaltional machinery. Others model translation directly, but not decay (TASEP and RFM). Others focus on a bulk measure of all processes, but with no particular allusion to specific types of degradation. here we present a model focused on integrating from mRNA procution to final degradation, the maintenance of mRNA populations with regards to translation and co transaltaional decay.
 
 
 
