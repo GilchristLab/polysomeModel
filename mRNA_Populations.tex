@@ -173,7 +173,7 @@
 
 \begin{document}
 \title{Modeling mRNA Populations}
-\author[utkgst]{R.~Urquidi Camacho}
+\author[utkgst]{R.A.~Urquidi Camacho}
 \author[utkm,curradd]{N.~Pollesch}
 \author[utkgst,utkeeb,nimbios,cor1]{M.A.~Gilchrist\corref{cor1}}
 \ead{mikeg@utk.edu}
@@ -219,84 +219,7 @@ bioinformatics \sep mRNA population \sep protein translation \sep ribosome loadi
 %\tableofcontents
 \newpage
 
-\textbf{Paper Outline}
-\begin{enumerate}
-\item Motivation - \textbf{(Mike)}
-\begin{enumerate}
-\item Why is this process important?
-\item What will this model enable researchers to do?
-\item Other modeling efforts?
-\end{enumerate}
-\item Derivation and Assumptions
-\begin{enumerate}
-\item Physical processes captured (Ideally, have a quick discussion of process and inline definitions of variables used to represent process, followed by a total recap in a table)  - \textbf{(Nate)}
-\begin{enumerate}
-\item System described as population model: Dichotomy of decapped and capped mRNA.
-State variables based on an mRNA's ribosome load.
-\item Process of mRNA production
-\item Process of Marking mRNA for degradation supposed
-\item Three processes of : Initiation, translation, and completion
-%\item Originally included total number of ribosomes in system, but has since been excluded.
-\end{enumerate}
-\item Definition/Discussion of system boundaries - (\textbf{MIKE})
-\begin{enumerate}
-\item Physical boundaries as a cell and relation to parameters
-\item Discussion of perceived upper and lower limits to state variables and parameters
-\item Temporal boundaries and relation to steady state
-\end{enumerate}
-\item Assumptions: Such as initial assumptions of specific functional forms, i.e. decapping rate constant among classes  - \textbf{(Nate)}
-\item Justify consideration of system as two subsystems, decapped and capped.  - \textbf{(Nate)}
-\end{enumerate}
-\item Model Formulation: Total model presented and then analysis of capped and decapped systems  - \textbf{(Nate)}
-\begin{enumerate}
-\item ODE/Discrete system
-\begin{enumerate}
-\item Present system of ODEs (Total, capped, and decapped)
-\item Matrix Representation of ODE model (Total, capped, and decapped)
-\item Steady state formulations
-%\item (Make decision to present results for steady state values for ODE here or after formulation of PDE system in a results section)
-\end{enumerate}
-\item PDE/Continuous system 
-\begin{enumerate}
-\item Explain motivation for deriving PDE
-\item Explain framing as `non-linear birth and death process'
-\item Explain derivation using Taylor expansion
-\item Present PDE for capped class
-\item Present non-dimensionalized system
-\item Present 2nd order ODE to be solved for non-dimensionalized PDE at Equilibrium
-\item Motivate and present equation for decapped class at equilibrium
-\item (Make decision to present results for steady state values for PDE here or in a separate section to follow)
-\end{enumerate}
-\end{enumerate}
-\item Results  - \textbf{(Nate)}
-\begin{enumerate}
-\item Present solution strategies/methods
-\begin{enumerate}
-\item ODE/Discrete system: Matrix inversion technique
-\item PDE/Continuous system: Numerical solver of 2nd order ODE that arises at equilibrium
-\item Discussion of alternative solution approaches
-\end{enumerate}
-\item Present actual solutions for a couple sets of parameters: Highlight agreement of ODE and PDE system
-\item Present solutions for discrete system under further simplifications for translation and initiation
-\end{enumerate}
-\item Opportunities for Future Research  - \textbf{(Nate and Mike)}
-\begin{enumerate}
-\item Application of model to real data.
-Can highlight sources of data.
-\item Alternate functional forms and relaxed assumptions
-\item Further establish connection (in simplified system) to potential probability distributions
-\item How to move forward with analytical solutions, specifically connection to solving 2nd order partial difference equation arising from tri-diagonal form of matrix, note here that boundary conditions exist that may be utilized which are not normally present.
-\end{enumerate}
-\end{enumerate}
-\newpage
 \section{Introduction}
-This section addresses such topics as why modeling this process important, what this model will enable researchers to do, and what other modeling efforts exist that seek to achieve the same goals.
-
-
-\subsection{mRNA and Translation}\label{sec:Bioligical underpinnings}
-%description of the biological underpinnings of the model.
-%T
-
 
 \begin{enumerate}
 \item Gene expression relies on transfer of information encoded in DNA into a final functional form, often protein. 
