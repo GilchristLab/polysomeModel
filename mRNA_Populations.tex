@@ -439,44 +439,51 @@ Then we calculate the odds,
 \end{equation}
 
 
-\subsection{Calculating expected ribosomal load and protein production}
-The expected ribosomal load for either the capped or decapped state is calculated by:
-
-\begin{equation}\label{eq:Expected_ribo_load}
-	E(ribosome) =\sum_{i=0}^{\imax}j\times p_{i}
+\subsection{Calculating mean ribosomal load and protein production}
+The mean ribosomal load (MRL) for either the capped polysome classes calculated by:
+\begin{equation}\label{eq:Expected_ribo_capped}
+	E(\mvechat) =\sum_{i=0}^{\imax}j\times p_{i}
 \end{equation}
+
+and for the decapped polysome classes by:
+\begin{equation}\label{eq:Expected_ribo_decapped}
+	E(\mvechatstar) =\sum_{i=0}^{\imax}j\times p_{i}^*
+\end{equation}
+
 Where $\vec{p_m}$ is the distribution in either state and i is the polysome class.
 
 To find the global mean ribosomal load we obtain,
 \begin{equation}\label{eq:System_ribo_load}
-	\text{Total Ribosomal Load} = p_{mtot}\times E(ribosome)_{mtot} + (1-p_{mtot})\times E(ribosome)_{mtot^*}
+	\text{Total Ribosomal Load} = p_{mtot}\times E(\mvechat) + (1-p_{mtot})\times E(\mvechatstar)
 \end{equation}
 
 \subsection{Numerical solution implementation in R}
-Code to solve the model was written in the R package Ribosome (\url{https://github.com/rurquidi/Ribosome}). To solve the capped subsystem of the model, the solve.tridiag algorithm from limSolve package (V 1.5.6) (Soetaert,K 2009). The decapped solution was obtained by using the capped solutions into ~\ref{eq:decapped_solution}. Utility functions, plots and statistics were created using  R (v 3.6) (R core team), and  data.table (v1.14.0) (Dowle 2021). 
+Code to solve the model was written and is freely available as an R package at (\url{https://github.com/rurquidi/Ribosome}). To solve the capped subsystem of the model, the \texttt{solve.tridiag} function from \texttt{limSolve package} (v1.5.6) (Soetaert,K 2009). The decapped solution was obtained by using the capped solutions into eq. (\ref{eq:decapped_solution}). Utility functions, plots and statistics were created using  \texttt{R} (v 3.6) (R core team), and  \texttt{data.table} (v1.14.0) (Dowle 2021). 
 		
 \subsection{Data Sources}
 
-In order to biologically contextualize and illustrate our model's behavior, we will focus on parameter ranges derived from the literature.
-The range of \imax is determined from the distribution of protein lengths obtained from yeast (\textit{saccharomyces cerevisiae}) and the plant \textit{Arabidopsis thaliana}. To determine \imax, protein lengths are divided by the average number of codons covered by a ribosome, which is ~9 codons (Figure 2A and C). The range of \imax is  48 $\pm$ 36 for yeast and 47 $\pm$ 30 for Arabidopsis.
+In order to biologically contextualize and illustrate our model's behavior, we use on parameter values derived from the literature.
 Protein lengths were extracted from the Ensembl (version 109) and Ensembl plants (version 56) respectively (Cunningham 2022, Yates 2022, Kinsella 2011).  
-The decapping rate between the capped and uncapped system was approximated from the protein half-lives from Presnyak 2015 for yeast (Figure 2B) and Sorenson 2018 for Arabidopsis (Figure 2D).
-We approximated gene specific $\mu$ from the half lives with the following:
+The range of \imax is determined from the distribution of protein lengths obtained from brewer's yeast (\textit{saccharomyces cerevisiae}) and \textit{Arabidopsis thaliana}. The range of \imax is  48 (36) (mean (SD)) for yeast and 47 (30) for Arabidopsis (Figure 2A and C).
+The decapping rate between the capped and uncapped system was estimated from the protein half-lives from Presnyak (2015) for yeast (Figure 2B) and Sorenson (2018) for Arabidopsis (Figure 2D).
+We estimated gene specific $\mu$ from the half lives with the following:
 	\begin{equation*}
 		\mu_i = \frac{ln(2)}{t_{1/2_i}}
 	\end{equation*}
-Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $1.3 \times 10^-3 \pm 1.8 \times 10^-3$ for yeast and $1.7 \times 10^-4 \pm 2 \times 10^-4$ for Arabidopsis. 
+Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $1.3 \times 10^-3 (1.8 \times 10^-3)$ for yeast and $1.7 \times (10^-4 \pm 2 \times 10^-4)$ for Arabidopsis. 
 
-Translation initiation and average elongation rates ($\kappa$ and $\tau_0$) were obtained for Yeast from Duc and Song 2018. In Duc and Song 2018, the authors used 850 highly translated transcripts from the ribo-seq dataset from Weinberg 2016. They employed a TASEP model to estimate the initiation rates and correct the empirical elongation rates from the footprint distributions. We calculated an average gene specific elongation rate from the corrected elongations rates. We scale the each gene specific initiation rate by dividing it by the gene specific elongation rate.
+Translation initiation and average elongation rates ($\kappa$ and $\tau_c$) were obtained for Yeast from Duc and Song 2018. 
+%In Duc and Song 2018, the authors used 850 highly translated transcripts from the ribo-seq dataset from Weinberg 2016. They employed a TASEP model to estimate the initiation rates and correct the empirical elongation rates from the footprint distributions. 
+We calculated an average gene specific elongation rate from the corrected elongations rates. We scale the each gene specific initiation rate by dividing it by the gene specific elongation rate.
 \begin{equation}
-	\text{initiation to elongation ratio} = \kappa' = \frac{\kappa}{\tau_0}
+	\text{initiation to elongation ratio} = \kappa' = \frac{\kappa}{\tau}
 \end{equation}
 
 This simplifies the model behavior to one generalized parameter with a unique response (Figure 2E).  The initiation to elongation ratio ranges from 0.1$s^{-1}$ to 0.001$s^{-1}$.
 
-The transcription rate, $\lambda$ only acts as a scaling factor throughout the model and does not affect the distribution of the ribosomes. For solutions provided in this work $\lambda$ has been set to one. However, as a point of reference, the transcriptomic results from Weinberg 2016 are included in Figure 2F. In short, reads per kilobase million from Weinberg were further converted into a log10 fold change based on the median expression level. Figure 2F shows that the absolute range of transcriptional expression ranges just under 5 orders of magnitude.
+The transcriptomic results from Weinberg 2016 are included in Figure 2F. In short, reads per kilobase million from Weinberg were further converted into a log10 fold change based on the median expression level. Figure 2F shows that the absolute range of transcriptional expression ranges just under 5 orders of magnitude. Because transcription rate $\lambda$ acts as a scaling factor throughout the model and does not affect the distribution of the ribosomes, for simplicity we set $\lambda$ = 1.
 
-The mRNA clearance rate $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class, which for simplicity of interpreting results has been set to be $>>\tau$ and thus will not accumulate transcripts in $m_0^*$.
+Because the mRNA clearance rate $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class, for simplicity, we set $\delta >> \tau$ and thus  $m_0^* \sim 0$.
  
 The empirical mean ribosomal load (MRL) for the 850 genes in Duc and song 2018 was calculated from the mRNA-seq read per kilbase million (mRNA RPKM) and the ribo-seq footprints (RPF RPKM) from Weinberg 2016. The following equation was used.
 \begin{equation}\label{eq:MRL}
@@ -501,24 +508,22 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 
 \section{Results}
 
-\subsection{Model provides a unique distribution of mRNAs across polysome classes for each initiation to elongation ratio}
-\begin{enumerate}
-\item The model predicts the abundances of the mRNA in the capped and decapped states as well as the mRNA's distribution across polysome classes.
-\begin{enumerate}
-  \item Steady state solution of the capped class
-  \begin{enumerate}
-    \item The analytical steady state solution ~\ref{eq:capped_solution} is composed of a vector of probabilities $\vec{p_m}$ that an mRNA is in polysome class $i$ and a scaling term (the transcription rate $\lambda$ divided by the decapping rate $\mu$). 
-    \item This solution highlights two separate roles of $\mu$.
-    \begin{enumerate}
-      \item First, the scaling term $\lambda / \mu$ determines mRNA abundance in the capped state.
-      \item Second, the vector of probabilities is a function of the initiation rate $\kappa$, the elongation/termination rate $\tau$ and $\mu$ and is independent of $\lambda$.
-    \end{enumerate} 
-    \item Figure 3A shows the mRNA distribution in the capped state for four different initiation to elongation ratios $\kappa'$, for a protein of median length (\imax of 39) with a low decapping rate ($2\times10^{-4}$).
-    \item To summarize the model results across a range of parameters a heatmap where each row is the steady state distribution of mRNA at a particular $\kappa'$ is shown (Figure 3B).
-    \item  The steady state density in the capped system is bounded at class 0 and class \imax and can be roughly approximated by a truncated gaussian. 
-    \item When $\kappa'<<\tau$, the distribution concentrates at low $i$ near the $i=0$ boundary.
-    \item As $\kappa'$ increases, the steady state distribution moves towards higher $i$.
-     \end{enumerate}
+\subsection{Model presents steady state distribution of mRNAs across polysome classes for each initiation to elongation ratio}
+
+The model predicts the abundances of the mRNA in the capped and decapped states as well as the mRNA's distribution across polysome classes.
+
+Steady state distribution of the capped mRNA polysome classes
+
+The analytical steady state solution eq. (\ref{eq:capped_solution}) is composed of a vector of probabilities $\vec{p_m}$ that an mRNA is in polysome class $i$ and a scaling term (the transcription rate $\lambda$ divided by the decapping rate $\mu$). 
+This solution highlights two separate roles of $\mu$. 
+First, the scaling term $\lambda / \mu$ determines total mRNA abundance in the capped state. 
+Second, the vector of probabilities is a function of the initiation rate $\kappa$, the elongation/termination rate $\tau$ and $\mu$ and is independent of $\lambda$.
+Figure 3A shows the mRNA distribution in the capped state for four different initiation to elongation ratios $\kappa'$, for a protein of median length (\imax of 39) with a low decapping rate ($2\times10^{-4} /s$).
+To summarize the model results across a range of parameters a heatmap where each row is the steady state distribution of mRNA at a particular $\kappa'$ is shown (Figure 3B).
+The steady state density in the capped system is bounded at class 0 and class \imax 
+When $\kappa'<<\tau$, the steady state distribution concentrates at low $i$ near the $i=0$ boundary.
+As $\kappa'$ increases, the steady state distribution moves towards higher $i$ and can be roughly approximated by a truncated gaussian. 
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm]{Images/2023-07-04_Unmarked_slices.png}
@@ -527,13 +532,11 @@ Where the gene specific scaling factor $\frac{200}{length mRNA_i}$ corrects for 
 \end{figure}
 \clearpage
 
-  \item  Steady state solution of the decapped class
-  \begin{enumerate}
-    \item The whole system is again scaled by the transcription rate $\lambda$.
-    \item  The analytical steady state solution eq. ~\ref{eq:decapped_solution} can be understood in two parts. 
-    \item $m_0^*$ and the remaining $m_i^*$ for $i>0$.
-    \item $m_0^*$ is solely determined by the ratio of the mRNA clearance rate 1/$\delta$.
-    \item The remaining decapped polysome classes depend on the elongation/termination rate $\tau$ and the distribution of \mvechat.
+Steady state distribution of the decapped mRNA polysome classes
+The decapped state is again scaled by the transcription rate $\lambda$.
+The analytical steady state solution eq. (~\ref{eq:decapped_solution}) can be understood in two parts: $m_0^*$ and the remaining $m_i^*$ for $i>0$.
+$m_0^*$ is solely determined by the ratio of the mRNA production rate to the clearance rate $\lambda / \delta$.
+The remaining decapped polysome classes depend on the elongation/termination rate $\tau$ and the distribution of \mvechat.
     \item  Figure 4A shows the mRNA distribution in the decapped state for four different initiation to elongation ratios $\kappa'$, for a median length protein with a low decapping rate ($2\times10^{-4}$) and the full range of $\kappa'$ are shown in the heatmap in Figure 4B.
      \item The mRNA distributions are centered around low $i$ and are monotonically decreasing. 
   \end{enumerate}	
