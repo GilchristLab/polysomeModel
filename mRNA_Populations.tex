@@ -28,6 +28,7 @@
 \usepackage{geometry}
 \usepackage{graphics}
 \usepackage{graphicx}
+\usepackage{ifelse}
 \usepackage{lineno}
 \usepackage{multirow}
 \usepackage{natbib}
@@ -66,6 +67,18 @@
 \newcommand{\mvechatstar}{\ensuremath{\mvechat^*}\xspace}
 \newcommand{\GCD}{\ensuremath{\text{GCD}}\xspace}
 \newcommand{\detA[1]}{\ensuremath{\ensuremath{\det\left[\bs{A}_{#1}\right]}\xspace}}
+
+% Summation of vectors
+\newcommand{\msum}{\ensuremath{m}\xspace}
+\newcommand{\msumstar}{\ensuremath{m^*}\xspace}
+\newcommand{\msumtot}{\ensuremath{M}\xspace}
+\newcommand{\msumtot}{\ensuremath{M}\xspace}
+\newcommand{\msumtot}{\ensuremath{M}\xspace}
+\newcommand{\mfrac}{\ensuremath{f_m}\xspace}
+
+% Expectation or MRL
+% \newcommand{\ribosome}{\ensuremath{\text{ribosome}}} % don't need xspace
+\newcommand{\ribosome}{\ensuremath{i}} % don't need xspace
 
 \doublespacing
 
@@ -334,7 +347,7 @@ First, the total mRNA in each state and therefore the system (Figure 1B-D).
 Second, The distribution of the mRNAs in each mRNA in each ribosomal class. (Figure 1 B-D).
 The total protein output at steady state from our model can be obtained by calculating the average ribosomal class in the system by the total mRNA in the system (Figure 1D). 
 
-\subsection{Formal Model Definition}
+\subsection{Model Definition}
 We formalize the DDI model presented in Figure 1 by converting each state in to a series of ordinary differential equations (ODEs) representing the mRNA population for each polysomal class. 
 The functional form of the capped mRNA sub population is:
 \begin{align} \label{eq:Capped_ODE}
@@ -349,9 +362,9 @@ The functional form of the capped mRNA sub population is:
 Similarly, the functional form of the decapped mRNA sub population is: 
 \begin{align}\label{eq:Decapped_ODE}
 \frac{dm_{0}^{*}}{dt} &= \mu m_{0}+ \tau \frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
-\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+ \tau \frac{2}{\imax}m_{2}^{*}-\tau(1)m_{1}^{*} \\ \nonumber
+\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+ \tau \frac{2}{\imax}m_{2}^{*}-\tau \frac{1}{\imax} m_{1}^{*} \\ \nonumber
 & \vdots & \\ \nonumber
-\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+ \tau \frac{i+1}{\imax}m_{i+1}^{*}-\tau(i)m_{i}^{*} \\ \nonumber
+\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+ \tau \frac{i+1}{\imax}m_{i+1}^{*}-\tau \frac{i}{\imax} m_{i}^{*} \\ \nonumber
 & \vdots & \\ \nonumber
 \frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}- \tau m_{\imax}. \\ \nonumber
 \end{align}
@@ -388,22 +401,22 @@ However, the model solution can be represented in the following form,
 	\end{equation}
 Where $\vec{m}$ is a vector of the steady state mRNA abundances in each polysomal class.
 $\vec{m}$ is calculated from by scaling  the vector $\vec{p}$, which represents the distribution of the mRNA across the polysomal classes, by transcript production rate $\lambda$ and the decapping rate $\mu$ scale s.
-While the individual components of $\vec{p}$ are functions of $i$, \imax, the translation initiation rate $\kappa$, the elongation rate $\tau_0$ and $\mu$ and have no closed form solution, it is worth noting that because the probability distribution of the capped population must sum to 1, by definition, it follows that
+While the individual components of $\vec{p}$ are functions of $i$, \imax, the translation initiation rate $\kappa$, the elongation rate $\tau_0$ and $\mu$ and have no closed form solution, it is worth noting that because the probability distribution of the capped population must sum to 1.
+Regardless, it follows that the total abundance of the capped class \msum is,
 \begin{equation}\label{eq:capped_sum}
-\sum_{i = 0} ^\imax m_i = \lambda/\mu.
+\msum = \sum_{i = 0} ^\imax m_i = \lambda/\mu
 \end{equation}
 
 \subsubsection{Analytical steady state solutions of the decapped transcript population}
 
 The solution for the decapped system is dependent on the underlying distribution of the capped system and can be represented as:
-
 \begin{align*}
 m_{0}^{*}  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\
 m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{i}^{*}  &= \frac{\mu}{i \: \tau}\sum_{j=i}^{\imax}m_{j}  \\
+m_{i}^{*}  &= \frac{\mu}{\tau i}\sum_{j=i}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{\imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=\imax}^{\imax}m_{j}  \\
+m_{\imax}^{*}  &= \frac{\mu}{\tau \imax}\sum_{j=\imax}^{\imax}m_{j}  \\
 \end{align*}
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by ~\ref{eq:capped_solution}.
 Additionally, for any $i=j$ where $S_{j}$ is cumulative probability from $i$ = class $j$ to $ i= \imax$.
@@ -417,42 +430,42 @@ Now the solution becomes,
 m_{0}^{*}  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \\ \nonumber
 m_{1}^{*}  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
 & \vdots & \\ \nonumber
-m_{i}^{*}  &= \frac{\lambda}{i \: \tau}S_{i}  \\ \nonumber
+m_{i}^{*}  &= \frac{\lambda}{\tau i}S_{i}  \\ \nonumber
 & \vdots & \\ \nonumber
-m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
+m_{\imax}^{*}  &= \frac{\lambda}{\tau \imax}S_{\imax}  \\ \nonumber
 \end{align}
- Note that $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ dependant on the distribution of \mvechat of the capped state. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
+ Note that $S_{0}=1$ and $ S_{0} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ highlighting the fact that the steady state solution for the decapped state \mstarvec is dependant on the distribution of mRNA polysome classes of the capped state the solution vi the cumulative distribution function $S_i$. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
 
 \subsection{Calculation of the decapped mRNA population}
 
 The total transcript population in the decapped state does not have a closed form solution. However it can be summarized as follows,
 
 \begin{equation*}
-	m_{tot}^{*} = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
+	\msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
 \end{equation*}
 This can be further shortened to:
 \begin{equation} \label{eq: marked_total_pop}
-	m_{tot}^{*} = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}	) 
+	\msumstar = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}	) 
 \end{equation}
 Where $\vec{S}$ is a vector of all the cumulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . 
 
 \subsection{Probability distribution in the decapped state}
 
-To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/m_{tot}^{*}$ which results in,
+To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/\msumstar$ which results in,
 \begin{align}\label{eq:decapped_distribution}
 	p_{0}^{*} &= \frac{1}{1 + \frac{\delta}{\tau}\vec{S} \cdot \vec{l}}	\\
   	p_{j}^{*} &= \frac{S_{j}}{j(\frac{\tau}{\delta} + \vec{S} \cdot \vec{l})}	\:\:\:\: \text{for } j=1, 2, ..., i, ..., \imax
 \end{align}
 
 \subsection{Calculation of the total mRNA population and its distribution between capped and decapped states}
-The total mRNA ($M_{tot}$) in the system is defined by,
+Drawing on the definitions above, the total abundance of capped and decapped mRNA polysome classes ($\msumtot$) is defined by,
 \begin{equation}
-	M_{tot} = \frac{\lambda}{\mu} +  \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})
+	\msumtot = \msum + \msumstar = \frac{\lambda}{\mu} +  \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})
 \end{equation}
 
 To understand how mRNA is divided  between we start with the probability of finding an mRNA in the capped state.
 \begin{equation*}
-	p_{mtot} = \frac{1}{(1  + \frac{\mu}{\delta} + \frac{\mu}{\tau}\vec{S} \cdot \vec{l})}	
+	\mfrac = \frac{1}{(1  + \frac{\mu}{\delta} + \frac{\mu}{\tau}\vec{S} \cdot \vec{l})}	
 \end{equation*}
 Then you calculate the odds,
 \begin{equation}\label{eq:odds}
@@ -461,15 +474,14 @@ Then you calculate the odds,
 
 
 \subsection{Calculating expected ribosomal load and protein production}
-The expected ribosomal load for either the capped or decapped state is calculated by:
+The expected ribosomal load for the capped or decapped state calculated, respectively, by,
 \begin{equation}\label{eq:Expected_ribo_load}
-	E(ribosome) =\sum_{i=0}^{\imax}j\times p_{i}
+  E_\mvecstar\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p^*_{i}
+  E_\mvec\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p_{i}.
 \end{equation}
-Where $\vec{p_m}$ is the distribution in either state and i is the polysome class.
-
-To find the global mean ribosomal load we obtain,
+THus, the global mean ribosomal load is,
 \begin{equation}\label{eq:System_ribo_load}
-	\text{Total Ribosomal Load} = p_{mtot}\times E(ribosome)_{mtot} + (1-p_{mtot})\times E(ribosome)_{mtot^*}
+	\text{Total Ribosomal Load} = \mfrac\times E_{\msum} \left(\ribosome\right) + (1-\mfrac)\times E_{\msumstar}\left(\ribosome\right)
 \end{equation}
 
 \subsection{Numerical solution implementation in R}
@@ -483,9 +495,9 @@ Protein lengths were extracted from the Ensembl (version 109) and Ensembl plants
 The decapping rate between the capped and uncapped system was approximated from the protein half-lives from Presnyak 2015 for yeast (Figure 2B) and Sorenson 2018 for Arabidopsis (Figure 2D).
 We approximated gene specific $\mu$ from the half lives with the following:
 	\begin{equation*}
-		\mu_i = \frac{ln(2)}{t_{1/2_i}}
+		\mu_i = \frac{\ln(2)}{t_{1/2_i}}
 	\end{equation*}
-Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $1.3 \times 10^-3 \pm 1.8 \times 10^-3$ for yeast and $1.7 \times 10^-4 \pm 2 \times 10^-4$ for Arabidopsis. 
+Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $1.3 \times 10^{-3} \pm 1.8 \times 10^{-3}$ for yeast and $1.7 \times 10^{-4} \pm 2 \times 10^{-4}$ for Arabidopsis. 
 
 Translation initiation and average elongation rates ($\kappa$ and $\tau_0$) were obtained for Yeast from Duc and Song 2018. In Duc and Song 2018, the authors used 850 highly translated transcripts from the ribo-seq dataset from Weinberg 2016. They employed a TASEP model to estimate the initiation rates and correct the empirical elongation rates from the footprint distributions. We calculated an average gene specific elongation rate from the corrected elongations rates. We scale the each gene specific initiation rate by dividing it by the gene specific elongation rate.
 \begin{equation}
@@ -1333,9 +1345,9 @@ We can rearrange the solutions and simplify to find,
 m_{0}^{*}  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\
 m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{i}^{*}  &= \frac{\mu}{i \: \tau}\sum_{j=i}^{\imax}m_{j}  \\
+m_{i}^{*}  &= \frac{\mu}{\tau i}\sum_{j=i}^{\imax}m_{j}  \\
 & \vdots & \\
-m_{\imax}^{*}  &= \frac{\mu}{\imax \: \tau}\sum_{j=\imax}^{\imax}m_{j}  \\
+m_{\imax}^{*}  &= \frac{\mu}{\tau \imax}\sum_{j=\imax}^{\imax}m_{j}  \\
 \end{align*}
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by the following.
 \begin{equation}
@@ -1362,15 +1374,16 @@ m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
 The total transcript population in the decapped state does not have a closed form solution. However it can be summarized as follows,
 
 \begin{equation}
-	m_{tot}^{*} = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
+  \msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \sum_{i=0}^\imax \frac{\lambda}{\tau i}S_{i}
+  % \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
 \end{equation}
 This can be further shortened using element wise multiplication denoted by the hadamard product ($\odot$).
 \begin{equation}  
-	m_{tot}^{*} = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
+	\msumstar = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
 \end{equation}
 Where $\vec{S}$ is a vector of all the cummulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the mRNA clearance rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the decapping rate and elongation/termination rate. This result will be explored further in the results.
 
-To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/m_{tot}^{*}$ which results in,
+To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/\msumstar$ which results in,
 \begin{align*}
 	p_{0}^{*} &= \frac{1}{1 + \frac{\delta}{\tau}\vec{S} \odot \vec{l}}	\\
   	p_{j}^{*} &= \frac{S_{j}}{j(\frac{\tau}{\delta} + \vec{S} \odot \vec{l})}	\:\:\:\:, for j=1, 2, ..., i, ..., \imax
@@ -1382,27 +1395,31 @@ To get the probability distribution of transcripts across the decapped state we 
 
 
 \subsection{Complete system mRNA population}
-The total mRNA ($M_{tot}$) in the system is defined by,
+The total mRNA ($\msumtot$) in the system is defined by,
 \begin{equation}
-	M_{tot} = \lambda(\frac{1}{\mu} + \frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
+	\msumtot = \lambda(\frac{1}{\mu} + \frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
 \end{equation}
 
-To understand how mRNA is divided  between the two subsystem we can calculate the log odd of finding an mRNA in the decapped class. Again we will set $\delta$ to very large.
+%%This doesn't appear to be used explicitly in the text (though I believe a figure plots these).
+  %% Nevertheless, if you want to include it, move it to the appendix.
+\ifthen{1 == 0} {
+  To understand how mRNA is divided  between the two subsystem we can calculate the log odd of finding an mRNA in the decapped class. Again we will set $\delta$ to very large.
 \begin{align*}
-	p_{mtot} &= m_{tot}/M_{tot} = \frac{\frac{\lambda}{\mu}}{\lambda(\frac{1}{\mu} + \frac{1}{\tau}\vec{S} \odot \vec{l})}	\\
-	p_{mtot} &= \frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}	
+	\mfrac &= \msum/\msumtot = \frac{\frac{\lambda}{\mu}}{\lambda(\frac{1}{\mu} + \frac{1}{\tau}\vec{S} \odot \vec{l})}	\\
+	\mfrac &= \frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}	
 \end{align*}
-Then you calculate the odds,
+
+  Then you calculate the odds,
 \begin{align}
-	odds_{m}& = \frac{p_{mtot}}{1-p_{mtot}}\\
-	odds_{m} &= \frac{\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}{1-\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}
+	odds_{m}& = \frac{\mfrac}{1-\mfrac}\\
+  odds_{m} &= \frac{\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}{1-\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}
 \end{align}
 It simplifies to,
 \begin{align}
-	odds_{m} &= \frac{1}{\frac{\mu}{\tau}\vec{S} \odot \vec{l}} \\
-	log_{10}(odds_{m}) &= -log_{10}(\frac{\mu}{\tau}\vec{S} \odot \vec{l}) 
+  odds_{m} &= \frac{1}{\frac{\mu}{\tau}\vec{S} \odot \vec{l}} \\
+  log_{10}(odds_{m}) &= -log_{10}(\frac{\mu}{\tau}\vec{S} \odot \vec{l}) 
 \end{align}
-
+}
 
 \subsection{Additional text}
  Presnyak utilized the temperature sensitive \textit{rbp-1} RNA polymerase mutant in yeast. This mutant can not undergo transcription at non-optimal temperatures, thus allowing for the measurement of mRNA decay over time. Sorenson (2018) used the transcriptional inhibitor, cordycepin, to treat  \textit{Arabidopsis thaliana} seedlings and measured their decay using RNA-Seq.
@@ -1411,7 +1428,7 @@ It simplifies to,
 
 
 	
- Recently, the rate of degradation for the 5' - 3' exonuclease XRN1 was determined to be ~26 nt/s (Atthapattu 2021). XRN1 is the primary exonuclease involved in co-translational degradation and  5' degradation pathways (Sorenson 2018,Yu 2016, Collart 2019, Pelechano 2015). For an average 3' UTR of 121 nts (Kebaara 2009) this would take ~4.6s, and an average transcript of ~ 1400nt would take 54s to degrade.  This means the average mRNA clearance rate $\delta$ would take between 1/54s = 0.019/s or 1/4.6s = 0.22/s . The total population of mRNA in $m_tot^*$ is determined by $1/\delta$, $1/\tau$ and $\mu$ (as part of $\vec{S}$) as shown Equation  ~\ref{eq:  marked_total_pop}. $\tau$ ranges from 0.03 to $10^-4$. This makes $1/\delta \leq 1/\tau$. It is reasonable to explore the model with large $\delta$ since decapped transcripts are translationally incompetent. 
+ Recently, the rate of degradation for the 5' - 3' exonuclease XRN1 was determined to be ~26 nt/s (Atthapattu 2021). XRN1 is the primary exonuclease involved in co-translational degradation and  5' degradation pathways (Sorenson 2018,Yu 2016, Collart 2019, Pelechano 2015). For an average 3' UTR of 121 nts (Kebaara 2009) this would take ~4.6s, and an average transcript of ~ 1400nt would take 54s to degrade.  This means the average mRNA clearance rate $\delta$ ranges from 0.019/s to 0.22/s, or approximately 1 order of magnitude. The total population of mRNA in $\msumstar$ is determined by $1/\delta$, $1/\tau$ and $\mu$ (as part of $\vec{S}$) as shown Equation  ~\ref{eq:  marked_total_pop}. $\tau$ ranges from 0.03 to $10^{-4}$. This makes $1/\delta \leq 1/\tau$. It is reasonable to explore the model with large $\delta$ since decapped transcripts are translationally incompetent. 
 
 % without interference if kappa is small relative to tau then interference doesn't matter. if kappa is large what is the distribution? How does increasing mu affect it.
 
@@ -1519,7 +1536,7 @@ It simplifies to,
 %represent the measured absorbance data in fraction $j,$we have
 %the following relationship:
 %\[
-%Y_{j}\propto log_{2}(\sum_{i}\int_{j}^{j+1}m_{tot}(i,\Lambda)\, N_{i}(\mu_{est}(i),\sigma_{est}(i))di)
+%Y_{j}\propto log_{2}(\sum_{i}\int_{j}^{j+1}\msum(i,\Lambda)\, N_{i}(\mu_{est}(i),\sigma_{est}(i))di)
 %\]
 %
 %
