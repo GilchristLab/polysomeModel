@@ -1,0 +1,40 @@
+﻿1.	Ashworth, W., Stoney, P.N. and Yamamoto, T. (2019) States of decay: The systems biology of mRNA stability. Current Opinion in Systems Biology, 15, 48-57.
+2.	Bae, H. and Coller, J. (2022) Codon optimality-mediated mRNA degradation: Linking translational elongation to mRNA stability. Mol Cell, 82, 1467-1476.
+3.	Browning, K.S. and Bailey-Serres, J. (2015) Mechanism of cytoplasmic mRNA translation. Arabidopsis Book, 13, e0176.
+4.	Cheng, F., Wang, Y., Bai, Y., Liang, Z., Mao, Q., Liu, D., Wu, X. and Xu, M. (2023) Research Advances on the Stability of mRNA Vaccines. Viruses, 15.
+5.	Collart, M.A. and Weiss, B. (2020) Ribosome pausing, a dangerous necessity for co-translational events. Nucleic Acids Res, 48, 1043-1055.
+6.	Cunningham, F., Allen, J.E., Allen, J., Alvarez-Jarreta, J., Amode, M.R., Armean, I.M., Austine-Orimoloye, O., Azov, A.G., Barnes, I., Bennett, R. et al. (2022) Ensembl 2022. Nucleic Acids Res, 50, D988-D995.
+7.	Dao Duc, K. and Song, Y.S. (2018) The impact of ribosomal interference, codon usage, and exit tunnel interactions on translation elongation rate variation. PLoS Genet, 14, e1007166.
+8.	Dasgupta, A., Camacho, R.A.U., Enganti, R., Cho, S.K., Tucker, L.L., Torreverde, J.S., Abraham, P.E. and Arnim, A.G.v. (2023) A phosphorylation-deficient ribosomal protein eS6 is largely functional in <em>Arabidopsis thaliana</em>, rescuing mutant defects from global translation and gene expression to photosynthesis and growth. bioRxiv, 2023.2005.2030.542942.
+9.	Hu, W., Sweet, T.J., Chamnongpol, S., Baker, K.E. and Coller, J. (2009) Co-translational mRNA decay in Saccharomyces cerevisiae. Nature, 461, 225-229.
+10.	Ikeuchi, K., Izawa, T. and Inada, T. (2018) Recent Progress on the Molecular Mechanism of Quality Controls Induced by Ribosome Stalling. Front Genet, 9, 743.
+11.	Juszkiewicz, S., Chandrasekaran, V., Lin, Z., Kraatz, S., Ramakrishnan, V. and Hegde, R.S. (2018) ZNF598 Is a Quality Control Sensor of Collided Ribosomes. Mol Cell, 72, 469-481 e467.
+12.	Kinsella, R.J., Kahari, A., Haider, S., Zamora, J., Proctor, G., Spudich, G., Almeida-King, J., Staines, D., Derwent, P., Kerhornou, A. et al. (2011) Ensembl BioMarts: a hub for data retrieval across taxonomic space. Database (Oxford), 2011, bar030.
+13.	Lokdarshi, A., Morgan, P.W., Franks, M., Emert, Z., Emanuel, C. and von Arnim, A.G. (2020) Light-Dependent Activation of the GCN2 Kinase Under Cold and Salt Stress Is Mediated by the Photosynthetic Status of the Chloroplast. Front Plant Sci, 11, 431.
+14.	Ma, X., Yin, X., Tang, Z., Ito, H., Shao, C., Meng, Y. and Xie, T. (2020) The RNA degradome: a precious resource for deciphering RNA processing and regulation codes in plants. RNA Biol, 17, 1223-1227.
+15.	Medina-Munoz, S.G., Kushawah, G., Castellano, L.A., Diez, M., DeVore, M.L., Salazar, M.J.B. and Bazzini, A.A. (2021) Crosstalk between codon optimality and cis-regulatory elements dictates mRNA stability. Genome Biol, 22, 14.
+16.	Merchante, C., Stepanova, A.N. and Alonso, J.M. (2017) Translation regulation in plants: an interesting past, an exciting present and a promising future. Plant J, 90, 628-653.
+17.	Morisaki, T., Lyon, K., DeLuca, K.F., DeLuca, J.G., English, B.P., Zhang, Z., Lavis, L.D., Grimm, J.B., Viswanathan, S., Looger, L.L. et al. (2016) Real-time quantification of single RNA translation dynamics in living cells. Science, 352, 1425-1429.
+18.	Nanikashvili, I., Zarai, Y., Ovseevich, A., Tuller, T. and Margaliot, M. (2019) Networks of ribosome flow models for modeling and analyzing intracellular traffic. Sci Rep, 9, 1703.
+19.	Pelechano, V., Wei, W. and Steinmetz, L.M. (2015) Widespread Co-translational RNA Decay Reveals Ribosome Dynamics. Cell, 161, 1400-1412.
+20.	Presnyak, V., Alhusaini, N., Chen, Y.H., Martin, S., Morris, N., Kline, N., Olson, S., Weinberg, D., Baker, K.E., Graveley, B.R. and Coller, J. (2015) Codon optimality is a major determinant of mRNA stability. Cell, 160, 1111-1124.
+21.	Reuveni, S., Meilijson, I., Kupiec, M., Ruppin, E. and Tuller, T. (2011) Genome-scale analysis of translation elongation with a ribosome flow model. PLoS Comput Biol, 7, e1002127.
+22.	Shah, P., Ding, Y., Niemczyk, M., Kudla, G. and Plotkin, J.B. (2013) Rate-limiting steps in yeast protein translation. Cell, 153, 1589-1601.
+23.	Shaw, L.B., Zia, R.K. and Lee, K.H. (2003) Totally asymmetric exclusion process with extended objects: a model for protein synthesis. Phys Rev E Stat Nonlin Soft Matter Phys, 68, 021910.
+24.	Sieburth, L.E. and Vincent, J.N. (2018) Beyond transcription factors: roles of mRNA decay in regulating gene expression in plants. F1000Res, 7.
+25.	Sorenson, R.S., Deshotel, M.J., Johnson, K., Adler, F.R. and Sieburth, L.E. (2018) Arabidopsis mRNA decay landscape arises from specialized RNA decay substrates, decapping-mediated feedback, and redundancy. Proc Natl Acad Sci U S A, 115, E1485-E1494.
+26.	Urquidi Camacho, R.A., Lokdarshi, A. and von Arnim, A.G. (2020) Translational gene regulation in plants: A green new deal. Wiley Interdiscip Rev RNA, 11, e1597.
+27.	Valleriani, A., Ignatova, Z., Nagar, A. and Lipowsky, R. (2010) Turnover of messenger RNA: Polysome statistics beyond the steady state. EPL, 89.
+28.	von der Haar, T. (2012) Mathematical and Computational Modelling of Ribosomal Movement and Protein Synthesis: an overview. Comput Struct Biotechnol J, 1, e201204002.
+29.	Wang, C., Han, B., Zhou, R. and Zhuang, X. (2016) Real-Time Imaging of Translation on Single mRNA Transcripts in Live Cells. Cell, 165, 990-1001.
+30.	Weinberg, D.E., Shah, P., Eichhorn, S.W., Hussmann, J.A., Plotkin, J.B. and Bartel, D.P. (2016) Improved Ribosome-Footprint and mRNA Measurements Provide Insights into Dynamics and Regulation of Yeast Translation. Cell Rep, 14, 1787-1799.
+31.	Wu, B., Eliscovich, C., Yoon, Y.J. and Singer, R.H. (2016) Translation dynamics of single mRNAs in live cells and neurons. Science, 352, 1430-1435.
+32.	Wu, J. and Jaffrey, S.R. (2016) Tracking translation one mRNA at a time. Nat Biotechnol, 34, 723-724.
+33.	Wu, Q. and Bazzini, A.A. (2023) Translation and mRNA Stability Control. Annu Rev Biochem, 92, 227-245.
+34.	Wu, Q., Medina, S.G., Kushawah, G., DeVore, M.L., Castellano, L.A., Hand, J.M., Wright, M. and Bazzini, A.A. (2019) Translation affects mRNA stability in a codon-dependent manner in human cells. Elife, 8.
+35.	Wu, Q., Smith-Miles, K., Zhou, T. and Tian, T. (2013) Stochastic modelling of biochemical systems of multi-step reactions using a simplified two-variable model. BMC Syst Biol, 7 Suppl 4, S14.
+36.	Wu, Q. and Tian, T. (2016) Stochastic modeling of biochemical systems with multistep reactions using state-dependent time delay. Sci Rep, 6, 31909.
+37.	Yadav, V., Ullah Irshad, I., Kumar, H. and Sharma, A.K. (2021) Quantitative Modeling of Protein Synthesis Using Ribosome Profiling Data. Front Mol Biosci, 8, 688700.
+38.	Yan, X., Hoek, T.A., Vale, R.D. and Tanenbaum, M.E. (2016) Dynamics of Translation of Single mRNA Molecules in Vivo. Cell, 165, 976-989.
+39.	Yates, A.D., Allen, J., Amode, R.M., Azov, A.G., Barba, M., Becerra, A., Bhai, J., Campbell, L.I., Carbajo Martinez, M., Chakiachvili, M. et al. (2022) Ensembl Genomes 2022: an expanding genome resource for non-vertebrates. Nucleic Acids Res, 50, D996-D1003.
+40.	Zupanic, A., Meplan, C., Huguenin, G.V., Hesketh, J.E. and Shanley, D.P. (2016) Modeling and gene knockdown to assess the contribution of nonsense-mediated decay, premature termination, and selenocysteine insertion to the selenoprotein hierarchy. RNA, 22, 1076-1084.

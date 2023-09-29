@@ -1,0 +1,901 @@
+﻿@article{RN21,
+   author = {Ashworth, William and Stoney, Patrick N. and Yamamoto, Tadashi},
+   title = {States of decay: The systems biology of mRNA stability},
+   journal = {Current Opinion in Systems Biology},
+   volume = {15},
+   pages = {48-57},
+   keywords = {mRNA decay
+Deadenylation
+Computational modelling
+Multiomics
+RNA binding proteins
+CCR4-NOT
+PUF3},
+   ISSN = {2452-3100},
+   DOI = {https://doi.org/10.1016/j.coisb.2019.03.006},
+   url = {https://www.sciencedirect.com/science/article/pii/S2452310019300058},
+   year = {2019},
+   type = {Journal Article}
+}
+
+@article{RN8,
+   author = {Bae, H. and Coller, J.},
+   title = {Codon optimality-mediated mRNA degradation: Linking translational elongation to mRNA stability},
+   journal = {Mol Cell},
+   volume = {82},
+   number = {8},
+   pages = {1467-1476},
+   keywords = {Codon/genetics/metabolism
+*Protein Biosynthesis
+Proteins/metabolism
+*RNA Stability/genetics
+RNA, Messenger/genetics/metabolism
+Ribosomes/genetics/metabolism
+codon optimality
+deadenylation
+decapping
+genetic code
+mRNA degradation
+mRNA stability
+protein synthesis
+ribosomes
+translation},
+   ISSN = {1097-2765},
+   DOI = {10.1016/j.molcel.2022.03.032},
+   year = {2022},
+   type = {Journal Article}
+}
+
+@article{RN1,
+   author = {Browning, K. S. and Bailey-Serres, J.},
+   title = {Mechanism of cytoplasmic mRNA translation},
+   journal = {Arabidopsis Book},
+   volume = {13},
+   pages = {e0176},
+   ISSN = {1543-8120 (Print)
+1543-8120 (Linking)},
+   DOI = {10.1199/tab.0176},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/26019692
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4441251/pdf/tab.0176.pdf},
+   year = {2015},
+   type = {Journal Article}
+}
+
+@article{RN40,
+   author = {Cheng, F. and Wang, Y. and Bai, Y. and Liang, Z. and Mao, Q. and Liu, D. and Wu, X. and Xu, M.},
+   title = {Research Advances on the Stability of mRNA Vaccines},
+   journal = {Viruses},
+   volume = {15},
+   number = {3},
+   keywords = {*Excipients
+*Commerce
+Liposomes
+RNA, Messenger/genetics
+mRNA Vaccines
+Vaccines, Synthetic/genetics
+degradation
+lipid nanoparticle
+mRNA
+stability
+vaccines},
+   ISSN = {1999-4915 (Electronic)
+1999-4915 (Linking)},
+   DOI = {10.3390/v15030668},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/36992377},
+   year = {2023},
+   type = {Journal Article}
+}
+
+@article{RN3,
+   author = {Collart, M. A. and Weiss, B.},
+   title = {Ribosome pausing, a dangerous necessity for co-translational events},
+   journal = {Nucleic Acids Res},
+   volume = {48},
+   number = {3},
+   pages = {1043-1055},
+   keywords = {Gene Expression Regulation
+Molecular Chaperones/metabolism
+*Peptide Chain Elongation, Translational
+Protein Folding
+RNA Stability
+RNA, Messenger/metabolism
+Ribosomes/*metabolism},
+   ISSN = {1362-4962 (Electronic)
+0305-1048 (Print)
+0305-1048 (Linking)},
+   DOI = {10.1093/nar/gkz763},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/31598688},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{RN26,
+   author = {Cunningham, F. and Allen, J. E. and Allen, J. and Alvarez-Jarreta, J. and Amode, M. R. and Armean, I. M. and Austine-Orimoloye, O. and Azov, A. G. and Barnes, I. and Bennett, R. and Berry, A. and Bhai, J. and Bignell, A. and Billis, K. and Boddu, S. and Brooks, L. and Charkhchi, M. and Cummins, C. and Da Rin Fioretto, L. and Davidson, C. and Dodiya, K. and Donaldson, S. and El Houdaigui, B. and El Naboulsi, T. and Fatima, R. and Giron, C. G. and Genez, T. and Martinez, J. G. and Guijarro-Clarke, C. and Gymer, A. and Hardy, M. and Hollis, Z. and Hourlier, T. and Hunt, T. and Juettemann, T. and Kaikala, V. and Kay, M. and Lavidas, I. and Le, T. and Lemos, D. and Marugan, J. C. and Mohanan, S. and Mushtaq, A. and Naven, M. and Ogeh, D. N. and Parker, A. and Parton, A. and Perry, M. and Pilizota, I. and Prosovetskaia, I. and Sakthivel, M. P. and Salam, A. I. A. and Schmitt, B. M. and Schuilenburg, H. and Sheppard, D. and Perez-Silva, J. G. and Stark, W. and Steed, E. and Sutinen, K. and Sukumaran, R. and Sumathipala, D. and Suner, M. M. and Szpak, M. and Thormann, A. and Tricomi, F. F. and Urbina-Gomez, D. and Veidenberg, A. and Walsh, T. A. and Walts, B. and Willhoft, N. and Winterbottom, A. and Wass, E. and Chakiachvili, M. and Flint, B. and Frankish, A. and Giorgetti, S. and Haggerty, L. and Hunt, S. E. and GR, I. Isley and Loveland, J. E. and Martin, F. J. and Moore, B. and Mudge, J. M. and Muffato, M. and Perry, E. and Ruffier, M. and Tate, J. and Thybert, D. and Trevanion, S. J. and Dyer, S. and Harrison, P. W. and Howe, K. L. and Yates, A. D. and Zerbino, D. R. and Flicek, P.},
+   title = {Ensembl 2022},
+   journal = {Nucleic Acids Res},
+   volume = {50},
+   number = {D1},
+   pages = {D988-D995},
+   keywords = {Animals
+Computational Biology/classification
+*Databases, Genetic
+Genome/*genetics
+Humans
+*Molecular Sequence Annotation
+*Software},
+   ISSN = {1362-4962 (Electronic)
+0305-1048 (Print)
+0305-1048 (Linking)},
+   DOI = {10.1093/nar/gkab1049},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/34791404},
+   year = {2022},
+   type = {Journal Article}
+}
+
+@article{RN13,
+   author = {Dao Duc, K. and Song, Y. S.},
+   title = {The impact of ribosomal interference, codon usage, and exit tunnel interactions on translation elongation rate variation},
+   journal = {PLoS Genet},
+   volume = {14},
+   number = {1},
+   pages = {e1007166},
+   keywords = {Animals
+Codon/*metabolism
+Datasets as Topic
+Humans
+*Peptide Chain Elongation, Translational
+Peptides/genetics/metabolism
+Protein Binding
+Protein Biosynthesis/physiology
+Protein Interaction Domains and Motifs
+Ribosomes/chemistry/*metabolism/physiology
+Saccharomyces cerevisiae/genetics/metabolism},
+   ISSN = {1553-7404 (Electronic)
+1553-7390 (Print)
+1553-7390 (Linking)},
+   DOI = {10.1371/journal.pgen.1007166},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/29337993},
+   year = {2018},
+   type = {Journal Article}
+}
+
+@article{RN35,
+   author = {Dasgupta, Anwesha and Camacho, Ricardo A Urquidi and Enganti, Ramya and Cho, Sung Ki and Tucker, Lindsey L. and Torreverde, John S. and Abraham, Paul E. and Arnim, Albrecht G. von},
+   title = {A phosphorylation-deficient ribosomal protein eS6 is largely functional in <em>Arabidopsis thaliana</em>, rescuing mutant defects from global translation and gene expression to photosynthesis and growth},
+   journal = {bioRxiv},
+   pages = {2023.05.30.542942},
+   DOI = {10.1101/2023.05.30.542942},
+   url = {https://www.biorxiv.org/content/biorxiv/early/2023/05/31/2023.05.30.542942.full.pdf},
+   year = {2023},
+   type = {Journal Article}
+}
+
+@article{RN23,
+   author = {Hu, W. and Sweet, T. J. and Chamnongpol, S. and Baker, K. E. and Coller, J.},
+   title = {Co-translational mRNA decay in Saccharomyces cerevisiae},
+   journal = {Nature},
+   volume = {461},
+   number = {7261},
+   pages = {225-9},
+   keywords = {Poly A/metabolism
+Polyadenylation
+Polyribosomes/metabolism
+*Protein Biosynthesis
+RNA Caps/metabolism
+*RNA Stability
+RNA, Fungal/genetics/*metabolism
+RNA, Messenger/genetics/*metabolism
+Saccharomyces cerevisiae/*genetics},
+   ISSN = {1476-4687 (Electronic)
+0028-0836 (Print)
+0028-0836 (Linking)},
+   DOI = {10.1038/nature08265},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/19701183},
+   year = {2009},
+   type = {Journal Article}
+}
+
+@article{RN6,
+   author = {Ikeuchi, K. and Izawa, T. and Inada, T.},
+   title = {Recent Progress on the Molecular Mechanism of Quality Controls Induced by Ribosome Stalling},
+   journal = {Front Genet},
+   volume = {9},
+   pages = {743},
+   keywords = {no-go mRNA decay
+ribosome
+ribosome stalling
+ribosome ubiquitination
+ribosome-associated quality control},
+   ISSN = {1664-8021 (Print)
+1664-8021 (Electronic)
+1664-8021 (Linking)},
+   DOI = {10.3389/fgene.2018.00743},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/30705686},
+   year = {2018},
+   type = {Journal Article}
+}
+
+@article{RN7,
+   author = {Juszkiewicz, S. and Chandrasekaran, V. and Lin, Z. and Kraatz, S. and Ramakrishnan, V. and Hegde, R. S.},
+   title = {ZNF598 Is a Quality Control Sensor of Collided Ribosomes},
+   journal = {Mol Cell},
+   volume = {72},
+   number = {3},
+   pages = {469-481 e7},
+   keywords = {Carrier Proteins/metabolism/*physiology
+HEK293 Cells
+Humans
+Protein Biosynthesis/*physiology
+RNA, Messenger
+Ribosomes/*physiology
+Ubiquitin
+Ubiquitin-Protein Ligases
+Ubiquitination},
+   ISSN = {1097-4164 (Electronic)
+1097-2765 (Print)
+1097-2765 (Linking)},
+   DOI = {10.1016/j.molcel.2018.08.037},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/30293783},
+   year = {2018},
+   type = {Journal Article}
+}
+
+@article{RN25,
+   author = {Kinsella, R. J. and Kahari, A. and Haider, S. and Zamora, J. and Proctor, G. and Spudich, G. and Almeida-King, J. and Staines, D. and Derwent, P. and Kerhornou, A. and Kersey, P. and Flicek, P.},
+   title = {Ensembl BioMarts: a hub for data retrieval across taxonomic space},
+   journal = {Database (Oxford)},
+   volume = {2011},
+   pages = {bar030},
+   keywords = {Animals
+Anopheles/genetics
+Classification/*methods
+Computational Biology
+*Databases, Genetic
+Genome/genetics
+Humans
+Information Storage and Retrieval/*methods
+Open Reading Frames/genetics
+Polymorphism, Single Nucleotide/genetics
+Search Engine},
+   ISSN = {1758-0463 (Electronic)
+1758-0463 (Linking)},
+   DOI = {10.1093/database/bar030},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/21785142},
+   year = {2011},
+   type = {Journal Article}
+}
+
+@article{RN36,
+   author = {Lokdarshi, A. and Morgan, P. W. and Franks, M. and Emert, Z. and Emanuel, C. and von Arnim, A. G.},
+   title = {Light-Dependent Activation of the GCN2 Kinase Under Cold and Salt Stress Is Mediated by the Photosynthetic Status of the Chloroplast},
+   journal = {Front Plant Sci},
+   volume = {11},
+   pages = {431},
+   keywords = {Gcn2
+Ros
+cold
+eIF2α
+light
+salt
+translation},
+   ISSN = {1664-462X (Print)
+1664-462x},
+   DOI = {10.3389/fpls.2020.00431},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{RN34,
+   author = {Ma, X. and Yin, X. and Tang, Z. and Ito, H. and Shao, C. and Meng, Y. and Xie, T.},
+   title = {The RNA degradome: a precious resource for deciphering RNA processing and regulation codes in plants},
+   journal = {RNA Biol},
+   volume = {17},
+   number = {9},
+   pages = {1223-1227},
+   keywords = {Computational Biology/methods
+Databases, Genetic
+*Gene Expression Regulation, Plant
+High-Throughput Nucleotide Sequencing
+MicroRNAs/genetics
+Plants/*genetics
+RNA Processing, Post-Transcriptional
+*RNA Stability
+RNA, Plant/*genetics
+Plant RNA degradome
+RNA processing
+gene differential expression (GDE)
+post-transcriptional
+small RNA (sRNA)-guided target cleavages
+transcriptional},
+   ISSN = {1555-8584 (Electronic)
+1547-6286 (Print)
+1547-6286 (Linking)},
+   DOI = {10.1080/15476286.2020.1757898},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/32338184},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{RN9,
+   author = {Medina-Munoz, S. G. and Kushawah, G. and Castellano, L. A. and Diez, M. and DeVore, M. L. and Salazar, M. J. B. and Bazzini, A. A.},
+   title = {Crosstalk between codon optimality and cis-regulatory elements dictates mRNA stability},
+   journal = {Genome Biol},
+   volume = {22},
+   number = {1},
+   pages = {14},
+   keywords = {3' Untranslated Regions
+Animals
+*Codon
+Embryonic Development/genetics
+Gene Expression Regulation, Developmental
+Humans
+Mice
+MicroRNAs/metabolism
+Models, Genetic
+*RNA Stability
+RNA, Messenger/*genetics
+*Regulatory Sequences, Nucleic Acid
+Xenopus/genetics
+Zebrafish/genetics
+Codon optimality
+MicroRNA
+Xenopus
+Zebrafish
+m6A
+miR-430},
+   ISSN = {1474-760X (Electronic)
+1474-7596 (Print)
+1474-7596 (Linking)},
+   DOI = {10.1186/s13059-020-02251-5},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/33402205},
+   year = {2021},
+   type = {Journal Article}
+}
+
+@article{RN38,
+   author = {Merchante, C. and Stepanova, A. N. and Alonso, J. M.},
+   title = {Translation regulation in plants: an interesting past, an exciting present and a promising future},
+   journal = {Plant J},
+   volume = {90},
+   number = {4},
+   pages = {628-653},
+   keywords = {Gene Expression Regulation/genetics/physiology
+Open Reading Frames/genetics
+Plants/genetics/*metabolism
+Protein Biosynthesis/genetics/*physiology
+RNA, Plant/genetics/metabolism
+Ribosomes/genetics/metabolism
+RNA-binding protein
+gene-specific translation
+global regulation of translation
+internal ribosomal entry sites
+translation
+upstream open reading frames},
+   ISSN = {1365-313X (Electronic)
+0960-7412 (Linking)},
+   DOI = {10.1111/tpj.13520},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/28244193
+https://onlinelibrary.wiley.com/doi/full/10.1111/tpj.13520},
+   year = {2017},
+   type = {Journal Article}
+}
+
+@article{RN30,
+   author = {Morisaki, T. and Lyon, K. and DeLuca, K. F. and DeLuca, J. G. and English, B. P. and Zhang, Z. and Lavis, L. D. and Grimm, J. B. and Viswanathan, S. and Looger, L. L. and Lionnet, T. and Stasevich, T. J.},
+   title = {Real-time quantification of single RNA translation dynamics in living cells},
+   journal = {Science},
+   volume = {352},
+   number = {6292},
+   pages = {1425-1429},
+   DOI = {10.1126/science.aaf0899},
+   url = {https://www.scopus.com/inward/record.uri?eid=2-s2.0-84966441149&doi=10.1126%2fscience.aaf0899&partnerID=40&md5=248949f1b1fd8e542e3f601b517cb2c6},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN16,
+   author = {Nanikashvili, I. and Zarai, Y. and Ovseevich, A. and Tuller, T. and Margaliot, M.},
+   title = {Networks of ribosome flow models for modeling and analyzing intracellular traffic},
+   journal = {Sci Rep},
+   volume = {9},
+   number = {1},
+   pages = {1703},
+   keywords = {Algorithms
+Models, Biological
+Protein Biosynthesis
+RNA, Messenger/*genetics
+Ribosomes/*metabolism},
+   ISSN = {2045-2322 (Electronic)
+2045-2322 (Linking)},
+   DOI = {10.1038/s41598-018-37864-1},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/30737417},
+   year = {2019},
+   type = {Journal Article}
+}
+
+@article{RN4,
+   author = {Pelechano, V. and Wei, W. and Steinmetz, L. M.},
+   title = {Widespread Co-translational RNA Decay Reveals Ribosome Dynamics},
+   journal = {Cell},
+   volume = {161},
+   number = {6},
+   pages = {1400-12},
+   keywords = {Genome-Wide Association Study
+Oxidative Stress
+Peptide Chain Termination, Translational
+*Protein Biosynthesis
+*RNA Stability
+RNA, Messenger/metabolism
+RNA, Transfer/metabolism
+Ribonucleases/metabolism
+Ribosomes/*metabolism
+Saccharomyces cerevisiae/cytology/genetics/*metabolism
+Saccharomyces cerevisiae Proteins/metabolism
+Schizosaccharomyces/cytology/genetics/metabolism},
+   ISSN = {1097-4172 (Electronic)
+0092-8674 (Print)
+0092-8674 (Linking)},
+   DOI = {10.1016/j.cell.2015.05.008},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/26046441},
+   year = {2015},
+   type = {Journal Article}
+}
+
+@article{RN27,
+   author = {Presnyak, V. and Alhusaini, N. and Chen, Y. H. and Martin, S. and Morris, N. and Kline, N. and Olson, S. and Weinberg, D. and Baker, K. E. and Graveley, B. R. and Coller, J.},
+   title = {Codon optimality is a major determinant of mRNA stability},
+   journal = {Cell},
+   volume = {160},
+   number = {6},
+   pages = {1111-24},
+   keywords = {*Codon
+Protein Biosynthesis
+RNA Stability
+RNA, Fungal/chemistry/*genetics/*metabolism
+RNA, Messenger/chemistry/*genetics/*metabolism
+Saccharomyces cerevisiae/*metabolism},
+   ISSN = {1097-4172 (Electronic)
+0092-8674 (Print)
+0092-8674 (Linking)},
+   DOI = {10.1016/j.cell.2015.02.029},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/25768907},
+   year = {2015},
+   type = {Journal Article}
+}
+
+@article{RN15,
+   author = {Reuveni, S. and Meilijson, I. and Kupiec, M. and Ruppin, E. and Tuller, T.},
+   title = {Genome-scale analysis of translation elongation with a ribosome flow model},
+   journal = {PLoS Comput Biol},
+   volume = {7},
+   number = {9},
+   pages = {e1002127},
+   keywords = {Codon
+Genomics/*methods
+Humans
+*Models, Genetic
+Peptide Chain Elongation, Translational/*genetics
+*Protein Biosynthesis
+Ribosomes/*genetics
+Stochastic Processes},
+   ISSN = {1553-7358 (Electronic)
+1553-734X (Linking)},
+   DOI = {10.1371/journal.pcbi.1002127},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/21909250
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3164701/pdf/pcbi.1002127.pdf},
+   year = {2011},
+   type = {Journal Article}
+}
+
+@article{RN17,
+   author = {Shah, P. and Ding, Y. and Niemczyk, M. and Kudla, G. and Plotkin, J. B.},
+   title = {Rate-limiting steps in yeast protein translation},
+   journal = {Cell},
+   volume = {153},
+   number = {7},
+   pages = {1589-601},
+   keywords = {Codon/genetics
+Markov Chains
+*Models, Genetic
+*Protein Biosynthesis
+RNA, Messenger/metabolism
+RNA, Transfer/metabolism
+Ribosomes/metabolism
+Saccharomyces cerevisiae/*genetics},
+   ISSN = {1097-4172 (Electronic)
+0092-8674 (Linking)},
+   DOI = {10.1016/j.cell.2013.05.049},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/23791185},
+   year = {2013},
+   type = {Journal Article}
+}
+
+@article{RN14,
+   author = {Shaw, L. B. and Zia, R. K. and Lee, K. H.},
+   title = {Totally asymmetric exclusion process with extended objects: a model for protein synthesis},
+   journal = {Phys Rev E Stat Nonlin Soft Matter Phys},
+   volume = {68},
+   number = {2 Pt 1},
+   pages = {021910},
+   keywords = {Binding Sites
+Biophysical Phenomena
+Biophysics
+Models, Theoretical
+Monte Carlo Method
+Protein Binding
+*Protein Biosynthesis
+RNA, Messenger/metabolism},
+   ISSN = {1539-3755 (Print)
+1539-3755 (Linking)},
+   DOI = {10.1103/PhysRevE.68.021910},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/14525009},
+   year = {2003},
+   type = {Journal Article}
+}
+
+@article{RN5,
+   author = {Sieburth, L. E. and Vincent, J. N.},
+   title = {Beyond transcription factors: roles of mRNA decay in regulating gene expression in plants},
+   journal = {F1000Res},
+   volume = {7},
+   keywords = {*Gene Expression Regulation, Plant
+Protein Processing, Post-Translational
+RNA Caps
+RNA Stability/genetics/*physiology
+RNA, Messenger/*metabolism
+Dis3l2
+P-bodies
+Sov
+Vcs
+decapping
+gene expression
+mRNA decay},
+   ISSN = {2046-1402 (Electronic)
+2046-1402 (Linking)},
+   DOI = {10.12688/f1000research.16203.1},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/30613385},
+   year = {2018},
+   type = {Journal Article}
+}
+
+@article{RN28,
+   author = {Sorenson, R. S. and Deshotel, M. J. and Johnson, K. and Adler, F. R. and Sieburth, L. E.},
+   title = {Arabidopsis mRNA decay landscape arises from specialized RNA decay substrates, decapping-mediated feedback, and redundancy},
+   journal = {Proc Natl Acad Sci U S A},
+   volume = {115},
+   number = {7},
+   pages = {E1485-E1494},
+   keywords = {Arabidopsis/genetics/growth & development/*metabolism
+Arabidopsis Proteins/genetics/*metabolism
+Endoribonucleases/genetics/*metabolism
+Gene Expression Regulation, Plant
+RNA Caps/genetics/*metabolism
+*RNA Stability
+RNA, Messenger/genetics/*metabolism
+RNA, Plant/genetics/*metabolism
+*RNA degradation
+*RNA turnover
+*sov/dis3l2
+*mathematical modeling
+*posttranscriptional regulation},
+   ISSN = {1091-6490 (Electronic)
+0027-8424 (Linking)},
+   DOI = {10.1073/pnas.1712312115},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/29386391},
+   year = {2018},
+   type = {Journal Article}
+}
+
+@article{RN2,
+   author = {Urquidi Camacho, R. A. and Lokdarshi, A. and von Arnim, A. G.},
+   title = {Translational gene regulation in plants: A green new deal},
+   journal = {Wiley Interdiscip Rev RNA},
+   volume = {11},
+   number = {6},
+   pages = {e1597},
+   keywords = {Gene Expression Regulation, Plant/*genetics
+Plants/*genetics
+Protein Processing, Post-Translational
+RNA/genetics
+*plant
+*regulation
+*signaling
+*translation},
+   ISSN = {1757-7012 (Electronic)
+1757-7004 (Linking)},
+   DOI = {10.1002/wrna.1597},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/32367681},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{RN22,
+   author = {Valleriani, A. and Ignatova, Z. and Nagar, A. and Lipowsky, R.},
+   title = {Turnover of messenger RNA: Polysome statistics beyond the steady state},
+   journal = {EPL},
+   volume = {89},
+   number = {5},
+   DOI = {10.1209/0295-5075/89/58003},
+   url = {https://www.scopus.com/inward/record.uri?eid=2-s2.0-79051470889&doi=10.1209%2f0295-5075%2f89%2f58003&partnerID=40&md5=7913e05462793ecc825d7cbf360d170b},
+   year = {2010},
+   type = {Journal Article}
+}
+
+@article{RN12,
+   author = {von der Haar, T.},
+   title = {Mathematical and Computational Modelling of Ribosomal Movement and Protein Synthesis: an overview},
+   journal = {Comput Struct Biotechnol J},
+   volume = {1},
+   pages = {e201204002},
+   keywords = {Biosynthesis
+Gene expression
+Polysome
+Ribosome
+Translation
+mRNA},
+   ISSN = {2001-0370 (Linking)},
+   DOI = {10.5936/csbj.201204002},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/24688632},
+   year = {2012},
+   type = {Journal Article}
+}
+
+@article{RN32,
+   author = {Wang, C. and Han, B. and Zhou, R. and Zhuang, X.},
+   title = {Real-Time Imaging of Translation on Single mRNA Transcripts in Live Cells},
+   journal = {Cell},
+   volume = {165},
+   number = {4},
+   pages = {990-1001},
+   keywords = {Animals
+Dendrites/metabolism
+Humans
+Optical Imaging/*methods
+Polyribosomes/metabolism
+*Protein Biosynthesis/drug effects
+Protein Synthesis Inhibitors/pharmacology
+RNA, Messenger/chemistry/*metabolism},
+   ISSN = {1097-4172 (Electronic)
+0092-8674 (Linking)},
+   DOI = {10.1016/j.cell.2016.04.040},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/27153499},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN29,
+   author = {Weinberg, D. E. and Shah, P. and Eichhorn, S. W. and Hussmann, J. A. and Plotkin, J. B. and Bartel, D. P.},
+   title = {Improved Ribosome-Footprint and mRNA Measurements Provide Insights into Dynamics and Regulation of Yeast Translation},
+   journal = {Cell Rep},
+   volume = {14},
+   number = {7},
+   pages = {1787-1799},
+   keywords = {5' Untranslated Regions
+Codon/genetics/metabolism
+*Gene Expression Regulation, Fungal
+*Genome, Fungal
+*Models, Statistical
+Open Reading Frames
+*Protein Biosynthesis
+RNA, Transfer/genetics/metabolism
+Ribosomes/genetics/metabolism
+Saccharomyces cerevisiae/*genetics/metabolism
+Saccharomyces cerevisiae Proteins/biosynthesis/*genetics},
+   ISSN = {2211-1247 (Electronic)},
+   DOI = {10.1016/j.celrep.2016.01.043},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/26876183},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN33,
+   author = {Wu, B. and Eliscovich, C. and Yoon, Y. J. and Singer, R. H.},
+   title = {Translation dynamics of single mRNAs in live cells and neurons},
+   journal = {Science},
+   volume = {352},
+   number = {6292},
+   pages = {1430-1435},
+   DOI = {10.1126/science.aaf1084},
+   url = {https://www.scopus.com/inward/record.uri?eid=2-s2.0-84966440965&doi=10.1126%2fscience.aaf1084&partnerID=40&md5=e3d8af6d2d7d9d1065e7522e01e1d1fc},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN37,
+   author = {Wu, J. and Jaffrey, S. R.},
+   title = {Tracking translation one mRNA at a time},
+   journal = {Nat Biotechnol},
+   volume = {34},
+   number = {7},
+   pages = {723-4},
+   keywords = {Humans
+*Protein Biosynthesis
+RNA, Messenger/*genetics},
+   ISSN = {1546-1696 (Electronic)
+1087-0156 (Linking)},
+   DOI = {10.1038/nbt.3632},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/27404883},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN39,
+   author = {Wu, Q. and Bazzini, A. A.},
+   title = {Translation and mRNA Stability Control},
+   journal = {Annu Rev Biochem},
+   volume = {92},
+   pages = {227-245},
+   keywords = {Animals
+RNA, Messenger/metabolism
+*Protein Biosynthesis
+Codon/genetics
+*Proteins/genetics
+RNA Stability
+Saccharomyces cerevisiae/genetics/metabolism
+codon optimality
+codon usage
+mRNA decay
+mRNA stability
+tRNA
+translation elongation},
+   ISSN = {1545-4509 (Electronic)
+0066-4154 (Linking)},
+   DOI = {10.1146/annurev-biochem-052621-091808},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/37001134},
+   year = {2023},
+   type = {Journal Article}
+}
+
+@article{RN10,
+   author = {Wu, Q. and Medina, S. G. and Kushawah, G. and DeVore, M. L. and Castellano, L. A. and Hand, J. M. and Wright, M. and Bazzini, A. A.},
+   title = {Translation affects mRNA stability in a codon-dependent manner in human cells},
+   journal = {Elife},
+   volume = {8},
+   keywords = {Cell Line
+*Codon
+Humans
+*Protein Biosynthesis
+*RNA Stability
+SLAM-seq
+chromosomes
+codon optimality
+gene expression
+human
+mRNA stability
+poly(A)-tail
+tRNA
+translation
+zebrafish},
+   ISSN = {2050-084X (Electronic)
+2050-084X (Linking)},
+   DOI = {10.7554/eLife.45396},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/31012849},
+   year = {2019},
+   type = {Journal Article}
+}
+
+@article{RN18,
+   author = {Wu, Q. and Smith-Miles, K. and Zhou, T. and Tian, T.},
+   title = {Stochastic modelling of biochemical systems of multi-step reactions using a simplified two-variable model},
+   journal = {BMC Syst Biol},
+   volume = {7 Suppl 4},
+   number = {Suppl 4},
+   pages = {S14},
+   keywords = {*Models, Biological
+RNA Stability
+RNA, Messenger/chemistry
+Ribosomal Proteins/genetics
+Stochastic Processes
+Systems Biology/*methods},
+   ISSN = {1752-0509 (Electronic)
+1752-0509 (Linking)},
+   DOI = {10.1186/1752-0509-7-S4-S14},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/24565085},
+   year = {2013},
+   type = {Journal Article}
+}
+
+@article{RN19,
+   author = {Wu, Q. and Tian, T.},
+   title = {Stochastic modeling of biochemical systems with multistep reactions using state-dependent time delay},
+   journal = {Sci Rep},
+   volume = {6},
+   pages = {31909},
+   ISSN = {2045-2322 (Electronic)
+2045-2322 (Linking)},
+   DOI = {10.1038/srep31909},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/27553753},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN11,
+   author = {Yadav, V. and Ullah Irshad, I. and Kumar, H. and Sharma, A. K.},
+   title = {Quantitative Modeling of Protein Synthesis Using Ribosome Profiling Data},
+   journal = {Front Mol Biosci},
+   volume = {8},
+   pages = {688700},
+   keywords = {codon translation rate
+codon usage bias
+quantitative modeling of protein synthesis
+ribo-seq
+ribosome profiling
+translation-initiation rate},
+   ISSN = {2296-889X (Print)
+2296-889X (Electronic)
+2296-889X (Linking)},
+   DOI = {10.3389/fmolb.2021.688700},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/34262940},
+   year = {2021},
+   type = {Journal Article}
+}
+
+@article{RN31,
+   author = {Yan, X. and Hoek, T. A. and Vale, R. D. and Tanenbaum, M. E.},
+   title = {Dynamics of Translation of Single mRNA Molecules in Vivo},
+   journal = {Cell},
+   volume = {165},
+   number = {4},
+   pages = {976-989},
+   DOI = {10.1016/j.cell.2016.04.034},
+   url = {https://www.scopus.com/inward/record.uri?eid=2-s2.0-84965127033&doi=10.1016%2fj.cell.2016.04.034&partnerID=40&md5=8f9134213c5447904b2f437dabe313fb},
+   year = {2016},
+   type = {Journal Article}
+}
+
+@article{RN24,
+   author = {Yates, A. D. and Allen, J. and Amode, R. M. and Azov, A. G. and Barba, M. and Becerra, A. and Bhai, J. and Campbell, L. I. and Carbajo Martinez, M. and Chakiachvili, M. and Chougule, K. and Christensen, M. and Contreras-Moreira, B. and Cuzick, A. and Da Rin Fioretto, L. and Davis, P. and De Silva, N. H. and Diamantakis, S. and Dyer, S. and Elser, J. and Filippi, C. V. and Gall, A. and Grigoriadis, D. and Guijarro-Clarke, C. and Gupta, P. and Hammond-Kosack, K. E. and Howe, K. L. and Jaiswal, P. and Kaikala, V. and Kumar, V. and Kumari, S. and Langridge, N. and Le, T. and Luypaert, M. and Maslen, G. L. and Maurel, T. and Moore, B. and Muffato, M. and Mushtaq, A. and Naamati, G. and Naithani, S. and Olson, A. and Parker, A. and Paulini, M. and Pedro, H. and Perry, E. and Preece, J. and Quinton-Tulloch, M. and Rodgers, F. and Rosello, M. and Ruffier, M. and Seager, J. and Sitnik, V. and Szpak, M. and Tate, J. and Tello-Ruiz, M. K. and Trevanion, S. J. and Urban, M. and Ware, D. and Wei, S. and Williams, G. and Winterbottom, A. and Zarowiecki, M. and Finn, R. D. and Flicek, P.},
+   title = {Ensembl Genomes 2022: an expanding genome resource for non-vertebrates},
+   journal = {Nucleic Acids Res},
+   volume = {50},
+   number = {D1},
+   pages = {D996-D1003},
+   keywords = {Animals
+Computational Biology
+*Databases, Genetic
+Genome, Bacterial/genetics
+Genome, Fungal/genetics
+Genome, Plant/genetics
+*Genomics
+*Internet
+Plants/classification/genetics
+*Software
+Vertebrates/classification/genetics},
+   ISSN = {1362-4962 (Electronic)
+0305-1048 (Print)
+0305-1048 (Linking)},
+   DOI = {10.1093/nar/gkab1007},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/34791415},
+   year = {2022},
+   type = {Journal Article}
+}
+
+@article{RN20,
+   author = {Zupanic, A. and Meplan, C. and Huguenin, G. V. and Hesketh, J. E. and Shanley, D. P.},
+   title = {Modeling and gene knockdown to assess the contribution of nonsense-mediated decay, premature termination, and selenocysteine insertion to the selenoprotein hierarchy},
+   journal = {RNA},
+   volume = {22},
+   number = {7},
+   pages = {1076-84},
+   keywords = {Caco-2 Cells
+*Gene Knockdown Techniques
+Humans
+*Models, Theoretical
+*Nonsense Mediated mRNA Decay
+RNA, Messenger/metabolism
+Real-Time Polymerase Chain Reaction
+Selenoproteins/*genetics
+mathematical modeling
+nonsense-mediated decay
+premature termination
+selenoprotein
+translation},
+   ISSN = {1469-9001 (Electronic)
+1355-8382 (Print)
+1355-8382 (Linking)},
+   DOI = {10.1261/rna.055749.115},
+   url = {https://www.ncbi.nlm.nih.gov/pubmed/27208313},
+   year = {2016},
+   type = {Journal Article}
+}
+
