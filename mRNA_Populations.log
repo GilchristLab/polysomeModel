@@ -1,30 +1,1847 @@
-This is LuaHBTeX, Version 1.15.1 (MiKTeX 22.10) (format=luahblatex 2023.7.24)  24 JUL 2023 19:39
- restricted system commands enabled.
-**"C:/Users/rurquidi/OneDrive - University of Tennessee/Documents/Research/poly
-someModel/polysomeModel/mRNA_Populations.tex"
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.9.25)  29 SEP 2023 12:43
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./mRNA_Populations.tex
+(mRNA_Populations.tex
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-29>
+(C:\Users\rauc6\AppData\Local\MiKTeX\tex/latex/nar\NAR.cls
+Document Class: NAR 2007/03/23 v1.4b Standard LaTeX document class
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\fleqn.clo
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\skip48
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/crop\crop.sty
+Package: crop 2017/11/19 1.10 crop marks (mf)
 
-("C:/Users/rurquidi/OneDrive - University of Tennessee/Documents/Research/polys
-omeModel/polysomeModel/mRNA_Populations.tex"
-LaTeX2e <2022-06-01> patch level 5
-Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
-Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
-Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended c
-ollection.
-luaotfload | conf : Root cache directory is "C:/Users/rurquidi/AppData/Local/MiK
-TeX/luatex-cache/generic/names".
-luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-res
-olved path "C:/Users/rurquidi/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfloa
-d/fontloader-2022-10-03.lua".
-Lua-only attribute luaotfload@noligature = 1
-luaotfload | init : Context OpenType loader version 3.120
-Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
-Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
-Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
-Inserting `luaotfload.define_font' at position 1 in `define_font'.
-luaotfload | load : FATAL ERROR
-luaotfload | load :   × Failed to load "luaotfload" module "database".
-luaotfload | load :   × Error message:
-luaotfload | load :     × "...ams/MiKTeX/tex/luatex/luaotfload/luaotfload-datab
-ase.lua:204: module 'lua-uni-case' not found:".
-luaotfload | load :     × "no field package.preload['lua-uni-case']".
-luaotfload | load :     × "[kpse lua searcher] file not found: 'lua-uni-case'".
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\CROP@index=\count185
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\CROP@offset=\count186
+Package crop Info: Local config file crop.cfg used on input line 622.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/xelatex/xetexconfig\crop.cfg)
+) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen140
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen141
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count187
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count188
+\leftroot@=\count189
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count190
+\DOTSCASE@=\count191
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen142
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count192
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count193
+\dotsspace@=\muskip16
+\c@parentequation=\count194
+\dspbrk@lvl=\count195
+\tag@help=\toks20
+\row@=\count196
+\column@=\count197
+\maxfields@=\count198
+\andhelp@=\toks21
+\eqnshift@=\dimen143
+\alignsep@=\dimen144
+\tagshift@=\dimen145
+\tagwidth@=\dimen146
+\totwidth@=\dimen147
+\lineht@=\dimen148
+\@envbody=\toks22
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count199
+\float@exts=\toks24
+\float@box=\box53
+\@float@everytoks=\toks25
+\@floatcapt=\box54
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+\epsfxsize=\dimen151
+\epsfysize=\dimen152
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+\wrapoverhang=\dimen153
+\WF@size=\dimen154
+\c@WF@wrappedlines=\count266
+\WF@box=\box55
+\WF@everypar=\toks27
+Package: wrapfig 2003/01/31  v 3.6
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/sttools\stfloats.sty
+Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip sett
+ings
+\@dblbotnum=\count267
+\c@dblbotnumber=\count268
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\multicol.sty
+Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
+\c@tracingmulticols=\count269
+\mult@box=\box56
+\multicol@leftmargin=\dimen155
+\c@unbalance=\count270
+\c@collectmore=\count271
+\doublecol@number=\count272
+\multicoltolerance=\count273
+\multicolpretolerance=\count274
+\full@width=\dimen156
+\page@free=\dimen157
+\premulticols=\dimen158
+\postmulticols=\dimen159
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box57
+\last@line=\box58
+\mc@boxedresult=\box59
+\maxbalancingoverflow=\dimen160
+\mult@rightbox=\box60
+\mult@grightbox=\box61
+\mult@firstbox=\box62
+\mult@gfirstbox=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\c@minrows=\count275
+\c@columnbadness=\count276
+\c@finalcolumnbadness=\count277
+\last@try=\dimen161
+\multicolovershoot=\dimen162
+\multicolundershoot=\dimen163
+\mult@nat@firstbox=\box100
+\colbreak@box=\box101
+\mc@col@check@num=\count278
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count279
+\rotFPtop=\skip54
+\rotFPbot=\skip55
+\rot@float@box=\box102
+\rot@mess@toks=\toks28
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip56
+\multirow@cntb=\count280
+\multirow@dima=\skip57
+\bigstrutjot=\dimen164
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen165
+\ar@mcellbox=\box103
+\extrarowheight=\dimen166
+\NC@list=\toks29
+\extratabsurround=\skip58
+\backup@length=\skip59
+\ar@cellbox=\box104
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/boxedminipage\boxedmini
+page.sty
+Package: boxedminipage 2020/04/19 v1.1 Boxed LaTeX2e minipages
+\bmp@box=\box105
+\bmp@width=\skip60
+\bmp@height=\skip61
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul.sty
+Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul-ori.sty
+Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
+\SOUL@word=\toks30
+\SOUL@lasttoken=\toks31
+\SOUL@syllable=\toks32
+\SOUL@cmds=\toks33
+\SOUL@buffer=\toks34
+\SOUL@token=\toks35
+\SOUL@syllgoal=\dimen167
+\SOUL@syllwidth=\dimen168
+\SOUL@charkern=\dimen169
+\SOUL@hyphkern=\dimen170
+\SOUL@dimen=\dimen171
+\SOUL@dimeni=\dimen172
+\SOUL@minus=\count281
+\SOUL@comma=\count282
+\SOUL@apo=\count283
+\SOUL@grave=\count284
+\SOUL@spaceskip=\skip62
+\SOUL@ttwidth=\dimen173
+\SOUL@uldp=\dimen174
+\SOUL@ulht=\dimen175
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+)
+\jnameskip=\skip63
+\titleskip=\dimen176
+\ruleskip=\dimen177
+\ruleht=\dimen178
+\droplines=\count285
+\dropsep=\dimen179
+\capvskip=\skip64
+\caphskip=\skip65
+\capwd=\dimen180
+\droplinewd=\dimen181
+\c@part=\count286
+\c@section=\count287
+\c@subsection=\count288
+\c@subsubsection=\count289
+\c@paragraph=\count290
+\c@subparagraph=\count291
+\labelwidthi=\dimen182
+\labelwidthii=\dimen183
+\labelwidthiii=\dimen184
+\labelwidthiv=\dimen185
+\topsepi=\skip66
+\topsepii=\skip67
+\topsepiii=\skip68
+\topsepiv=\skip69
+\itemsepi=\skip70
+\itemsepii=\skip71
+\itemsepiii=\skip72
+\itemsepiv=\skip73
+\labelsepi=\dimen186
+\labelsepii=\dimen187
+\labelsepiii=\dimen188
+\labelsepiv=\dimen189
+\parsepi=\dimen190
+\parsepii=\dimen191
+\parsepiii=\dimen192
+\parsepiv=\dimen193
+\rightmargini=\dimen194
+\rightmarginii=\dimen195
+\rightmarginiii=\dimen196
+\rightmarginiv=\dimen197
+\itemindenti=\dimen198
+\itemindentii=\dimen199
+\itemindentiii=\dimen256
+\itemindentiv=\dimen257
+\labelleftmargin=\dimen258
+\c@figure=\count292
+\c@table=\count293
+\abovecaptionskip=\skip74
+\belowcaptionskip=\skip75
+\figurewidth=\dimen259
+\figureheight=\dimen260
+\dwidth=\dimen261
+\dheight=\dimen262
+\ncolumns=\count294
+\nrows=\count295
+\tablewd=\dimen263
+\tablewidth=\dimen264
+\captionwd=\dimen265
+\tempbox=\box106
+\tableleftskip=\skip76
+\tablerightskip=\skip77
+\tablecapleftskip=\skip78
+\tablecaprightskip=\skip79
+\tablefootleftskip=\skip80
+\tablefootrightskip=\skip81
+\footnumskip=\dimen266
+\bibindent=\dimen267
+\maxbibwd=\dimen268
+
+(C:\Users\rauc6\AppData\Local\MiKTeX\tex/latex/nar\NAR-natbib.sty
+Package: NAR-natbib 2000/07/24 7.0a (PWD)
+\bibhang=\skip82
+\bibsep=\skip83
+LaTeX Info: Redefining \cite on input line 509.
+\c@NAT@ctr=\count296
+)
+\hours=\count297
+\minutes=\count298
+\grid@sidemargin=\dimen269
+\grid@wd=\dimen270
+\grid@ht=\dimen271
+\grid@linewd=\dimen272
+\grid@topofline=\dimen273
+LaTeX Info: Redefining \textso on input line 1856.
+\currfontsize=\dimen274
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks36
+\thm@bodyfont=\toks37
+\thm@headfont=\toks38
+\thm@notefont=\toks39
+\thm@headpunct=\toks40
+\thm@preskip=\skip84
+\thm@postskip=\skip85
+\thm@headsep=\skip86
+\dth@everypar=\toks41
+)
+\@indexfile=\write3
+\openout3 = `mRNA_Populations.idx'.
+
+
+Writing index file mRNA_Populations.idx
+) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count299
+\Gm@cntv=\count300
+\c@Gm@tempcnt=\count301
+\Gm@bindingoffset=\dimen275
+\Gm@wd@mp=\dimen276
+\Gm@odd@mp=\dimen277
+\Gm@even@mp=\dimen278
+\Gm@layoutwidth=\dimen279
+\Gm@layoutheight=\dimen280
+\Gm@layouthoffset=\dimen281
+\Gm@layoutvoffset=\dimen282
+\Gm@dimlist=\toks42
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.sty
+Package: lineno 2023/05/20 line numbers on paragraphs v5.3
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count302
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+\linenopenalty=\count303
+\output=\toks43
+\linenoprevgraf=\count304
+\linenumbersep=\dimen283
+\linenumberwidth=\dimen284
+\c@linenumber=\count305
+\c@pagewiselinenumber=\count306
+\c@LN@truepage=\count307
+\c@internallinenumber=\count308
+\c@internallinenumbers=\count309
+\quotelinenumbersep=\dimen285
+\bframerule=\dimen286
+\bframesep=\dimen287
+\bframebox=\box107
+\linenoamsmath@ams@eqpen=\count310
+LaTeX Info: Redefining \\ on input line 3180.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/blkarray\blkarray.sty
+Package: blkarray 2015/02/27 v0.07 Block array (dpc)
+\c@BAenumi=\count311
+\BA@col=\count312
+\BA@block@cnt=\count313
+\BA@final@box=\box108
+\BA@first@box=\box109
+\BA@colsep=\dimen288
+\BA@ftn=\toks44
+\BAextrarowheight=\dimen289
+\BAextraheightafterhline=\dimen290
+\BAarrayrulewidth=\dimen291
+\BAdoublerulesep=\dimen292
+\BAfootskip=\dimen293
+\BA@dashbox=\box110
+\BA@ddashbox=\box111
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen294
+\lightrulewidth=\dimen295
+\cmidrulewidth=\dimen296
+\belowrulesep=\dimen297
+\belowbottomsep=\dimen298
+\aboverulesep=\dimen299
+\abovetopsep=\dimen300
+\cmidrulesep=\dimen301
+\cmidrulekern=\dimen302
+\defaultaddspace=\dimen303
+\@cmidla=\count314
+\@cmidlb=\count315
+\@aboverulesep=\dimen304
+\@belowrulesep=\dimen305
+\@thisruleclass=\count316
+\@lastruleclass=\count317
+\@thisrulewidth=\dimen306
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/07/31 v3.6n Customizing captions (AR)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen307
+\captionmargin=\dimen308
+\caption@leftmargin=\dimen309
+\caption@rightmargin=\dimen310
+\caption@width=\dimen311
+\caption@indent=\dimen312
+\caption@parindent=\dimen313
+\caption@hangindent=\dimen314
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count318
+\c@continuedfloat=\count319
+Package caption Info: float package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/doublestroke\dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks45
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip87
+\fb@frw=\dimen315
+\fb@frh=\dimen316
+\FrameRule=\dimen317
+\FrameSep=\dimen318
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
+etadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count320
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count321
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tablefootnote\tablefoot
+note.sty
+Package: tablefootnote 2014/01/26 v1.1c Table foot notes (HMM)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/xifthen\xifthen.sty
+Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count322
+\calc@Bcount=\count323
+\calc@Adimen=\dimen319
+\calc@Bdimen=\dimen320
+\calc@Askip=\skip88
+\calc@Bskip=\skip89
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count324
+\calc@Cskip=\skip90
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/ifmtarg\ifmtarg.sty
+Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
+)))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen321
+\TX@old@table=\dimen322
+\TX@old@col=\dimen323
+\TX@target=\dimen324
+\TX@delta=\dimen325
+\TX@cols=\count325
+\TX@ftn=\toks46
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
+\pgfutil@everybye=\toks47
+\pgfutil@tempdima=\dimen326
+\pgfutil@tempdimb=\dimen327
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def
+\pgfutil@abb=\box112
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+\pgfkeys@pathtoks=\toks48
+\pgfkeys@temptoks=\toks49
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks50
+))
+\pgf@x=\dimen328
+\pgf@y=\dimen329
+\pgf@xa=\dimen330
+\pgf@ya=\dimen331
+\pgf@xb=\dimen332
+\pgf@yb=\dimen333
+\pgf@xc=\dimen334
+\pgf@yc=\dimen335
+\pgf@xd=\dimen336
+\pgf@yd=\dimen337
+\w@pgf@writea=\write4
+\r@pgf@reada=\read2
+\c@pgf@counta=\count326
+\c@pgf@countb=\count327
+\c@pgf@countc=\count328
+\c@pgf@countd=\count329
+\t@pgf@toka=\toks51
+\t@pgf@tokb=\toks52
+\t@pgf@tokc=\toks53
+\pgf@sys@id@count=\count330
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count331
+\pgfsyssoftpath@bigbuffer@items=\count332
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+LaTeX Info: Redefining \color on input line 711.
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex
+\pgfmath@dimen=\dimen338
+\pgfmath@count=\count333
+\pgfmath@box=\box113
+\pgfmath@toks=\toks54
+\pgfmath@stack@operand=\toks55
+\pgfmath@stack@operation=\toks56
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex
+\c@pgfmathroundto@lastzeros=\count334
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen339
+\pgf@picmaxx=\dimen340
+\pgf@picminy=\dimen341
+\pgf@picmaxy=\dimen342
+\pgf@pathminx=\dimen343
+\pgf@pathmaxx=\dimen344
+\pgf@pathminy=\dimen345
+\pgf@pathmaxy=\dimen346
+\pgf@xx=\dimen347
+\pgf@xy=\dimen348
+\pgf@yx=\dimen349
+\pgf@yy=\dimen350
+\pgf@zx=\dimen351
+\pgf@zy=\dimen352
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen353
+\pgf@path@lasty=\dimen354
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen355
+\pgf@shorten@start@additional=\dimen356
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box114
+\pgf@hbox=\box115
+\pgf@layerbox@main=\box116
+\pgf@picture@serial@count=\count335
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen357
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen358
+\pgf@pt@y=\dimen359
+\pgf@pt@temp=\dimen360
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen361
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen362
+\pgf@sys@shading@range@num=\count336
+\pgf@shadingcount=\count337
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box117
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box118
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen363
+\pgf@nodesepend=\dimen364
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen365
+\pgffor@skip=\dimen366
+\pgffor@stack=\toks57
+\pgffor@toks=\toks58
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count338
+\pgfplotmarksize=\dimen367
+)
+\tikz@lastx=\dimen368
+\tikz@lasty=\dimen369
+\tikz@lastxsaved=\dimen370
+\tikz@lastysaved=\dimen371
+\tikz@lastmovetox=\dimen372
+\tikz@lastmovetoy=\dimen373
+\tikzleveldistance=\dimen374
+\tikzsiblingdistance=\dimen375
+\tikz@figbox=\box119
+\tikz@figbox@bg=\box120
+\tikz@tempbox=\box121
+\tikz@tempbox@bg=\box122
+\tikztreelevel=\count339
+\tikznumberofchildren=\count340
+\tikznumberofcurrentchild=\count341
+\tikz@fig@count=\count342
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count343
+\pgfmatrixcurrentcolumn=\count344
+\pgf@matrix@numberofcolumns=\count345
+)
+\tikz@expandcount=\count346
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.callouts.code.tex
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.callouts.code.tex))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodepartlowerbox=\box123
+\pgfnodeparttwobox=\box124
+\pgfnodepartthreebox=\box125
+\pgfnodepartfourbox=\box126
+\pgfnodeparttwentybox=\box127
+\pgfnodepartnineteenbox=\box128
+\pgfnodeparteighteenbox=\box129
+\pgfnodepartseventeenbox=\box130
+\pgfnodepartsixteenbox=\box131
+\pgfnodepartfifteenbox=\box132
+\pgfnodepartfourteenbox=\box133
+\pgfnodepartthirteenbox=\box134
+\pgfnodeparttwelvebox=\box135
+\pgfnodepartelevenbox=\box136
+\pgfnodeparttenbox=\box137
+\pgfnodepartninebox=\box138
+\pgfnodeparteightbox=\box139
+\pgfnodepartsevenbox=\box140
+\pgfnodepartsixbox=\box141
+\pgfnodepartfivebox=\box142
+)))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen376
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/xargs\xargs.sty
+Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks59
+\XKV@tempa@toks=\toks60
+)
+\XKV@depth=\count347
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\xargs@max=\count348
+\xargs@toksa=\toks61
+\xargs@toksb=\toks62
+) (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/ulem\ulem.sty
+\UL@box=\box143
+\UL@hyphenbox=\box144
+\UL@skip=\skip91
+\UL@hook=\toks63
+\UL@height=\dimen377
+\UL@pe=\count349
+\UL@pixel=\dimen378
+\ULC@box=\box145
+Package: ulem 2019/11/18
+\ULdepth=\dimen379
+)
+\@float@every@table=\toks64
+\@float@every@figure=\toks65
+\c@acknowledgement=\count350
+\c@algorithm=\count351
+\c@axiom=\count352
+\c@case=\count353
+\c@claim=\count354
+\c@conclusion=\count355
+\c@condition=\count356
+\c@conjecture=\count357
+\c@corollary=\count358
+\c@criterion=\count359
+\c@definition=\count360
+\c@example=\count361
+\c@exercise=\count362
+\c@lemma=\count363
+\c@notation=\count364
+\c@problem=\count365
+\c@proposition=\count366
+\c@remark=\count367
+\c@solution=\count368
+\c@summary=\count369
+\c@theorem=\count370
+\c@excont=\count371
+\c@exampleEq=\count372
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+93.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count373
+\l__pdf_internal_box=\box146
+) (mRNA_Populations.aux)
+\openout1 = `mRNA_Populations.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count374
+\scratchdimen=\dimen380
+\scratchbox=\box147
+\nofMPsegments=\count375
+\nofMParguments=\count376
+\everyMPshowfont=\toks66
+\MPscratchCnt=\count377
+\MPscratchDim=\dimen381
+\MPnumerator=\count378
+\makeMPintoPDFobject=\count379
+\everyMPtoPDFconversion=\toks67
+)
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package crop Info: requested driver: `' on input line 193.
+Package crop Info: detected driver: `pdftex' on input line 193.
+Package crop Info: using `pdftex' graphics driver on input line 193.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 624.25346pt, 85.35826pt)
+* \paperwidth=409.51538pt
+* \paperheight=529.96826pt
+* \textwidth=443.57848pt
+* \textheight=624.25346pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-18.91173pt
+* \headheight=7.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=24.0pt
+* \marginparwidth=30.0pt
+* \marginparsep=6.0pt
+* \columnsep=20.0pt
+* \skip\footins=26.0pt plus 4.0pt
+* \hoffset=-44.522pt
+* \voffset=-11.09003pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
+20.
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 220
+.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 220
+.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 22
+0.
+
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Font Warning: Font shape `OT1/phv/n/n' undefined
+(Font)              using `OT1/phv/m/n' instead on input line 220.
+
+
+Overfull \hbox (231.78925pt too wide) in paragraph at lines 220--220
+[][] 
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 221--230
+\OT1/phv/b/n/10 and mRNA degra-da-tion are key cou-pled
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 256--265
+\OT1/ptm/m/n/10 a ribo-some is alre-ady pre-sent on the tran-script,
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 256--265
+\OT1/ptm/m/n/10 (Pele-ch-ano 2015). This allows for pro-tein to be
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 256--265
+\OT1/ptm/m/n/10 2018, Ikeu-chi 2019). The resul-ting 3' fra-gments
+ []
+
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 265.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
+(Font)              size <5> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 265.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 265.
+
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+65.
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 7740) has occurred while \output is active
+[]|\OT1/ptm/m/n/7.5 This is an Open Access arti-cle distri-bu-ted under the ter
+ms of the Cre-a-tive Com-mons Attri-bu-tion Non-Commercial License
+ []
+
+[1{C:/Users/rauc6/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ra
+uc6/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+
+
+]
+Underfull \hbox (badness 1342) in paragraph at lines 267--276
+[]\OT1/ptm/m/n/10 Both mRNA decay and trans-la-tion have been
+ []
+
+<Images/Figure1_biomodel_V3.png, id=18, 1286.6469pt x 1012.2618pt>
+File: Images/Figure1_biomodel_V3.png Graphic file (type png)
+<use Images/Figure1_biomodel_V3.png>
+Package pdftex.def Info: Images/Figure1_biomodel_V3.png  used on input line 289
+.
+(pdftex.def)             Requested size: 341.43306pt x 268.61879pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 303--309
+\OT1/ptm/m/n/10 rate $\OML/cmm/m/it/10 ^^V$ \OT1/ptm/m/n/10 and move into the d
+ecap-ped class $\OML/cmm/m/it/10 m[]\OMS/cmsy/m/n/10 ^^C$\OT1/ptm/m/n/10 .
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 312--319
+\OT1/ptm/m/n/10 ribo-some occu-pies. This attem-pts to account for
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 5475) in paragraph at lines 330--335
+[]\OT1/ptm/m/n/10 Capped tran-scri-pts move through rounds of
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 330--335
+\OT1/ptm/m/n/10 any poly-some class in the cap-ped state $\OML/cmm/m/it/10 m[]$
+ \OT1/ptm/m/n/10 the
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 330--335
+\OT1/ptm/m/n/10 tran-script can be decap-ped at rate $\OML/cmm/m/it/10 ^^V$ \OT
+1/ptm/m/n/10 and move
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 330--335
+\OT1/ptm/m/n/10 decay in eukar-yo-tes (Hu 2009, Pele-ch-ano 2015,
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 330--335
+\OT1/ptm/m/n/10 tran-script com-plete trans-la-tion, the mRNA is in
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (150.83817pt too wide) detected at line 350
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./Images/Figure1_biomodel_V3.png (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (43.30423pt too wide) detected at line 438
+ $\OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 m[] \OT1/cmr/m/n/1
+0 = [] + []\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 + [] + []\OML/cmm/m/it/10 S[] \
+OT1/cmr/m/n/10 + [] + []\OML/cmm/m/it/10 S[]$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Underfull \hbox (badness 1571) in paragraph at lines 469--470
+\OT1/ptm/m/it/10 pro-du-ction[] \OT1/ptm/m/n/10 The expe-cted ribo-so-mal load 
+for the
+ []
+
+
+Overfull \hbox (115.03464pt too wide) detected at line 478
+ $[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 f[] \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/
+10 E[] [] \OT1/cmr/m/n/10 + (1 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f[]\OT1/cm
+r/m/n/10 ) \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10 E[] []$  
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
+87.
+(C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+\OT1/ptm/m/n/10 Code to solve the model was writ-ten and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+\OT1/ptm/m/n/10 is fre-ely avai-la-ble as an R package at
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+\OT1/ptm/m/n/10 (https://github.com/rurquidi/Ribosome). To
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 487--488
+\OT1/ptm/m/n/10 solve the cap-ped subsy-stem of the model, the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+\OT1/pcr/m/n/10 solve.tridiag \OT1/ptm/m/n/10 function from \OT1/pcr/m/n/10 lim
+Solve
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 491--496
+\OT1/ptm/m/n/10 deri-ved from the lite-ra-ture. Pro-tein leng-ths were
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 491--496
+\OT1/ptm/m/n/10 extra-cted from the Ensembl (ver-sion 109) and
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
+[]\OT1/ptm/m/n/10 Where the gene spe-ci-fic sca-ling factor
+ []
+
+<Images/2023-07-04_parameter_histograms.png, id=42, 363.759pt x 504.6855pt>
+File: Images/2023-07-04_parameter_histograms.png Graphic file (type png)
+<use Images/2023-07-04_parameter_histograms.png>
+Package pdftex.def Info: Images/2023-07-04_parameter_histograms.png  used on in
+put line 524.
+(pdftex.def)             Requested size: 341.43306pt x 473.71906pt.
+
+Underfull \hbox (badness 1112) in paragraph at lines 544--553
+[]\OT1/ptm/m/n/10 The analy-ti-cal ste-ady state solu-tion eq. (\OT1/ptm/b/n/10
+ 5[]\OT1/ptm/m/n/10 ) is
+ []
+
+<Images/2023-07-04_Unmarked_slices.png, id=43, 265.7127pt x 411.939pt>
+File: Images/2023-07-04_Unmarked_slices.png Graphic file (type png)
+<use Images/2023-07-04_Unmarked_slices.png>
+Package pdftex.def Info: Images/2023-07-04_Unmarked_slices.png  used on input l
+ine 557.
+(pdftex.def)             Requested size: 213.39566pt x 330.8402pt.
+
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 557--558
+[][] 
+ []
+
+<Images/2023-07-04_Marked_slices.png, id=44, 265.4718pt x 411.939pt>
+File: Images/2023-07-04_Marked_slices.png Graphic file (type png)
+<use Images/2023-07-04_Marked_slices.png>
+Package pdftex.def Info: Images/2023-07-04_Marked_slices.png  used on input lin
+e 575.
+(pdftex.def)             Requested size: 213.39566pt x 331.12933pt.
+
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 575--576
+ [] 
+ []
+
+<Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.png, i
+d=45, 344.9688pt x 442.7742pt>
+File: Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.p
+ng Graphic file (type png)
+<use Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.pn
+g>
+Package pdftex.def Info: Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_ma
+rking_with_labels.png  used on input line 592.
+(pdftex.def)             Requested size: 213.39566pt x 273.9091pt.
+
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 592--593
+ [] 
+ []
+
+<Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png, id=
+46, 578.16pt x 438.6789pt>
+File: Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png
+ Graphic file (type png)
+<use Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png>
+
+Package pdftex.def Info: Images/2023-07-09_Figure2_Marking_Rate_range_medianlen
+gth_with_labels.png  used on input line 610.
+(pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
+
+Underfull \hbox (badness 1087) in paragraph at lines 617--621
+\OT1/ptm/m/it/10 tha-li-ana\OT1/ptm/m/n/10 , where the esti-ma-ted decap-ping r
+ates $\OML/cmm/m/it/10 ^^V$
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7]
+<Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.png, 
+id=51, 578.16pt x 438.6789pt>
+File: Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.
+png Graphic file (type png)
+<use Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.p
+ng>
+Package pdftex.def Info: Images/2023-07-09_Figure2_At_Marking_Rate_range_median
+length_with_labels.png  used on input line 626.
+(pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./Images/2023-07-04_parameter_histograms.png (PNG copy)>]
+<Images/2023-07-28_logodds.png, id=55, 361.35pt x 361.35pt>
+File: Images/2023-07-28_logodds.png Graphic file (type png)
+<use Images/2023-07-28_logodds.png>
+Package pdftex.def Info: Images/2023-07-28_logodds.png  used on input line 653.
+
+(pdftex.def)             Requested size: 199.16928pt x 199.16766pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./Images/2023-07-04_Unmarked_slices.png (PNG copy)> <./Images/2023-07-04_M
+arked_slices.png (PNG copy)>]
+<Images/MRL.png, id=59, 429.7656pt x 227.4096pt>
+File: Images/MRL.png Graphic file (type png)
+<use Images/MRL.png>
+Package pdftex.def Info: Images/MRL.png  used on input line 669.
+(pdftex.def)             Requested size: 341.43306pt x 180.67178pt.
+
+Underfull \hbox (badness 1571) in paragraph at lines 680--686
+\OT1/ptm/m/n/10 pro-tein out-put are shown in Figure 10. As the
+ []
+
+<Images/2023-07-17_Protein_Production_v2.png, id=60, 372.4314pt x 344.2461pt>
+File: Images/2023-07-17_Protein_Production_v2.png Graphic file (type png)
+<use Images/2023-07-17_Protein_Production_v2.png>
+Package pdftex.def Info: Images/2023-07-17_Protein_Production_v2.png  used on i
+nput line 690.
+(pdftex.def)             Requested size: 341.43306pt x 315.61241pt.
+
+Underfull \hbox (badness 1152) in paragraph at lines 699--707
+\OT1/ptm/m/n/10 of $[]$ sho-wed a signi-fi-cant posi-tive cor-re-la-tion to
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 699--707
+\OT1/ptm/m/n/10 ribo-some abun-da-nces from each sin-gle mole-cule
+ []
+
+<Images/Duc_Song_vs_model_log.png, id=61, 361.35pt x 361.35pt>
+File: Images/Duc_Song_vs_model_log.png Graphic file (type png)
+<use Images/Duc_Song_vs_model_log.png>
+Package pdftex.def Info: Images/Duc_Song_vs_model_log.png  used on input line 7
+13.
+(pdftex.def)             Requested size: 213.39566pt x 213.39867pt.
+
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 713--714
+ [] 
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 723--728
+\OT1/ptm/m/n/10 In this study we deve-lop, analyze, and vali-date
+ []
+
+[10 <./Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.
+png (PNG copy)>]
+Underfull \hbox (badness 1087) in paragraph at lines 738--746
+\OT1/ptm/m/n/10 mRNA poly-some clas-ses are pro-por-ti-o-nal to the
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.p
+ng (PNG copy)>]
+Underfull \hbox (badness 1152) in paragraph at lines 750--756
+\OT1/cmr/m/n/10 0$ \OT1/ptm/m/n/10 and decli-nes rapidly with with ribo-some lo
+ad
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 750--756
+\OML/cmm/m/it/10 i$\OT1/ptm/m/n/10 . As $\OML/cmm/m/it/10 ^^T[]=^^V$ \OT1/ptm/m
+/n/10 incre-a-ses, the distri-bu-tion of cap-ped
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12 <./Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_label
+s.png (PNG copy)>]
+Underfull \hbox (badness 1810) in paragraph at lines 773--778
+[]\OT1/ptm/m/n/10 The full model com-bi-nes the distri-bu-ti-ons of
+ []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 773--778
+\OT1/ptm/m/n/10 to mRNA popu-la-tion that is often mea-su-red in
+ []
+
+
+Underfull \hbox (badness 3895) in paragraph at lines 779--787
+[]\OT1/ptm/m/n/10 The model for-ma-li-zes the inter-play betw-een
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 796--799
+\OT1/ptm/m/n/10 (Wein-berg 2016) and found a strong cor-re-la-tion
+ []
+
+[13 <./Images/2023-07-28_logodds.png>]
+Underfull \hbox (badness 1472) in paragraph at lines 800--804
+[]\OT1/ptm/m/n/10 The $\OML/cmm/m/it/10 ^^T[]$ \OT1/ptm/m/n/10 esti-ma-tes uti-
+li-zed are only for highly
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 810--817
+\OT1/ptm/m/n/10 of the pro-te-ctive effe-cts of ribo-some asso-ci-a-tion
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 810--817
+\OT1/ptm/m/n/10 mRNAs neces-sary for pro-tein pro-du-ction. Deve-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <./Images/MRL.png (PNG copy)>]
+Underfull \hbox (badness 1168) in paragraph at lines 1093--1096
+\OT1/ptm/m/n/10 For sim-pli-city, we begin by defi-ning our model
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 1105--1121
+\OT1/ptm/m/n/10 class $\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\
+OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 at a rate.. Ribo-so-mal bind mRNAs
+ []
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 1105--1121
+\OT1/ptm/m/n/10 a ribo-some at any given codon posi-tion within
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15 <./Images/2023-07-17_Protein_Production_v2.png (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 1127.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 1127.
+
+
+LaTeX Warning: Reference `eq:full_matrix' on page 16 undefined on input line 11
+29.
+
+
+LaTeX Warning: Reference `eq:full_matrix' on page 16 undefined on input line 11
+33.
+
+
+LaTeX Warning: Reference `eq:capped_matrix' on page 16 undefined on input line 
+1140.
+
+
+LaTeX Warning: Reference `eq:decapped_matrix' on page 16 undefined on input lin
+e 1143.
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 1145--1146
+\OT1/ptm/m/n/10 and is tri-diagonal with non-zero entries on the
+ []
+
+
+Overfull \hbox (300.96577pt too wide) detected at line 1156
+ $[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 :$  
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16 <./Images/Duc_Song_vs_model_log.png>]
+
+LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
+1157.
+
+
+LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
+1158.
+
+
+LaTeX Warning: Reference `eq:full_matrix' on page 17 undefined on input line 11
+60.
+
+
+Overfull \hbox (109.09795pt too wide) detected at line 1173
+ $[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 ;$  
+ []
+
+
+LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
+1179.
+
+
+Overfull \hbox (137.291pt too wide) detected at line 1212
+[]
+ []
+
+[17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (3.238pt too wide) detected at line 1278
+ $[] \OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@ [] [] \OML/cmm
+/m/it/10 ^^U[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@[] \OML/cmm/m/it/10 ^^U \O
+T1/cmr/m/n/10 = []$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package natbib Warning: Citation `RN1' on page 20 undefined on input line 1400.
+
+
+(mRNA_Populations.bbl
+
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
+)
+
+Package natbib Warning: Citation `RN1' undefined on input line 1405.
+
+
+Package natbib Warning: There were undefined citations.
+
+[20] (mRNA_Populations.aux)
+ ***********
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-29>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.25pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 22433 strings out of 475248
+ 457067 string characters out of 5757813
+ 1961801 words of memory out of 5000000
+ 43393 multiletter control sequences out of 15000+600000
+ 595370 words of font info for 121 fonts, out of 8000000 for 9000
+ 1150 hyphenation exceptions out of 8191
+ 84i,14n,89p,974b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmex10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/rauc6/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/rauc6/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/rauc6/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rauc6/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users
+/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C
+:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/latxfont/lcircle1.pfb><C:/Users/rauc6/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/rauc6/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/rauc6/AppData
+/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/rauc6/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/rauc6/A
+ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/rauc6/A
+ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/rauc6/
+AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/rauc6/
+AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on mRNA_Populations.pdf (20 pages, 1911017 bytes).
+PDF statistics:
+ 189 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+

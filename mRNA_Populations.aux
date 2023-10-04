@@ -1,54 +1,105 @@
 \relax 
-\emailauthor{pollesch@math.utk.edu}{N.~Pollesch\corref {cor1}}
-\emailauthor{mikeg@utk.edu}{M.A.~Gilchrist}
-\Newlabel{cor1}{1}
-\Newlabel{utkm}{a}
-\Newlabel{curradd}{b}
-\Newlabel{utkeeb}{c}
-\Newlabel{nimbios}{d}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Model Description and Notation}{5}}
-\newlabel{sec:description}{{2}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Flow diagram for ODE system describing transitions within the mRNA population model. State variables and parameters are defined in Table\nobreakspace  {}\G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `tab:params' on page 5 undefined}. Model description and notation are described in Section\nobreakspace  {}\G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `sec:description' on page 5 undefined}.\relax }}{5}}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {article}{Modeling mRNA Populations}{1}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{Introduction}{1}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {section}{Methods}{2}{}\protected@file@percent }
+\newlabel{sec:description}{{}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Model Overview}{2}{}\protected@file@percent }
+\newlabel{eq:kappa_i}{{{\bf  1}}{2}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda $ through transcription. Transcripts are free to move up and down polysome classes at rates $\kappa $ for translation initiation and $\tau $ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu $. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta $. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflect the total protein production potential.}}{3}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@LN@col{1}
+\newlabel{eq:Capped_ODE}{{{\bf  3}}{4}{}{}{}}
+\newlabel{eq:Decapped_ODE}{{{\bf  4}}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Steady state solutions of the capped transcript population}{4}{}\protected@file@percent }
+\newlabel{eq:capped_solution}{{{\bf  5}}{4}{}{}{}}
+\@LN@col{2}
+\newlabel{eq:capped_sum}{{{\bf  6}}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Steady state solutions of the decapped transcript population}{4}{}\protected@file@percent }
+\newlabel{eq:decapped_abundance}{{{\bf  7}}{4}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces State variables and model parameters for ODE model of mRNA populations. Variable \ensuremath  {{i_{\max }}}\xspace  is in the domain of non-negative integers; all other variables are non-negative real numbers.}}{5}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:flow_diagram}{{1}{5}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces State variables and model parameters for ODE model of mRNA populations. Variable \ensuremath  {i_{\qopname  \relax m{max}}}\xspace  is in the domain of non-negative integers; all other variables are non-negative real numbers.\relax }}{6}}
-\newlabel{tab:params}{{1}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Model Definition and Analysis}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Model Equations Assuming Specific Transition Functions}{8}}
-\newlabel{sec:assumed_forms}{{3.1}{8}}
-\newlabel{eq:kappa}{{1}{8}}
-\newlabel{eq:tau}{{2}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Matrix-vector Formulation of ODE System}{9}}
-\newlabel{eq:matrix_full}{{3}{9}}
-\newlabel{eq:full_matrix}{{4}{10}}
-\newlabel{eq:unmarked_matrix}{{5}{10}}
-\newlabel{eq:marked_matrix}{{6}{11}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Unmarked Subsystem Matrix-vector Representation}{11}}
-\newlabel{eq:matrix_unmarked}{{7}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Determining steady-state solutions}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}ODE system}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Marked subsystem: \ensuremath  {\mathaccentV {vec}17E{m}}\xspace  }{12}}
-\newlabel{eq:anyl_marked_eq}{{8}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Unmarked subsystem: \ensuremath  {\mathaccentV {vec}17E{m}}\xspace  }{12}}
-\newlabel{eq:anyl_unmarked_imax_simp}{{9}{13}}
-\newlabel{eq:U_det}{{11}{13}}
-\newlabel{eq:U_det_adj}{{13}{14}}
-\newlabel{eq:recurrence_general}{{14}{15}}
-\newlabel{eq:recurrence_general_ic}{{15}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Steady-state in ODE full system}{15}}
-\newlabel{eq:full_matrix_det}{{16}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Partial differential equation approximation using continuous polysomal classes}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The unmarked class PDE approximation}{16}}
-\newlabel{eq:unmarked_pde}{{18}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}The Marked Class PDE approximation}{17}}
-\newlabel{eq:marked_pde}{{20}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Unmarked PDE Boundary Conditions}{17}}
-\newlabel{eq:eq_unmarked_sum}{{21}{17}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Nondimensionalized state variable and parameter definitions using the translation completion parameter, $\tau _0$, for scaling the system time-scale.\relax }}{18}}
-\newlabel{tab:nond_params}{{2}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Nondimensionalization}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Comparison of Solution Methods}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Model results for parameters: $\ensuremath  {i_{\qopname  \relax m{max}}}\xspace  =30,\lambda =5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta =0.1$\relax }}{19}}
-\newlabel{eq:anyl_unmarked_imax}{{22}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison of discrete and continuous approximation model Solutions for Parameters: $\ensuremath  {i_{\qopname  \relax m{max}}}\xspace  =30,\lambda =5.4,\kappa 0=0.66,\tau 0=0.1,\mu 0=0.0292,\delta =0.1$\relax }}{20}}
+\newlabel{tab:params}{{1}{5}{State variables and model parameters for ODE model of mRNA populations. Variable \ensuremath  {{i_{\max }}}\xspace  is in the domain of non-negative integers; all other variables are non-negative real numbers.}{}{}}
+\@LN@col{1}
+\newlabel{eq:decapped_solution}{{{\bf  9}}{5}{}{}{}}
+\@LN@col{2}
+\newlabel{eq: marked_total_pop}{{{\bf  10}}{5}{}{}{}}
+\@LN@col{1}
+\newlabel{eq:decapped_distribution}{{{\bf  11}}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Calculation of the total mRNA population and its distribution between capped and decapped states}{6}{}\protected@file@percent }
+\newlabel{eq:odds}{{{\bf  14}}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Calculating expected ribosomal load and protein production}{6}{}\protected@file@percent }
+\newlabel{eq:Expected_ribo_load}{{{\bf  15}}{6}{}{}{}}
+\newlabel{eq:System_ribo_load}{{{\bf  16}}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Numerical solution implementation in R}{6}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Data Sources}{6}{}\protected@file@percent }
+\@LN@col{1}
+\newlabel{eq:MRL}{{{\bf  18}}{7}{}{}{}}
+\@writefile{toc}{\contentsline {section}{Results}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Model presents steady state distribution of mRNAs across polysome classes for each initiation to elongation ratio}{7}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Decapping reduces ribosomal loads and shifts mRNA from the capped polysome classes to the decapped polysome classes}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Histograms of empirical values of model parameters. A) Yeast protein lengths. B) Yeast half-life C) Arabidopsis Protein Lengths. D) Arabidopsis Half-Life. E) Yeast Scaled elongation rates (Translational initiation rate/average translation elongation rate) on a per gene basis. F) Log 10 Fold Changes between all transcripts compared ot the median transcript expression in yeast. }}{8}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces mRNA distribution in capped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \ensuremath  {{i_{\max }}}\xspace  of 39 and a low decapping rate of $2\times 10^{-4}$ (99\textsuperscript  {th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Decapping rate and ribosomal load determine ratio between capped and decapped states}{9}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces mRNA distribution in decapped state. A) Distribution profiles for four scaled initiation values i) $2\times 10^{-1}$ ii) $1.03\times 10^{-1}$ iii) $3\times 10^{-3}$ iv) $2\times 10^{-4}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \ensuremath  {{i_{\max }}}\xspace  of 39 and a low decapping rate of $2\times 10^{-4}$ (99\textsuperscript  {th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{At steady state protein production is scales with coding sequence length \ensuremath  {{i_{\max }}}\xspace  }{9}{}\protected@file@percent }
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces mRNA distribution in the full model. A) Distribution profiles for three scaled initiation values low) $1\times 10^{-3}$ mid) $2\times 10^{-2}$ and high) $1\times 10^{-1}$ B) Heatmap of model output across a range of scaled initiation values. Lines represent slice represented in A). Results produced with \ensuremath  {{i_{\max }}}\xspace  of 39 and a low decapping rate of $2\times 10^{-4}$ (99\textsuperscript  {th} percentile). Color bar shows probability of finding mRNA in particular polysome class.}}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Decapped state can be a significant source of protein production}{10}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Model validation}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Discussion}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Model Formulation \& Structure}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Higher decapping rates $\mu $ reduce ribosome load in the capped system in yeast. A) Heatmaps for the full model. Left) low $\mu $ ($2\times 10^{-4}$ /s) Center) median $\mu $ ($1.7\times 10^{-3}$ /s) Right) $\mu $ ($5.7\times 10^{-3}$ /s) B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu $ All results calculate with \ensuremath  {{i_{\max }}}\xspace  = 39.}}{11}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Low decapping rates $\mu $ in Arabidopsis result in polysome class distributions centered at higher $i$ and more mRNA abundance in the capped vs decapped polysome classes. A) Heatmaps for the full model. Left) low $\mu $ ($7.7\times 10^{-6}$ /s) Center) median $\mu $ (1$\times 10^{-4}$ /s) Right) $\mu $ ($1\times 10^{-3}$ /s) B) individual density profiles for low (0.001), mid (0.01) and high (0.1) scaled initiation values for each $\mu $. All results calculate with \ensuremath  {{i_{\max }}}\xspace  = 41.}}{12}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Percentage of mRNA in the capped state for a range of decapping rates in yeast ( low $\mu $ ($2\times 10^{-4}$ /s), median $\mu $ ($1.7\times 10^{-3}$ /s), high $\mu $ ($5.7\times 10^{-3}$ /s)) and Arabidopsis( low $\mu $ ($7.7\times 10^{-6}$ /s, median $\mu $ (1$\times 10^{-4}$ /s), high $\mu $ ($1\times 10^{-3}$ /s)). }}{13}{}\protected@file@percent }
+\newlabel{item:protein_production}{{}{13}{}{}{}}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Model Validation}{13}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The mean ribosomal density on a transcript is dependent on coding sequence length. \ensuremath  {\bar  {i}}\xspace  per transcript is higher for longer transcripts. A) Capped state B) Decapped state C) full model. Yeast parameters were used \ensuremath  {{i_{\max }}}\xspace  = 4 (1\textsuperscript  {st} percentile), 39 (50\textsuperscript  {th} percentile), 194 (99\textsuperscript  {th} percentile), low decapping rate ($2.2\times 10^{-4}$ /s), over the full scaled initiation range 0.0001- 0.5.}}{14}{}\protected@file@percent }
+\@LN@col{1}
+\@writefile{toc}{\contentsline {subsection}{Model limitations, extensions and future work}{14}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Estimated average protein production in yeast. A) Protein production across different decapping rates low $\mu $ ($2.2\times 10^{-4}$ /s), median $\mu $ ($1.7\times 10^{-3}$ /s), high $\mu $ ($5.7\times 10^{-3}$ /s). Total protein production is normalized to the maximal protein production across all parameters. B-D) Contribution of capped and decapped states to total protein production. B) Low decapping C) Medium decapping D) High decapping. }}{15}{}\protected@file@percent }
+\@LN@col{1}
+\@writefile{toc}{\contentsline {section}{Appendix}{15}{}\protected@file@percent }
+\@LN@col{2}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Predicted mean ribosomal loads coincide with observed mean ribosomal loads from Weinberg 2016. Using the 850 genes from Duc and song 2018, decapping rates from Presnyak 2015 were mined. Gene specific \ensuremath  {\bar  {i}}\xspace  were calculated and compared to the empircal \ensuremath  {\bar  {i}}\xspace  . Spearman's $\rho $ was calculated and found to be significant, pvalue $<10^{-16}$}}{16}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Matrix-vector Formulation of ODE System}{16}{}\protected@file@percent }
+\@LN@col{1}
+\@writefile{toc}{\contentsline {subsubsection}{Capped Subsystem Matrix-vector Representation}{17}{}\protected@file@percent }
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{The density dependent initiation model}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Capped state steady state solution}{17}{}\protected@file@percent }
+\@LN@col{1}
+\@LN@col{2}
+\@LN@col{1}
+\@writefile{toc}{\contentsline {subsubsection}{Decapped Subsystem steady state solution}{19}{}\protected@file@percent }
+\@LN@col{2}
+\citation{RN1}
+\bibstyle{plain}
+\bibdata{Modeling_RNA_Populations}
+\citation{RN1}
+\global\@namedef{@lastpage}{20}
+\@LN@col{1}
+\@LN@col{2}
+\@writefile{toc}{\contentsline {subsection}{Complete system mRNA population}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {\relax }REFERENCES}{20}{}\protected@file@percent }
+\gdef \@abspage@last{20}
