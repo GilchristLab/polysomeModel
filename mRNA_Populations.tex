@@ -28,6 +28,7 @@
 \usepackage{blkarray}
 \usepackage{booktabs}
 \usepackage{caption}
+\usepackage{cuted}
 \usepackage{dsfont}
 \usepackage{enumerate}
 \usepackage{float}
@@ -219,14 +220,7 @@ Accepted YYYY-MM-DD}
 
 \maketitle
 \begin{abstract}
-Understanding the underlying mechanisms of protein production is essential to comprehending how organisms regulated gene expression and how to co-opt these mechanism for biotech applications.
-Translation and mRNA degradation are key coupled processes in the cell that regulate protein output.
-While both translation and mRNA degradation have been extensively studied through modeling, there is little work exploring their interaction.
-Here we introduce a novel coupled ODE model which integrates mRNA transcription, 5' mRNA degradation and translation.
-Using empirically derived parameter estimates, our model predicts the protein production from two populations of mRNA: stable and actively translating 5' capped mRNA and decapped mRNA undergoing cotranslational decay.
-We are able to predict the capped and decapped mRNA population abudances, distribution of ribosomes loaded onto transcripts and the mean number of ribosomes associated to a transcript.
-Surprisingly, we find that genes with a high decapping rate (short half life) will produce just under half their protein from decapped transcripts.
-Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a stepping stone for future development in this area. %yes I know this is also at the end of my intro. I'll change the one in the intro because I like how it sounds here
+Understanding the underlying mechanisms of protein production is essential to comprehend how organisms regulated gene expression and how to co-opt these mechanisms for biotech applications. Translation and mRNA degradation are key coupled processes in the cell that regulate protein output. While both translation and mRNA degradation have been extensively studied through modeling, there is little work exploring their interaction. Here we introduce a novel coupled ODE model which integrates mRNA transcription, 5' mRNA degradation and translation. Using empirically derived parameter estimates, our model predicts the protein production from two populations of mRNA: stable and actively translating 5' capped mRNA and decapped mRNA undergoing cotranslational decay. We are able to predict gene specific capped and decapped mRNA population abundances, distribution of ribosomes loaded onto transcripts and the mean number of ribosomes associated to a transcript. Surprisingly, we find that genes with a high decapping rate (short half-life) will produce just under half their protein from decapped transcripts. Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a steppingstone for future development in this area. 
  
 \end{abstract}
 
@@ -245,39 +239,16 @@ Our model proves useful toward understanding a more complete view of RNA biology
 
 \section{Introduction}
 
-Gene expression relies on transfer of information encoded in DNA through mRNA into a final functional form, often protein, through translation. While the central dogma represents the basic flow of genetic information, each step has multiple regulatory mechanisms adjusting gene expression. The process of translation encompasses three steps: initiation, elongation and termination and is reviewed in (Browning and Bailey-Serres 2015, Urquidi Camacho 2020).
-In eukaryotes, translation initiation consists of a ribosome binding to the capped 5' end of an mRNA molecule. 
-Following binding to the mRNA a Ribosome proceeds to scan the mRNA until it encounters a start codon and initiates protein synthesis.
-Protein is synthesized through the process of elongation, as the ribosome adds one amino acid at a time to the nascent peptide chain. 
-Finally, in the termination step, the ribosome and protein are released from the transcript.
-Multiple ribosomes can be on a transcript at once. 
-his polyribosomal mRNAs, or polysomes are common and often measured as a proxy for protein production by ribosome footprinting, polysome profiling and single molecule imaging of translation. 
+Gene expression relies on transfer of information encoded in DNA through mRNA into a final functional form, often protein, through translation. While the central dogma represents the basic flow of genetic information, each step has multiple regulatory mechanisms adjusting gene expression. The process of translation encompasses three steps: initiation, elongation and termination and is reviewed in \citep{RN1,RN2}. In eukaryotes, translation initiation consists of a ribosome binding to the capped 5' end of an mRNA molecule. Following binding to the mRNA a ribosome proceeds to scan the mRNA until it encounters a start codon and initiates protein synthesis. Protein is synthesized through the process of elongation, as the ribosome adds one amino acid at a time to the nascent peptide chain. Finally, in the termination step, the ribosome and protein are released from the transcript. Multiple ribosomes can be on a transcript at once. Thus, polyribosomal mRNAs, or polysomes are common and often measured as a proxy for protein production by ribosome footprinting, polysome profiling and single molecule imaging of translation. 
 
-To produce protein translation needs a pool of capped mRNAs.
-The maintenance of this mRNA pool relies on a broad range of ribosome dependent and independent mechanisms (reviewed in Collart 2020).
- 5' decapping removes the protective 5' cap from a transcript allowing for the 5'-3' exonuclease XNR1 to degrade the transcript (Collart 2020).
- If a ribosome is already present on the transcript, XRN1 trails behind performing cotranslational decay (Pelechano 2015).
- This allows for protein to be produced from transcripts being actively degraded.
- Another mechanism of decay relies on 3'-5' degradation of transcripts, which does not permit for any more protein to be made (Seiburth 2018).
- Collided ribosomes can also initiate endonucleolytic decay pathways such as  nonsense mediated decay or no go decay or ribosomal quality control (Juszkiewicz 2018, Ikeuchi 2019).
- The resulting 3' fragments may complete translation.
- The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in mRNA stability (Wu 2019, Medina-Munoz 2021, Bae and Collier 2022).
 
-% and translation (Reuveni 2011, , Raveh 2016, Shaw 2003, Shah 2013) have been modeled separately in the past, but only rarely together (Reuveni 2011, Valleriani 2011).
-Both mRNA decay and translation have been explored in the literature (Yadav 2021, von der Haar 2012.)
-Some early translation modeling papers used the totally asymmetric exclusion process (TASEP) framework to study codon by codon movement of ribosomes (Duc and Song 2018, Shaw 2003)
-While powerful, TASEP is computationally expesive to run. 
-The Ribosome Flow Model (RFM) introduced by (Reuveni 2011), makes a course grain approximation to translation by splitting an mRNA into regions reducing computational cost at little accuracy (Reuveni 2011).
-Extensions on the RFM look at the combined translational behavior of pools of different transcript species (Nanikashvili 2019).
-Other protein synthesis models take a cell wide approach to model translation (Shah 2013) providing a systems wide overview of protein production.
-mRNA degradation mechanisms have also been explored, either mechanistically (Cao and Parker 2001, Cao and Parker 2003, Wu 2013, Wu 2016) or using a basic protein production model (Zupanic 2016) and are reviewed in (Ashworth 2019).
-A combined 5' mRNA decay model has previously been explored briefly by (Valleriani 2010), finding a moderate effect of decay on ribosomal load.
-Translation and mRNA degradation have both received ample attention in the literature, however few have explored the interaction between mRNA degradation and translation.
+To produce protein, translation needs a pool of capped mRNAs. The maintenance of this mRNA pool relies on a broad range of ribosome dependent and independent mechanisms \citep{RN3}. 5' decapping removes the protective 5' cap from a transcript allowing for the 5'-3' exonuclease XRN1 to degrade the transcript \citep{RN3}. If a ribosome is already present on the transcript, XRN1 trails behind performing cotranslational decay \citep{RN4}. This allows for protein to be produced from transcripts being actively degraded. Another mechanism of decay relies on 3'-5' degradation of transcripts, which does not permit for any more protein to be made \citep{RN5}. Collided ribosomes can also initiate endonucleolytic decay pathways such as nonsense mediated decay or no go decay or ribosomal quality control \citep{RN6,RN7}. The resulting 3' fragments may complete translation. The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in mRNA stability \citep{RN8, RN9, RN10}.
 
-Here we introduce a novel coupled ODE model of mRNA polysome classes which integrates mRNA transcription, 5' mRNA degradation and translation.
-Our model despite not being fit to data can demonstrate biological behavior using empirically derived parameters.
-The structure of the model allows for the exploration of protein production from both capped and uncapped mRNAs undergoing cotranslational decay.
-Moreover, we find that genes with a high decapping rate (short half life) will produce just under half their protein from decapped transcripts. 
+
+Both mRNA decay and translation have been explored in the literature \citep{RN11, RN12}. Some early translation modeling papers used the totally asymmetric exclusion process (TASEP) framework to study codon by codon movement of ribosomes \citep{RN13,RN14}. While powerful, TASEP is computationally expensive to run. The Ribosome Flow Model (RFM) introduced by \citep{RN15}, makes a coarse grain approximation to translation by splitting an mRNA into regions reducing computational cost at little cost to accuracy \citep{RN15}. Extensions on the RFM look at the combined translational behavior of pools of different transcript species \citep{RN16}. Other protein synthesis models take a cell wide approach to model translation \citep{RN17} providing a systems wide overview of protein production. mRNA degradation mechanisms have also been explored, either mechanistically \citep{RN18,RN19} or using a basic protein production model \citep{RN20} and are reviewed in \citep{RN21,RN22}. A combined 5' mRNA decay model has previously been explored briefly by \citep{RN22}, finding a moderate effect of decay on ribosomal load. Translation and mRNA degradation have both received ample attention in the literature, however few have explored the interaction between mRNA degradation and translation.
+
+
+Here we introduce a novel coupled ODE model of mRNA polysome classes, which integrates mRNA transcription, 5' mRNA degradation and translation. Our model despite not being fit to data can demonstrate biological behavior using empirically derived parameters. The structure of the model allows for the exploration of protein production from both capped and uncapped mRNAs undergoing cotranslational decay. Moreover, we find that genes with a high decapping rate (short half-life) will produce just under half their protein from decapped transcripts. 
 
 \section{Methods}\label{sec:description}
 \subsection{Model Overview}
@@ -287,7 +258,7 @@ Moreover, we find that genes with a high decapping rate (short half life) will p
 \begin{figure*}[!ht]
 \begin{center}
 \includegraphics[width=120mm]{Images/Figure1_biomodel_V3.png}
-\caption{Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda$ through transcription. Transcripts are free to move up and down polysome classes at rates $\kappa$ for translation initiation and $\tau$ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu$. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta$. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflect the total protein production potential.}
+\caption{Cartoon Representation of model in biological context. A) Model overview. Transcripts enter the sytem into the capped state at class 0 (no ribosomes bound). They enter the state at rate $\lambda$ through transcription. Transcripts are free to move up and down polysome classes at rates $\kappa$ for translation initiation and $\tau$ for elongation/termination. Transcripts can also be decapped and enter the decapped state at rate $\mu$. Finally, upon reaching class 0 in the decapped state transcripts are fully degraded at rate $\delta$. B) Probability of finding an mRNA in each class in the capped state. C) probability of finding an mRNA in each class in the decapped state. D) Joint probabilty of finding an mRNA in each class across each state. This reflects the total protein production potential.}
 \end{center}
 \end{figure*}
 %\clearpage
@@ -313,7 +284,7 @@ Because only one ribosomes can occupy a particular location on the mRNA at any g
 where $i$ is the mRNA polysome class, \imax is the maximal ribosomal occupancy on the transcript.
 We note $i/\imax$ represents, under the assumptions of a uniform distribution,  the probability a randomly chosen codon position is occupied by a ribosome.
 Correspondingly, $(1 - i/\imax)$ represents probability a randomly chose codon position, such as the initiation site is unoccupied.
-Because, the natural units for mRNA coding sequence length in our model is the amount of space the bound ribosome takes when translating it follows that $\imax = n_{c}/9$ where $n_{c}$ is the length of the mRNA's coding sequence in codons and 9 represents the length in codons of space a single ribosome occupies.
+Because the natural units for mRNA coding sequence length in our model is the amount of space the bound ribosome takes when translating it follows that $\imax = n_{c}/9$ where $n_{c}$ is the length of the mRNA's coding sequence in codons and 9 represents the length in codons of space a single ribosome occupies.
 %$\imax = n_{\text{nt}}/27$ where $n_{\text{nt}}$ is the length of the mRNA's coding sequence in nucleotides.
 This attempts to account for the ribosomal density dependent effects on initiation and is called the density dependent initiation (DDI) model.
 
@@ -330,7 +301,7 @@ Again assuming ribosomes are distributed across a transcript according to a unif
 Capped transcripts move through rounds of translation initiation and elongation-termination and distribute along the different polysomal classes. 
 From any polysome class in the capped state $m_i$ the transcript can be decapped at rate $\mu$  and move into the decapped state while maintaining the same polysomal class $m_i^*$.
 Decapped transcripts can no longer initiate new rounds of translation, but allow for currently loaded ribosomes to complete translation. 
-The behavior of the $m_i^*$ classes represent co-translational decay, a common method of mRNA decay in eukaryotes (Hu 2009, Pelechano 2015, Collart 2020) 
+The behavior of the $m_i^*$ classes represent co-translational decay, a common method of mRNA decay in eukaryotes \citep{RN3,RN23,RN4}. 
 After all ribosomes on a decapped transcript complete translation, the mRNA is in decapped class 0 and completely degraded at the mRNA clearance rate $\delta$.
 
 The model produces two outputs. 
@@ -340,6 +311,8 @@ Second, the distribution of the mRNAs in each mRNA in each polysome class. (Figu
 We represent each state by a series of coupled ordinary differential equations (ODEs), one equation for the mRNA population for each polysome class. 
 
 The functional form of the capped mRNA sub population is:
+\pagebreak 
+\begin{strip}
 \begin{align} \label{eq:Capped_ODE}
 \frac{dm_{0}}{dt} &= \lambda+ \tau \frac{1}{\imax}m_{1}-\left(\kappa_0 + \mu\right)m_{0} \\ \nonumber
 \frac{dm_{1}}{dt} &= \kappa_0 m_{0}+ \tau \frac{2}{\imax}m_{2}-\left( \tau \frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\\ \nonumber
@@ -348,7 +321,7 @@ The functional form of the capped mRNA sub population is:
 & \vdots & \\ \nonumber
 \frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left( \tau +\mu\right) m_{\imax}\\ \nonumber
 \end{align}
-
+\end{strip}
 Similarly, the functional form of the decapped mRNA sub population is: 
 \begin{align}\label{eq:Decapped_ODE}
 \frac{dm_{0}^{*}}{dt} &= \mu m_{0}+ \tau \frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
@@ -368,8 +341,8 @@ In closing, we note the parameters $\imax, \kappa, \mu,$ and $\tau$ likely vary 
 State Variables & &  \\ \hline
 $m_i$ & Abundance of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
 $m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
-$p_i$ & Distribution of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
-$p_i^*$ & Distribution of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
+$p_i$ & Probability of finding an mRNA with a ribosome load of $i$ in capped state. & $mRNA$ \\
+$p_i^*$ & Probability of finding an mRNA with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
 \multicolumn{1}{l}{Model Parameters} \\ \hline
 $i$ & ribosomal load index & Ribosome\\
  \imax & Maximum number of ribosomes able to bind to mRNA\\ & Ribosome \\
@@ -433,9 +406,12 @@ Now the solution to eq. (\ref{eq:decapped_abundance}) becomes,
 
 The total transcript population in the decapped state $\mhatstar_{tot}$ does not have a closed form solution. However it can be summarized as follows,
 
-\begin{equation*}
-	\msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
-\end{equation*}
+
+\begin{align*}
+	\msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1}+ \hdots \\
+ + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
+\end{align*}
+
 This can be further shortened to:
 \begin{equation} \label{eq: marked_total_pop}
 	\msumstar = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}	) 
@@ -473,9 +449,12 @@ The expected ribosomal load for the capped or decapped state calculated, respect
    \MRL^* =& E_{\mvecstar}\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p^*_{i}\\ \nonumber
 \end{align}
 Thus, the global mean ribosomal load is,
-\begin{equation}\label{eq:System_ribo_load}
-	\text{Total Ribosomal Load} = \mfrac\times E_{\msum} \left(\ribosome\right) + (1-\mfrac)\times E_{\msumstar}\left(\ribosome\right)
-\end{equation}
+
+\begin{align}\label{eq:System_ribo_load}
+	\text{Total Ribosomal Load} = \mfrac\times E_{\msum} \left(\ribosome\right) +\\
+          + (1-\mfrac)\times E_{\msumstar}\left(\ribosome\right)
+\end{align}
+
 
 %The maximum possible ribosomal load for our model is:
 %\begin{equation}\label{eq:Max_output}
@@ -484,14 +463,14 @@ Thus, the global mean ribosomal load is,
 %
 %Where $H_{\imax}$ is the harmonic number for \imax.
 \subsection{Numerical solution implementation in R}
-Code to solve the model was written and is freely available as an R package at (\url{https://github.com/rurquidi/Ribosome}). To solve the capped subsystem of the model, the \texttt{solve.tridiag} function from \texttt{limSolve package} (v1.5.6) (Soetaert,K 2009). The decapped solution was obtained by using the capped solutions into eq. (\ref{eq:decapped_solution}). Utility functions, plots and statistics were created using  \texttt{R} (v 3.6) (R core team), and  \texttt{data.table} (v1.14.0) (Dowle 2021). 
+Code to solve the model was written and is freely available as an R package at (\url{https://github.com/rurquidi/Ribosome}). To solve the capped subsystem of the model, the \texttt{solve.tridiag} function from \texttt{limSolve package} (v1.5.6) \citep{RN41}. The decapped solution was obtained by using the capped solutions into eq. (\ref{eq:decapped_solution}). Utility functions, plots and statistics were created using  \texttt{R} (v 3.6) \citep{RN43}, and  \texttt{data.table} (v1.14.0) \citep{RN42}. 
 		
 \subsection{Data Sources}
 
 In order to biologically contextualize and illustrate our model's behavior, we use on parameter values derived from the literature.
-Protein lengths were extracted from the Ensembl (version 109) and Ensembl plants (version 56) respectively (Cunningham 2022, Yates 2022, Kinsella 2011).  
+Protein lengths were extracted from the Ensembl (version 109) and Ensembl plants (version 56) respectively \citep{RN26,RN25,RN24}.  
 The range of \imax is determined from the distribution of protein lengths obtained from brewer's yeast (\textit{saccharomyces cerevisiae}) and \textit{Arabidopsis thaliana}. The range of \imax is  48 (36) (mean (SD)) for yeast and 47 (30) for Arabidopsis (Figure 2A and C).
-The decapping rate between the capped and uncapped system was estimated from the protein half-lives from Presnyak (2015) for yeast (Figure 2B) and Sorenson (2018) for Arabidopsis (Figure 2D).
+The decapping rate between the capped and uncapped system was estimated from the protein half-lives from Presnyak (2015) for yeast (Figure 2B) and Sorenson (2018) for Arabidopsis (Figure 2D) \citep{RN27,RN28}.
 We estimated gene specific $\mu$ from the half lives with the following:
 	\begin{equation*}
 		\mu_i = \frac{\ln(2)}{t_{1/2_i}}
@@ -499,7 +478,7 @@ We estimated gene specific $\mu$ from the half lives with the following:
 
 Where $t_{1/2}$ is the half-life. The resulting range of $\mu$ is from $1.3 \times 10^-3 (1.8 \times 10^-3)$ for yeast and $1.7 \times (10^-4 \pm 2 \times 10^-4)$ for Arabidopsis. 
 
-Translation initiation and average elongation rates ($\kappa$ and $\tau_c$) were obtained for Yeast from Duc and Song 2018. 
+Translation initiation and average elongation rates ($\kappa$ and $\tau_c$) were obtained for Yeast from Duc and Song 2018 \citep{RN13}. 
 %In Duc and Song 2018, the authors used 850 highly translated transcripts from the ribo-seq dataset from Weinberg 2016. They employed a TASEP model to estimate the initiation rates and correct the empirical elongation rates from the footprint distributions. 
 We calculated an average gene specific elongation rate from the corrected elongations rates. We scale the each gene specific initiation rate by dividing it by the gene specific elongation rate.
 \begin{equation}
@@ -508,11 +487,11 @@ We calculated an average gene specific elongation rate from the corrected elonga
 
 This simplifies the model behavior to one generalized parameter with a unique response (Figure 2E).  The initiation to elongation ratio ranges from 0.1$s^{-1}$ to 0.001$s^{-1}$.
 
-The transcriptomic results from Weinberg 2016 are included in Figure 2F. In short, reads per kilobase million from Weinberg were further converted into a log10 fold change based on the median expression level. Figure 2F shows that the absolute range of transcriptional expression ranges just under 5 orders of magnitude. Because transcription rate $\lambda$ acts as a scaling factor throughout the model and does not affect the distribution of the ribosomes, for simplicity we set $\lambda$ = 1.
+The transcriptomic results from Weinberg 2016 are included in Figure 2F. In short, reads per kilobase million from Weinberg were further converted into a log10 fold change based on the median expression level \citep{RN29}. Figure 2F shows that the absolute range of transcriptional expression ranges just under 5 orders of magnitude. Because transcription rate $\lambda$ acts as a scaling factor throughout the model and does not affect the distribution of the ribosomes, for simplicity we set $\lambda$ = 1.
 
 Because the mRNA clearance rate $\delta$ only determines the accumulation of transcripts in the  $m_0^*$  class, for simplicity, we set $\delta >> \tau$ and thus  $m_0^* \sim 0$.
  
-The empirical mean ribosomal load (\MRL) for the 850 genes in Duc and song 2018 was calculated from the mRNA-seq read per kilbase million (mRNA RPKM) and the ribo-seq footprints (RPF RPKM) from Weinberg 2016. The following equation was used.
+The empirical mean ribosomal load (\MRL) for the 850 genes in Duc and song 2018 was calculated from the mRNA-seq read per kilbase million (mRNA RPKM) and the ribo-seq footprints (RPF RPKM) from Weinberg 2016 \citep{RN29}. The following equation was used.
 \begin{equation}\label{eq:MRL}
 	\MRL_i = \frac{RPF\: RPKM_i}{mRNA\: RPKM_i \times \frac{200}{length mRNA_i}}
 \end{equation}
@@ -598,7 +577,7 @@ The peak at low $i$ representing the decapped distribution, and the higher gauss
 
 \subsection{Decapping reduces ribosomal loads and shifts mRNA from the capped polysome classes to the decapped polysome classes}
 
-To explore the role of mRNA stability on mRNA populations we varied the decapping rate $\mu$ from the 1\textsuperscript{st}, 50\textsuperscript{th} and 99\textsuperscript{th} percentile values as determined from  Presnyak 2015.
+To explore the role of mRNA stability on mRNA populations we varied the decapping rate $\mu$ from the 1\textsuperscript{st}, 50\textsuperscript{th} and 99\textsuperscript{th} percentile values as determined from  \citep{RN27}.
 As $\mu$ increases the distribution of mRNAs changes in two ways. 
 First, there is shift to lower polysome classes in the capped state (Figure 6).
 This is due to the mRNAs leaving the capped state at a higher rate and driving the equilibrium towards lower ribosomal loads. 
@@ -700,7 +679,7 @@ Gene specific \MRL eq. (\ref{eq:MRL}) were calculated for the genes analyzed in 
 Model predictions of \MRL showed a significant positive correlation to empirical \MRLs.
 This result is impressive as the model performs well despite no model fitting being performed.
 Model performance is further corroborated with single molecule imaging analyses.
-Rescaling ribosome abundances from each single molecule study to an \imax of 39 results in loads of 1, 2.4 and 4 ribosomes from (Morisaki 2016), 3 ribosomes (Yan 2016), 4 ribosomes (Wang 2016) and 1.6 (Wu 2016).
+Rescaling ribosome abundances from each single molecule study to an \imax of 39 results in loads of 1, 2.4 and 4 ribosomes from \citep{RN30}, 3 ribosomes \citep{RN31}, 4 ribosomes \citep{RN32} and 1.6 \citep{RN33}.
 The single molecule measurements agree with model predictions, as most transcripts have a MRL of 0-6 for median decapping rate ($1.7\times 10^{-3}$ /s) and  $\kappa' < 0.01$ and \imax of 39.
 %  \item All of which align with low to mid initiation to elongation ratio \MRL predictions. 
   %\item Finally, mRNA distributions for the full model agree with signal from polysome traces (Lokdarshi 2020, Dasgupta 2023).
@@ -727,9 +706,9 @@ which includes the contributions of mRNA transcription, the initiation, elongati
 %\mmpar{(Add relevant equation and figure references to points below)}
 \subsection{Model Formulation \& Structure}
 
-Although our model is only a very simplified description of the mRNA polysome population and, in turn, protein translation, it studies the interaction of protein translation with the process of mRNA degradation, a topic which has been underexplored (Yadav 2021). The process of translation is dependent on the underlying population of capped, translationally competent mRNAs. However, empirical measurements suggest that $\sim 12\%$ of transcripts are undergoing co-translational decay (Pelechano 2015). To undergo co-translational decay, the 5' cap has to removed and exonucleases trail behind the last loaded ribosome on a transcript, processing codons as they exit behind the ribosome. 5' decapping is a common pathway in many organisms and accounts for decay; for example $\sim 68\%$ of Arabadopsis genes are (Sorenson 2018).
+Although our model is only a very simplified description of the mRNA polysome population and, in turn, protein translation, it studies the interaction of protein translation with the process of mRNA degradation, a topic which has been underexplored \citep{RN11}. The process of translation is dependent on the underlying population of capped, translationally competent mRNAs. However, empirical measurements suggest that $\sim 12\%$ of transcripts are undergoing co-translational decay \citep{RN4}. To undergo co-translational decay, the 5' cap has to removed and exonucleases trail behind the last loaded ribosome on a transcript, processing codons as they exit behind the ribosome. 5' decapping is a common pathway in many organisms and accounts for decay; for example $\sim 68\%$ of Arabadopsis genes are \citep{RN28}.
 %  \mmpar{I uncommented this point, can you reconcile it with the previous sentence? \textbf{R:} Done. The first is a statement of the proportion of the population undergoing decay. The second the proportion of the genome that preferentially uses this pathway for decay.} 
-Our model includes 5' mRNA decapping followed by cotranslational decay, permiting the analysis of the decapped mRNA state (called degratome in Ma 2020), changes in mean number of ribosomes per transcript \MRL for capped and decapped states and the contribution of cotranslational decay to protein production.
+Our model includes 5' mRNA decapping followed by cotranslational decay, permiting the analysis of the decapped mRNA state (called degratome in \citep{RN34}), changes in mean number of ribosomes per transcript \MRL for capped and decapped states and the contribution of cotranslational decay to protein production.
 
 In addition to being more biologically realistic, structuring the mRNA population by its polysome classes (ribosome load) and the status of its 5' cap allows us to understand how the the rates mRNA production $\lambda$, decapping $\mu$, protein elongation $\tau$, and the clearance rate $\delta$ of decapped and ribosome free mRNAs $\mhatstar_0$ shape the steady state distribution of a gene's mRNA population across polysome classes and capping state (Figures 3-5).
 Overall, we find that 
@@ -774,7 +753,7 @@ The full model combines the distributions of the capped and decapped states and 
 The full model distribution is strictly unimodal when initiation occurs and $\kappaprime/\mu \ll 1$ (Figure 6 and 7) and the majority of transcripts are in the capped state ($\sum \mvechat >> \sum \mvechatstar$), effectively .
 The distribution is also unimodal when the $\kappaprime << 0.01$, meaning that the \MRL is low and near the $i=0$ bound. 
 In all other cases the distribution of polysome classes is bimodal. The high peak arises from the capped state, while the small novel  peak comes from the decapped states. 
-To the best of our knowledge, the only prior model that combines cotranslational decay and translation, agrees with our findings of decreased \MRL when decapping occurs (Valleriani 2010). However, they didn't explore a range of biologically relevant parameters nor did they analyze the contributions from the capped and decapped polysome classes separately.
+To the best of our knowledge, the only prior model that combines cotranslational decay and translation, agrees with our findings of decreased \MRL when decapping occurs \citep{RN22}. However, they didn't explore a range of biologically relevant parameters nor did they analyze the contributions from the capped and decapped polysome classes separately.
 
 The model formalizes the interplay between mRNA decapping $\mu$ and initiation elongation ratio $\kappa/\tau$ and its effect on protein production.
 By using eq.  [\ref{eq:System_ribo_load}] we can estimate protein production rate.
@@ -795,25 +774,25 @@ The high protein production from the decapped polysome classes suggests that mRN
 
 In addition to studying the general behavior of our model, we validate this behavior using empirically based parameter values.
 In general, we find that our model's predictions of mRNA distributions, when parametrized with biologically relevant values, are highly consistent with a wide range of empirical data.
-For example, we predicted \MRL using empirical values for initiation to elongation rates ratio $\kappa'$ (Duc and Song 2018) and decapping rate $\mu$ (Presnyak 2015) and compared them to the empirical \MRL from (Weinberg 2016) and found a strong correlation despite having performed no additional model fitting. This supports the idea that the model is a useful representation of the complex processes underlying protein production.
+For example, we predicted \MRL using empirical values for initiation to elongation rates ratio $\kappa'$ \citep{RN13} and decapping rate $\mu$ \citep{RN27} and compared them to the empirical \MRL from \citep{RN29} and found a strong correlation despite having performed no additional model fitting. This supports the idea that the model is a useful representation of the complex processes underlying protein production.
 
-The $\kappa'$ estimates utilized are only for highly translated genes (16\% of alll detected genes), and most others would fall in a range of $\kappa'<0.01$ (Duc and Song 2018).
-Taking the overall low $\kappa'$ values, our model predicts that a median length protein of \imax =39 (351aa) would have 10 or fewer ribosomes loaded, which agree with the predominance of low polysomes (<10) seen polysome gradient traces (Lokdarshi 2020, Dasgupta 2023). 
-By the same logic, we find that single molecule measurements of translation (Morisaki 2016, Yan 2016, Wang 2016, Wu 2016, Section 3.6) all fall in the same low polysome range.
-Finally, the fraction of mRNA predicted in the capped and decapped class  are consistent with population wide estimates (Pelechano 2015, Figure 10). 
+The $\kappa'$ estimates utilized are only for highly translated genes (16\% of alll detected genes), and most others would fall in a range of $\kappa'<0.01$ \citep{RN13}.
+Taking the overall low $\kappa'$ values, our model predicts that a median length protein of \imax =39 (351aa) would have 10 or fewer ribosomes loaded, which agree with the predominance of low polysomes (<10) seen polysome gradient traces \citep{RN35, RN36}. 
+By the same logic, we find that single molecule measurements of translation \citep{RN30,RN32,RN33,RN31} (Morisaki 2016, Yan 2016, Wang 2016, Wu 2016, Section 3.6) all fall in the same low polysome range.
+Finally, the fraction of mRNA predicted in the capped and decapped class  are consistent with population wide estimates (\citep{RN4}, Figure 10). 
 
 
 \subsection{Model limitations, extensions and future work}
 
-Our model's assumptions about the process of mRNA decapping, the continued translational competence of transcript ribosomes bound prior to decapping, and degradation of mRNA solely from the decapped and ribosome free class $m_0^*$  closely resembles the biological process of co-translational mRNA decay. While the existence of co-translational mRNA decay is well established (Sorenson 2018, Pelechano 2015), other mechanisms exist with different outcomes for translation. 3' decay prevents bound ribosomes from completing translation and would send all transcripts into the $m_0^*$ class . Mechanisms utilizing endonucleolytic decay due to no go decay or nonsense mediated decay would potentially allow ribosomes downstream of the cleavage site to terminate but not those upstream (Urquidi-Camacho 2020, Merchante 2017). Thus,  the site of the endonucleolytic decay a transcript in $m_i$ would end up in $m_{j^*}$, where $j < i$.
+Our model's assumptions about the process of mRNA decapping, the continued translational competence of transcript ribosomes bound prior to decapping, and degradation of mRNA solely from the decapped and ribosome free class $m_0^*$  closely resembles the biological process of co-translational mRNA decay. While the existence of co-translational mRNA decay is well established \citep{RN4,RN28}, other mechanisms exist with different outcomes for translation. 3' decay prevents bound ribosomes from completing translation and would send all transcripts into the $m_0^*$ class . Mechanisms utilizing endonucleolytic decay due to no go decay or nonsense mediated decay would potentially allow ribosomes downstream of the cleavage site to terminate but not those upstream \citep{RN38,RN2}. Thus,  the site of the endonucleolytic decay a transcript in $m_i$ would end up in $m_{j^*}$, where $j < i$.
 
 Currently there is debate about the contributions of the protective effects of ribosome association vs. ribosome stalling to mRNA transcript stability.
 While our model currently does not include the protective effects of translation or stall prone codons, it should be possible to do so.
 The protective effects of ribosomal loading which could be modeled by making the decapping rate $\mu $ a function of $i$, e.g. $(1-i/\imax)$. Otherwise one could have a higher decapping rate for $m_0$ and a lower decapping rate for the other polysomal classes.
 The protective effects of translation on decapping could increase per ribosome, but eventually at high \MRL could trigger ribosome associated decay pathways through ribosomal collisions, so $\mu$ would be a non monotonic function of $i$. This would require analysis on an individual transcript basis.
-Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon usage, or protein quality control (Wu and Bazzini 2023).
+Our model does not consider codon specific effects such as pausing sites, difficult to fold regions of a protein or codon usage, or protein quality control \citep{RN39}.
 Pausing sites could be addressed by splitting each polysome class into two regions and could approximate a ribosome flow model of only two regions, a 5' and 3', split by the pausing site. Current models of translation focus mainly on the behavior of the average transcripts. However this ignores the changing population of mRNAs necessary for protein production. 
-Developing a more quantitative understanding of how different factors affect a gene's mRNA stability and, in turn, protein expression, relevant to a wide range of applied molecular biology (e.g. the design of efficient heterologous genes expression and mRNA vaccines) (Cheng 2023).
+Developing a more quantitative understanding of how different factors affect a gene's mRNA stability and, in turn, protein expression, relevant to a wide range of applied molecular biology (e.g. the design of efficient heterologous genes expression and mRNA vaccines) \citep{RN40}.
 
 
 
@@ -1090,34 +1069,8 @@ Developing a more quantitative understanding of how different factors affect a g
 \section{Appendix}
 
 %%%%%%%%%%%%%
-For simplicity, we begin by defining our model equations using generic functions to describe the transition of mRNAs between different classes or states.
-We then constrain the model by assuming specific functions to describe the transition of mRNAs between classes.
+In this section we present the matrix vector formulation of the model used to obtain both the analytical and numerical solutions in the main text. Additionally, we describe the analytical solution to the capped system. 
 %Note that from here forward the capped and decapped subsystems are presented separately, the benefits of taking this approach will become evident as we proceed.  
-
-\subsection*{General model equations of the density independent initiation model}
-%\subsection{The capped subsystem}
-Our model consists of two sets of time dependent and coupled ODEs.
-Each set of ODEs describes the abundance of mRNAs that are either capped and decapped for degradation.
-The ODEs within each sets equations are structured by the ribosome load of the mRNA.
-The coupled ODEs within a set of equations describe how mRNAs are introduced to the set, the transitions in ribosome load via initiation or completion of protein translation,  and the transition between sets either via the decapping of capped mRNAs or the degradation of decapped mRNAs with a ribosome load of 0.
-
-
-Specifically, new mRNA enter the $0^{th}$ capped class $m_0(t)$ at a rate..
-Ribosomal bind mRNAs in the $i^{th}$ capped class at a rate $\kappa(i)$, increasing the mRNA's ribsome load to the $i+1^{th}$ class.
-By definition, $\kappa(\imax)= 0$, i.e.~mRNAs with a ribosome load of \imax cannot accommodate any addtional mRNAs.
-In the density independent model (DII), we assume that the current ribosomal load has no effect on the ability of another ribosome to bind to the transcript. 
-An average ribosomal footprint covers 9 codons (~27 nucleotides). Therefore for a protein of 270 amino acids in length, the maximal ribsomal load, \imax = 10.
-Capped mRNAs with ribosome load $i$ are decapped at a rate of $\mu(i)$.
-We assume that capped mRNAs are decapped at a rate independent of their ribosome load, i.e. $\mu(i)=\mu_0$.
-Accordingly, the ribosome load of decapped mRNAs remains unchanged, but they are transitioned from the capped class $m_i(t)$ to the decapped class $m_i^*(t)$ .
-Ribosome movement along an mRNA is assumed to occur independent of whether or not its capped or decapped for degradation.
-Thus, ribosomes complete translation of both decapped and capped mRNAs with ribosome load $i$ at rate $\tau(i)$, decreasing the mmRNA's ribosome load to the $i-1^{th}$ class. %class or state? State variables
-Where $\tau(i)= i \cdot \tau(1)$ and .
-This is because we not modeling the explicit movement of ribosomes along an mRNA, we assume that at steady state probability of finding a ribosome at any given codon position within the coding sequence follows a uniform distribution.
-Thus, the chance that a ribosome on a transcript of class $i$ will complete translation increases as ribosome load increases.  
-Since mRNA's with a ribosome load of 0 have no ribosomes which can complete translation, by definition $\tau(0) = 0$.
-It is important to note that $\tau(1)$ is not the same as the average elongation rate. $\tau(1) = average \: elongation \: rate/(9 \cdot \imax)$. 
-That is, the average elongation rate in $aa/s$ is rescaled to the average rate of total elongation and termination through a transcript in units of $1/s$.
 
 
 \subsection{Matrix-vector Formulation of ODE System}
@@ -1143,6 +1096,8 @@ Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the low
 The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Equation\ref{eq:decapped_matrix}.
 
 The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
+\pagebreak
+\begin{strip}
 \begin{equation}
 \bs{U}=\left(\begin{array}{cccccc}
 -(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
@@ -1154,6 +1109,7 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
                           &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
 \end{array}\right).
 \end{equation}
+
 In the representation given in Equation\ref{eq:capped_matrix}, all blank entries are 0.
 The $(\imax-1)^{\text{th}}$ row has been suppressed in Equation\ref{eq:capped_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
 
@@ -1171,6 +1127,7 @@ The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix 
 \end{array}
 \right),
 \end{equation}
+\end{strip}
 $\bs{R}$ is upper-diagonal with only non-zero entries on the diagonal and the super-diagonal.
 
 \subsubsection{Capped Subsystem Matrix-vector Representation}
@@ -1179,75 +1136,13 @@ The matrix-vector formula representing the capped subsystem is \begin{equation}
 \vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of capped state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the capped subsystem (Figure\ref{eq:capped_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
 With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
 
-\subsection{The density dependent initiation model}
-
-Specifically, we assume the start codon must be unoccupied by a ribosome in order for translation initiation to be successful.
-As a consequence of this assumption, the probability of a ribosome occupying a given position on an mRNA with a ribosome load of $i$ is simply $i/\imax$.
-Thus, the probability the start codon is unoccupied is $1-i/\imax$ and, in turn, our translation initiation rate function can be defined as, 
-\begin{equation}
-\kappa(i)=\kappa_0\left(1-\frac{i}{\imax}\right),
-\end{equation} 
-where $\kappa_0$ is a gene specific parameter that describes the rate at which capped mRNAs encounter and are bound by ribosomes within the cytosol (i.e.~it is an implicit function of the abundance of free ribosomes which we assume is constant).
-
-%\mpar{mikeg: 10/15/19: updated $\tau$ to explicitly include $1/\imax$. Earlier notes indicate this term was implicitly absorbed into $\tau_0$.
- % mikeg: 10/22/19: updated to introduce $\tau^\prime_0$ and then reabsorb \imax into $\tau_0$ carrying this term through.
-  %TODO update all later instances of $\tau_0$ with $\tau^\prime_0/\imax$ and then simplify math by canceling out \imax term and changing notation to remove the $\prime$ since it becomes unnecessary at that point.
-  %mikeg: 03/11/21 Completed above changes (but haven't dealt with canceling)}
-% \mpar{Should this be $i/(\tau \imax)$?
-%  On re-consideration that seems to sense since the probability a ribosome is at the final position is $1/\imax$.
-%  However, I seem to recall deriving this result that indicate otherwise.
-%  This shouldn't affect anything in this paper, but might explain some issues when fitting the data to model.
-%  TODO for mike: Check notes.}
-	%% Mike, the arguement for the derivation was as follows (if I remember correctly): For an mRNA with i ribosomes bound, it was assumed that each ribsome had an equal probability of being in any position, therefore, a ribosome was equally likely to be completing translation, therefore the probability of translation being completed was equal to the number of ribosomes bound, and thus the rate proportional to the number of ribosomes bound, leading to the form provided in eq:tau.  Does that stack up with what you were thinking?
-
-
-Incorporating Equation 1 into the DII system yeild the density dependent intiation (DDI) model: %\subsubsection{The capped subsystem with Assumed Forms for $\kappa(i)$, $\tau(i)$, and $\mu(i)$}\label{sec:capped_simp}
-\begin{align*}
-\frac{dm_{0}}{dt} &= \lambda+\tau(1)m_{1}-\left(\kappa_0\left(1-\frac{0}{\imax}\right) + \mu(0)\right)m_{0} \\
-\frac{dm_{1}}{dt} &= \kappa(0)m_{0}+\tau(2)m_{2}-\left(\tau(1)+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu(1)\right) m_{1}\\
-& \vdots & \\
-\frac{dm_{i}}{dt} &= \kappa(i-1)m_{i-1}+\tau(i+1)m_{i+1}-\left(\tau(i)+\kappa_0\left(1-\frac{i-1}{\imax}\right)+\mu(i)\right) m_{i} \\
-& \vdots & \\
-\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left(\tau(\imax)+\mu(\imax)\right) m_{\imax}\\
-\end{align*}
-and the decapped subsystem is unchanged.
-%These equations are redundant. %%% NOT ADDRESSED AS OF 8/7 0
 
 \subsubsection{Capped state steady state solution}
-\begin{enumerate}
-	\item m
-
-
-\end{enumerate}
-
-
-
-
-
 
 The capped system can be split into two components: Total transcripts in the capped state and how the transcripts are distributed across polysome classes. 
 From manual exploration of model solutions of the capped state at low \imax values. 
 We discovered that the capped class transcript number is determined by $\lambda/ \mu$
-If you take the simplest version of the model consisting of only the zeroth capped class.
-	\begin{equation} 
-		\frac{dm_{0}}{dt} = \lambda + \mu m_{0}
-	\end{equation}
-which, at equilibrium results in,
-	\begin{equation}
-		m_{0} = \lambda/\mu
-	\end{equation}
-When the number of classes increases we find the the $m_{0}$ solution always has $\lambda/ \mu$ factored out. As the $m_{0}$ solution propagates to higher classes all classes gain a $\lambda/ \mu$ out front.
-This means you can factor out $\lambda/ \mu$ from the whole system. 
-This result makes logical sense as the overall transcript production rate into the capped state has to equal the decapping rate out of it. For only one class $\lambda = \mu$. 
-For mulitple classes, as the transcripts get distrbuted, each class contribute a weighted port of the total $\mu$. Therefore, adding all the contributions togeter equals:
-
-	\begin{equation}
-		\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i},
-	\end{equation}
-Where $\lambda$ is only a scaling factor for the system as a whole. I.e. the distribution of transcripts across all classes is determined by $\kappa$, $\tau$, $\mu$ and $\delta$. %This matches my biological intuition. Translational regulation of gene expression only affects the proten production of a subset of expressed transcripts under a particular condition. This means that there are translationally regulated  and unregulated subsets. Regulated subsets change the distribution of ribosmes on the population of transcripts, while translationally unregulated subset's protein levels change with transcript abundance. Identifying members of these two subsets in different conditions is of great interest.
-$\mu$ affects both the total transcript abundance and the distribution of polysome classes across a particular species of transcript.
-First $\mu$ controls the rate of outflow from capped unto decapped, and second it shifts mRNAs to lower polysome classes.
-		%mu has two effects. First it is one of the main determining factors of the overall abundance of transcripts. Second it weighs every category in the capped class except m \imax. At high mu it quickly dominates moving transcripts quickly into the decapped class allowing for low ribosomal loading. At small mu values it allows for translation. 1/mu is the primary degradation rate of the system and mostly specifies the half life of a transcript. 	
+	
 The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
 	\begin{equation*}
 		\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
@@ -1285,124 +1180,13 @@ We finally arrive at,
 	\end{equation}
 
 
-The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.
-This formulation has three interesting properties
-
-First it gives a determinant free solution to our system. Now, to obatin a full solution of the capped solution to our model we only need the first column of the Adjugate matrix.
-Second it splits the two funtions of $\mu$; Its effect on transcript number and its effect on transcript distribution. And allows for their separate analysis.
-Third, it permits analysis of the underlying transcript distribution even under conditions where the model has no solution. For example, when $\mu$ = 0, both solutions are indeterminate. However, the determinant free solution allows for us to explore what the transcript distribution would be when $\mu$=0.
-	
-
-\subsubsection{Decapped Subsystem steady state solution}
-
-Starting with the decapped subsystem of equations:
-\begin{align*}
-\frac{dm_{0}^{*}}{dt} &= \mu(0)m_{0}+\tau(1)m_{1}^{*}-\delta m_{0}^{*} \\
-\frac{dm_{1}^{*}}{dt} &= \mu(1)m_{1}+\tau(2)m_{2}^{*}-\tau(1)m_{1}^{*} \\
-& \vdots & \\
-\frac{dm_{i}^{*}}{dt} &= \mu(i)m_{i}+\tau(i+1)m_{i+1}^{*}-\tau(i)m_{i}^{*} \\
-& \vdots & \\
-\frac{dm_{\imax}^{*}}{dt} &= \mu(\imax)m_{\imax}^{*}-\tau(\imax)m_{\imax} \\
-\end{align*}
-
-We get the following solutions at steady state:
-\begin{align*}
-m_{0}^{*}  &= \frac{\mu\: m_{0}+\tau(1)m_{1}^{*}}{\delta} \\
-m_{1}^{*}  &= \frac{\mu \; m_{1}+\tau(2)m_{2}^{*}}{\tau(1)} \\
-& \vdots & \\
-m_{i}^{*}  &= \frac{\mu \; m_{i}+\tau(2)m_{i+1}^{*}}{\tau(i)} \\
-& \vdots & \\
-m_{\imax}^{*}  &= \frac{\mu \; m_{\imax}}{\tau(\imax)} \\
-\end{align*}
-
-We can rearrange the solutions and simplify to find,
-\begin{align*}
-m_{0}^{*}  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\
-m_{1}^{*}  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\
-& \vdots & \\
-m_{i}^{*}  &= \frac{\mu}{\tau i}\sum_{j=i}^{\imax}m_{j}  \\
-& \vdots & \\
-m_{\imax}^{*}  &= \frac{\mu}{\tau \imax}\sum_{j=\imax}^{\imax}m_{j}  \\
-\end{align*}
-We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by the following.
-\begin{equation}
-	\frac{\lambda}{\mu}=\sum_{i=0}^{\imax}m_{i}
-\end{equation}
-Therefore,
-\begin{equation}
-		1= \frac{\mu}{\lambda}\sum_{i=0}^{\imax}m_{i}
-\end{equation}
-For any $i=j$ where $S_{j}$ is cummulative probability from $i=class j$ to $ i= \imax$.
-\begin{equation}
-		S_{j} = \frac{\mu}{\lambda}\sum_{i=j}^{\imax}m_{i}
-\end{equation}
-Now the solution becomes,
-\begin{align}
-m_{0}^{*}  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \\ \nonumber
-m_{1}^{*}  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
-& \vdots & \\ \nonumber
-m_{i}^{*}  &= \frac{\lambda}{i \: \tau}S_{i}  \\ \nonumber
-& \vdots & \\ \nonumber
-m_{\imax}^{*}  &= \frac{\lambda}{\imax \: \tau}S_{\imax}  \\ \nonumber
-\end{align}
-
-The total transcript population in the decapped state does not have a closed form solution. However it can be summarized as follows,
-
-\begin{equation}
-  \msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \sum_{i=0}^\imax \frac{\lambda}{\tau i}S_{i}
-  % \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1} + \hdots + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
-\end{equation}
-This can be further shortened using element wise multiplication denoted by the hadamard product ($\odot$).
-\begin{equation}  
-	\msumstar = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
-\end{equation}
-Where $\vec{S}$ is a vector of all the cummulative sums and $\vec{l}$ is a vector of $1,1/2,...,1/i,...,1/\imax$ . The $S_{i}$ have the following arrangement $S_{0}=1$ and $ S_{0} \ge S_{1} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$. This depends on the distribution of $\vec{m}$ of the capped state. Exploring the result we find a few properties of our system. Transcription rate ($\lambda$) again serves only to scale the entire system. The first decapped class's population $m_{0}^{*}$ is only dependent on the mRNA clearance rate ($\delta$). The total mRNA in the decapped state can wildly vary according to the value of degradation. In this work we shall set delta to be large and focus on the effects of the decapping rate and elongation/termination rate. This result will be explored further in the results.
-
-To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/\msumstar$ which results in,
-\begin{align*}
-	p_{0}^{*} &= \frac{1}{1 + \frac{\delta}{\tau}\vec{S} \odot \vec{l}}	\\
-  	p_{j}^{*} &= \frac{S_{j}}{j(\frac{\tau}{\delta} + \vec{S} \odot \vec{l})}	\:\:\:\:, for j=1, 2, ..., i, ..., \imax
-\end{align*}
+The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.	
 
 
-
-
-
-
-\subsection{Complete system mRNA population}
-The total mRNA ($\msumtot$) in the system is defined by,
-\begin{equation}
-	\msumtot = \lambda(\frac{1}{\mu} + \frac{1}{\delta} + \frac{1}{\tau}\vec{S} \odot \vec{l}	) 
-\end{equation}
-
-%%This doesn't appear to be used explicitly in the text (though I believe a figure plots these).
-  %% Nevertheless, if you want to include it, move it to the appendix.
-\ifthenelse{1 = 0} {
-  To understand how mRNA is divided  between the two subsystem we can calculate the log odd of finding an mRNA in the decapped class. Again we will set $\delta$ to very large.
-\begin{align*}
-	\mfrac &= \msum/\msumtot = \frac{\frac{\lambda}{\mu}}{\lambda(\frac{1}{\mu} + \frac{1}{\tau}\vec{S} \odot \vec{l})}	\\
-	\mfrac &= \frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}	
-\end{align*}
-
-  Then you calculate the odds,
-\begin{align}
-	odds_{m}& = \frac{\mfrac}{1-\mfrac}\\
-  odds_{m} &= \frac{\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}{1-\frac{1}{(1  + \frac{\mu}{\tau}\vec{S} \odot \vec{l})}}
-             1152
-\end{align}
-It simplifies to,
-\begin{align}
-  odds_{m} &= \frac{1}{\frac{\mu}{\tau}\vec{S} \odot \vec{l}} \\
-  log_{10}(odds_{m}) &= -log_{10}(\frac{\mu}{\tau}\vec{S} \odot \vec{l}) 
-\end{align}
-} {% empty else
-}
-\cite{RN1}
-
-
+%\bibliographystyle{NAR-natbib}
 \bibliographystyle{plain}
-\bibliography{Modeling_RNA_Populations}
-\nocite{RN1}
+\bibliography{Modeling_RNA_Populations_2}
+
 %\printbibliography
 
 %\subsection{Additional text}
