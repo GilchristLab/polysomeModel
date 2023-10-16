@@ -1,0 +1,1 @@
+NAR_latex_template_2020/NAR.cls
