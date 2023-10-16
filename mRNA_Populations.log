@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.9.25)  29 SEP 2023 12:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.9.25)  13 OCT 2023 10:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1248,63 +1248,107 @@ Overfull \hbox (231.78925pt too wide) in paragraph at lines 220--220
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 221--230
+Underfull \hbox (badness 1990) in paragraph at lines 221--223
+\OT1/phv/b/n/10 sion and how to co-opt these mech-a-ni-
+ []
+
+
+Underfull \hbox (badness 1924) in paragraph at lines 221--223
+\OT1/phv/b/n/10 sms for bio-tech appli-ca-ti-ons. Trans-la-tion
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 221--223
 \OT1/phv/b/n/10 and mRNA degra-da-tion are key cou-pled
+ []
+
+
+Underfull \hbox (badness 1715) in paragraph at lines 221--223
+\OT1/phv/b/n/10 mRNA: sta-ble and acti-vely trans-la-ting 5'
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 256--265
-\OT1/ptm/m/n/10 a ribo-some is alre-ady pre-sent on the tran-script,
+
+Package natbib Warning: Citation `RN1' on page 1 undefined on input line 241.
+
+
+Package natbib Warning: Citation `RN2' on page 1 undefined on input line 241.
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 241--242
+\OT1/ptm/m/n/10 In eukar-yo-tes, trans-la-tion ini-ti-a-tion con-si-sts of a
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 256--265
-\OT1/ptm/m/n/10 (Pele-ch-ano 2015). This allows for pro-tein to be
+Package natbib Warning: Citation `RN3' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN3' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN4' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN5' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN6' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN7' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN8' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN9' on page 1 undefined on input line 244.
+
+
+Package natbib Warning: Citation `RN10' on page 1 undefined on input line 244.
+
+
+Underfull \hbox (badness 1205) in paragraph at lines 244--245
+\OT1/ptm/m/n/10 which does not per-mit for any more pro-tein to
  []
 
-
-Underfull \hbox (badness 1043) in paragraph at lines 256--265
-\OT1/ptm/m/n/10 2018, Ikeu-chi 2019). The resul-ting 3' fra-gments
- []
-
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 265.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 245.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 265.
+(Font)              size <7> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 265.
+(Font)              size <5> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 265.
+(Font)              size <7> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
-(Font)              size <5> substituted on input line 265.
+(Font)              size <5> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 265.
+(Font)              size <7> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 265.
+(Font)              size <5> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 265.
+(Font)              size <7> substituted on input line 245.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 265.
+(Font)              size <5> substituted on input line 245.
 
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-65.
+45.
 (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
@@ -1318,27 +1362,72 @@ uc6/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 1342) in paragraph at lines 267--276
+
+Package natbib Warning: Citation `RN11' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN12' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN13' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN14' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN15' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN15' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN16' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN17' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN18' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN19' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN20' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN21' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN22' on page 2 undefined on input line 247.
+
+
+Package natbib Warning: Citation `RN22' on page 2 undefined on input line 247.
+
+
+Underfull \hbox (badness 1342) in paragraph at lines 247--248
 []\OT1/ptm/m/n/10 Both mRNA decay and trans-la-tion have been
  []
 
-<Images/Figure1_biomodel_V3.png, id=18, 1286.6469pt x 1012.2618pt>
+
+Underfull \hbox (badness 1033) in paragraph at lines 250--251
+\OT1/ptm/m/n/10 decap-ping rate (short half-life) will pro-duce just
+ []
+
+<Images/Figure1_biomodel_V3.png, id=19, 1286.6469pt x 1012.2618pt>
 File: Images/Figure1_biomodel_V3.png Graphic file (type png)
 <use Images/Figure1_biomodel_V3.png>
-Package pdftex.def Info: Images/Figure1_biomodel_V3.png  used on input line 289
+Package pdftex.def Info: Images/Figure1_biomodel_V3.png  used on input line 259
 .
 (pdftex.def)             Requested size: 341.43306pt x 268.61879pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1325) in paragraph at lines 303--309
+Underfull \hbox (badness 1325) in paragraph at lines 273--279
 \OT1/ptm/m/n/10 rate $\OML/cmm/m/it/10 ^^V$ \OT1/ptm/m/n/10 and move into the d
 ecap-ped class $\OML/cmm/m/it/10 m[]\OMS/cmsy/m/n/10 ^^C$\OT1/ptm/m/n/10 .
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 312--319
+Underfull \hbox (badness 1072) in paragraph at lines 282--289
 \OT1/ptm/m/n/10 ribo-some occu-pies. This attem-pts to account for
  []
 
@@ -1346,37 +1435,37 @@ Underfull \hbox (badness 1072) in paragraph at lines 312--319
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 5475) in paragraph at lines 330--335
+
+Package natbib Warning: Citation `RN3' on page 3 undefined on input line 303.
+
+
+Package natbib Warning: Citation `RN23' on page 3 undefined on input line 303.
+
+
+Package natbib Warning: Citation `RN4' on page 3 undefined on input line 303.
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 300--305
 []\OT1/ptm/m/n/10 Capped tran-scri-pts move through rounds of
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 330--335
+Underfull \hbox (badness 1286) in paragraph at lines 300--305
 \OT1/ptm/m/n/10 any poly-some class in the cap-ped state $\OML/cmm/m/it/10 m[]$
  \OT1/ptm/m/n/10 the
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 330--335
+Underfull \hbox (badness 1314) in paragraph at lines 300--305
 \OT1/ptm/m/n/10 tran-script can be decap-ped at rate $\OML/cmm/m/it/10 ^^V$ \OT
 1/ptm/m/n/10 and move
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 330--335
-\OT1/ptm/m/n/10 decay in eukar-yo-tes (Hu 2009, Pele-ch-ano 2015,
- []
-
-
-Underfull \hbox (badness 1546) in paragraph at lines 330--335
-\OT1/ptm/m/n/10 tran-script com-plete trans-la-tion, the mRNA is in
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (150.83817pt too wide) detected at line 350
+Overfull \hbox (150.83817pt too wide) detected at line 320
 []
  []
 
@@ -1390,7 +1479,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (43.30423pt too wide) detected at line 438
+Overfull \hbox (43.30423pt too wide) detected at line 408
  $\OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 m[] \OT1/cmr/m/n/1
 0 = [] + []\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 + [] + []\OML/cmm/m/it/10 S[] \
 OT1/cmr/m/n/10 + [] + []\OML/cmm/m/it/10 S[]$ 
@@ -1400,44 +1489,54 @@ OT1/cmr/m/n/10 + [] + []\OML/cmm/m/it/10 S[]$
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Underfull \hbox (badness 1571) in paragraph at lines 469--470
+Underfull \hbox (badness 1571) in paragraph at lines 439--440
 \OT1/ptm/m/it/10 pro-du-ction[] \OT1/ptm/m/n/10 The expe-cted ribo-so-mal load 
 for the
  []
 
 
-Overfull \hbox (115.03464pt too wide) detected at line 478
+Overfull \hbox (115.03464pt too wide) detected at line 448
  $[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 f[] \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/
 10 E[] [] \OT1/cmr/m/n/10 + (1 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f[]\OT1/cm
 r/m/n/10 ) \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10 E[] []$  
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-87.
+57.
 (C:\Users\rauc6\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+
+Package natbib Warning: Citation `RN41' on page 6 undefined on input line 457.
+
+
+Package natbib Warning: Citation `RN43' on page 6 undefined on input line 457.
+
+
+Package natbib Warning: Citation `RN42' on page 6 undefined on input line 457.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 \OT1/ptm/m/n/10 Code to solve the model was writ-ten and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 \OT1/ptm/m/n/10 is fre-ely avai-la-ble as an R package at
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 \OT1/ptm/m/n/10 (https://github.com/rurquidi/Ribosome). To
  []
 
 
-Underfull \hbox (badness 2529) in paragraph at lines 487--488
+Underfull \hbox (badness 2529) in paragraph at lines 457--458
 \OT1/ptm/m/n/10 solve the cap-ped subsy-stem of the model, the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 \OT1/pcr/m/n/10 solve.tridiag \OT1/ptm/m/n/10 function from \OT1/pcr/m/n/10 lim
 Solve
  []
@@ -1446,17 +1545,46 @@ Solve
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 491--496
+
+Package natbib Warning: Citation `RN26' on page 6 undefined on input line 462.
+
+
+Package natbib Warning: Citation `RN25' on page 6 undefined on input line 462.
+
+
+Package natbib Warning: Citation `RN24' on page 6 undefined on input line 462.
+
+
+Package natbib Warning: Citation `RN27' on page 6 undefined on input line 464.
+
+
+Package natbib Warning: Citation `RN28' on page 6 undefined on input line 464.
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 461--466
 \OT1/ptm/m/n/10 deri-ved from the lite-ra-ture. Pro-tein leng-ths were
  []
 
 
-Underfull \hbox (badness 3078) in paragraph at lines 491--496
+Underfull \hbox (badness 3078) in paragraph at lines 461--466
 \OT1/ptm/m/n/10 extra-cted from the Ensembl (ver-sion 109) and
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 520--521
+
+Package natbib Warning: Citation `RN13' on page 6 undefined on input line 472.
+
+
+Package natbib Warning: Citation `RN29' on page 6 undefined on input line 481.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+
+Package natbib Warning: Citation `RN29' on page 7 undefined on input line 485.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
 []\OT1/ptm/m/n/10 Where the gene spe-ci-fic sca-ling factor
  []
 
@@ -1464,10 +1592,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 520--521
 File: Images/2023-07-04_parameter_histograms.png Graphic file (type png)
 <use Images/2023-07-04_parameter_histograms.png>
 Package pdftex.def Info: Images/2023-07-04_parameter_histograms.png  used on in
-put line 524.
+put line 494.
 (pdftex.def)             Requested size: 341.43306pt x 473.71906pt.
 
-Underfull \hbox (badness 1112) in paragraph at lines 544--553
+Underfull \hbox (badness 1112) in paragraph at lines 514--523
 []\OT1/ptm/m/n/10 The analy-ti-cal ste-ady state solu-tion eq. (\OT1/ptm/b/n/10
  5[]\OT1/ptm/m/n/10 ) is
  []
@@ -1476,10 +1604,10 @@ Underfull \hbox (badness 1112) in paragraph at lines 544--553
 File: Images/2023-07-04_Unmarked_slices.png Graphic file (type png)
 <use Images/2023-07-04_Unmarked_slices.png>
 Package pdftex.def Info: Images/2023-07-04_Unmarked_slices.png  used on input l
-ine 557.
+ine 527.
 (pdftex.def)             Requested size: 213.39566pt x 330.8402pt.
 
-Overfull \hbox (1.60643pt too wide) in paragraph at lines 557--558
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 527--528
 [][] 
  []
 
@@ -1487,10 +1615,10 @@ Overfull \hbox (1.60643pt too wide) in paragraph at lines 557--558
 File: Images/2023-07-04_Marked_slices.png Graphic file (type png)
 <use Images/2023-07-04_Marked_slices.png>
 Package pdftex.def Info: Images/2023-07-04_Marked_slices.png  used on input lin
-e 575.
+e 545.
 (pdftex.def)             Requested size: 213.39566pt x 331.12933pt.
 
-Overfull \hbox (1.60643pt too wide) in paragraph at lines 575--576
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 545--546
  [] 
  []
 
@@ -1501,12 +1629,15 @@ ng Graphic file (type png)
 <use Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.pn
 g>
 Package pdftex.def Info: Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_ma
-rking_with_labels.png  used on input line 592.
+rking_with_labels.png  used on input line 562.
 (pdftex.def)             Requested size: 213.39566pt x 273.9091pt.
 
-Overfull \hbox (1.60643pt too wide) in paragraph at lines 592--593
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 562--563
  [] 
  []
+
+
+Package natbib Warning: Citation `RN27' on page 7 undefined on input line 571.
 
 <Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png, id=
 46, 578.16pt x 438.6789pt>
@@ -1515,10 +1646,10 @@ File: Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png
 <use Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png>
 
 Package pdftex.def Info: Images/2023-07-09_Figure2_Marking_Rate_range_medianlen
-gth_with_labels.png  used on input line 610.
+gth_with_labels.png  used on input line 580.
 (pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
 
-Underfull \hbox (badness 1087) in paragraph at lines 617--621
+Underfull \hbox (badness 1087) in paragraph at lines 587--591
 \OT1/ptm/m/it/10 tha-li-ana\OT1/ptm/m/n/10 , where the esti-ma-ted decap-ping r
 ates $\OML/cmm/m/it/10 ^^V$
  []
@@ -1534,7 +1665,7 @@ png Graphic file (type png)
 <use Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.p
 ng>
 Package pdftex.def Info: Images/2023-07-09_Figure2_At_Marking_Rate_range_median
-length_with_labels.png  used on input line 626.
+length_with_labels.png  used on input line 596.
 (pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1546,7 +1677,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <Images/2023-07-28_logodds.png, id=55, 361.35pt x 361.35pt>
 File: Images/2023-07-28_logodds.png Graphic file (type png)
 <use Images/2023-07-28_logodds.png>
-Package pdftex.def Info: Images/2023-07-28_logodds.png  used on input line 653.
+Package pdftex.def Info: Images/2023-07-28_logodds.png  used on input line 623.
 
 (pdftex.def)             Requested size: 199.16928pt x 199.16766pt.
 
@@ -1557,10 +1688,10 @@ arked_slices.png (PNG copy)>]
 <Images/MRL.png, id=59, 429.7656pt x 227.4096pt>
 File: Images/MRL.png Graphic file (type png)
 <use Images/MRL.png>
-Package pdftex.def Info: Images/MRL.png  used on input line 669.
+Package pdftex.def Info: Images/MRL.png  used on input line 639.
 (pdftex.def)             Requested size: 341.43306pt x 180.67178pt.
 
-Underfull \hbox (badness 1571) in paragraph at lines 680--686
+Underfull \hbox (badness 1571) in paragraph at lines 650--656
 \OT1/ptm/m/n/10 pro-tein out-put are shown in Figure 10. As the
  []
 
@@ -1568,37 +1699,37 @@ Underfull \hbox (badness 1571) in paragraph at lines 680--686
 File: Images/2023-07-17_Protein_Production_v2.png Graphic file (type png)
 <use Images/2023-07-17_Protein_Production_v2.png>
 Package pdftex.def Info: Images/2023-07-17_Protein_Production_v2.png  used on i
-nput line 690.
+nput line 660.
 (pdftex.def)             Requested size: 341.43306pt x 315.61241pt.
 
-Underfull \hbox (badness 1152) in paragraph at lines 699--707
+Underfull \hbox (badness 1152) in paragraph at lines 669--677
 \OT1/ptm/m/n/10 of $[]$ sho-wed a signi-fi-cant posi-tive cor-re-la-tion to
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 699--707
+Underfull \hbox (badness 1226) in paragraph at lines 669--677
 \OT1/ptm/m/n/10 ribo-some abun-da-nces from each sin-gle mole-cule
  []
 
 <Images/Duc_Song_vs_model_log.png, id=61, 361.35pt x 361.35pt>
 File: Images/Duc_Song_vs_model_log.png Graphic file (type png)
 <use Images/Duc_Song_vs_model_log.png>
-Package pdftex.def Info: Images/Duc_Song_vs_model_log.png  used on input line 7
-13.
+Package pdftex.def Info: Images/Duc_Song_vs_model_log.png  used on input line 6
+83.
 (pdftex.def)             Requested size: 213.39566pt x 213.39867pt.
 
-Overfull \hbox (1.60643pt too wide) in paragraph at lines 713--714
+Overfull \hbox (1.60643pt too wide) in paragraph at lines 683--684
  [] 
  []
 
 
-Underfull \hbox (badness 1430) in paragraph at lines 723--728
+Underfull \hbox (badness 1430) in paragraph at lines 693--698
 \OT1/ptm/m/n/10 In this study we deve-lop, analyze, and vali-date
  []
 
 [10 <./Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.
 png (PNG copy)>]
-Underfull \hbox (badness 1087) in paragraph at lines 738--746
+Underfull \hbox (badness 1087) in paragraph at lines 708--716
 \OT1/ptm/m/n/10 mRNA poly-some clas-ses are pro-por-ti-o-nal to the
  []
 
@@ -1610,13 +1741,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11 <./Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.p
 ng (PNG copy)>]
-Underfull \hbox (badness 1152) in paragraph at lines 750--756
+Underfull \hbox (badness 1152) in paragraph at lines 720--726
 \OT1/cmr/m/n/10 0$ \OT1/ptm/m/n/10 and decli-nes rapidly with with ribo-some lo
 ad
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 750--756
+Underfull \hbox (badness 1142) in paragraph at lines 720--726
 \OML/cmm/m/it/10 i$\OT1/ptm/m/n/10 . As $\OML/cmm/m/it/10 ^^T[]=^^V$ \OT1/ptm/m
 /n/10 incre-a-ses, the distri-bu-tion of cap-ped
  []
@@ -1629,38 +1760,38 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12 <./Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_label
 s.png (PNG copy)>]
-Underfull \hbox (badness 1810) in paragraph at lines 773--778
+Underfull \hbox (badness 1810) in paragraph at lines 743--748
 []\OT1/ptm/m/n/10 The full model com-bi-nes the distri-bu-ti-ons of
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 773--778
+Underfull \hbox (badness 1675) in paragraph at lines 743--748
 \OT1/ptm/m/n/10 to mRNA popu-la-tion that is often mea-su-red in
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 779--787
+Underfull \hbox (badness 3895) in paragraph at lines 749--757
 []\OT1/ptm/m/n/10 The model for-ma-li-zes the inter-play betw-een
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 796--799
+Underfull \hbox (badness 1292) in paragraph at lines 766--769
 \OT1/ptm/m/n/10 (Wein-berg 2016) and found a strong cor-re-la-tion
  []
 
 [13 <./Images/2023-07-28_logodds.png>]
-Underfull \hbox (badness 1472) in paragraph at lines 800--804
+Underfull \hbox (badness 1472) in paragraph at lines 770--774
 []\OT1/ptm/m/n/10 The $\OML/cmm/m/it/10 ^^T[]$ \OT1/ptm/m/n/10 esti-ma-tes uti-
 li-zed are only for highly
  []
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 810--817
+Underfull \hbox (badness 1137) in paragraph at lines 780--787
 \OT1/ptm/m/n/10 of the pro-te-ctive effe-cts of ribo-some asso-ci-a-tion
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 810--817
+Underfull \hbox (badness 1406) in paragraph at lines 780--787
 \OT1/ptm/m/n/10 mRNAs neces-sary for pro-tein pro-du-ction. Deve-
  []
 
@@ -1668,7 +1799,7 @@ Underfull \hbox (badness 1406) in paragraph at lines 810--817
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14 <./Images/MRL.png (PNG copy)>]
-Underfull \hbox (badness 1168) in paragraph at lines 1093--1096
+Underfull \hbox (badness 1168) in paragraph at lines 1063--1066
 \OT1/ptm/m/n/10 For sim-pli-city, we begin by defi-ning our model
  []
 
@@ -1676,13 +1807,13 @@ Underfull \hbox (badness 1168) in paragraph at lines 1093--1096
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 1105--1121
+Underfull \hbox (badness 1297) in paragraph at lines 1075--1091
 \OT1/ptm/m/n/10 class $\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\
 OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 at a rate.. Ribo-so-mal bind mRNAs
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 1105--1121
+Underfull \hbox (badness 1708) in paragraph at lines 1075--1091
 \OT1/ptm/m/n/10 a ribo-some at any given codon posi-tion within
  []
 
@@ -1693,33 +1824,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 1127.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 1097.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 1127.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 1097.
+
+
+LaTeX Warning: Reference `eq:full_matrix' on page 16 undefined on input line 10
+99.
 
 
 LaTeX Warning: Reference `eq:full_matrix' on page 16 undefined on input line 11
-29.
-
-
-LaTeX Warning: Reference `eq:full_matrix' on page 16 undefined on input line 11
-33.
+03.
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 16 undefined on input line 
-1140.
+1110.
 
 
 LaTeX Warning: Reference `eq:decapped_matrix' on page 16 undefined on input lin
-e 1143.
+e 1113.
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 1145--1146
+Underfull \hbox (badness 1237) in paragraph at lines 1115--1116
 \OT1/ptm/m/n/10 and is tri-diagonal with non-zero entries on the
  []
 
 
-Overfull \hbox (300.96577pt too wide) detected at line 1156
+Overfull \hbox (300.96577pt too wide) detected at line 1126
  $[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 :$  
  []
 
@@ -1729,27 +1860,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [16 <./Images/Duc_Song_vs_model_log.png>]
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
-1157.
+1127.
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
-1158.
+1128.
 
 
 LaTeX Warning: Reference `eq:full_matrix' on page 17 undefined on input line 11
-60.
+30.
 
 
-Overfull \hbox (109.09795pt too wide) detected at line 1173
+Overfull \hbox (109.09795pt too wide) detected at line 1143
  $[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 ;$  
  []
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 17 undefined on input line 
-1179.
+1149.
 
 
-Overfull \hbox (137.291pt too wide) detected at line 1212
+Overfull \hbox (137.291pt too wide) detected at line 1182
 []
  []
 
@@ -1757,7 +1888,7 @@ Overfull \hbox (137.291pt too wide) detected at line 1212
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (3.238pt too wide) detected at line 1278
+Overfull \hbox (3.238pt too wide) detected at line 1248
  $[] \OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@ [] [] \OML/cmm
 /m/it/10 ^^U[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@[] \OML/cmm/m/it/10 ^^U \O
 T1/cmr/m/n/10 = []$ 
@@ -1776,17 +1907,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-Package natbib Warning: Citation `RN1' on page 20 undefined on input line 1400.
-
-
 (mRNA_Populations.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 )
 
-Package natbib Warning: Citation `RN1' undefined on input line 1405.
+Package natbib Warning: Citation `RN1' undefined on input line 1374.
 
 
 Package natbib Warning: There were undefined citations.
@@ -1815,7 +1942,7 @@ Here is how much of TeX's memory you used:
  43393 multiletter control sequences out of 15000+600000
  595370 words of font info for 121 fonts, out of 8000000 for 9000
  1150 hyphenation exceptions out of 8191
- 84i,14n,89p,974b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,89p,1336b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmex10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1839,7 +1966,7 @@ ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/rauc6/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/rauc6/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/rauc6/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mRNA_Populations.pdf (20 pages, 1911017 bytes).
+Output written on mRNA_Populations.pdf (20 pages, 1910969 bytes).
 PDF statistics:
  189 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
