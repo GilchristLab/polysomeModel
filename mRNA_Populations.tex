@@ -1,4 +1,4 @@
-\documentclass[a4,center,fleqn]{NAR}
+\documentclass[a4,center,fleqn,nocrop]{NAR}
 
 %% Try and use Arial font.
 %% Following instructions at (https://tex.stackexchange.com/a/23960/110759)
@@ -16,7 +16,7 @@
 %\documentclass[1p,review]{elsarticle}
 %\usepackage{pdflscape}
 %\usepackage{subcaption}
-\usepackage[margin=3cm]{geometry} %changed from 2.5cm to 3cm so that margin notes don't get cut off.
+%\usepackage[margin=3cm]{geometry} %changed from 2.5cm to 3cm so that margin notes don't get cut off.
 %%\usepackage[usenames,dvipsnames]{color}
 \usepackage{amsfonts}%
 \usepackage{amsmath}
@@ -26,18 +26,18 @@
 \usepackage{array}
 \usepackage{bibentry}
 \usepackage{blkarray}
-\usepackage{booktabs}
+%\usepackage{booktabs}
 \usepackage{caption}
 \usepackage{cuted}
 \usepackage{dsfont}
 \usepackage{enumerate}
-\usepackage{float}
+%\usepackage{float}
 \usepackage{framed}
-\usepackage{geometry}
-\usepackage{graphics}
+\usepackage{geometry} % this package leads to stray printer marks in the middle of the page
+%\usepackage{graphics}
 \usepackage{graphicx}
 \usepackage{ifthen}
-\usepackage{lineno}
+%\usepackage{lineno}
 \usepackage{multirow}
 \usepackage{NAR-natbib}
 \usepackage{pdflscape}
@@ -45,9 +45,9 @@
 \usepackage{setspace}
 \usepackage{subcaption}
 \usepackage{tablefootnote}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usetikzlibrary{shapes,arrows,positioning,calc,fit}
+%\usepackage{tabularx}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows,positioning,calc,fit}
 \usepackage{url}
 \usepackage{xargs}
 
@@ -58,8 +58,8 @@
 \usepackage{xspace} %%needed for mike's commands
 
 %% Define mike's margin par
-\newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
-\newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
+%\newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
+%\newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
 
 %%custom commands for sanity
 \newcommand{\imax}{\ensuremath{{i_{\max}}}\xspace}
@@ -89,107 +89,10 @@
 \newcommand{\MRLs}{\ensuremath{\bar{i}\text{s}}\xspace}
 %\doublespacing
 
+% Cribbed from Nate's now removed commands
+\let\bs\boldsymbol
 
 %%%%% END MIKE'S COMMANDS %%%%%
-
-
-
-
-%----------------------------------------------------------
-%%\biboptions{round,authoryear}
-\AtBeginDocument{\renewcommand{\bibname}{References}}
-\renewcommand{\floatpagefraction}{0.1}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\floatstyle{plain}
-\restylefloat{table}
-\restylefloat{figure}
-
-%Quicklimit
-\newcommand\limf[1]{\lim_{#1 \to \infty}}
-%quick partials
-\newcommand\p[2]{\frac{\partial #1}{\partial #2}}
-\newcommand\ptwo[2]{\frac{\partial^2 #1}{\partial #2^2}}
-\newcommand\mptwo[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
-%var text
-\newcommand{\var}{\mathrm{var}}
-%indicator
-\newcommand\ind[1]{\mathds{1}_{\{#1\}}}
-\newcommandx{\iton}[3][1=i,2=1,3=n]{_{#1 = #2}^{#3}}
-%Norm Distrubtion
-\newcommand\isnorm{\sim N(\gm,\gs^{2})}
-\newcommand\issnorm{\sim N(0,1)}
-\newcommand\isnormd[2]{\sim N(#1,#2)}
-\newcommand\isbeta{\sim Beta(\alpha,\beta)}
-\newcommand\isbetad[2]{\sim Beta(#1,#2)}
-%----
-\newcolumntype{A}{ >{$} r <{$} @{} >{${}} l <{$} } % A for "align"
-%% (1) "r" column in math mode:          >{$} r <{$}
-%% (2) no space:                         @{}
-%% (3) "l" column in math mode, with 
-%%     an empty subformula at the start: >{${}} l <{$}
-
-
-%----
-
-
-%\captionsetup[table]{skip=10pt}
-%\setlength\belowcaptionskip{5pt}
-\renewcommand{\arraystretch}{1.5}
-\newtheorem{acknowledgement}{Acknowledgement}
-\newtheorem{algorithm}{Algorithm}
-\newtheorem{axiom}{Axiom}
-\newtheorem{case}{Case}
-\newtheorem{claim}{Claim}
-\newtheorem{conclusion}{Conclusion}
-\newtheorem{condition}{Condition}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{corollary}{Corollary}
-\newtheorem{criterion}{Criterion}
-\newtheorem{definition}{Definition}
-\newtheorem{example}{Example}
-\newtheorem{exercise}{Exercise}
-\newtheorem{lemma}{Lemma}
-\newtheorem{notation}{Notation}
-\newtheorem{problem}{Problem}
-\newtheorem{proposition}{Proposition}
-\newtheorem{remark}{Remark}
-\newtheorem{solution}{Solution}
-\newtheorem{summary}{Summary}
-\newtheorem{theorem}{Theorem}
-\newtheorem{excont}{Example}
-\renewcommand{\theexcont}{\theexample}
-%\numberwithin{equation}{subsection}
-%\numberwithin{example}{section}
-\newcounter{exampleEq}
-%-----------------------------------------------------------
-\let\bs\boldsymbol
-%----
-%----
-%----
-\makeatletter
-\@fpsep\textheight
-\makeatother
-
-%-- Flow Chart Definitions -----------------------------------------
-%\tikzstyle{cloud} = [rectangle, draw, fill=red!20, inner sep=0.25em, text width=5em, text centered, rounded corners, minimum height=4em, execute at begin node=\scriptsize]
-%\tikzstyle{subcloud} = [rectangle, draw, fill=green!20, inner sep=0.5em, text width=8em, text centered, rounded corners, minimum height=3em, execute at begin node=\scriptsize]
-%\tikzstyle{block} = [rectangle, draw, fill=blue!20, inner sep=0.5em, text width=13em, align=center, minimum height=3em, execute at begin node=\scriptsize]
-%\tikzstyle{light} = [rectangle, draw, fill=blue!10, inner sep=0.5em, text width=9em, text centered, minimum height=1em, execute at begin node=\tiny]
-%\tikzstyle{io} = [trapezium, draw, fill=green!20, trapezium left angle=70, trapezium right angle=-70, inner sep=0.5em, text width=5em, text centered, minimum height=3em, execute at begin node=\scriptsize]
-%\tikzstyle{decision} = [diamond, draw, fill=yellow!20, inner sep=0.05em, aspect=2, text width=4em, text badly centered, minimum height=5em, minimum width=7em, rounded corners, execute at begin node=\tiny]
-%\tikzstyle{query} = [rectangle, draw, fill=red!20, inner sep=0.5em, text width=5em, text centered, minimum height=3em, execute at begin node=\scriptsize]
-%\tikzstyle{prompt} = [trapezium, draw, fill=green!20, trapezium left angle=60, trapezium right angle=60, inner sep=0.5em, text width=5em, text centered, minimum height=3em, execute at begin node=\scriptsize]
-%\tikzstyle{stop} = [regular polygon, regular polygon sides=8, draw, fill=red!20, inner sep=0.05em, text width=5em, text centered, execute at begin node=\scriptsize]
-%\tikzstyle{go} = [circle, draw, fill=green!20, inner sep=0.5em, text width=5em, text centered, rounded corners, minimum height=3em, execute at begin node=\scriptsize]
-%
-%
-%\tikzstyle{line} = [draw, -latex']
-%\tikzstyle{noarrow} = [draw]
-%\tikzstyle{container} = [rectangle, draw, inner sep=0.4em, dashed, fill=none, color=red!40]
-
-
 
 \begin{document}
 \title{Modeling mRNA Populations}
@@ -311,25 +214,35 @@ Second, the distribution of the mRNAs in each mRNA in each polysome class. (Figu
 We represent each state by a series of coupled ordinary differential equations (ODEs), one equation for the mRNA population for each polysome class. 
 
 The functional form of the capped mRNA sub population is:
-\pagebreak 
+%\pagebreak 
+
+%\begin{table*}
+%\caption{Derivation of Result XYZ}
+%\centering
+%\begin{minipage}{0.75\textwidth}
+
 \begin{strip}
 \begin{align} \label{eq:Capped_ODE}
-\frac{dm_{0}}{dt} &= \lambda+ \tau \frac{1}{\imax}m_{1}-\left(\kappa_0 + \mu\right)m_{0} \\ \nonumber
-\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+ \tau \frac{2}{\imax}m_{2}-\left( \tau \frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\\ \nonumber
-& \vdots & \\ \nonumber
-\frac{dm_{i}}{dt} &= \kappa0 \left(\frac{i-1}{\imax}\right) m_{i-1}+ \tau \frac{i+1}{\imax}m_{i+1}-\left( \tau \frac{i}{\imax}+\kappa_0\left(1-\frac{i}{\imax}\right)+\mu\right) m_{i} \\ \nonumber
-& \vdots & \\ \nonumber
-\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left( \tau +\mu\right) m_{\imax}\\ \nonumber
+\frac{dm_{0}}{dt} &= \lambda+ \tau \frac{1}{\imax}m_{1}-\left(\kappa_0 + \mu\right)m_{0} \nonumber \\
+\frac{dm_{1}}{dt} &= \kappa_0 m_{0}+ \tau \frac{2}{\imax}m_{2}-\left( \tau \frac{1}{\imax}+\kappa_0\left(1-\frac{1}{\imax}\right)+\mu\right) m_{1}\nonumber \\
+& \vdots & \nonumber \\
+\frac{dm_{i}}{dt} &= \kappa0 \left(\frac{i-1}{\imax}\right) m_{i-1}+ \tau \frac{i+1}{\imax}m_{i+1}-\left( \tau \frac{i}{\imax}+\kappa_0\left(1-\frac{i}{\imax}\right)+\mu\right) m_{i} \nonumber \\
+& \vdots & \nonumber \\
+\frac{dm_{\imax}}{dt} &= \kappa_0\left(1-\frac{\imax-1}{\imax}\right)m_{\imax-1}-\left( \tau +\mu\right) m_{\imax}
 \end{align}
 \end{strip}
+
+%\end{minipage}
+%\end{table*}
+
 Similarly, the functional form of the decapped mRNA sub population is: 
 \begin{align}\label{eq:Decapped_ODE}
-\frac{dm_{0}^{*}}{dt} &= \mu m_{0}+ \tau \frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \\ \nonumber
-\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+ \tau \frac{2}{\imax}m_{2}^{*}-\tau \frac{1}{\imax} m_{1}^{*} \\ \nonumber
-& \vdots & \\ \nonumber
-\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+ \tau \frac{i+1}{\imax}m_{i+1}^{*}-\tau \frac{i}{\imax} m_{i}^{*} \\ \nonumber
-& \vdots & \\ \nonumber
-\frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}- \tau m_{\imax}. \\ \nonumber
+\frac{dm_{0}^{*}}{dt} &= \mu m_{0}+ \tau \frac{1}{\imax}m_{1}^{*}-\delta m_{0}^{*} \nonumber \\
+\frac{dm_{1}^{*}}{dt} &= \mu m_{1}+ \tau \frac{2}{\imax}m_{2}^{*}-\tau \frac{1}{\imax} m_{1}^{*} \nonumber \\
+& \vdots & \nonumber \\
+\frac{dm_{i}^{*}}{dt} &= \mu m_{i}+ \tau \frac{i+1}{\imax}m_{i+1}^{*}-\tau \frac{i}{\imax} m_{i}^{*} \nonumber \\
+& \vdots & \nonumber \\
+\frac{dm_{\imax}^{*}}{dt} &= \mu m_{\imax}^{*}- \tau m_{\imax}. 
 \end{align}
 In closing, we note the parameters $\imax, \kappa, \mu,$ and $\tau$ likely vary between genes.
 
@@ -379,12 +292,12 @@ Regardless, it follows that the total abundance of the capped class \msum is,
 The solution for the decapped system is dependent on the underlying distribution of the capped system and can be represented as:
 
 \begin{align}\label{eq:decapped_abundance}
-\mhatstar_0  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \\ \nonumber
-\mhatstar_1  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \\ \nonumber
-& \vdots & \\ \nonumber
-\mhatstar_i  &= \frac{1}{i}\frac{\mu}{\tau}\sum_{j=i}^{\imax}m_{j}  \\ \nonumber
-& \vdots & \\ \nonumber
-\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\mu}{\tau} \mvechat_{\imax}   \\ \nonumber
+\mhatstar_0  &= \frac{\mu}{\delta}\sum_{j=0}^{\imax}m_{j} \nonumber \\
+\mhatstar_1  &= \frac{\mu}{\tau}\sum_{j=1}^{\imax}m_{j}  \nonumber \\
+& \vdots & \nonumber \\
+\mhatstar_i  &= \frac{1}{i}\frac{\mu}{\tau}\sum_{j=i}^{\imax}m_{j}  \nonumber \\
+& \vdots & \nonumber \\
+\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\mu}{\tau} \mvechat_{\imax}   \nonumber
 \end{align}
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by eq. (\ref{eq:capped_solution}).
 By defining $S_{j}$ as the cumulative probability from an mRNA found in class $i$ and above as,
@@ -395,12 +308,12 @@ By defining $S_{j}$ as the cumulative probability from an mRNA found in class $i
 Now the solution to eq. (\ref{eq:decapped_abundance}) becomes,
 
 \begin{align} \label{eq:decapped_solution} 
-\mhatstar_0  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \\ \nonumber
-\mhatstar_1  &= \frac{\lambda}{\tau}S_{1} \\ \nonumber
-& \vdots & \\ \nonumber
-\mhatstar_i  &= \frac{1}{i}\frac{\lambda}{\tau}S_{i}  \\ \nonumber
-& \vdots & \\ \nonumber
-\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\lambda}{\tau}S_{\imax}  \\ \nonumber
+\mhatstar_0  &= \frac{\lambda}{\delta}S_{0}=\frac{\lambda}{\delta} \nonumber \\
+\mhatstar_1  &= \frac{\lambda}{\tau}S_{1} \nonumber \\
+& \vdots & \nonumber \\
+\mhatstar_i  &= \frac{1}{i}\frac{\lambda}{\tau}S_{i}  \nonumber \\
+& \vdots & \nonumber \\
+\mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\lambda}{\tau}S_{\imax}  \nonumber
 \end{align}
  Note that $S_{0}=1$ and $ S_{0} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ highlighting the fact that the steady state solution for the decapped state \mvecstar is dependant on the distribution of mRNA polysome classes of the capped state the solution vi the cumulative distribution function $S_i$. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
 
@@ -437,22 +350,21 @@ To understand how mRNA is divided  between we start with the probability of find
 \end{equation*}
 Then we calculate the odds,
 \begin{equation}\label{eq:odds}
-	odds_{\hat{m}} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})} \\
+	odds_{\hat{m}} = \frac{1}{\mu(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l})} 
 \end{equation}
-
 
 \subsubsection{Calculating expected ribosomal load and protein production}
 The expected ribosomal load for the capped or decapped state calculated, respectively, by,
 \begin{align}\label{eq:Expected_ribo_load}
-  \MRL =& E_{\mvec}\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p_{i} \\ \nonumber
-   \text{and}&\\ \nonumber
-   \MRL^* =& E_{\mvecstar}\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p^*_{i}\\ \nonumber
+  \MRL =& E_{\mvec}\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p_{i}  \\
+   \intertext{and} \nonumber
+   \MRL^* =& E_{\mvecstar}\left(\ribosome\right) =\sum_{i=0}^{\imax}i \times p^*_{i}\nonumber
 \end{align}
 Thus, the global mean ribosomal load is,
 
-\begin{align}\label{eq:System_ribo_load}
-	\text{Total Ribosomal Load} = \mfrac\times E_{\msum} \left(\ribosome\right) +\\
-          + (1-\mfrac)\times E_{\msumstar}\left(\ribosome\right)
+\begin{align} \label{eq:System_ribo_load}
+	\text{Total Ribosomal Load} = \mfrac\times E_{\msum} \left(\ribosome\right) + \\
+          + (1-\mfrac)\times E_{\msumstar}\left(\ribosome\right) \nonumber \\
 \end{align}
 
 
@@ -651,7 +563,7 @@ The \imax dependence is captured in the 1/$\tau$ term in eq. (\ref{eq:odds}).
 \end{center}
 \end{figure*}
 
-\subsection{Decapped state can be a significant source of protein production} \rmpar{may now be superfluous}
+\subsection{Decapped state can be a significant source of protein production} %\rmpar{may now be superfluous}
 %For the capped state rate on is rate off at equilibrium. And by using the initiation rate, it is the same as the protein production rate per transcript. Same applies for %\tau_0$/9*\imax as this is equal to the initiation rate.
 %For the decapped state, the equilibrium exists between the inflow of marked transcripts at in a particular distribution and the same %\tau_0$/9*\imax parameter. Or not really. There is really no "on" rate, just an off rate.
 %in the capped sytem the on off rate directly relates to the ribosomal density/load on a transcript and it is a decent ad hoc measure of relative expression. 
@@ -1084,12 +996,12 @@ Using the functional forms presented above, matrix formulations are provided nex
 
 As opposed to explicitly listing elements of the full model matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
 The matrix $\bs{F}$ is block lower-diagonal and is given in Equation\ref{eq:full_matrix}.
-\begin{equation}
+\begin{equation*}
 \bs{F}=\left(\begin{array}{cc}
 \bs{U} & \bs{0} \\
-\bs{\mu} & \bs{R} \\
+\bs{\mu} & \bs{R}
 \end{array} \right).
-\end{equation}
+\end{equation*}
 The upper-left block, $\bs{U}$, corresponds to the capped state variables, where $\bs{U}$'s general form is provided in Equation\ref{eq:capped_matrix}.
 The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
 Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
@@ -1106,7 +1018,7 @@ The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal
    & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} & \\
                   &         &        & \ddots  & \ddots & \ddots \\
      
-                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right) \\
+                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right)
 \end{array}\right).
 \end{equation}
 
@@ -1123,7 +1035,7 @@ The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix 
  & & & -\tau_0\frac{i-1}{\imax} & \tau_0\frac{(i+1)}{\imax} & & \\
  & & & & \ddots & \ddots & \\
  & & & & & -\tau_0\frac{(\imax-2)}{\imax} & \tau_0\frac{\imax}{\imax} \\
- & & & & & & -\tau_0\frac{\imax}{\imax} \\
+ & & & & & & -\tau_0\frac{\imax}{\imax}
 \end{array}
 \right),
 \end{equation}
