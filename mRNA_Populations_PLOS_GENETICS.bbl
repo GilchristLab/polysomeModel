@@ -1,0 +1,276 @@
+\begin{thebibliography}{10}
+
+\bibitem{RN1}
+Browning KS, Bailey-Serres J.
+\newblock Mechanism of cytoplasmic mRNA translation.
+\newblock Arabidopsis Book. 2015;13:e0176.
+\newblock doi:{10.1199/tab.0176}.
+
+\bibitem{RN2}
+Urquidi~Camacho RA, Lokdarshi A, von Arnim AG.
+\newblock Translational gene regulation in plants: A green new deal.
+\newblock Wiley Interdiscip Rev RNA. 2020;11(6):e1597.
+\newblock doi:{10.1002/wrna.1597}.
+
+\bibitem{RN3}
+Collart MA, Weiss B.
+\newblock Ribosome pausing, a dangerous necessity for co-translational events.
+\newblock Nucleic Acids Res. 2020;48(3):1043--1055.
+\newblock doi:{10.1093/nar/gkz763}.
+
+\bibitem{RN4}
+Pelechano V, Wei W, Steinmetz LM.
+\newblock Widespread Co-translational RNA Decay Reveals Ribosome Dynamics.
+\newblock Cell. 2015;161(6):1400--12.
+\newblock doi:{10.1016/j.cell.2015.05.008}.
+
+\bibitem{RN5}
+Sieburth LE, Vincent JN.
+\newblock Beyond transcription factors: roles of mRNA decay in regulating gene
+  expression in plants.
+\newblock F1000Res. 2018;7.
+\newblock doi:{10.12688/f1000research.16203.1}.
+
+\bibitem{RN6}
+Ikeuchi K, Izawa T, Inada T.
+\newblock Recent Progress on the Molecular Mechanism of Quality Controls
+  Induced by Ribosome Stalling.
+\newblock Front Genet. 2018;9:743.
+\newblock doi:{10.3389/fgene.2018.00743}.
+
+\bibitem{RN7}
+Juszkiewicz S, Chandrasekaran V, Lin Z, Kraatz S, Ramakrishnan V, Hegde RS.
+\newblock ZNF598 Is a Quality Control Sensor of Collided Ribosomes.
+\newblock Mol Cell. 2018;72(3):469--481 e7.
+\newblock doi:{10.1016/j.molcel.2018.08.037}.
+
+\bibitem{RN8}
+Bae H, Coller J.
+\newblock Codon optimality-mediated mRNA degradation: Linking translational
+  elongation to mRNA stability.
+\newblock Mol Cell. 2022;82(8):1467--1476.
+\newblock doi:{10.1016/j.molcel.2022.03.032}.
+
+\bibitem{RN9}
+Medina-Munoz SG, Kushawah G, Castellano LA, Diez M, DeVore ML, Salazar MJB,
+  et~al.
+\newblock Crosstalk between codon optimality and cis-regulatory elements
+  dictates mRNA stability.
+\newblock Genome Biol. 2021;22(1):14.
+\newblock doi:{10.1186/s13059-020-02251-5}.
+
+\bibitem{RN10}
+Wu Q, Medina SG, Kushawah G, DeVore ML, Castellano LA, Hand JM, et~al.
+\newblock Translation affects mRNA stability in a codon-dependent manner in
+  human cells.
+\newblock Elife. 2019;8.
+\newblock doi:{10.7554/eLife.45396}.
+
+\bibitem{RN11}
+Yadav V, Ullah~Irshad I, Kumar H, Sharma AK.
+\newblock Quantitative Modeling of Protein Synthesis Using Ribosome Profiling
+  Data.
+\newblock Front Mol Biosci. 2021;8:688700.
+\newblock doi:{10.3389/fmolb.2021.688700}.
+
+\bibitem{RN12}
+von~der Haar T.
+\newblock Mathematical and Computational Modelling of Ribosomal Movement and
+  Protein Synthesis: an overview.
+\newblock Comput Struct Biotechnol J. 2012;1:e201204002.
+\newblock doi:{10.5936/csbj.201204002}.
+
+\bibitem{RN13}
+Dao~Duc K, Song YS.
+\newblock The impact of ribosomal interference, codon usage, and exit tunnel
+  interactions on translation elongation rate variation.
+\newblock PLoS Genet. 2018;14(1):e1007166.
+\newblock doi:{10.1371/journal.pgen.1007166}.
+
+\bibitem{RN14}
+Shaw LB, Zia RK, Lee KH.
+\newblock Totally asymmetric exclusion process with extended objects: a model
+  for protein synthesis.
+\newblock Phys Rev E Stat Nonlin Soft Matter Phys. 2003;68(2 Pt 1):021910.
+\newblock doi:{10.1103/PhysRevE.68.021910}.
+
+\bibitem{RN15}
+Reuveni S, Meilijson I, Kupiec M, Ruppin E, Tuller T.
+\newblock Genome-scale analysis of translation elongation with a ribosome flow
+  model.
+\newblock PLoS Comput Biol. 2011;7(9):e1002127.
+\newblock doi:{10.1371/journal.pcbi.1002127}.
+
+\bibitem{RN16}
+Nanikashvili I, Zarai Y, Ovseevich A, Tuller T, Margaliot M.
+\newblock Networks of ribosome flow models for modeling and analyzing
+  intracellular traffic.
+\newblock Sci Rep. 2019;9(1):1703.
+\newblock doi:{10.1038/s41598-018-37864-1}.
+
+\bibitem{RN17}
+Shah P, Ding Y, Niemczyk M, Kudla G, Plotkin JB.
+\newblock Rate-limiting steps in yeast protein translation.
+\newblock Cell. 2013;153(7):1589--601.
+\newblock doi:{10.1016/j.cell.2013.05.049}.
+
+\bibitem{RN18}
+Wu Q, Smith-Miles K, Zhou T, Tian T.
+\newblock Stochastic modelling of biochemical systems of multi-step reactions
+  using a simplified two-variable model.
+\newblock BMC Syst Biol. 2013;7 Suppl 4(Suppl 4):S14.
+\newblock doi:{10.1186/1752-0509-7-S4-S14}.
+
+\bibitem{RN19}
+Wu Q, Tian T.
+\newblock Stochastic modeling of biochemical systems with multistep reactions
+  using state-dependent time delay.
+\newblock Sci Rep. 2016;6:31909.
+\newblock doi:{10.1038/srep31909}.
+
+\bibitem{RN20}
+Zupanic A, Meplan C, Huguenin GV, Hesketh JE, Shanley DP.
+\newblock Modeling and gene knockdown to assess the contribution of
+  nonsense-mediated decay, premature termination, and selenocysteine insertion
+  to the selenoprotein hierarchy.
+\newblock RNA. 2016;22(7):1076--84.
+\newblock doi:{10.1261/rna.055749.115}.
+
+\bibitem{RN21}
+Ashworth W, Stoney PN, Yamamoto T.
+\newblock States of decay: The systems biology of mRNA stability.
+\newblock Current Opinion in Systems Biology. 2019;15:48--57.
+\newblock doi:{https://doi.org/10.1016/j.coisb.2019.03.006}.
+
+\bibitem{RN22}
+Valleriani A, Ignatova Z, Nagar A, Lipowsky R.
+\newblock Turnover of messenger RNA: Polysome statistics beyond the steady
+  state.
+\newblock EPL. 2010;89(5).
+\newblock doi:{10.1209/0295-5075/89/58003}.
+
+\bibitem{RN23}
+Hu W, Sweet TJ, Chamnongpol S, Baker KE, Coller J.
+\newblock Co-translational mRNA decay in Saccharomyces cerevisiae.
+\newblock Nature. 2009;461(7261):225--9.
+\newblock doi:{10.1038/nature08265}.
+
+\bibitem{RN41}
+{Van den Meersche} K, Soetaert K, {Van Oevelen} D.
+\newblock xsample(): An R Function for Sampling Linear Inverse Problems.
+\newblock Journal of Statistical Software, Code Snippets. 2009;30(1):1--15.
+
+\bibitem{RN43}
+{R Core Team}. R: A Language and Environment for Statistical Computing; 2023.
+\newblock Available from: \url{https://www.R-project.org/}.
+
+\bibitem{RN42}
+Dowle M. data.table: Extension of 'data.frame'; 2021.
+
+\bibitem{RN26}
+Cunningham F, Allen JE, Allen J, Alvarez-Jarreta J, Amode MR, Armean IM, et~al.
+\newblock Ensembl 2022.
+\newblock Nucleic Acids Res. 2022;50(D1):D988--D995.
+\newblock doi:{10.1093/nar/gkab1049}.
+
+\bibitem{RN25}
+Kinsella RJ, Kahari A, Haider S, Zamora J, Proctor G, Spudich G, et~al.
+\newblock Ensembl BioMarts: a hub for data retrieval across taxonomic space.
+\newblock Database (Oxford). 2011;2011:bar030.
+\newblock doi:{10.1093/database/bar030}.
+
+\bibitem{RN24}
+Yates AD, Allen J, Amode RM, Azov AG, Barba M, Becerra A, et~al.
+\newblock Ensembl Genomes 2022: an expanding genome resource for
+  non-vertebrates.
+\newblock Nucleic Acids Res. 2022;50(D1):D996--D1003.
+\newblock doi:{10.1093/nar/gkab1007}.
+
+\bibitem{RN27}
+Presnyak V, Alhusaini N, Chen YH, Martin S, Morris N, Kline N, et~al.
+\newblock Codon optimality is a major determinant of mRNA stability.
+\newblock Cell. 2015;160(6):1111--24.
+\newblock doi:{10.1016/j.cell.2015.02.029}.
+
+\bibitem{RN28}
+Sorenson RS, Deshotel MJ, Johnson K, Adler FR, Sieburth LE.
+\newblock Arabidopsis mRNA decay landscape arises from specialized RNA decay
+  substrates, decapping-mediated feedback, and redundancy.
+\newblock Proc Natl Acad Sci U S A. 2018;115(7):E1485--E1494.
+\newblock doi:{10.1073/pnas.1712312115}.
+
+\bibitem{RN29}
+Weinberg DE, Shah P, Eichhorn SW, Hussmann JA, Plotkin JB, Bartel DP.
+\newblock Improved Ribosome-Footprint and mRNA Measurements Provide Insights
+  into Dynamics and Regulation of Yeast Translation.
+\newblock Cell Rep. 2016;14(7):1787--1799.
+\newblock doi:{10.1016/j.celrep.2016.01.043}.
+
+\bibitem{RN30}
+Morisaki T, Lyon K, DeLuca KF, DeLuca JG, English BP, Zhang Z, et~al.
+\newblock Real-time quantification of single RNA translation dynamics in living
+  cells.
+\newblock Science. 2016;352(6292):1425--1429.
+\newblock doi:{10.1126/science.aaf0899}.
+
+\bibitem{RN31}
+Yan X, Hoek TA, Vale RD, Tanenbaum ME.
+\newblock Dynamics of Translation of Single mRNA Molecules in Vivo.
+\newblock Cell. 2016;165(4):976--989.
+\newblock doi:{10.1016/j.cell.2016.04.034}.
+
+\bibitem{RN32}
+Wang C, Han B, Zhou R, Zhuang X.
+\newblock Real-Time Imaging of Translation on Single mRNA Transcripts in Live
+  Cells.
+\newblock Cell. 2016;165(4):990--1001.
+\newblock doi:{10.1016/j.cell.2016.04.040}.
+
+\bibitem{RN33}
+Wu B, Eliscovich C, Yoon YJ, Singer RH.
+\newblock Translation dynamics of single mRNAs in live cells and neurons.
+\newblock Science. 2016;352(6292):1430--1435.
+\newblock doi:{10.1126/science.aaf1084}.
+
+\bibitem{RN34}
+Ma X, Yin X, Tang Z, Ito H, Shao C, Meng Y, et~al.
+\newblock The RNA degradome: a precious resource for deciphering RNA processing
+  and regulation codes in plants.
+\newblock RNA Biol. 2020;17(9):1223--1227.
+\newblock doi:{10.1080/15476286.2020.1757898}.
+
+\bibitem{RN35}
+Dasgupta A, Camacho RAU, Enganti R, Cho SK, Tucker LL, Torreverde JS, et~al.
+\newblock A phosphorylation-deficient ribosomal protein eS6 is largely
+  functional in <em>Arabidopsis thaliana</em>, rescuing mutant defects from
+  global translation and gene expression to photosynthesis and growth.
+\newblock bioRxiv. 2023; p. 2023.05.30.542942.
+\newblock doi:{10.1101/2023.05.30.542942}.
+
+\bibitem{RN36}
+Lokdarshi A, Morgan PW, Franks M, Emert Z, Emanuel C, von Arnim AG.
+\newblock Light-Dependent Activation of the GCN2 Kinase Under Cold and Salt
+  Stress Is Mediated by the Photosynthetic Status of the Chloroplast.
+\newblock Front Plant Sci. 2020;11:431.
+\newblock doi:{10.3389/fpls.2020.00431}.
+
+\bibitem{RN38}
+Merchante C, Stepanova AN, Alonso JM.
+\newblock Translation regulation in plants: an interesting past, an exciting
+  present and a promising future.
+\newblock Plant J. 2017;90(4):628--653.
+\newblock doi:{10.1111/tpj.13520}.
+
+\bibitem{RN39}
+Wu Q, Bazzini AA.
+\newblock Translation and mRNA Stability Control.
+\newblock Annu Rev Biochem. 2023;92:227--245.
+\newblock doi:{10.1146/annurev-biochem-052621-091808}.
+
+\bibitem{RN40}
+Cheng F, Wang Y, Bai Y, Liang Z, Mao Q, Liu D, et~al.
+\newblock Research Advances on the Stability of mRNA Vaccines.
+\newblock Viruses. 2023;15(3).
+\newblock doi:{10.3390/v15030668}.
+
+\end{thebibliography}
