@@ -1,0 +1,212 @@
+\documentclass[10pt,letterpaper]{article}
+
+% Enter dates of publication
+
+
+%\documentclass[1p,review]{elsarticle}
+%\usepackage{pdflscape}
+%\usepackage{subcaption}
+%\usepackage[margin=3cm]{geometry} %changed from 2.5cm to 3cm so that margin notes don't get cut off.
+%%\usepackage[usenames,dvipsnames]{color}
+\usepackage{amsfonts}%
+\usepackage{amsmath}
+\usepackage{amssymb}%
+\usepackage{amsthm}
+%\usepackage[mathlines]{lineno}
+\usepackage{array}
+%\usepackage{bibentry}
+\usepackage{blkarray}
+%\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{cuted}
+\usepackage{dsfont}
+\usepackage{enumerate}
+%\usepackage{float}
+\usepackage{framed}
+\usepackage{geometry} % this package leads to stray printer marks in the middle of the page
+%\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{ifthen}
+%\usepackage{lineno}
+\usepackage{multirow}
+\usepackage{pdflscape}
+\usepackage{pifont}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{tablefootnote}
+%\usepackage{tabularx}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows,positioning,calc,fit}
+\usepackage{url}
+\usepackage{xargs}
+
+%%%% PLOS GENETICS FUNCTIONS
+
+
+%% END MACROS SECTION
+%%%%% BEGIN MIKE'S COMMANDS %%%%%
+\usepackage[normalem]{ulem}  %provides strikeout \sout{}
+\usepackage{xspace} %%needed for mike's commands
+
+%% Define mike's margin par
+%\newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
+%\newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
+
+%%custom commands for sanity
+\newcommand{\imax}{\ensuremath{{i_{\max}}}\xspace}
+\newcommand{\kappaprime}{\ensuremath{\kappa^{\prime}}\xspace}
+\newcommand{\tauprime}{\ensuremath{\tau^{\prime}}\xspace}
+\newcommand{\mhat}{\ensuremath{\hat{m}}\xspace}
+\newcommand{\mhati}{\ensuremath{\hat{m}_i}\xspace}
+\newcommand{\mhatstar}{\ensuremath{\mhat^{*}}\xspace}
+\newcommand{\mhatstari}{\ensuremath{\mhat^{*}_i}\xspace}
+\newcommand{\mvec}{\ensuremath{\vec{m}}\xspace}
+\newcommand{\mvechat}{\ensuremath{\hat{\mvec}}\xspace}
+\newcommand{\mvecstar}{\ensuremath{\mvec^*}\xspace}
+\newcommand{\mvechatstar}{\ensuremath{\mvechat^*}\xspace}
+\newcommand{\GCD}{\ensuremath{\text{GCD}}\xspace}
+\newcommand{\detA[1]}{\ensuremath{\ensuremath{\det\left[\bs{A}_{#1}\right]}\xspace}}
+
+% Summation of vectors
+\newcommand{\msum}{\ensuremath{m}\xspace}
+\newcommand{\msumstar}{\ensuremath{m^*}\xspace}
+\newcommand{\msumtot}{\ensuremath{M}\xspace}
+\newcommand{\mfrac}{\ensuremath{f_m}\xspace}
+
+% Expectation or MRL
+\newcommand{\ribosome}{\ensuremath{\text{ribosome}}} % don't need xspace
+%\newcommand{\ribosome}{\ensuremath{i}} % don't need xspace
+\newcommand{\MRL}{\ensuremath{\bar{i}}\xspace}
+\newcommand{\MRLs}{\ensuremath{\bar{i}\text{s}}\xspace}
+%\doublespacing
+
+% Cribbed from Nate's now removed commands
+\let\bs\boldsymbol
+
+%%%%% END MIKE'S COMMANDS %%%%%
+
+\begin{document}
+\begin{flushleft}
+{\Large
+\textbf\newline{Supplemental Text} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+\end{flushleft}
+In this section we present the matrix vector formulation of the model used to obtain both the analytical and numerical solutions in the main text. Additionally, we describe the analytical solution to the capped system. 
+
+
+\section*{Matrix-vector Formulation of ODE System}
+It is frequently useful to work with the matrix-vector formulation for a system of ODE.
+In this model, the dynamics of the decapped and capped mRNAs can be represented as,
+\begin{equation}
+\vec{M}'=\boldsymbol{F}\vec{M}+\vec{B},
+\end{equation} 
+where $\vec{M}\in\mathbb{R}^{2(\imax+1)}$ is a vector of all state variables, ordered here as $m_0$, $m_1$, ..., $m_{\imax}$, $m^*_0$, $m^*_1$, ..., $m^*_{\imax}$, $\vec{M}'$ is the vector containing the first derivatives of $\vec{M}$ with respect to time, $\bs{F}\in\mathbb{R}^{2(\imax+1)\times 2(\imax+1)}$ is the matrix representing the full model (Eq~\ref{eq:full_matrix}), and $\vec{B}\in\mathbb{R}^{2(\imax+1)}$ is the vector of $\lambda$ as the first component and 0s else.
+Using the functional forms presented above, matrix formulations are provided next.
+
+As opposed to explicitly listing elements of the full model matrix-vector representation we found that it is more convenient to utilize the block structure that emerges in this system and explicitly provide the block components.
+The matrix $\bs{F}$ is block lower-diagonal and is given in Eq~\ref{eq:full_matrix}.
+\begin{equation}
+\bs{F}=\left(\begin{array}{cc}
+\bs{U} & \bs{0} \\
+\bs{\mu} & \bs{R}
+\end{array} \right).
+\label{eq:full_matrix}
+\end{equation}
+The upper-left block, $\bs{U}$, corresponds to the capped state variables, where $\bs{U}$'s general form is provided in Eq~\ref{eq:capped_matrix}.
+The upper-right block is a matrix of all zeros, $\bs{0}\in\mathbb{R}^{\imax+1\times \imax+1}$.
+Using $\bs{I}$ to represent the $\imax+1\times \imax+1$ identity matrix, the lower-left block is $\bs{\mu}=\mu_0\bs{I}$, a diagonal matrix with the constant $\mu_0$ on the diagonal and 0s else.
+The lower-right block, $\bs{R}$, corresponds to the decapped state variables and its form is provided in Eq~\ref{eq:decapped_matrix}.
+
+The matrix $\bs{U}$ is $(\imax+1\times \imax+1)$ dimensional and is tri-diagonal with non-zero entries on the diagonal, super-, and sub-diagonals,
+
+\begin{equation}
+\bs{U}=\left(\begin{array}{cccccc}
+-(\kappa_0+\mu_0) & \tau_0\frac{1}{\imax} &  &  &  & \\
+\kappa_0 & \left(1-\frac{1}{\imax} \kappa_0+\mu_0+\tau_0\frac{1}{\imax}\right) & \tau_0\frac{2}{\imax} &  &  & \\
+   &\ddots        & \ddots        & \ddots & &  \\
+   & &    1-\frac{(i-1)}{\imax}\kappa_0 & -\left(1-\frac{i}{\imax}\kappa_0+\mu_0+\tau_0\frac{i}{\imax}\right) & \tau_0\frac{i+1}{\imax} & \\
+                  &         &        & \ddots  & \ddots & \ddots \\
+     
+                          &        &  &  & \frac{1}{\imax}\kappa_0 & -\left(\mu_0+\tau_0\frac{\imax}{\imax}\right)
+\end{array}\right).
+\label{eq:capped_matrix}
+\end{equation}
+
+
+In the representation given in Eq~\ref{eq:capped_matrix}, all blank entries are 0.
+The $(\imax-1)^{\text{th}}$ row has been suppressed in Eq~\ref{eq:capped_matrix}, but it can be generated using the formula included for the $i^{th}$ row.
+
+The matrix $\bs{R}$ is the lower-right block in the block lower-diagonal matrix $\bs{F}$ (Eq~\ref{eq:full_matrix}),
+
+\begin{equation}
+\bs{R}=\left(
+\begin{array}{ccccccc}
+-\delta & \tau_0\frac{`}{\imax} & & & & & \\
+ & -\tau_0\frac{1}{\imax} & \tau_0\frac{2}{\imax} & & & &\\
+ & & \ddots & \ddots & & & \\
+ & & & -\tau_0\frac{i-1}{\imax} & \tau_0\frac{(i+1)}{\imax} & & \\
+ & & & & \ddots & \ddots & \\
+ & & & & & -\tau_0\frac{(\imax-2)}{\imax} & \tau_0\frac{\imax}{\imax} \\
+ & & & & & & -\tau_0\frac{\imax}{\imax}
+\end{array}
+\right),
+\label{eq:decapped_matrix}
+\end{equation}
+
+
+$\bs{R}$ is upper-diagonal with only non-zero entries on the diagonal and the super-diagonal.
+
+\subsection*{Capped Subsystem Matrix-vector Representation}
+As a group the capped subsystem decouples from the decapped subsystem, as such the capped subsystem can be solved independently of the decapped subsystem.  
+The matrix-vector formula representing the capped subsystem is \begin{equation}
+\vec{m}'=\bs{U}\vec{m}+\vec{b},\end{equation} where $\vec{m}\in\mathbb{R}^{\imax+1}$ is the vector of capped state variables ordered $m_0$, ..., $m_{\imax}$, $\vec{m}'$ is the vector containing the first derivatives of $\vec{m}$ with respect to time, $\bs{U}\in\mathbb{R}^{\imax+1\times \imax+1}$ is the matrix representing the capped subsystem (\ref{eq:capped_matrix}), and $\vec{b}\in\mathbb{R}^{\imax+1}$ is the vector of $\lambda$ as the first component and 0s else.
+With all equations defined for the full ODE system, include matrix-vector representations, the next section outlines methods for finding steady-state solutions to the system.
+
+
+\subsection*{Capped state steady state solution}
+
+The capped system can be split into two components: Total transcripts in the capped state and how the transcripts are distributed across polysome classes. 
+From manual exploration of model solutions of the capped state at low \imax values. 
+We discovered that the capped class transcript number is determined by $\lambda/ \mu$
+	
+The solution to the system, as presented previously, can be expressed in the determinant-adjoint form:
+	\begin{equation*}
+		\vec{m}=-\frac{1}{\det[\bs{U}]}Adj[\bs{U}]\vec{b}.
+	\end{equation*}
+As $\vec{b}$ is [$\lambda$ 0 0 0 ... 0]. Only the first column of the adjoint matrix contributes to the result. 
+	\begin{equation*}
+		Adj[\bs{U}]\vec{b} = \lambda\vec{a}
+	\end{equation*}	
+and
+	\begin{equation*}
+		\sum_{j=0}^{\imax}\vec{a}_j = a_{tot} 
+	\end{equation*}
+With this we can factor our solution into two parts: 1) the total transcript abundance and 2) The distribution of transcript across the polysome classes.
+	\begin{equation*}
+		\vec{m}=-\frac{\lambda a_{tot}}{\det[\bs{U}]} \frac{\vec{a}}{a_{tot}} 
+	\end{equation*}
+Where:
+	\begin{equation*}
+		\frac{\vec{a}}{a_{tot}} = \vec{p}_m
+	\end{equation*}
+The vector $\vec{p}_m$ sums to one and contains the probabilities of finding and mRNA in each class in the capped state. Now we are left with
+	\begin{equation*}
+		\vec{m}=-\frac{a_{tot}}{\det[\bs{U}]} \: \lambda\vec{p}_m
+	\end{equation*}
+If we sum across all classes to get the total mRNA population we find,
+	\begin{equation*}
+		\sum_{i=0}^{\imax}m_{i} =-\sum_{i=0}^{\imax} \frac{a_{tot}}{\det[\bs{U}]} \: \lambda\vec{p}_m =-\frac{a_{tot}}{\det[\bs{U}]} \: \lambda = \frac{\lambda}{\mu}
+	\end{equation*}
+	\begin{equation*}
+		-\frac{a_{tot}}{\det[\bs{U}]} = \frac{1}{\mu}
+	\end{equation*}
+We finally arrive at,
+	\begin{equation} 
+		\vec{m}=\frac{\lambda}{\mu}\vec{p}_m
+	\end{equation}
+
+
+The terms on the left hand side of the equation represent the total transcript population. The right hand side is the vector of probabilities, one entry for each class and is a function of $\kappa$, $\tau$, and $\mu$.	
+
+\end{document}

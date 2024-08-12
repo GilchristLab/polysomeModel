@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.9)  9 AUG 2024 02:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.9)  11 AUG 2024 19:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -747,15 +747,15 @@ Package microtype Info: Loading generic protrusion settings for font family
 [1
 
 {C:/Users/rauc6/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<Images/Figure1_biomodel_V3.png, id=132, 1286.6469pt x 1012.2618pt>
+
+[2]
+<Images/Figure1_biomodel_V3.png, id=78, 1286.6469pt x 1012.2618pt>
 File: Images/Figure1_biomodel_V3.png Graphic file (type png)
 <use Images/Figure1_biomodel_V3.png>
-Package pdftex.def Info: Images/Figure1_biomodel_V3.png  used on input line 238
+Package pdftex.def Info: Images/Figure1_biomodel_V3.png  used on input line 244
 .
 (pdftex.def)             Requested size: 341.43306pt x 268.61879pt.
 
-
-[2]
 
 [3 <./Images/Figure1_biomodel_V3.png (PNG copy)>]
 CUTED [- LAST -]
@@ -776,20 +776,10 @@ Overfull \hbox (379.4175pt too wide) has occurred while \output is active
  []
 
 
-Overfull \hbox (69.19763pt too wide) in paragraph at lines 326--345
- [] 
- []
-
-
 
 [4]
 
 [5]
-
-LaTeX Warning: Reference `eq:decapped_abundance' on page 6 undefined on input l
-ine 383.
-
-
 
 [6]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -798,80 +788,70 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-LaTeX Warning: Reference `eq:decapped_solution' on page 7 undefined on input li
-ne 453.
-
-
-
 [7]
-<Images/2023-07-04_parameter_histograms.png, id=228, 363.759pt x 504.6855pt>
+<Images/2023-07-04_parameter_histograms.png, id=155, 363.759pt x 504.6855pt>
 File: Images/2023-07-04_parameter_histograms.png Graphic file (type png)
 <use Images/2023-07-04_parameter_histograms.png>
 Package pdftex.def Info: Images/2023-07-04_parameter_histograms.png  used on in
-put line 490.
+put line 494.
 (pdftex.def)             Requested size: 341.43306pt x 473.71906pt.
 
 
 [8]
 
 [9 <./Images/2023-07-04_parameter_histograms.png (PNG copy)>]
-<Images/2023-07-04_Unmarked_slices.png, id=251, 265.7127pt x 411.939pt>
+<Images/2023-07-04_Unmarked_slices.png, id=181, 265.7127pt x 411.939pt>
 File: Images/2023-07-04_Unmarked_slices.png Graphic file (type png)
 <use Images/2023-07-04_Unmarked_slices.png>
 Package pdftex.def Info: Images/2023-07-04_Unmarked_slices.png  used on input l
-ine 523.
+ine 527.
 (pdftex.def)             Requested size: 213.39566pt x 330.8402pt.
 
 
-LaTeX Warning: Reference `eq:decapped_solution' on page 10 undefined on input l
-ine 532.
-
-
-
 [10 <./Images/2023-07-04_Unmarked_slices.png (PNG copy)>]
-<Images/2023-07-04_Marked_slices.png, id=258, 265.4718pt x 411.939pt>
+<Images/2023-07-04_Marked_slices.png, id=189, 265.4718pt x 411.939pt>
 File: Images/2023-07-04_Marked_slices.png Graphic file (type png)
 <use Images/2023-07-04_Marked_slices.png>
 Package pdftex.def Info: Images/2023-07-04_Marked_slices.png  used on input lin
-e 541.
+e 545.
 (pdftex.def)             Requested size: 213.39566pt x 331.12933pt.
 <Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.png, i
-d=259, 344.9688pt x 442.7742pt>
+d=190, 344.9688pt x 442.7742pt>
 File: Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.p
 ng Graphic file (type png)
 <use Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.pn
 g>
 Package pdftex.def Info: Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_ma
-rking_with_labels.png  used on input line 558.
+rking_with_labels.png  used on input line 562.
 (pdftex.def)             Requested size: 213.39566pt x 273.9091pt.
 
 
 [11 <./Images/2023-07-04_Marked_slices.png (PNG copy)>]
 <Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png, id=
-267, 578.16pt x 438.6789pt>
+198, 578.16pt x 438.6789pt>
 File: Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png
  Graphic file (type png)
 <use Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.png>
 
 Package pdftex.def Info: Images/2023-07-09_Figure2_Marking_Rate_range_medianlen
-gth_with_labels.png  used on input line 576.
+gth_with_labels.png  used on input line 580.
 (pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
 
-Overfull \hbox (18.92108pt too wide) in paragraph at lines 576--577
+Overfull \hbox (18.92108pt too wide) in paragraph at lines 580--581
  [] 
  []
 
 <Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.png, 
-id=268, 578.16pt x 438.6789pt>
+id=199, 578.16pt x 438.6789pt>
 File: Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.
 png Graphic file (type png)
 <use Images/2023-07-09_Figure2_At_Marking_Rate_range_medianlength_with_labels.p
 ng>
 Package pdftex.def Info: Images/2023-07-09_Figure2_At_Marking_Rate_range_median
-length_with_labels.png  used on input line 592.
+length_with_labels.png  used on input line 596.
 (pdftex.def)             Requested size: 398.33858pt x 302.24028pt.
 
-Overfull \hbox (18.92108pt too wide) in paragraph at lines 592--593
+Overfull \hbox (18.92108pt too wide) in paragraph at lines 596--597
  [] 
  []
 
@@ -879,35 +859,26 @@ Overfull \hbox (18.92108pt too wide) in paragraph at lines 592--593
 
 [12 <./Images/2023-07-09_Figure1_DIIvsDDI_medianlength_low_marking_with_labels.
 png (PNG copy)>]
-<Images/2023-07-28_logodds.png, id=276, 361.35pt x 361.35pt>
+<Images/2023-07-28_logodds.png, id=208, 361.35pt x 361.35pt>
 File: Images/2023-07-28_logodds.png Graphic file (type png)
 <use Images/2023-07-28_logodds.png>
-Package pdftex.def Info: Images/2023-07-28_logodds.png  used on input line 619.
+Package pdftex.def Info: Images/2023-07-28_logodds.png  used on input line 614.
 
 (pdftex.def)             Requested size: 199.16928pt x 199.16766pt.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\max' on input line 625.
-
-
-
 [13 <./Images/2023-07-09_Figure2_Marking_Rate_range_medianlength_with_labels.pn
 g (PNG copy)>]
-<Images/MRL.png, id=289, 429.7656pt x 227.4096pt>
+<Images/MRL.png, id=223, 429.7656pt x 227.4096pt>
 File: Images/MRL.png Graphic file (type png)
 <use Images/MRL.png>
-Package pdftex.def Info: Images/MRL.png  used on input line 635.
+Package pdftex.def Info: Images/MRL.png  used on input line 630.
 (pdftex.def)             Requested size: 341.43306pt x 180.67178pt.
-<Images/2023-07-17_Protein_Production_v2.png, id=290, 372.4314pt x 344.2461pt>
+<Images/2023-07-17_Protein_Production_v2.png, id=224, 372.4314pt x 344.2461pt>
 File: Images/2023-07-17_Protein_Production_v2.png Graphic file (type png)
 <use Images/2023-07-17_Protein_Production_v2.png>
 Package pdftex.def Info: Images/2023-07-17_Protein_Production_v2.png  used on i
-nput line 656.
+nput line 647.
 (pdftex.def)             Requested size: 341.43306pt x 315.61241pt.
 
 
@@ -915,11 +886,11 @@ nput line 656.
 .png (PNG copy)>]
 
 [15 <./Images/2023-07-28_logodds.png> <./Images/MRL.png (PNG copy)>]
-<Images/Duc_Song_vs_model_log.png, id=313, 361.35pt x 361.35pt>
+<Images/Duc_Song_vs_model_log.png, id=249, 361.35pt x 361.35pt>
 File: Images/Duc_Song_vs_model_log.png Graphic file (type png)
 <use Images/Duc_Song_vs_model_log.png>
 Package pdftex.def Info: Images/Duc_Song_vs_model_log.png  used on input line 6
-79.
+70.
 (pdftex.def)             Requested size: 213.39566pt x 213.39867pt.
 
 
@@ -927,48 +898,31 @@ Package pdftex.def Info: Images/Duc_Song_vs_model_log.png  used on input line 6
 
 [17 <./Images/Duc_Song_vs_model_log.png>]
 
-LaTeX Warning: Reference `eq:decapped_solution' on page 18 undefined on input l
-ine 726.
-
-
-
 [18]
 
 [19]
 
-LaTeX Warning: Reference `eq:full_matrix' on page 20 undefined on input line 80
-2.
-
-
-LaTeX Warning: Reference `eq:full_matrix' on page 20 undefined on input line 80
-6.
-
-
 LaTeX Warning: Reference `eq:capped_matrix' on page 20 undefined on input line 
-813.
+805.
 
 
 LaTeX Warning: Reference `eq:decapped_matrix' on page 20 undefined on input lin
-e 816.
+e 808.
 
 
 
 [20]
-Overfull \hbox (171.02434pt too wide) detected at line 831
+Overfull \hbox (171.02434pt too wide) detected at line 823
 [][][][] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 :
  []
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 21 undefined on input line 
-833.
+825.
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 21 undefined on input line 
-834.
-
-
-LaTeX Warning: Reference `eq:full_matrix' on page 21 undefined on input line 83
-6.
+826.
 
 
 
@@ -992,277 +946,19 @@ Overfull \hbox (379.4175pt too wide) has occurred while \output is active
 
 
 LaTeX Warning: Reference `eq:capped_matrix' on page 22 undefined on input line 
-856.
+848.
 
 
 
-[22] (mRNA_Populations_PLOS_GENETICS.bbl
+[22]
 
 [23]
 
 [24]
 
-[25])
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN21}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.915 \bibitem{RN21}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN8}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.920 \bibitem{RN8}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN1}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.925 \bibitem{RN1}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN3}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.935 \bibitem{RN3}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN26}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.940 \bibitem{RN26}
-                    
+[25]
 
-[26
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN40}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.944 
-      ]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN13}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.945 \bibitem{RN13}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN35}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.950 \bibitem{RN35}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN23}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.955 \bibitem{RN23}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN6}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.960 \bibitem{RN6}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN7}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.965 \bibitem{RN7}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN25}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.970 \bibitem{RN25}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN36}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.975 \bibitem{RN36}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN34}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.980 \bibitem{RN34}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN9}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.985 \bibitem{RN9}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN38}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.990 \bibitem{RN38}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN30}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.995 \bibitem{RN30}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN16}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1000 \bibitem{RN16}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN4}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1005 \bibitem{RN4}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN27}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1010 \bibitem{RN27}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN15}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1015 \bibitem{RN15}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN17}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1020 \bibitem{RN17}
-                     
-
-[27]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN14}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1025 \bibitem{RN14}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN5}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1030 \bibitem{RN5}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN28}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1035 \bibitem{RN28}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN2}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1040 \bibitem{RN2}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN22}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1045 \bibitem{RN22}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN12}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1050 \bibitem{RN12}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN32}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1055 \bibitem{RN32}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN29}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1060 \bibitem{RN29}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN33}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1065 \bibitem{RN33}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN39}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1075 \bibitem{RN39}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN10}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1080 \bibitem{RN10}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN18}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1085 \bibitem{RN18}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN19}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1090 \bibitem{RN19}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN11}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1095 \bibitem{RN11}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN31}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1100 \bibitem{RN31}
-                     
-
-[28]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN24}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1105 \bibitem{RN24}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN20}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1110 \bibitem{RN20}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN41}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1115 \bibitem{RN41}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN42}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1120 \bibitem{RN42}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{cite.RN43}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1125 \bibitem{RN43}
-                     
-
-[29] 
+[26] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (mRNA_Populations_PLOS_GENETICS.aux)
  ***********
@@ -1273,21 +969,18 @@ L3 programming layer <2024-07-20>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `mRNA_Populations_PLOS_GENETICS.out' has not 
 changed.
-(rerunfilecheck)             Checksum: 0B8BE320A43DCD26592DDEAA1B1C0EC3;6677.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17062 strings out of 473899
- 277362 string characters out of 5726501
+ 17036 strings out of 473899
+ 276752 string characters out of 5726501
  1966960 words of memory out of 5000000
- 39394 multiletter control sequences out of 15000+600000
- 573457 words of font info for 138 fonts, out of 8000000 for 9000
+ 39372 multiletter control sequences out of 15000+600000
+ 573456 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,14n,79p,1356b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,14n,79p,1356b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rauc6\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\rauc6\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0700.pk><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1313,10 +1006,10 @@ auc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:
 0.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmtt10.pfb><C:/Users/rauc6/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on mRNA_Populations_PLOS_GENETICS.pdf (29 pages, 1961719 bytes).
+Output written on mRNA_Populations_PLOS_GENETICS.pdf (26 pages, 1939974 bytes).
 
 PDF statistics:
- 549 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 33504 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 480 PDF objects out of 1000 (max. 8388607)
+ 130 named destinations out of 1000 (max. 500000)
+ 33336 words of extra memory for PDF output out of 35830 (max. 10000000)
 
