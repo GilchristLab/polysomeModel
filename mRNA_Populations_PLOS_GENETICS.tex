@@ -205,19 +205,20 @@
 
 \section*{Abstract}
 A quantitative understanding protein production dynamics is an essential for understanding the regulation of gene expression.
-Translation and mRNA degradation are key coupled processes in the cell that regulate protein output.
-Independently, both translation and mRNA degradation have been extensively studied through modeling.
-However, there is little work exploring their interaction.
-Here we introduce a novel coupled ODE model which integrates mRNA transcription, 5' mRNA degradation and translation.
-Using empirically derived parameter estimates, our model predicts the protein production from two populations of mRNA: stable and actively translating 5' capped mRNA and decapped mRNA undergoing cotranslational decay.
-We are able to predict gene specific capped and decapped mRNA population abundances, distribution of ribosomes loaded onto transcripts and the mean number of ribosomes associated to a transcript.
-Surprisingly, we find that genes with a high decapping rate (short half-life) will produce just under half their protein from decapped transcripts.
-Our model proves useful toward understanding a more complete view of RNA biology and protein production and acts as a steppingstone for future development in this area. 
+One key aspect of protein production is the coupling of mRNA translation and degradation.
+While both mRNA translation and degradation have been extensively studied independently using mathematical models, there has been little work modeling their coupling.
+Here we introduce a novel, gene level, equilibrium model consisting of two populations of coupled ODEs: stable and actively translating 5' capped mRNAs and decapped mRNAs undergoing cotranslational decay.
+Our approach allows us to study the impact of mRNA transcription, ribosome initiation, mRNA decapping, and mRNA degradation rates on distribution of polysomes in each of our capped and uncapped mRNA populations.
+In turn, we use the equilibrium distributions of the capped and decapped mRNAs to evaluate their absolute and relative contribution to the gene's protein production rate.
+Despite its simplicity, when we parameterize our model based on empirical observations, we observe a wide range of sometimes novel behaviors.
+For example, we find the decapped mRNA population can contribute to almost half of a gene's protein production rate when the mRNA decapping rate is high.
+Overall, we find our model predictions are qualitatively consistent with our current understanding of protein translation and qualitatively consistent with independent estimates of mRNA ribosome loads.
+In summary, by coupling mRNA translation and degradation, our model provides us a deeper understanding of how these processes can interact and alter the expression level of a gene.
 
 
 \section*{Author Summary}
 
-%% NEED TO WRITE THIS
+NEED TO WRITE THIS
 
 
 
@@ -225,25 +226,15 @@ Our model proves useful toward understanding a more complete view of RNA biology
 
 \section*{Introduction}
 
-Gene expression relies on transfer of information encoded in DNA through mRNA into a final functional form, often protein, through translation.
-While the central dogma represents the basic flow of genetic information, each step has multiple regulatory mechanisms adjusting gene expression.
-The process of translation encompasses three steps: initiation, elongation and termination and is reviewed in~\cite{RN1,RN2}.
-In eukaryotes, translation initiation consists of a ribosome binding to the capped 5' end of an mRNA molecule.
-Following binding to the mRNA a ribosome proceeds to scan the mRNA until it encounters a start codon and initiates protein synthesis.
-Protein is synthesized through the process of elongation, as the ribosome adds one amino acid at a time to the nascent peptide chain.
-Finally, in the termination step, the ribosome and protein are released from the transcript.
-Multiple ribosomes can be on a transcript at once.
-Thus, polyribosomal mRNAs (polysomes) are common and often measured as a proxy for protein production by ribosome footprinting, polysome profiling and single molecule imaging of translation. %add citations
+mRNA populations in eukaryotic cells can be split into two functionally different categories: capped and uncapped mRNAs.
+Capped mRNAs (i.e.~those with a 5' cap) able to be bound by ribosomes and undergo translation initation and thought to be the main source of protein production.
+In contrast, uncapped mRNAs (i.e.~those whose 5' cap has been removed) are no longer able to be bound by ribosomes and, hence, no longer able to under go translation initation and are susceptible to both 5'-3' and 3'-5' mRNA decay.
+As a result, the contribution of uncapped mRNA to protein production has been largely ignored.
+This is despite the fact that ribosomes which initiated translation prior to decapping are thought to be able to complete translation of a decapped mRNA's CDS undergoing 5'-3' decay~\cite{RN3,RN4} (but not mRNAs undergoing 3' to 5' decay \cite{RN5}).
 
-
-To produce protein, translation needs a pool of capped mRNAs.
-The maintenance of this mRNA pool relies on a broad range of ribosome dependent and independent mechanisms~\cite{RN3}. 5' decapping removes the protective 5' cap from a transcript allowing for the 5'-3' exonuclease XRN1 to degrade the transcript~\cite{RN3}.
-If a ribosome is already present on the transcript, XRN1 trails behind performing cotranslational decay~\cite{RN4}.
-This allows for protein to be produced from transcripts being actively degraded.
-Another mechanism of decay relies on 3'-5' degradation of transcripts, which does not permit for any more protein to be made~\cite{RN5}.
 Collided ribosomes can also initiate endonucleolytic decay pathways such as nonsense mediated decay or no go decay or ribosomal quality control~\cite{RN6,RN7}.
 The resulting 3' fragments may complete translation.
-The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in mRNA stability~\cite{RN8, RN9, RN10}.
+The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in ribosome movement and mRNA stability~\cite{RN8, RN9, RN10}.
 
 
 Both mRNA decay and translation have been explored in the literature~\cite{RN11, RN12}.
