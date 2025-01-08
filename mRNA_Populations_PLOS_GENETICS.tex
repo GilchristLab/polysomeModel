@@ -237,27 +237,36 @@ The resulting 3' fragments may complete translation.
 The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in ribosome movement and mRNA stability~\cite{RN8, RN9, RN10}.
 
 
-Both mRNA decay and translation have been explored in the literature~\cite{RN11, RN12}.
-Some early translation modeling papers used the totally asymmetric exclusion process (TASEP) framework to study codon by codon movement of ribosomes~\cite{RN13,RN14}.
-While powerful, TASEP is computationally expensive to run.
-The Ribosome Flow Model (RFM) introduced by~\cite{RN15}, makes a coarse grain approximation to translation by splitting an mRNA into regions, reducing computational cost at little cost to accuracy~\cite{RN15}.
-Extensions on the RFM look at the combined translational behavior of pools of different transcript species~\cite{RN16}.
-Other protein synthesis models take a cell wide approach to model translation~\cite{RN17} providing a systems wide overview of protein production. mRNA degradation mechanisms have also been explored, either mechanistically~\cite{RN18,RN19} or using a basic protein production model~\cite{RN20} and are reviewed in~\cite{RN21,RN22}.
+The modeling of protein translation at the scale of ribosome movement along an mRNA extends back more than half a century.
+% been explored in the literature~\cite{RN11, RN12}.
+The first ribosome scale models of protein translation were introduced by MacDonald and colleagues \cite{MacDonaldEtAl1968,MacDonaldAndGibbs1969,vonHeijneEtAl1987} and used what is now referred to as the totally asymmetric exclusion process (TASEP) and has been used extensively since then \cite[e.g.]{RN13,RN14}.
+The TASEP models ribosome movement along an mRNA as a stochastic process and takes ribosome interference into account.
+Although important qualitative and quantitative insights have been generated \cite{vonHeijneEtAl1987,Chou2003,RN14} from TASEP models, because of their high level of detail and stochastic nature they are very challenging to analyze mathematically and computationally expensive to evaluate. 
+Ignoring the effect of ribosomal interferences in the TASEP model, however, greatly simplifies things; leading to analytic solutions for the steady states of ribosome occupancy and protein translation rates~\cite[e.g.]{GilchristAndWagner2006,ShahAndGilchrist2011}
+Alternatively, the Ribosome Flow Model (RFM) \cite{RN15} is able to retains the impact of ribosome inferference but is able to dramatically reduce the computational cost through the use of coarse grain approximations of different regions of an mRNA.
+These computational gains allow researchers to use the RFM to examine the translational behavior of pools of different transcript species~\cite{RN16}.
+In contrast, \cite{RN17} takes a brute force approach, modeling modeling the entire population of ribosomes and mRNA within a cell, thus providing a systems wide overview of protein production.
+
+\textbf{[Mike: Ricardo can you revise this and the following sentences if needed?]}
+More recently, models of mRNA degradation have been extensively studied  either mechanistically~\cite{RN18,RN19} or using a basic protein production model~\cite{RN20} and are reviewed in~\cite{RN21,RN22}.
 A combined 5' mRNA decay model has previously been explored briefly by~\cite{RN22}, finding a moderate effect of decay on ribosomal load.
 Translation and mRNA degradation have both received ample attention in the literature, however few have explored the interaction between mRNA degradation and translation.
 
 
 Here we introduce a novel coupled ODE model of mRNA polysome classes, which integrates mRNA transcription, 5' mRNA degradation and translation.
-Our model, being derived theoretically from first principals, can demonstrate biological behavior using empirically estimated parameters.
-The structure of the model allows for the exploration of protein production from both capped and uncapped mRNAs undergoing cotranslational decay.
-Moreover, we find that genes with a high decapping rate (short half-life) will produce just under half their protein from decapped transcripts. 
+While mechanistic in nature, for analytic and computational purposes the coarsest scale of our model is at the level an mRNA, rather than a ribosome.
+This simplifed approach allows us to generate several analytic insights about how mRNA length, production, capping, and decay interacts with  ribosome initiation and termination of translation to determine overall protein production rates.
+Our apporach also allows us to effectively collapse and evaluate the behavior of our model across its entire parameter space.
+Reassuringly, our model recapitulates biologically realistic and understandable behavior across a wide range of empirically based parameter values.
+In addition, our model predicts that mRNAs with high decapping rates (i.e.~short half-lives) will produce just under half their protein from decapped transcripts.
+Finally, given the mechanistic derivation of our model, it should be possible to extend our model and analytical insights to greater levels of granularity using RFM and other approaches.
 
 \section*{Methods}\label{sec:description}
 \subsection*{Model Overview}
 
 The model captures some of the basic processes governing mRNA populations: transcript production, degradation and the process of translation (Fig ~\ref{fig1}A).
 Transcripts can exist in one of two states: capped and decapped which captures the role of the 5' cap in mRNA protection and translation initiation. 
-Capped transcripts are translation initiation competent, while decapped transcripts are not. 
+Capped transcripts are translation initiation competent, while decapped transcripts are not.
 Individual transcripts in the cell are categorized by an integer number of ribosomes (0, 1, 2, ..., \imax).
 The number of ribosomes on a transcript determines that transcripts polysomal class.
 The model seeks to determine how the population of transcripts of a given gene are distributed between polysome classes and capped and decapped states (Fig ~\ref{fig1} B-D).
