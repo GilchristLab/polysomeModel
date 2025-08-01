@@ -207,13 +207,14 @@
 A quantitative understanding protein production dynamics is an essential for understanding the regulation of gene expression.
 One key aspect of protein production is the coupling of mRNA translation and degradation.
 While both mRNA translation and degradation have been extensively studied independently using mathematical models, there has been little work modeling their coupling.
-Here we introduce a novel, gene level, equilibrium model consisting of two populations of coupled ODEs: stable and actively translating 5' capped mRNAs and decapped mRNAs undergoing cotranslational decay.
-Our approach allows us to study the impact of mRNA transcription, ribosome initiation, mRNA decapping, and mRNA degradation rates on distribution of polysomes in each of our capped and uncapped mRNA populations.
-In turn, we use the equilibrium distributions of the capped and decapped mRNAs to evaluate their absolute and relative contribution to the gene's protein production rate.
-Despite its simplicity, when we parameterize our model based on empirical observations, we observe a wide range of sometimes novel behaviors.
-For example, we find the decapped mRNA population can contribute to almost half of a gene's protein production rate when the mRNA decapping rate is high.
-Overall, we find our model predictions are qualitatively consistent with our current understanding of protein translation and qualitatively consistent with independent estimates of mRNA ribosome loads.
-In summary, by coupling mRNA translation and degradation, our model provides us a deeper understanding of how these processes can interact and alter the expression level of a gene.
+Here we introduce a novel, gene level, equilibrium model consisting of two populations of coupled ODEs: actively translating 5' capped mRNAs and decapped mRNAs undergoing cotranslational decay.
+Our approach allows us to study the impact of mRNA transcription, ribosome initiation, mRNA decapping, and mRNA degradation rates on distribution of polysomes in the capped and uncapped mRNA populations.
+In turn, we use these populations to evaluate their relative and absolute contribution to the gene's protein production rate.
+Despite its simplicity, when we parameterize our model based on empirical observations, we observe a wide range of behaviors from where essentially none to almost half of a gene's protein production comes from the decapped mRNA population.
+Overall, we find our model predictions are qualitatively consistent with our current understanding of protein translation and quantitatively consistent with empirical estimates of mRNA ribosome loads.
+In summary, despite being rather coarse grained and requiring only four key parameters, our model provides insight on how mRNA translation and degradation processes interact to shape gene expression.
+
+% 
 
 
 \section*{Author Summary}
@@ -226,9 +227,8 @@ NEED TO WRITE THIS
 
 \section*{Introduction}
 
-mRNA populations in eukaryotic cells can be split into two functionally different categories: capped and uncapped mRNAs.
-Capped mRNAs (i.e.~those with a 5' cap) able to be bound by ribosomes and undergo translation initation and thought to be the main source of protein production.
-In contrast, uncapped mRNAs (i.e.~those whose 5' cap has been removed) are no longer able to be bound by ribosomes and, hence, no longer able to under go translation initation and are susceptible to both 5'-3' and 3'-5' mRNA decay.
+mRNA populations in eukaryotic cells can be split into two functionally different categories: 5' capped and uncapped mRNAs.
+One key difference between these categories is the fact that capped mRNAs can undergo translation initiation while uncapped mRNAs cannot undergo translation initiation.
 As a result, the contribution of uncapped mRNA to protein production has been largely ignored.
 This is despite the fact that ribosomes which initiated translation prior to decapping are thought to be able to complete translation of a decapped mRNA's CDS undergoing 5'-3' decay~\cite{RN3,RN4} (but not mRNAs undergoing 3' to 5' decay \cite{RN5}).
 
