@@ -130,8 +130,8 @@
 \usepackage{xspace} %%needed for mike's commands
 
 %% Define mike's margin par
-% \newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
-% \newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
+\newcommand\mmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{M:} #1 \end{spacing}}}  %for notes in margin
+\newcommand\rmpar[1]{\marginpar{\begin{spacing}{0.7}\raggedright \singlespacing \tiny \textbf{R:} #1 \end{spacing}}}  %for notes in margin
 
 %% custom commands for sanity
 \newcommand{\imax}{\ensuremath{{i_{\max}}}\xspace}
@@ -149,8 +149,8 @@
 \newcommand{\detA[1]}{\ensuremath{\ensuremath{\det\left[\bs{A}_{#1}\right]}\xspace}}
 
 % Summation of vectors
-\newcommand{\msum}{\ensuremath{m}\xspace}
-\newcommand{\msumstar}{\ensuremath{m^*}\xspace}
+\newcommand{\msum}{\ensuremath{\hat{m}_{\text{Total}}}\xspace}
+\newcommand{\msumstar}{\ensuremath{\hat{m}^*_{\text{Total}}}\xspace}
 \newcommand{\msumtot}{\ensuremath{M}\xspace}
 \newcommand{\mfrac}{\ensuremath{f_m}\xspace}
 
@@ -232,9 +232,9 @@ One key difference between these categories is the fact that capped mRNAs can un
 As a result, the contribution of uncapped mRNA to protein production has been largely ignored.
 This is despite the fact that ribosomes which initiated translation prior to decapping are thought to be able to complete translation of a decapped mRNA's CDS undergoing 5'-3' decay~\cite{RN3,RN4} (but not mRNAs undergoing 3' to 5' decay \cite{RN5}).
 
-Collided ribosomes can also initiate endonucleolytic decay pathways such as nonsense mediated decay or no go decay or ribosomal quality control~\cite{RN6,RN7}.
+Stalled ribosomes can also initiate endonucleolytic decay pathways such as nonsense mediated decay or no go decay or ribosomal quality control~\cite{RN6,RN7}.
 The resulting 3' fragments may complete translation.
-The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in ribosome movement and mRNA stability~\cite{RN8, RN9, RN10}.
+The interplay between the translational machinery, mRNA degradation machinery and mRNA properties such as codon usage, secondary structure or modifications all have been reported to play a role in ribosome movement and mRNA stability~\cite{RN8, RN9, RN10}. \mmpar{This paragraph seems out of place. Do we even need it in the intro?}
 
 
 The modeling of protein translation at the scale of ribosome movement along an mRNA extends back more than half a century.
@@ -254,7 +254,7 @@ Translation and mRNA degradation have both received ample attention in the liter
 
 
 Here we introduce a novel coupled ODE model of mRNA polysome classes, which integrates mRNA transcription, 5' mRNA degradation and translation.
-While mechanistic in nature, for analytic and computational purposes the coarsest scale of our model is at the level an mRNA, rather than a ribosome.
+While mechanistic in nature,  scale of our model is at the level an mRNA, rather than within a coding region or an individual ribosome.
 This simplifed approach allows us to generate several analytic insights about how mRNA length, production, capping, and decay interacts with  ribosome initiation and termination of translation to determine overall protein production rates.
 Our apporach also allows us to effectively collapse and evaluate the behavior of our model across its entire parameter space.
 Reassuringly, our model recapitulates biologically realistic and understandable behavior across a wide range of empirically based parameter values.
@@ -367,14 +367,14 @@ In closing, we note the parameters $\imax, \kappa, \mu,$ and $\tau$ likely vary 
       \hline
       \textbf{Symbol}&\textbf{Description}&\textbf{Unit} \\\hline
       State Variables & &  \\ 
-      \hline
+      \hline \hline
       $m_i$ & Abundance of mRNAs with a ribosome load of $i$ in capped state. & $mRNA$ \\
       $m_i^*$ & Abundance of mRNAs with a ribosome load of $i$ in decapped state. & $mRNA$ \\ \hline
       $p_i$ & Probability of finding an mRNA with a ribosome load of $i$ in capped state. & \\
       $p_i^*$ & Probability of finding an mRNA with a ribosome load of $i$ in decapped state. &  \\ \hline
-      \multicolumn{1}{l}{Model Parameters} \\ \hline
+      \multicolumn{1}{|l|}{Model Parameters} \\ \hline \hline
       $i$ & ribosomal load index & Ribosome\\
-      \imax & Maximum number of ribosomes able to bind to mRNA\\ & Ribosome \\
+      \imax & Maximum number of ribosomes able to bind to mRNA & Ribosome \\
       $\kappa_0$ & Translation initiation rate for capped mRNAs with a ribosome load of $i=0$. & $1/s$\\
       $\tau$ & Translation completion rate for one ribosome & $1/s$\\
       $\mu $ & Decapping rate. & $1/s$\\
@@ -422,10 +422,13 @@ The solution for the decapped system is dependent on the underlying distribution
 We can simplify the model by converting the mRNA quantity $m_{j}$ to the probability $p_{j}$ by Eq (\ref{eq:capped_solution}).
 By defining $S_{j}$ as the cumulative probability from an mRNA found in class $i$ and above as,
 \begin{equation}
-  S_{i} = \sum_{i}^{\imax}\vec{p_{i}}
+  \label{eq:S}
+  S_{i} = \sum_{j = i}^{\imax}\vec{p_{j}}
 \end{equation}
+where, by definition, $S_{0} = 1.$
+Further, given the definition of $S_{i}$ and the fact that $p_{i}$ values are always non-negative, it follows that $S_{0} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$.
 
-Now the solution to Eq (\ref{eq:decapped_abundance}) becomes,
+Using Eq \ref{eqn:S},  the solution to Eq (\ref{eq:decapped_abundance}) can be compactly written as,
 
 \begin{align}
   \label{eq:decapped_solution} 
@@ -436,14 +439,15 @@ Now the solution to Eq (\ref{eq:decapped_abundance}) becomes,
                & \vdots & \nonumber \\
   \mhatstar_{\imax}  &= \frac{1}{\imax}\frac{\lambda}{\tau}S_{\imax}  \nonumber
 \end{align}
-Note that $S_{0}=1$ and $ S_{0} \ge ... \ge S_{i} \ge ... \ge S_{\imax}$ highlighting the fact that the steady state solution for the decapped state \mvecstar is dependant on the distribution of mRNA polysome classes of the capped state the solution of the cumulative distribution function $S_i$. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
+
+These inequalities highlight the fact that the steady state solution for the decapped state \mvecstar is dependent on the distribution of mRNA polysome classes of the capped state the solution of the cumulative distribution function $S_i$. %The pattern of  the  $S$ means that $m_0 \ge m_1 \ge ... \ge ... m_i \ge ... \ge m_imax$.
 
 The total transcript population in the decapped state $\mhatstar_{tot}$ does not have a closed form solution.
 However it can be summarized as follows,
 
 
 \begin{align*}
-  \msumstar = \sum_{i=0}^{\imax} m_{i}^{*} = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1}+ \hdots \\
+  \msumstar = \sum_{i=0}^{\imax} \mhatstari = \frac{\lambda}{\delta} + \frac{\lambda}{\tau}S_{1}+ \hdots \\
   + \frac{\lambda}{i \tau}S_{i} + \hdots  + \frac{\lambda}{\imax \tau}S_{\imax} 
 \end{align*}
 
@@ -451,7 +455,7 @@ This can be further shortened to:
 \begin{equation} \label{eq: marked_total_pop}
   \msumstar = \lambda(\frac{1}{\delta} + \frac{1}{\tau}\vec{S} \cdot \vec{l}	) 
 \end{equation}
-Where $\vec{S}$ is a vector of all the cumulative sums and $\vec{l}$ is a vector of $1,\frac{1}{2},...,\frac{1}{\imax}$ . 
+Where vectors $\vec{S} = \left(S_{1}, S_{2}, S_{3},\ldots S_{\imax}\right)$ and $\vec{l} = \left(1, \frac{1}{2},...,\frac{1}{\imax}\right)$. 
 
 
 To get the probability distribution of transcripts across the decapped state we can divide $\vec{m^{*}}/\msumstar$ which results in,
@@ -594,7 +598,7 @@ As $\kappa'$ increases, the steady state distribution moves towards higher $i$ a
 
 
 \subsubsection*{Steady state distribution of the decapped mRNA polysome classes}
-The decapped state is again scaled by the transcription rate $\lambda$.
+Like with the uncapped population, the abundances of mRNAs in the decapped state \mvechatstart is scaled by the transcription rate $\lambda$.
 The analytical steady state solution eq. (\ref{eq:decapped_solution}) can be understood in two parts: $m_0^*$ and the remaining $m_i^*$ for $i>0$.
 $m_0^*$ is solely determined by the ratio of the mRNA production rate to the clearance rate $\lambda / \delta$.
 The remaining decapped polysome classes depend on the elongation/termination rate $\tau$ and the distribution of \mvechat.
