@@ -18,9 +18,11 @@ current source, so all comments below refer to the source and to a fresh
 compile of it.
 
 **Version 1.1 (2026-10-09).** Adds Section 9, a check of the R code in
-Ricardo's private `Ribosome` repository (commit f70c00a, 2023-07-25),
-and updates items 1.5, 3.2, 3.3 and 3.4, which that check resolves.
+Ricardo's `Ribosome` repository (commit f70c00a, 2023-07-25), and
+updates items 1.5, 3.2, 3.3 and 3.4, which that check resolves.
 Version 1.0 was written from the manuscript alone.
+**Version 1.2 (2026-10-09).** Corrects 1.5 and 9.7: the repository is
+public, not private.
 
 # Decision
 
@@ -71,10 +73,11 @@ The `strip` environment errors in one-column mode.
 "NEED TO WRITE THIS". A bold "[Mike: Ricardo can you revise ...]" note
 and an `\mmpar` margin note are still in the Introduction.
 
-1.5. **Code repository is private and incomplete.**
-`github.com/rurquidi/Ribosome` exists but is private (it returns 404 to
-anyone without access). It must be public at submission, with a Data
-Availability Statement. The repository also lacks the input data: the
+1.5. **Code repository is incomplete.**
+`github.com/rurquidi/Ribosome` is public (v1.0 and the first draft of
+v1.1 called it private; it returned 404 at the time of checking and was
+public by the end of the day). Submission needs a Data Availability
+Statement pointing at it. The repository lacks the input data: the
 scripts read Presnyak 2015, Chan 2018, Weinberg 2016 RPKMs, Dao Duc and
 Song 2018 rates, and the yeast and Arabidopsis FASTA files from
 `../Data` and `../../Data`, which were never pushed. The package depends
@@ -343,7 +346,7 @@ pair it with the drop-off discussion in Section 5.
 
 # 9. Code verification (added in v1.1)
 
-The R code lives in the private repository `rurquidi/Ribosome` (11
+The R code lives in the repository `rurquidi/Ribosome` (public; 11
 commits, 2020-05-10 to 2023-07-25). The solver is
 `R/Polysome_functions_RAUC.R`; the paper's figures are produced by
 `Text/Paper final figures.Rmd` (1700 lines), not by the scripts under
@@ -422,7 +425,7 @@ calls the first, `CalcMarkedClass` recomputes the capped solution with
 passed, and the figure code selects parameter sets by hard-coded row
 ranges. None of this blocks publication, but the repository needs a
 README that maps each figure to its chunk and parameter block, a
-license, and the data files before it is made public.
+license, and the data files before it is cited in a submission.
 
 # Sources consulted
 
