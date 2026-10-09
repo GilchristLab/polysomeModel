@@ -17,6 +17,11 @@ was built on 2024-08-12 from an older draft and does not reflect the
 current source, so all comments below refer to the source and to a fresh
 compile of it.
 
+**Version 1.1 (2026-10-09).** Adds Section 9, a check of the R code in
+Ricardo's private `Ribosome` repository (commit f70c00a, 2023-07-25),
+and updates items 1.5, 3.2, 3.3 and 3.4, which that check resolves.
+Version 1.0 was written from the manuscript alone.
+
 # Decision
 
 **Return to authors before review.** The model is clean and the central
@@ -26,6 +31,15 @@ the single validation is weak, the prior-art framing is incorrect, and
 there are internal inconsistencies between the equations and the stated
 results. An editor would most likely triage it for insufficient strength
 of advance rather than send it out.
+
+The code check (Section 9) sharpens this. The headline result, that a
+short-lived mRNA produces just under half its protein from decapped
+transcripts, is computed at an elongation rate of one codon per second
+and at a decapping rate three times smaller than the figure caption
+states. At the captioned rate the model gives two thirds, and at
+realistic yeast elongation rates it gives one sixth to one third. The
+central claim therefore has to be recomputed before the paper goes
+anywhere.
 
 Two paths forward:
 
@@ -57,10 +71,16 @@ The `strip` environment errors in one-column mode.
 "NEED TO WRITE THIS". A bold "[Mike: Ricardo can you revise ...]" note
 and an `\mmpar` margin note are still in the Introduction.
 
-1.5. **Code link is dead.** `github.com/rurquidi/Ribosome` returns 404.
-The same account has a public `polysomeModel` repository (last pushed
-2025-08-04), which is probably the intended target. PLOS requires public
-code and a Data Availability Statement.
+1.5. **Code repository is private and incomplete.**
+`github.com/rurquidi/Ribosome` exists but is private (it returns 404 to
+anyone without access). It must be public at submission, with a Data
+Availability Statement. The repository also lacks the input data: the
+scripts read Presnyak 2015, Chan 2018, Weinberg 2016 RPKMs, Dao Duc and
+Song 2018 rates, and the yeast and Arabidopsis FASTA files from
+`../Data` and `../../Data`, which were never pushed. The package depends
+on limSolve, has a placeholder DESCRIPTION (no license, template
+description text), and a top-level `polysome_model_results.Rmd` that is
+the unedited RStudio template. See Section 9.
 
 1.6. **Bibliography entries never cited:** RN1 (Browning and
 Bailey-Serres 2015) and RN37 (Wu and Jaffrey 2016).
@@ -102,9 +122,11 @@ Summing the decapped equations from class k upward gives
     tau (k/imax) m*_k = mu * sum_{j>=k} m_j
 
 so m*_k = (imax/k)(mu/tau) S_k, not (1/k)(mu/tau) S_k. The total
-decapped pool, the odds expression, and p*_i all inherit this. If the
-code solves the ODEs numerically the results are unaffected and only
-the text is wrong, but the paper must say which.
+decapped pool, the odds expression, and p*_i all inherit this.
+*Resolved in v1.1:* the code divides by tau_i = tau_c i/(9 imax), so it
+carries the imax factor. The text is wrong and the figures are right.
+Insert imax in Eq. (decapped_abundance), Eq. (decapped_solution), the
+total decapped pool, Eq. (odds), and Eq. (decapped_distribution).
 
 3.3. **An exact result the paper misses.** Multiply the identity in 3.2
 by tau k/imax and sum over k:
@@ -122,10 +144,16 @@ cleaner headline than the "41 percent" figure, and it shows the claim
 "never more than half" is a statement about the parameter range, not a
 theorem: the share exceeds one half whenever the capped half-life is
 shorter than ln(2) times the ribosome transit time imax/tau.
+*Confirmed numerically in v1.1* (Section 9.2): a re-implementation of
+the coded model gives a share that is constant in kappa to four decimal
+places and matches the formula.
 
-3.4. **Fig 10 panels B and C appear swapped relative to panel A.** The
-panel labeled "low decapping" peaks at 0.69, which is the 7-minute curve
-in A, while the panel labeled "medium" peaks at 1.0.
+3.4. **Fig 10 panels B and C are swapped, and the mu values in the
+caption and legend are wrong.** *Confirmed in v1.1 from the figure code*
+(Section 9.3). The three curves are computed at mu = 2.2e-4, 3.3e-4 and
+2.3e-3 per second (half-lives 52, 35 and 5 minutes), not at 2.2e-4,
+1.7e-3 and 5.7e-3 (52, 7 and 2 minutes) as captioned. The "41 percent"
+in the Results and Discussion is the share at mu = 2.3e-3.
 
 3.5. **The supplement's lambda/mu result is presented as discovered by
 "manual exploration".** It follows in one line from summing the capped
@@ -313,8 +341,93 @@ appears four times. "Impressive" (Results) is not a result.
 in a margin note as out of place. Agreed; fold it into Limitations and
 pair it with the drop-off discussion in Section 5.
 
+# 9. Code verification (added in v1.1)
+
+The R code lives in the private repository `rurquidi/Ribosome` (11
+commits, 2020-05-10 to 2023-07-25). The solver is
+`R/Polysome_functions_RAUC.R`; the paper's figures are produced by
+`Text/Paper final figures.Rmd` (1700 lines), not by the scripts under
+`R/`. `R/Manuscript_Figures.R` (3954 lines) is an earlier, partly
+superseded version of the same material. I re-implemented the coded
+model in base R (40 by 40 linear solve, no limSolve) and reproduced
+the Fig 10 curves to three figures.
+
+9.1. **The code matches the ODEs in the manuscript.** Initiation is
+kappa (1 - i/imax), termination from class i is tau_c i/(9 imax) with
+tau_c in codons per second, and the decapped classes are
+m*_i = mu S_i / tau_i, with m*_0 = mu S_0 / delta. This confirms 3.2.
+
+9.2. **The decapped share of protein output is exactly
+9 mu imax/tau_c over 1 + 9 mu imax/tau_c**, independent of kappa. The
+re-implementation gives the same share at every kappa from 1e-4 to 0.5.
+This confirms 3.3. The paper should state the closed form and drop the
+"never more than half" claim, which fails at the paper's own
+high-decapping value (see 9.4).
+
+9.3. **Fig 10 panel assignment.** The parameter grid is built with
+`expand.grid`, so kappa varies fastest and each block of 5000 rows is
+one mu value. The figure code plots these blocks:
+
+| Panel as drawn | Rows plotted | Actual mu (1/s) | Half-life | Caption | Peak, code | Peak, figure |
+|---|---|---|---|---|---|---|
+| A top curve, panel C | 45001-50000 | 2.2e-4 | 52 min | 2.2e-4, 52 min | 1.00 | 1.0 |
+| A middle curve, panel B | 40001-45000 | 3.3e-4 | 35 min | 1.7e-3, 7 min | 0.69 | 0.69 |
+| A bottom curve, panel D | 20001-25000 | 2.3e-3 | 5 min | 5.7e-3, 2 min | 0.14 | 0.14 |
+
+The low-decapping plot (peak 1.0) is panel C in the composite and the
+mid-decapping plot (peak 0.69) is panel B, so the panels were swapped
+when the figure was assembled. The decapped share at mu = 2.3e-3 is 45
+percent, which is the "41 percent" quoted in the text.
+
+9.4. **Every model figure assumes an elongation rate of one codon per
+second.** All figure runs set tau = 1 and treat kappa as kappa prime,
+but mu is entered in absolute units and is never scaled by tau. So
+mu/tau_c is a second dimensionless group that the paper's
+"collapse to one parameter" argument (Methods, Data Sources) does not
+acknowledge, and the figures implicitly make yeast decapping 5 to 10
+times faster relative to elongation than it is. The effect on the
+headline:
+
+| tau_c (codons/s) | Decapped share, mu = 5.7e-3, imax = 39 |
+|---|---|
+| 1 (as coded) | 67 percent |
+| 5 | 29 percent |
+| 10 | 17 percent |
+
+At the captioned mu the share exceeds one half, contradicting the
+Discussion. At realistic yeast elongation rates (Dao Duc and Song 2018,
+Riba et al. 2019) it is a sixth to a third. The validation in Fig 11,
+by contrast, uses gene-specific tau_c and kappa from Dao Duc and Song,
+so the model figures and the validation are not on the same footing.
+Fix: present results in terms of the two dimensionless groups
+kappa/tau_c and 9 mu imax/tau_c, or rerun the figures with a
+realistic tau_c and mu scaled by it.
+
+9.5. **Fig 11 is coded as described.** Empirical load is RPF RPKM over
+mRNA RPKM times length over 200, with length taken as 27 imax
+nucleotides; model load uses per-gene kappa and tau_c from Dao Duc and
+Song and mu from Presnyak; the test is Spearman on log10 values. The
+reporting issues in 4.1 and 7.1 stand.
+
+9.6. **Protein production in the code is total bound ribosomes**
+(sum of i m_i), which is proportional to the production rate only at
+fixed imax. That is correct for Fig 10 but would be wrong if reused
+across the imax range.
+
+9.7. **Reproducibility.** The input data directory was not pushed (see
+1.5), limSolve is required, the solver exists in three near-duplicate
+variants (`CalcMarkedClass`, `_newtau`, `NP`) of which the figure code
+calls the first, `CalcMarkedClass` recomputes the capped solution with
+`CalcUnmarkedClass` rather than the `_newtau` variant when none is
+passed, and the figure code selects parameter sets by hard-coded row
+ranges. None of this blocks publication, but the repository needs a
+README that maps each figure to its chunk and parameter block, a
+license, and the data files before it is made public.
+
 # Sources consulted
 
 PLOS Genetics submission guidelines and journal information pages
-(journals.plos.org/plosgenetics), PubMed, bioRxiv, and the publisher
-pages for each reference listed above.
+(journals.plos.org/plosgenetics), PubMed, bioRxiv, the publisher
+pages for each reference listed above, and the `rurquidi/Ribosome`
+repository at commit f70c00a (cloned to `~/Repositories/Ribosome` on
+obed, 2026-10-09).
